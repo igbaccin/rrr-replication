@@ -17,7 +17,7 @@ The paper describes a two-environment workflow. The same logic applies here:
 
 **Step 1: Preprocessing (your machine, no GPU needed).** You place the 50 PDFs in a folder, run a script, and the system extracts page-level text, builds a retrieval index, and produces a metadata catalog. This step takes about one minute on a standard laptop.
 
-**Step 2: Battery execution (any machine with a GPU, or a CPU if you are patient).** You run the evaluation battery over the preprocessed artifacts. The battery executes 200+ pipeline runs across six phases and produces a single JSON results file. On a consumer GPU (e.g. RTX 4090) the battery completes in roughly one hour. On CPU-only hardware, expect several hours.
+**Step 2: Battery execution (any machine with a GPU, or a CPU if you are patient).** You run the evaluation battery over the preprocessed artifacts. The battery executes 200+ pipeline runs across six phases and produces a single JSON results file. On a consumer GPU (e.g. RTX 4090) the battery completes in about 3 minutes. On CPU-only hardware, expect several hours.
 
 Each step has its own shell script. You can run both steps on the same machine, or preprocess locally and run the battery on a cloud GPU.
 
