@@ -1,0 +1,22 @@
+{
+  "n_citations": 14,
+  "e1": 0,
+  "e2": 0,
+  "e3": 6,
+  "docs_cited": [
+    "Akyeampong&Fofack_2014",
+    "AllenEtAl_2011",
+    "Bohannan_1959",
+    "Braudel&Wallerstein_2009",
+    "Broadberry&Gardner_2022",
+    "Clark&Jacks_2007",
+    "Domar_1970",
+    "Feinstein_1998",
+    "Skocpol&Sommers_1980"
+  ],
+  "n_docs_cited": 9,
+  "word_count": 2396,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

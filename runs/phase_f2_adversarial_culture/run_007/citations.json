@@ -1,0 +1,26 @@
+{
+  "n_citations": 20,
+  "e1": 0,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Akyeampong&Fofack_2014",
+    "Austin_2008",
+    "Broadberry&Gardner_2022",
+    "Bryceson_2002",
+    "Frankema&vanWaijenburg_2012",
+    "Komlos_1998",
+    "Lindert&Williamson_1985",
+    "North&Weingast_1989",
+    "Stern_2004",
+    "Temin_2002",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 13,
+  "word_count": 1760,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

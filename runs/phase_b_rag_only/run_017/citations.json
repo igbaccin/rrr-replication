@@ -1,0 +1,21 @@
+{
+  "n_citations": 22,
+  "e1": 0,
+  "e2": 0,
+  "e3": 1,
+  "docs_cited": [
+    "Akyeampong&Fofack_2014",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Broadberry&Gardner_2022",
+    "Domar_1970",
+    "Komlos_1998",
+    "Kuznets_1973",
+    "Simson_2019"
+  ],
+  "n_docs_cited": 8,
+  "word_count": 1821,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

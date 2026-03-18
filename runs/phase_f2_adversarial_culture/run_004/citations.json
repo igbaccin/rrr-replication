@@ -1,0 +1,29 @@
+{
+  "n_citations": 26,
+  "e1": 0,
+  "e2": 0,
+  "e3": 6,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Austin_2008",
+    "Braudel&Wallerstein_2009",
+    "Frankema_2012",
+    "Goldin_2006",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Nunn&Wantchekon_2011",
+    "Nunn_2008",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Stern_2004",
+    "Williamson_1996"
+  ],
+  "n_docs_cited": 16,
+  "word_count": 1627,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

@@ -1,0 +1,123 @@
+[Layered-T2] score_query=culture dominates institutions long-run growth fundamental cause economic growth societal factors cultural influence institutional development growth determinants historical analysis cross-cultural comparison
+[Layered-T2] starting per-document sweep over 50 docs (concurrency=2)
+[Layered-T2] clustering mechanisms...
+[Clustering] 127 mechanisms -> 10 clusters (105 assigned, 22 to Other)
+[Layered-T2] per-document sweep complete: 49 docs summarised
+[Layered-T2] stance distribution: {'supports': 37, 'tangential': 8, 'critiques': 2, 'complicates': 2}
+
+[Layered-T2] wrote: runs/review_narrative.md and runs/review_ledger.json
+[Layered-T2] appendix: runs/T2_review.md
+[Layered-T2] composing long-form literature review...
+[Writer] Stance distribution: {'supports': 37, 'tangential': 8, 'critiques': 2, 'complicates': 2}
+[Writer] Adaptive clusters: supports=3, critiques=1, complicates=1
+[Writer] Generating 7 sections (opening + 5 stance sections + closing)...
+[Writer] Opening: 326 words
+[Writer] SUPPORTS/Institutions and Economic Comparisons in Africa: 307 words
+[Writer] SUPPORTS/Other: 174 words (repaired 3)
+[Writer] SUPPORTS/Institutions and Colonial Experience: 241 words
+[Writer] CRITIQUES/Institutions and Economic Comparisons in Africa: 178 words (repaired 4)
+[Writer] COMPLICATES/Institutions and Economic Comparisons in Africa: 310 words (repaired 3)
+[Writer] Closing: 321 words
+[Writer] Removed 2 invalid citation(s):
+         - 1989: p.2
+         - 2007: p.12
+[Writer] review_composed.md written (1810 words).
+[Writer] stats: chunks=7 distinct_docs=20 repairs=12 AJR=0 case=0 removed=2
+[Layered-T2] composed review written at: runs/review_composed.md
+
+================================================================================
+LONG-FORM LITERATURE REVIEW
+================================================================================
+
+The debate surrounding the fundamental cause of long-run growth has been a subject of intense interest among economists and economic historians. A significant body of literature posits that culture, through its influence on institutions, plays a pivotal role in shaping economic development over extended periods (Acemoglu et al., 2001: p.27; Austin, 2008: p.24).
+
+The central question at hand is whether cultural factors, specifically the nature and evolution of institutions, are more decisive than other factors in determining long-term economic growth. The stakes are high, as understanding this relationship could provide valuable insights into the reasons behind the disparities in economic development across different regions and societies throughout history (North & Weingast, 1989: p.4).
+
+A number of scholars argue that institutions, which encompass rules, norms, and organizations that structure human interaction, are indeed the fundamental cause of long-run growth (Austin, 2008: p.26; Acemoglu et al., 2001: p.1). Similarly, Acemoglu et al. (AcemogluEtAl_2002: p.33) suggest that the institutions of private property created a significant advantage during the age of industry.
+
+However, not all agree that institutions are the sole determinant of long-run growth. Some scholars argue that while institutions play an important role, other factors such as geography and technology also significantly impact economic development (Abramovitz, 1986: p.21). For example, Abramovitz (Abramovitz_1986: p.11) points out that his sample consists of countries all of whom have successfully entered into the process of modern economic growth, implying that other factors may also be at play.
+
+The ongoing debate highlights the complexity of the relationship between culture, institutions, and long-run growth. As research continues, a more nuanced understanding of this relationship is likely to emerge, shedding light on the factors that have shaped the economic trajectories of different societies throughout history (North_1989: p.7).
+
+The relationship between culture and institutions, particularly in the context of long-run growth, is further illuminated by studies on Africa, a continent often overlooked in discussions of economic development (Broadberry&Gardner_2022: p.1). North & Weingast (1989) argue that political institutions play a crucial role in fostering long-term growth by enabling governments to commit credibly to upholding property rights (p.2). This is supported by evidence suggesting that absolutist states with weak institutions, such as early modern Spain, experienced economic conditions that hindered long-run growth (p.7).
+
+Whatley (2018) examines the determinants of growth in the international slave trade, highlighting internal African factors as significant contributors to economic development. The study suggests that shocks, such as the American demand for plantation labor and the introduction of gunpowder technology, had lasting impacts on Africa's long-run performance (p.2, p.13). These findings support the notion that cultural and institutional factors have played a fundamental role in shaping economic trajectories within Africa.
+
+Nunn & Wantchekon (2011) investigate the relationship between trust, institutions, and economic growth, emphasizing how low levels of trust and weak institutions can perpetuate over generations (p.6). They provide evidence suggesting that cultural factors have a causal impact on institutional development, which in turn influences long-run growth (p.1). Similarly, Nunn (2008) demonstrates that during the period of European colonialism, only societies with sufficiently developed institutions were able to facilitate trade, thereby contributing to economic development (p.19).
+
+Mokyr (2005), in discussing the taproot of modern economic growth, underscores the role of cultural beliefs in creating attitudes, institutions, and mechanisms that facilitated the creation, diffusion, and utilization of new useful knowledge (p.8). This supports the argument that culture can dominate institutions as the fundamental cause of long-run growth, as it shapes the very foundations upon which economic development is built.
+
+The role of culture in determining institutional change and subsequent long-run growth is further substantiated by various scholars. According to North (North_1989: p.7), "institutional change is what determines the direction of change." This suggests that cultural norms and values play a significant role in shaping the evolution of institutions, thus influencing economic development.
+
+Furthermore, he highlights how British cultural beliefs gave rise to different economic institutions in various colonies (Ogilvie_2007: p.30).
+
+Supporting the argument, Hopkins (Hopkins_2009: p.12) asserts that institutional change can lead to two distinct paths of development, creating diverse institutional legacies. This implies that cultural differences can significantly impact the evolution of institutions and subsequent economic growth.
+
+Allen (Allen_2001: p.8) provides evidence of institutional changes influencing prices, which in turn affect economic growth. For instance, he shows that large institutions often baked their own bread, leading to an underestimation of price increases (Allen_2001: p.8).
+
+The evidence from various sources supports the notion that culture, particularly through institutional frameworks, plays a crucial role in long-term economic growth. Acemoglu et al. (2001) argue that fundamental institutions significantly impact property rights and economic performance, with these institutions persisting over time (p.1, p.8). Furthermore, they assert that detailed analysis of such institutions reveals their profound influence on a society's development (p.27).
+
+In a similar vein, Acemoglu et al. (2002) suggest that colonial experiences have had a lasting impact on the institutions and subsequent economic growth of former colonies. They argue that European colonists often designed institutions to maximize their own rents rather than long-run growth (p.33). Additionally, they posit that the Atlantic slave trade fundamentally altered African societies' institutional structures (p.34).
+
+Sokoloff and Engerman (2000) also contribute to this argument by highlighting how different environments in which European colonies were established may have led to varying degrees of inequality, potentially influencing long-term growth (p.12, p.4). They further emphasize that the specific focus on colonial differences can help explain why some societies developed differently than others (p.2).
+
+Feinstein (1998) provides evidence supporting the argument by demonstrating agricultural sector differences between Ireland and Britain, with Ireland having a higher number of wage earners and distinct changes in earnings patterns (p.24). This difference in agricultural structure may have contributed to long-term economic growth disparities between the two countries.
+
+Structural change, as indicated by shifts in the agricultural and industrial sectors, may not solely account for long-term economic growth disparities. Stern (Stern_2004: p.6) argues that income levels in developing countries exhibit a wider range than in OECD-based panels for recent decades, suggesting that other factors might be more significant. Moreover, Humphries (Humphries_2013: p.6) points out that the nutritional status of adults in some societies can influence their body size and physical activity, potentially impacting economic growth.
+
+Furthermore, Stern (Stern_2004: p.9) presents projected sulfur emissions using the environmental Kuznets curve (EKC), which indicates that pollution levels might initially increase with economic development before declining. This could suggest that institutions and environmental policies play a crucial role in shaping long-term growth patterns.
+
+On the other hand, Humphries (Humphries_2013: p.14) states that sources recording children living in lone-parent families rather than orphaned children might not accurately reflect family structures and their potential impact on economic growth. This highlights the importance of understanding the specific societal context when analyzing long-term growth disparities.
+
+The assertion that culture dominates institutions as the fundamental cause of long-run growth is nuanced when considering the evidence presented in Lindert & Williamson (1985) and vanZanden (1999). While both sources do not explicitly argue for cultural predominance, they provide insights that complicate the relationship between institutions, economic comparisons, and long-term growth.
+
+Lindert & Williamson (Lindert&Williamson_1985: p.4) acknowledge the limitations in their study, stating that space does not allow for a treatment of distribution trends in the socialist bloc. This omission underscores the importance of examining various societal contexts when analyzing long-term growth disparities, as the economic systems within these regions might significantly influence growth patterns.
+
+Moreover, Lindert & Williamson (Lindert&Williamson_1985: p.9) argue that explaining long-run distribution trends is intertwined with the search for explanations of growth itself. This suggests that understanding the relationship between institutions and growth requires a holistic approach, considering both economic and cultural factors. The authors also emphasize the role of policy in shaping the debate on the efficiency trade-off (Lindert & Williamson_1985: p.29), further complicating the argument that institutions are the sole determinants of long-run growth.
+
+On the other hand, vanZanden (1999) presents evidence that challenges the notion of a uniform industrialization process across Europe. For instance, he notes that in eastern and central Europe, where rye was dominant, it is difficult to find other series than those for rye (vanZanden_1999: p.6). This regional variation could be attributed to cultural factors, which might have influenced the adoption of certain agricultural practices or technological innovations.
+
+Additionally, vanZanden (vanZanden_1999: p.15) uses nominal wages deflated by an index of the cost of living, suggesting that understanding the intrinsic value of currency in different societies could provide valuable insights into long-term growth patterns. This finding supports the idea that cultural factors might influence institutional development and, consequently, economic growth.
+
+The examination of the provided sources reveals a collective recognition of the significance of cultural factors in shaping long-term growth patterns, although the specific emphasis on culture dominating institutions varies among scholars.
+
+Temin (2002) focuses primarily on the role of labor force composition and its relationship with economic growth, suggesting that the exhaustion of cheap labor led to a slowdown in growth (Temin_2002: p.4, p.14, p.16, p.17). While this work does not directly address culture's influence on institutions, it indirectly supports the idea that cultural factors may impact economic development through labor force dynamics.
+
+Komlos (1998) discusses agricultural productivity and its relationship with population growth, noting that innovations such as refrigeration enabled food to be shipped over longer distances (Komlos_1998: p.17). Although Komlos does not focus on cultural factors dominating institutions, his work highlights the importance of technological advancements in agricultural production, which can be influenced by cultural norms and values.
+
+Bohannan (1959) investigates the impact of market and marriage institutions on economic development within African societies (Bohannan_1959: p.7, p.10, p.13). While Bohannan does not explicitly discuss long-term growth patterns, his work demonstrates that cultural practices can significantly influence institutional development, thereby indirectly supporting the idea of culture dominating institutions.
+
+Domar (1970) delves into the historical evolution of slavery and serfdom, highlighting how ownership structures can affect economic growth (Domar_1970: p.3, p.4, p.5). Although Domar does not focus on culture dominating institutions, his work suggests that cultural norms surrounding labor ownership and productivity can have lasting impacts on economic development.
+
+Despite the convergence in recognizing the importance of cultural factors in shaping long-term growth patterns, there remains a lack of consensus on whether culture dominates institutions as the fundamental cause of long-run growth. Further research is needed to establish a clearer understanding of the relationship between culture, institutions, and economic development over the long term.
+
+================================================================================
+
+
+================================================================================
+REFERENCES (cited in review)
+================================================================================
+
+1. Abramovitz, M. (1986) 'Catching up, forging ahead, and falling behind', The Journal of Economic History, 46(2), pp. 385-406.
+2. Acemoglu, D., Johnson, S. and Robinson, J. (2001) 'The colonial origins of comparative development: An empirical investigation', American Economic Review, 91(5), pp. 1369-1401.
+3. Acemoglu, D., Johnson, S. and Robinson, J. (2002) 'Reversal of fortune: Geography and institutions in the making of the modern world income distribution', The Quarterly Journal of Economics, 117(4), pp. 1231-1294.
+4. Allen, R. (2001) 'The great divergence in European wages and prices from the Middle Ages to the First World War', Explorations in Economic History, 38(4), pp. 411-447.
+5. Bohannan, P. (1959) 'The impact of money on an African subsistence economy', The Journal of Economic History, 19(4), pp. 491-503.
+6. Broadberry, S. and Gardner, L. (2022) 'Economic growth in Sub-Saharan Africa, 1885--2008: Evidence from eight countries', Explorations in Economic History, 83, pp. 101424.
+7. Domar, E. (1970) 'The causes of slavery or serfdom: a hypothesis', The Journal of Economic History, pp. 1-15.
+8. Feinstein, C. (1998) 'Pessimism perpetuated: real wages and the standard of living in Britain during and after the industrial revolution', The Journal of Economic History, 58(3), pp. 625-658.
+9. Hopkins, A. (2009) 'The new economic history of Africa', The Journal of African History, 50(2), pp. 155-177.
+10. Humphries, J. (2013) 'The lure of aggregates and the pitfalls of the patriarchal perspective: a critique of the high wage economy interpretation of the British industrial revolution', The Economic History Review, 66(3), pp. 693-714.
+11. Komlos, J. (1998) 'Shrinking in a growing economy? The mystery of physical stature during the Industrial Revolution', The Journal of Economic History, 58(3), pp. 779-802.
+12. Lindert, P. and Williamson, J. (1985) 'Growth, equality, and history', Explorations in Economic History, 22(4), pp. 341-377.
+13. Mokyr, J. (2005) 'The intellectual origins of modern economic growth', The Journal of Economic History, 65(2), pp. 285-351.
+14. North, D. (1989) 'Institutions and economic growth: An historical introduction', World Development, 17(9), pp. 1319-1332.
+15. Nunn, N. (2008) 'The long-term effects of Africa's slave trades', The Quarterly Journal of Economics, 123(1), pp. 139-176.
+16. Ogilvie, S. (2007) '‘Whatever is, is right’? Economic institutions in pre-industrial Europe', The Economic History Review, 60(4), pp. 649-684.
+17. Stern, D. (2004) 'The rise and fall of the environmental Kuznets curve', World Development, 32(8), pp. 1419-1439.
+18. Temin, P. (2002) 'The golden age of European growth reconsidered', European Review of Economic History, 6(1), pp. 3-22.
+19. Van Zanden, J. (1999) 'Wages and the standard of living in Europe, 1500--1800', European Review of Economic History, 3(2), pp. 175-197.
+20. Whatley, W. (2018) 'The gun-slave hypothesis and the 18th century British slave trade', Explorations in Economic History, 67, pp. 80-104.
+
+================================================================================
+

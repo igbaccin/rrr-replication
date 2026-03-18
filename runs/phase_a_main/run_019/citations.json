@@ -1,0 +1,31 @@
+{
+  "n_citations": 24,
+  "e1": 0,
+  "e2": 0,
+  "e3": 4,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Domar_1970",
+    "Frankema_2012",
+    "Koepke&Baten_2005",
+    "Komlos_1998",
+    "Kuznets_1973",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Simson_2019",
+    "Temin_2002",
+    "Whatley_2018",
+    "deVries_1994",
+    "vanZanden_1999",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 18,
+  "word_count": 1887,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

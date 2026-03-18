@@ -1,0 +1,30 @@
+{
+  "n_citations": 23,
+  "e1": 0,
+  "e2": 0,
+  "e3": 1,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "Broadberry&Gardner_2022",
+    "Broadberry&Gupta_2006",
+    "BroadberryEtal_2015",
+    "Feinstein_1998",
+    "Frankema&vanWaijenburg_2012",
+    "Hopkins_2009",
+    "Lindert&Williamson_1985",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Simson_2019",
+    "Stern_2004",
+    "Temin_2002",
+    "Williamson_1996"
+  ],
+  "n_docs_cited": 17,
+  "word_count": 1628,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

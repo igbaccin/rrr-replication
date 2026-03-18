@@ -1,0 +1,26 @@
+{
+  "n_citations": 20,
+  "e1": 0,
+  "e2": 0,
+  "e3": 5,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "BroadberryEtal_2015",
+    "Hopkins_2009",
+    "Mokyr_2005",
+    "North_1989",
+    "Nunn&Wantchekon_2011",
+    "Nunn_2008",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Peters_2004",
+    "Simson_2019",
+    "Whatley_2018",
+    "deVries_1994"
+  ],
+  "n_docs_cited": 13,
+  "word_count": 2403,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

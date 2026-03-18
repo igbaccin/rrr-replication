@@ -1,0 +1,44 @@
+{
+  "n_citations": 37,
+  "e1": 0,
+  "e2": 1,
+  "e3": 2,
+  "docs_cited": [
+    "Akyeampong&Fofack_2014",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Braudel&Wallerstein_2009",
+    "Broadberry&Gardner_2022",
+    "Bryant_2006",
+    "Bryceson_2002",
+    "Domar_1970",
+    "Frankema_2012",
+    "Goldin_2006",
+    "Hopkins_2019",
+    "Komlos_1998",
+    "Lindert&Williamson_1985",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Simson_2019",
+    "Skocpol&Sommers_1980",
+    "Sokoloff&Engerman_2000",
+    "Temin_2002",
+    "Williamson_1996",
+    "deVries_1994",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 23,
+  "word_count": 2323,
+  "e1_details": [],
+  "e2_details": [
+    {
+      "doc_id": "North_1989",
+      "cited_page": 27,
+      "max_valid_page": 12,
+      "overshoot": 15,
+      "context": "a wider framework, underscoring their collective impact on economic development (North_1989: p.27).  Similarly, Jan de Vries (1994) argues that Europe's urban network, connecting"
+    }
+  ],
+  "refusal": false
+}

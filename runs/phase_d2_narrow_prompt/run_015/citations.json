@@ -1,0 +1,23 @@
+{
+  "n_citations": 16,
+  "e1": 0,
+  "e2": 0,
+  "e3": 3,
+  "docs_cited": [
+    "Austin_2008",
+    "Hopkins_2009",
+    "Lindert&Williamson_1985",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Peters_2004",
+    "Stern_2004",
+    "Whatley_2018"
+  ],
+  "n_docs_cited": 10,
+  "word_count": 1495,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

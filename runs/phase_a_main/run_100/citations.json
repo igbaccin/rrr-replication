@@ -1,0 +1,26 @@
+{
+  "n_citations": 26,
+  "e1": 0,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Akyeampong&Fofack_2014",
+    "Austin_2008",
+    "Broadberry&Gardner_2022",
+    "Frankema_2012",
+    "Hopkins_2019",
+    "Kuznets_1973",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "Nunn&Wantchekon_2011",
+    "Pamuk_2007",
+    "Peters_2004",
+    "Simson_2019"
+  ],
+  "n_docs_cited": 13,
+  "word_count": 2167,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

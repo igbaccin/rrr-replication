@@ -1,0 +1,42 @@
+{
+  "n_citations": 26,
+  "e1": 2,
+  "e2": 0,
+  "e3": 3,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Akyeampong&Fofack_2014",
+    "Austin_2008",
+    "Frankema_2012",
+    "Hopkins_2019",
+    "Humphries_2013",
+    "Koepke&Baten_2005",
+    "Kuznets_1973",
+    "Lindert&Williamson_1985",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "Simson_2019",
+    "Sokoloff&Engerman_2000",
+    "Stoler_1989",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 18,
+  "word_count": 2050,
+  "e1_details": [
+    {
+      "doc_id": "2001",
+      "page": 1,
+      "context": "pital investment and sustaining effective demand (Abramovitz_1986: p.7).  Allen (2001: p.1) also underscores the significance of wages and prices in understanding economic"
+    },
+    {
+      "doc_id": "Temin_2914",
+      "page": 4,
+      "context": "th century, potentially challenging the primacy of institutions in this context (Temin_2914: p.4). Similarly, Lindert & Williamson (1985) suggest a potential interplay between e"
+    }
+  ],
+  "e2_details": [],
+  "refusal": false
+}

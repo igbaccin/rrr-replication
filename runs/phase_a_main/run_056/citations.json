@@ -1,0 +1,27 @@
+{
+  "n_citations": 22,
+  "e1": 0,
+  "e2": 0,
+  "e3": 4,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Bohannan_1959",
+    "BroadberryEtal_2015",
+    "Domar_1970",
+    "Kuznets_1973",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "deVries_1994"
+  ],
+  "n_docs_cited": 14,
+  "word_count": 2461,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

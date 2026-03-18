@@ -1,0 +1,25 @@
+{
+  "n_citations": 24,
+  "e1": 0,
+  "e2": 0,
+  "e3": 0,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Austin_2008",
+    "Broadberry&Gardner_2022",
+    "Clark&Jacks_2007",
+    "Hopkins_2009",
+    "Hopkins_2019",
+    "McCloskey_2015",
+    "North&Weingast_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "vanZanden_1999",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 12,
+  "word_count": 1495,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

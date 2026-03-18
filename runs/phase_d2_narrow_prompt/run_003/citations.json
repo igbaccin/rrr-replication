@@ -1,0 +1,25 @@
+{
+  "n_citations": 18,
+  "e1": 0,
+  "e2": 0,
+  "e3": 0,
+  "docs_cited": [
+    "AcemogluEtAl_2002",
+    "Allen_2001",
+    "Austin_2008",
+    "Hopkins_2009",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Sokoloff&Engerman_2000",
+    "Whatley_2018",
+    "vanZanden_1999",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 12,
+  "word_count": 1489,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

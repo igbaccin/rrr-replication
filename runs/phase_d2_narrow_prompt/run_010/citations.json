@@ -1,0 +1,24 @@
+{
+  "n_citations": 18,
+  "e1": 0,
+  "e2": 0,
+  "e3": 6,
+  "docs_cited": [
+    "AllenEtAl_2011",
+    "Austin_2008",
+    "Frankema_2012",
+    "Hopkins_2009",
+    "Lindert&Williamson_1985",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Stern_2004",
+    "Temin_2002",
+    "Whatley_2018"
+  ],
+  "n_docs_cited": 11,
+  "word_count": 1535,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

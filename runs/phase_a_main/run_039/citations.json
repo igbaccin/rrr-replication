@@ -1,0 +1,32 @@
+{
+  "n_citations": 32,
+  "e1": 0,
+  "e2": 0,
+  "e3": 12,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Bolt&vanZanden_2014",
+    "Broadberry&Gardner_2022",
+    "Domar_1970",
+    "Frankema_2012",
+    "Goldin_2006",
+    "Hopkins_2019",
+    "Humphries_2013",
+    "Koepke&Baten_2005",
+    "Lindert&Williamson_1985",
+    "Mokyr_2005",
+    "Pamuk_2007",
+    "Skocpol&Sommers_1980",
+    "Sokoloff&Engerman_2000",
+    "Stern_2004",
+    "Whatley_2018",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 19,
+  "word_count": 2446,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

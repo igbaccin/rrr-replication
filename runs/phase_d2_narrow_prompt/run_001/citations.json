@@ -1,0 +1,20 @@
+{
+  "n_citations": 14,
+  "e1": 0,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "Austin_2008",
+    "Frankema_2012",
+    "Koepke&Baten_2005",
+    "North_1989",
+    "Stern_2004",
+    "Temin_2002",
+    "Whatley_2018"
+  ],
+  "n_docs_cited": 7,
+  "word_count": 1392,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

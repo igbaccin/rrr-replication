@@ -1,0 +1,31 @@
+{
+  "n_citations": 21,
+  "e1": 0,
+  "e2": 0,
+  "e3": 4,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Bohannan_1959",
+    "Broadberry&Gardner_2022",
+    "BroadberryEtal_2015",
+    "Bryant_2006",
+    "Domar_1970",
+    "Hopkins_2009",
+    "Kuznets_1973",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Peters_2004",
+    "Stern_2004",
+    "Temin_2002"
+  ],
+  "n_docs_cited": 18,
+  "word_count": 2175,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

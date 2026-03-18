@@ -1,0 +1,35 @@
+{
+  "n_citations": 27,
+  "e1": 2,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "Akyeampong&Fofack_2014",
+    "Hopkins_2019",
+    "Komlos_1998",
+    "Kuznets_1973",
+    "North_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Sokoloff&Engerman_2000",
+    "Stern_2004",
+    "Temin_2002",
+    "deVries_1994"
+  ],
+  "n_docs_cited": 11,
+  "word_count": 1977,
+  "e1_details": [
+    {
+      "doc_id": "2007",
+      "page": 3,
+      "context": "c growth, as evidenced by Ogilvie (2007) and Pamuk (2007). According to Ogilvie (2007: p.3), economists have endeavored to incorporate institutions into economic analysis,"
+    },
+    {
+      "doc_id": "Akyeampong&Fofock_2014",
+      "page": 3,
+      "context": "formulating effective policies aimed at strengthening their economic positions (Akyeampong&Fofock_2014: p.3).  The authors emphasize the importance of recognizing these contributions, as t"
+    }
+  ],
+  "e2_details": [],
+  "refusal": false
+}

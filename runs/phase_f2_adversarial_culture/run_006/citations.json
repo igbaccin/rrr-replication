@@ -1,0 +1,26 @@
+{
+  "n_citations": 23,
+  "e1": 0,
+  "e2": 0,
+  "e3": 0,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Austin_2008",
+    "Broadberry&Gardner_2022",
+    "Broadberry&Gupta_2006",
+    "Feinstein_1998",
+    "Hopkins_2009",
+    "Lindert&Williamson_1985",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Stern_2004"
+  ],
+  "n_docs_cited": 13,
+  "word_count": 1541,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

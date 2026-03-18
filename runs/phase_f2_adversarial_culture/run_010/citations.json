@@ -1,0 +1,30 @@
+{
+  "n_citations": 31,
+  "e1": 0,
+  "e2": 0,
+  "e3": 3,
+  "docs_cited": [
+    "Akyeampong&Fofack_2014",
+    "Allen_2001",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Broadberry&Gupta_2006",
+    "BroadberryEtal_2015",
+    "Hopkins_2009",
+    "Hopkins_2019",
+    "Komlos_1998",
+    "Lindert&Williamson_1985",
+    "North_1989",
+    "Ogilvie_2007",
+    "Stern_2004",
+    "Temin_2002",
+    "Whatley_2018",
+    "deVries_1994",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 17,
+  "word_count": 2020,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

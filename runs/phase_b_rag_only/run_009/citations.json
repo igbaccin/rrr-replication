@@ -1,0 +1,24 @@
+{
+  "n_citations": 25,
+  "e1": 0,
+  "e2": 0,
+  "e3": 4,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Bohannan_1959",
+    "Broadberry&Gardner_2022",
+    "Domar_1970",
+    "Humphries_2013",
+    "Kuznets_1973",
+    "North&Weingast_1989",
+    "Sokoloff&Engerman_2000",
+    "Stern_2004",
+    "Temin_2002",
+    "Williamson_1996"
+  ],
+  "n_docs_cited": 11,
+  "word_count": 1901,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

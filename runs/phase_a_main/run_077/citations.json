@@ -1,0 +1,30 @@
+{
+  "n_citations": 23,
+  "e1": 0,
+  "e2": 0,
+  "e3": 5,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "AllenEtAl_2011",
+    "Austin_2007",
+    "Austin_2008",
+    "Bolt&vanZanden_2014",
+    "Braudel&Wallerstein_2009",
+    "Broadberry&Gardner_2022",
+    "Frankema_2012",
+    "Koepke&Baten_2005",
+    "Lindert&Williamson_1985",
+    "McCloskey_2015",
+    "Simson_2019",
+    "Sokoloff&Engerman_2000",
+    "Stern_2004",
+    "deVries_1994",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 17,
+  "word_count": 2119,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

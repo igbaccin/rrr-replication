@@ -1,0 +1,126 @@
+[Layered-T2] score_query=institutions economic growth long run fundamental cause economic development organizational structure business institutions growth factors
+[Layered-T2] starting per-document sweep over 50 docs (concurrency=2)
+[Layered-T2] clustering mechanisms...
+[Clustering] 112 mechanisms -> 66 clusters (95 assigned, 17 to Other)
+[Layered-T2] per-document sweep complete: 50 docs summarised
+[Layered-T2] stance distribution: {'supports': 21, 'complicates': 20, 'tangential': 3, 'critiques': 6}
+
+[Layered-T2] wrote: runs/review_narrative.md and runs/review_ledger.json
+[Layered-T2] appendix: runs/T2_review.md
+[Layered-T2] composing long-form literature review...
+[Writer] Stance distribution: {'supports': 21, 'complicates': 20, 'tangential': 3, 'critiques': 6}
+[Writer] Adaptive clusters: supports=3, critiques=1, complicates=3
+[Writer] Generating 9 sections (opening + 7 stance sections + closing)...
+[Writer] Opening: 253 words
+[Writer] SUPPORTS/Other: 275 words
+[Writer] SUPPORTS/Expropriation Risk and Institutional Improvement: 150 words
+[Writer] SUPPORTS/Institutions and Economic Growth in Europe: 200 words
+[Writer] CRITIQUES/Other: 208 words
+[Writer] COMPLICATES/Other: 209 words
+=== DEBUG: AUSTIN IN THIS CHUNK ===
+Stance: complicates, Cluster: Trade between Africa and Western Europe
+Allowed list:
+  - Austin_2008: p.1, p.4, p.24, p.25, p.26
+=== END DEBUG ===
+[Writer] COMPLICATES/Trade between Africa and Western Europe: 147 words
+[Writer] COMPLICATES/African Women's Contribution to Economy: 271 words
+[Writer] Closing: 255 words
+[Writer] review_composed.md written (1968 words).
+[Writer] stats: chunks=9 distinct_docs=17 repairs=2 AJR=0 case=0 removed=0
+[Layered-T2] composed review written at: runs/review_composed.md
+
+================================================================================
+LONG-FORM LITERATURE REVIEW
+================================================================================
+
+The central question under investigation in this literature review is whether institutions are indeed the fundamental cause of long-term economic growth, a thesis that has garnered significant attention among economists and historians alike. This question holds profound implications for our understanding of economic development and the strategies employed to foster growth in various regions.
+
+Supporting the thesis, Kuznets (1973) posits that the succession of technological innovations characteristic of modern economic growth is closely linked with social innovations necessary for adaptation, thereby influencing both economic and social structure. North & Weingast (1989) concur, emphasizing the crucial role of representative government institutions in enabling economic growth and political freedom. Acemoglu et al. (2001) provide empirical evidence, demonstrating a substantial effect of institutions on economic performance.
+
+However, not all agree that institutions are the sole cause of long-term economic growth. Austin (2008), for instance, complicates this argument by suggesting that trade may have reinforced rather than originated Africa's relatively poor economic position compared to Western Europe. Broadberry & Gardner (2022) echo this sentiment, arguing that the lack of data on aggregate economic performance before 1950 has led to Sub-Saharan Africa being absent from recent debates about comparative long-run growth.
+
+Akyeampong & Fofack (2014) also add nuance to the discussion by highlighting how understanding the processes by which women's economic contribution becomes subsumed under household production is essential for policies seeking to strengthen women's economic roles. This nuanced perspective underscores the importance of considering the role of gender in economic growth and development.
+
+Structural change, as evidenced by shifts in the composition of an economy from agriculture to industry and services, is a key driver of long-run economic growth (vanZanden_2009: p.24). This transformation leads to an increase in the skill premium, which in turn affects relative prices of capital goods and contributes positively to economic growth (vanZanden_2009: p.27). The skill premium is considered a crucial determinant of long-term economic growth according to new growth theory (vanZanden_2009: p.24).
+
+Moreover, the size of an economy can significantly impact its long-run performance. For instance, population estimates for India in the late sixteenth century suggest a population ranging from 140 to 150 million (BroadberryEtal_2015: p.4), which could have contributed to its economic growth. A comprehensive survey of the existing literature on India's long-run economic performance underscores the importance of understanding the role of population in economic growth and development (BroadberryEtal_2015: p.2).
+
+Furthermore, the fusion of mercantilist imperialism with a technologically driven capitalistic transformation played a significant role in European economies' development (Bryant_2006: p.5). This structural change provided more than adequate environments for the growth of commercial exchange (Bryant_2006: p.13), which is essential for economic growth and development. The radicalness of this revisionist dissent emphasizes the importance of considering technological advancements and capitalistic transformations in understanding long-run economic growth.
+
+These findings support the thesis that institutions, particularly those promoting structural change and technological advancement, are fundamental causes of long-run economic growth. Further exploration is needed to understand how other factors, such as population size and the skill premium, interact with these institutions to contribute to long-term economic development.
+
+The risk of expropriation, or the threat of having assets seized by the government or powerful individuals, significantly influences institutional improvement and long-run economic growth (AcemogluEtAl_2002: p.5). This risk acts as a deterrent to investment and innovation, discouraging the creation of productive institutions that foster economic development.
+
+In their work, Acemoglu et al. (2002) demonstrate how the distribution of economic prosperity has changed over time, with a shift towards more institutionalized societies experiencing sustained growth (AcemogluEtAl_2002: p.6). This change in prosperity distribution is closely linked to improvements in institutions that reduce expropriation risk.
+
+On the other hand, Abramovitz (1986) highlights that economic growth itself contributes to the evolution of mixed economies, where both public and private sectors play significant roles (Abramovitz_1986: p.20). In such economies, institutions evolve to balance the need for effective demand and capital investment, thereby reducing expropriation risk and promoting long-term growth.
+
+The evolution of institutions played a significant role in fostering economic growth, particularly in Europe during the early modern period. DeVries (1994) emphasizes the importance of Europe's urban network, which connected cities and facilitated regional economic development, creating an environment conducive to industrial growth (p.5). This urban network can be attributed to the Industrial Revolution, a monumental achievement in economic history (p.2).
+
+Moreover, Broadberry & Gupta (2006) highlight that the service sector played a crucial role in economic growth during the early modern period, as it did in the modern era. They argue that British economic growth during the Industrial Revolution was substantially slower than previously thought, indicating that gains in living standards were slower to materialize for the majority (p.25). This suggests that institutions, by balancing demand and capital investment, helped reduce expropriation risk and promote long-term growth, as Abramovitz (1986) posits (p.20).
+
+The twin challenges of understanding the economic history of the household unit and assessing equal levels of economic development in different regions require renewed attention to institutional evolution (deVries_1994: p.8). By addressing these challenges, we can gain a more comprehensive understanding of how institutions contribute to long-run economic growth.
+
+Structural change, rather than institutions, may be a more significant factor in long-run economic growth. Bryceson (2002) argues that livelihood diversification, not institutional evolution, is the groundswell occurring in many regions. For instance, in Njombe, Tanzania, young households with restricted land access have resorted to nonagricultural economic activities or migrant labor (Bryceson_2002: p.11). Similarly, Humphries (2013) suggests that the division of labor, workshop production, and the eventual emergence of the factory system contributed to eighteenth-century economic growth, rather than institutions.
+
+Moreover, Bryceson (2002) contends that in some communities, traditional hierarchical order influences women’s economic and social spheres, with women primarily engaged in agrarian family work efforts (Bryceson_2002: p.9). This suggests that institutional structures may restrict rather than promote economic growth. Similarly, Humphries (2013) asserts that the relative needs of women and children are significant factors in economic growth, with lower female fertility rates contributing to economic development in Britain compared to France (Humphries_2013: p.19).
+
+These findings challenge the notion that institutions are the fundamental cause of long-run economic growth. Instead, they suggest that structural change and demographic factors may play a more significant role in economic development. Addressing these challenges could lead to a more comprehensive understanding of economic growth dynamics.
+
+Despite the assertion that institutions are the primary cause of long-run economic growth, recent studies complicate this view by highlighting the importance of other factors such as structural change and demographic patterns. For instance, Broadberry & Gardner (2022) point out that Sub-Saharan Africa has been overlooked in debates about long-term growth due to a lack of data before 1950 (Broadberry&Gardner_2022: p.1). This suggests that the focus on institutions may have neglected regions with unique economic histories, potentially underestimating their potential for growth.
+
+Moreover, Bolt & van Zanden (2014) note that revisions of nineteenth-century and early twentieth-century growth rates in various countries do not fundamentally alter the understanding of economic growth patterns (Bolt&vanZanden_2014: p.5). This indicates that the emphasis on institutions might oversimplify the complexities of economic development, as other factors such as structural changes and demographic shifts could play significant roles.
+
+Van Zanden (1999) further supports this notion by arguing that the early modern economy was not inherently unable to generate growth, contrary to the consensus view in the 1960s and 1970s (vanZanden_1999: p.1). This challenges the idea that institutions are the sole determinant of long-run economic growth, suggesting that other factors may also contribute to economic development over time.
+
+While previous theories suggested that institutions were the sole determinant of long-run economic growth, recent studies complicate this perspective (Austin_2008: p.24). Austin (2008) argues that trade between Africa and Western Europe, such as the Atlantic trade, reinforced rather than originated Africa's relatively poor economic position compared to Western Europe (Austin_2008: p.24).
+
+This finding challenges the notion that institutions are the only factor influencing long-term economic growth. Instead, it suggests that trade patterns and their impact on institutional development may also play a significant role in shaping economic trajectories over time.
+
+Moreover, Austin (2008) emphasizes the importance of examining growth theories against long-term history to reveal relationships that recur due to similar situations and path dependencies (Austin_2008: p.1). This approach encourages a more nuanced understanding of the complex interplay between institutions, trade, and economic development in different regions over extended periods.
+
+The contributions of African women to economic growth and development are noteworthy, yet their roles have often been overlooked due to the subsuming of their economic activities under household production (Akyeampong&Fofack_2014: p.3). This oversight undermines policies aimed at strengthening women's economic positions.
+
+Akyeampong and Fofack (2014) highlight that the economic provision of husbands significantly influenced the contributions of African women, with their labor often remaining formally unaccounted for. This situation not only obscures the true extent of women's economic impact but also hinders the effectiveness of policies designed to promote gender equality and economic growth.
+
+Moreover, Akyeampong and Fofack (2014) argue that the historical developments in West Africa, which find parallels elsewhere in Africa, reveal themes concerning gender and economic growth. These findings suggest that understanding these complex interplays is crucial for formulating effective policies to promote long-term economic development across the continent.
+
+However, it is essential to acknowledge that the contribution of African women to economic growth was largely dependent on the economic provision of their husbands (Akyeampong&Fofack_2014: p.9). This dependence raises questions about the extent to which women's economic roles can be liberated from male-dominated structures, and how policies can be designed to empower African women economically on their own terms.
+
+The nuanced understanding of the historical context provided by Akyeampong and Fofack (2014) underscores the importance of addressing institutional factors that hinder the full participation of African women in economic growth. By doing so, policies can be tailored to address the unique challenges faced by African women, thereby contributing to more equitable and sustainable economic development across the continent.
+
+The scholarly consensus on the role of institutions in long-run economic growth is evident, with Domar (1970) and Bohannan (1959) both acknowledging the significance of institutional structures. Domar (Domar_1970: p.4) emphasizes that with labor tied to land or owners, competition among employers ceases, which can hinder economic growth. Similarly, Bohannan (Bohannan_1959: p.7) notes that Western impact on African societies was not limited to economic institutions, implying the importance of institutional structures in shaping economic outcomes.
+
+However, there are differences in their perspectives. Domar (1970) focuses on the factors of production and the implications of labor being tied to land or owners for competition among employers. In contrast, Bohannan (1959) discusses the impact of Western societies on African institutions, specifically highlighting the role of slave dealing and the acquisition of status in shaping these institutions.
+
+Ravallion's work (2001) seems less directly related to the main topic, with his text containing mathematical equations and symbols that are difficult to interpret without context. It remains unresolved how exactly specific institutional structures contribute to long-run economic growth, and further research is needed to identify the most critical factors and their interplay.
+
+In addressing the unique challenges faced by African women in economic growth, policymakers can leverage this understanding of institutions to create more effective policies that promote equitable and sustainable development across the continent. By focusing on the role of institutions in long-run economic growth, scholars provide valuable insights into the factors that drive development and offer potential avenues for intervention and improvement.
+
+================================================================================
+
+
+================================================================================
+REFERENCES (cited in review)
+================================================================================
+
+1. Abramovitz, M. (1986) 'Catching up, forging ahead, and falling behind', The Journal of Economic History, 46(2), pp. 385-406.
+2. Acemoglu, D., Johnson, S. and Robinson, J. (2001) 'The colonial origins of comparative development: An empirical investigation', American Economic Review, 91(5), pp. 1369-1401.
+3. Acemoglu, D., Johnson, S. and Robinson, J. (2002) 'Reversal of fortune: Geography and institutions in the making of the modern world income distribution', The Quarterly Journal of Economics, 117(4), pp. 1231-1294.
+4. Akyeampong, E. and Fofack, H. (2014) 'The contribution of African women to economic growth and development in the pre-colonial and colonial periods: historical perspectives and policy implications', Economic History of Developing Regions, 29(1), pp. 42-73.
+5. Austin, G. (2008) 'The ‘reversal of fortune’ thesis and the compression of history: Perspectives from African and comparative economic history', Journal of International Development: The Journal of the Development Studies Association, 20(8), pp. 996-1027.
+6. Bohannan, P. (1959) 'The impact of money on an African subsistence economy', The Journal of Economic History, 19(4), pp. 491-503.
+7. Bolt, J. and Van Zanden, J. (2014) 'The Maddison Project: collaborative research on historical national accounts', The Economic History Review, 67(3), pp. 627-651.
+8. Broadberry, S., Custodis, J. and Gupta, B. (2015) 'India and the great divergence: An Anglo-Indian comparison of GDP per capita, 1600--1871', Explorations in Economic History, 55, pp. 58-75.
+9. Broadberry, S. and Gardner, L. (2022) 'Economic growth in Sub-Saharan Africa, 1885--2008: Evidence from eight countries', Explorations in Economic History, 83, pp. 101424.
+10. Bryant, J. (2006) 'The West and the rest revisited: Debating capitalist origins, European colonialism, and the advent of modernity', Canadian Journal of Sociology/Cahiers canadiens de sociologie, pp. 403-444.
+11. Bryceson, D. (2002) 'The scramble in Africa: reorienting rural livelihoods', World Development, 30(5), pp. 725-739.
+12. De Vries, J. (1994) 'The industrial revolution and the industrious revolution', The Journal of Economic History, 54(2), pp. 249-270.
+13. Domar, E. (1970) 'The causes of slavery or serfdom: a hypothesis', The Journal of Economic History, pp. 1-15.
+14. Humphries, J. (2013) 'The lure of aggregates and the pitfalls of the patriarchal perspective: a critique of the high wage economy interpretation of the British industrial revolution', The Economic History Review, 66(3), pp. 693-714.
+15. Kuznets, S. (1973) 'Modern economic growth: findings and reflections', The American Economic Review, 63(3), pp. 247-258.
+16. Van Zanden, J. (1999) 'Wages and the standard of living in Europe, 1500--1800', European Review of Economic History, 3(2), pp. 175-197.
+17. Van Zanden, J. (2009) 'The skill premium and the ‘Great Divergence’', European Review of Economic History, 13(1), pp. 121-153.
+
+================================================================================
+

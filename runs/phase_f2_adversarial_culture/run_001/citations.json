@@ -1,0 +1,25 @@
+{
+  "n_citations": 18,
+  "e1": 0,
+  "e2": 0,
+  "e3": 8,
+  "docs_cited": [
+    "Bohannan_1959",
+    "BroadberryEtal_2015",
+    "Bryceson_2002",
+    "Feinstein_1998",
+    "Frankema_2012",
+    "Goldin_2006",
+    "Hopkins_2009",
+    "Kuznets_1973",
+    "North_1989",
+    "Nunn_2008",
+    "Stern_2004",
+    "Temin_2002"
+  ],
+  "n_docs_cited": 12,
+  "word_count": 1630,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

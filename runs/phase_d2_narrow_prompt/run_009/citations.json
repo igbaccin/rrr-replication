@@ -1,0 +1,20 @@
+{
+  "n_citations": 12,
+  "e1": 0,
+  "e2": 0,
+  "e3": 7,
+  "docs_cited": [
+    "Feinstein_1998",
+    "Frankema_2012",
+    "Humphries_2013",
+    "Koepke&Baten_2005",
+    "North_1989",
+    "Peters_2004",
+    "Stern_2004"
+  ],
+  "n_docs_cited": 7,
+  "word_count": 1767,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

@@ -1,0 +1,31 @@
+{
+  "n_citations": 20,
+  "e1": 0,
+  "e2": 0,
+  "e3": 8,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Akyeampong&Fofack_2014",
+    "Allen_2001",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Broadberry&Gardner_2022",
+    "Broadberry&Gupta_2006",
+    "Bryant_2006",
+    "Bryceson_2002",
+    "Domar_1970",
+    "Feinstein_1998",
+    "Frankema_2012",
+    "McCloskey_2015",
+    "North&Weingast_1989",
+    "Simson_2019",
+    "Stern_2004",
+    "Williamson_1996",
+    "deVries_1994"
+  ],
+  "n_docs_cited": 18,
+  "word_count": 2212,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

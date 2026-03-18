@@ -1,0 +1,32 @@
+{
+  "n_citations": 31,
+  "e1": 0,
+  "e2": 0,
+  "e3": 0,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "Austin_2007",
+    "Austin_2008",
+    "Broadberry&Gardner_2022",
+    "Broadberry&Gupta_2006",
+    "Bryceson_2002",
+    "Feinstein_1998",
+    "Goldin_2006",
+    "Hopkins_2009",
+    "Hopkins_2019",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "Nunn_2008",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Whatley_2018",
+    "vanZanden_1999",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 19,
+  "word_count": 1581,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

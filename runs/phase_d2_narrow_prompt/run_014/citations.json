@@ -1,0 +1,30 @@
+{
+  "n_citations": 26,
+  "e1": 0,
+  "e2": 0,
+  "e3": 5,
+  "docs_cited": [
+    "AllenEtAl_2011",
+    "Allen_2001",
+    "Austin_2008",
+    "Broadberry&Gardner_2022",
+    "Broadberry&Gupta_2006",
+    "Feinstein_1998",
+    "Frankema_2012",
+    "Hopkins_2009",
+    "Koepke&Baten_2005",
+    "Lindert&Williamson_1985",
+    "Mokyr_2005",
+    "North_1989",
+    "Stern_2004",
+    "Temin_2002",
+    "Whatley_2018",
+    "vanZanden_1999",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 17,
+  "word_count": 1502,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

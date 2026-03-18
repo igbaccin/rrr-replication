@@ -1,0 +1,29 @@
+{
+  "n_citations": 25,
+  "e1": 0,
+  "e2": 0,
+  "e3": 6,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Domar_1970",
+    "Hopkins_2019",
+    "Kuznets_1973",
+    "Lindert&Williamson_1985",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Sokoloff&Engerman_2000",
+    "Stern_2004",
+    "Stoler_1989",
+    "Temin_2002",
+    "Williamson_1996",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 16,
+  "word_count": 2162,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

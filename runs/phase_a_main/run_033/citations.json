@@ -1,0 +1,31 @@
+{
+  "n_citations": 31,
+  "e1": 0,
+  "e2": 0,
+  "e3": 3,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Allen_2001",
+    "Austin_2008",
+    "Braudel&Wallerstein_2009",
+    "Broadberry&Gardner_2022",
+    "Clark&Jacks_2007",
+    "Humphries_2013",
+    "Komlos_1998",
+    "Kuznets_1973",
+    "Lindert&Williamson_1985",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Nunn&Wantchekon_2011",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 18,
+  "word_count": 2021,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

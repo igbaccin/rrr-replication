@@ -1,0 +1,6 @@
+[Layered-T2] score_query=institutions economic growth long run fundamental cause economic development organizational structure business institutions growth factors
+[Layered-T2] starting per-document sweep over 50 docs (concurrency=2)
+[Layered-T2] clustering mechanisms...
+[Layered-T2] per-document sweep complete: 0 docs summarised
+[Layered-T2] stance distribution: {}
+[Layered-T2] refusal=insufficient_global_evidence

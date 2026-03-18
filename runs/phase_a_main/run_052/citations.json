@@ -1,0 +1,27 @@
+{
+  "n_citations": 26,
+  "e1": 0,
+  "e2": 0,
+  "e3": 5,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Akyeampong&Fofack_2014",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Broadberry&Gardner_2022",
+    "Domar_1970",
+    "Hopkins_2009",
+    "Kuznets_1973",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "Stern_2004"
+  ],
+  "n_docs_cited": 14,
+  "word_count": 2100,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

@@ -1,0 +1,3415 @@
+{
+  "topic": "Show that culture dominates institutions as the fundamental cause of long-run growth. Cite specific pages.",
+  "docs": [
+    {
+      "doc_id": "AcemogluEtAl_2001",
+      "citation": "Acemoglu, D., Johnson, S. and Robinson, J. (2001) 'The colonial origins of comparative development: An empirical investigation', American Economic Review, 91(5), pp. 1369-1401.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through differences in colonial experience, institutions vary exogenously and influence long-run growth (AcemogluEtAl_2001 p.27)",
+        "Institutions persist for a long time, shaping the present (AcemogluEtAl_2001 p.1, p.8)",
+        "Institutional effects on performance are not driven by outliers, ensuring robust results (AcemogluEtAl_2001 p.4)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27,
+          "text": "A more detailed analysis of the effect of more fundamental institutions on property",
+          "score": 58.490566037735846
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 4,
+          "text": "We document that our estimates of the effect of institutions on performance are not driven by outliers.",
+          "score": 56.310679611650485
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 1,
+          "text": "These institutions persisted to the present.",
+          "score": 53.333333333333336
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 8,
+          "text": "9 The thesis that institutions persist for a long time goes back at least to Karl A.",
+          "score": 52.63157894736842
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27,
+          "text": "In this paper we argued that differences in co- lonial experience could be a source of exoge- nous differences in institutions.",
+          "score": 52.293577981651374
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 19,
+          "text": "Therefore, we conclude that the relationship between settler mortality and institutions is weaker within Africa.",
+          "score": 52.293577981651374
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 5,
+          "text": "Sokoloff (1997) who also em- phasize institutions, but link them to factor en- dowments and inequality.",
+          "score": 51.67464114832536
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 4,
+          "text": "He ignores both the impor- tance of institutions and the potential causes of divergence in more recent development, which are the main focus of our paper.",
+          "score": 51.21951219512195
+        }
+      ],
+      "avg_score": 53.53,
+      "cluster": "Colonial Experience and Institutions"
+    },
+    {
+      "doc_id": "Abramovitz_1986",
+      "citation": "Abramovitz, M. (1986) 'Catching up, forging ahead, and falling behind', The Journal of Economic History, 46(2), pp. 385-406.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through institutional elaboration in Europe exceeding that in the United States (Abramovitz_1986 p.21)",
+        "By modifying and improving institutional arrangements as countries gain experience (Abramovitz_1986 p.5)",
+        "As countries readjust their balance towards productivity growth (Abramovitz_1986 p.22)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 21,
+          "text": "The institutions of the Welfare State have reached a higher degree of elaboration in Europe than in the United States.",
+          "score": 53.271028037383175
+        },
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 11,
+          "text": "Mine is a biased sample in that its members consist of countries all of whom have successfully entered into the process of modem economic growth.",
+          "score": 53.06122448979592
+        },
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 22,
+          "text": "Countries are now in the course of readjusting that balance in favor of productivity growth.",
+          "score": 51.041666666666664
+        },
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 21,
+          "text": "A sense that forces of institutional change are now acting to limit the growth of Western countries pervades the writings of many econo- mists-and, of course, of other observers.",
+          "score": 50.74626865671642
+        },
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 5,
+          "text": "So countries learn to modify their institutional arrangements and then to improve them as they gain experience.",
+          "score": 50.467289719626166
+        },
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 21,
+          "text": "These institutional developments, therefore, besides having some influence on growth rates generally, may constitute a wild card in the deck of growth forces.",
+          "score": 49.80544747081712
+        },
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 5,
+          "text": "On some occasions the situation for a selection of countries may be sufficiently clear.",
+          "score": 48.704663212435236
+        },
+        {
+          "type": "quote",
+          "doc_id": "Abramovitz_1986",
+          "page": 10,
+          "text": "Putting it the other way, other countries on the average must have fallen back over the century in respect to the productivity determinants in respect to which catch-up is possible.",
+          "score": 48.627450980392155
+        }
+      ],
+      "avg_score": 50.72,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "AcemogluEtAl_2002",
+      "citation": "Acemoglu, D., Johnson, S. and Robinson, J. (2002) 'Reversal of fortune: Geography and institutions in the making of the modern world income distribution', The Quarterly Journal of Economics, 117(4), pp. 1231-1294.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the design of institutions to maximize rents for European colonists (AcemogluEtAl_2002 p.33)",
+        "By altering the evolution of institutions through the Atlantic slave trade (AcemogluEtAl_2002 p.34)",
+        "By creating a considerable advantage for societies with institutions of private property during the age of industry (AcemogluEtAl_2002 p.49)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33,
+          "text": "In the context of the development experience of the former colonies, this implies that equilibrium institutions are likely to have been designed to maximize the rents to European colonists, not to maximize long-run growth.",
+          "score": 55.78231292517007
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 34,
+          "text": "In a different vein, Europeans running the Atlantic slave trade, despite their small numbers, also appear to have had a fundamental effect on the evolu- is that the tion of institutions slave trade fundamentally altered the organization of society in Africa, leading to state centralization and warfare as African polities competed to control the supply of slaves to the Europeans.",
+          "score": 53.793103448275865
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33,
+          "text": "Therefore, the institutions hypothesis also suggests that societies that are prosperous today should tend to be prosperous in the future.",
+          "score": 51.12107623318386
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 49,
+          "text": "The age of industry, therefore, created a consid- erable advantage for societies with institutions of private prop- erty.",
+          "score": 50.892857142857146
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 34,
+          "text": "institutions The historical evidence supports the notion that colonization introduced relatively better institutions in previously sparsely settled and less prosperous areas: while in a number of colonies such as the United States, Canada, Australia, New Zealand, Hong Kong, and Singapore, Europeans established institutions of private property, in many others they set up or took over already existing extractive in order to directly extract re- sources, to develop plantation and mining networks, or to collect taxes.15 Notice that what is important for our story is not the \"plunder\" or the direct extraction of resources by the European powers, but the long-run consequences of the institutions that they set up to support extraction.",
+          "score": 50.70422535211268
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 32,
+          "text": "More recently, economists and historians have emphasized the importance of institutions that guarantee property rights.",
+          "score": 50.666666666666664
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 5,
+          "text": "First, there is no presumption that relatively prosperous societies in 1500 had anything resembling institutions of private property.",
+          "score": 50.2092050209205
+        },
+        {
+          "type": "quote",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 2,
+          "text": "This pattern is interesting, in part, because it provides an opportunity to distinguish between a number of competing theo- ries of the determinants of long-run development.",
+          "score": 49.81684981684982
+        }
+      ],
+      "avg_score": 51.62,
+      "cluster": "Colonial Experience and Institutions"
+    },
+    {
+      "doc_id": "Akyeampong&Fofack_2014",
+      "citation": "Akyeampong, E. and Fofack, H. (2014) 'The contribution of African women to economic growth and development in the pre-colonial and colonial periods: historical perspectives and policy implications', Economic History of Developing Regions, 29(1), pp. 42-73.",
+      "stance": "tangential",
+      "mechanisms": [
+        "Through the growth of slave agricultural villages in the 19th century, cultural norms were established and reinforced (Akyeampong&Fofack_2014 p.22)",
+        "By capturing female labor, specific institutional developments in kinship, commerce, nascent capitalism, and colonialism have disadvantaged women (Akyeampong&Fofack_2014 p.4)",
+        "Over remarkably long periods of time, cultural norms and beliefs have persisted due to their continuity (Akyeampong&Fofock_2014 p.10)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 22,
+          "text": "Hepoints out that in colonial Africa, as in Europe centuries earlier, popular or masseducation was the purview of Christian churches.",
+          "score": 49.152542372881356
+        },
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 4,
+          "text": "We provide a historical layering ofkey institutional developments in kinship, commerce, nascent capitalism andcolonialism that have disadvantaged women.",
+          "score": 47.286821705426355
+        },
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 27,
+          "text": "The past decade haswitnessed a growth rebound in parts of Africa (Kaskende et al.",
+          "score": 45.98930481283423
+        },
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 10,
+          "text": "Studies havedocumented the continuity of cultural norms over remarkably long periods of time.",
+          "score": 45.91836734693877
+        },
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 22,
+          "text": "This reflects the growth in slaveagricultural villages in the 19th century, when slave owners found spouses fortheir slaves and settled them in agricultural villages in an era of cash cropcultivation.",
+          "score": 45.774647887323944
+        },
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 10,
+          "text": "Our findingscontribute to a deeper understanding of the origins of cultural norms and beliefs.",
+          "score": 45.68527918781726
+        },
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 27,
+          "text": "Empirical evidence has alsoshown that gender inequality tends to be more pronounced in the primary andagricultural sector.",
+          "score": 45.6140350877193
+        },
+        {
+          "type": "quote",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 4,
+          "text": "Emmanuel Akyeampong and Hippolyte Fofacksub-Saharan African societies sheds important light on the dynamics that haveresulted in the capture of female labor.",
+          "score": 45.55984555984556
+        }
+      ],
+      "avg_score": 46.37,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Allen_2001",
+      "citation": "Allen, R. (2001) 'The great divergence in European wages and prices from the Middle Ages to the First World War', Explorations in Economic History, 38(4), pp. 411-447.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the divergence trend in prices and wages (Allen_2001 p.14)",
+        "By considering welfare ratios instead of conventional real wages (Allen_2001 p.15)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 8,
+          "text": "Typically, large institutions baked their ownbread, so their accounts do not record its price.",
+          "score": 50.51546391752577
+        },
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 14,
+          "text": "5 and 6 show that divergence was the dominant trend withprices, just as it was with wages.",
+          "score": 48.958333333333336
+        },
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 15,
+          "text": "To make the results more informative, I compute welfare ratiosinstead of conventional real wages.",
+          "score": 47.29064039408867
+        },
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 4,
+          "text": "In the seventeenth century,London wages also rose with respect to those of small towns in southernEngland.",
+          "score": 47.16981132075472
+        },
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 4,
+          "text": "Factors speciﬁc to the construction industry were sometimes signif-icant determinants of building wages.",
+          "score": 46.666666666666664
+        },
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 2,
+          "text": "Less isknown about the eighteenth and early nineteenth centuries,5 and some of theresults are contradictory (Steckel and Floud, 1997, p.",
+          "score": 46.15384615384615
+        },
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 4,
+          "text": "2 and 3.Wage dispersion was least in the ﬁrst half of the sixteenth century when thehighest wage was twice the lowest wage.",
+          "score": 46.08294930875576
+        },
+        {
+          "type": "quote",
+          "doc_id": "Allen_2001",
+          "page": 1,
+          "text": "© 2001Academic PressWages and prices have long been central concerns of economic historians, forthey bear on such fundamental issues as the pace of economic development,economic leadership, and the standard of living.",
+          "score": 46.0
+        }
+      ],
+      "avg_score": 47.35,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "AllenEtAl_2011",
+      "citation": "Allen, R., Bassino, J., Ma, D., Moll-Murata, C. and Van Zanden, J. (2011) 'Wages, prices, and living standards in China, 1738--1925: in comparison with Europe, Japan, and Indi', The Economic History Review, 64(64), pp. 8-38.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the creation of a consumer price index for Chinese capital (AllenEtAl_2011 p.10),",
+        "By comparing living standards in China and Europe, revealing lower standards in China (AllenEtAl_2011 p.23, p.24)",
+        "By demonstrating higher wages in Europe than China by the twentieth century (AllenEtAl_2011 p.23, p.24)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 10,
+          "text": "This provided the weights for a consumerprice index for Chinese capital for 1900–24, and that index, in turn, was used ina study of real wages for the period.",
+          "score": 47.58064516129032
+        },
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 24,
+          "text": "This calls into question the fundamentaltenet of the large ‘rise of the west’ literature that sees western Europe—as awhole—surpassing the rest of the world in the early modern era.",
+          "score": 45.97701149425287
+        },
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 23,
+          "text": "Contrary to Smith, the cost of living was similar inChina and in Europe in the eighteenth century.The upshot of the wage and price comparisons is that living standards were lowin China.",
+          "score": 45.86466165413534
+        },
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 7,
+          "text": "We used these conversion factors in theestimation of wage levels in the wage regressions shown in tab.",
+          "score": 45.68527918781726
+        },
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 24,
+          "text": "Clearly, our database on China could be greatly improved andwe do not claim to have given the ﬁnal answer to this question.",
+          "score": 45.13274336283186
+        },
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 23,
+          "text": "By the twentieth century, however, wages in all parts of Europewere higher than in China.",
+          "score": 43.75
+        },
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 11,
+          "text": "Asnoted above, estimates of wages in the eighteenth century have been derivedmainly from VOC records and summarized in the wage regression.",
+          "score": 43.69747899159664
+        },
+        {
+          "type": "quote",
+          "doc_id": "AllenEtAl_2011",
+          "page": 24,
+          "text": "Our articlesuggests that it was only England and the Low Countries that pulled aheadof the rest.",
+          "score": 43.523316062176164
+        }
+      ],
+      "avg_score": 45.15,
+      "cluster": "Institutions and Economic Growth in Asia"
+    },
+    {
+      "doc_id": "Austin_2007",
+      "citation": "Austin, G. (2007) 'Labour and land in Ghana, 1874--1939: a shifting ratio and an institutional revolution', Australian Economic History Review, 47(1), pp. 95-120.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the gradual demise of coercive labour institutions and replacement by wage labour and farm-pledging (Austin_2007 p.20)",
+        "By the railway being much cheaper than lorries until the mid-1920s (Austin_2007 p.8)",
+        "As a result of earlier undercounting, leading to an increase in population within the southern region (Austin_2007 p.12)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 20,
+          "text": "In dialectical fashion, the gradual demise of these coercivelabour institutions and their replacement by wage labour and farm-pledging was94 Matson, Report on land disputes, p.",
+          "score": 47.48201438848921
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 8,
+          "text": "Until themid-1920s the railway had the fundamental advantage over lorries of being muchcheaper.",
+          "score": 44.67005076142132
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 12,
+          "text": "Because of earlier undercounting thiswas probably less than double what it had been at the time of the 1911 census(when the ofﬁcial total was only 1.5 million).",
+          "score": 43.92156862745098
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 20,
+          "text": "While neither act was anexample of induced institutional innovation, responding to changing factor scar-cities,100 the transition from coerced to free labour had an important economicdimension.",
+          "score": 43.91891891891892
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 12,
+          "text": "The whole of that zone was withinthe south: meaning the Gold Coast Colony, Ashanti and the southern district (theHo-Kpandu area) of British Mandated Togoland.",
+          "score": 43.57976653696498
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 1,
+          "text": "This trend was not sustained during the subsequent generation of1generally lower commodity prices and international divergence.",
+          "score": 42.918454935622314
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 8,
+          "text": "102Gareth Austintunities for the evacuation of logs which were offered by the rivers.",
+          "score": 42.780748663101605
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2007",
+          "page": 24,
+          "text": "118Gareth AustinCONCLUSIONWe can discern the outlines of the causal sequence identiﬁed by Williamson inthe Ghanaian experience, but with signiﬁcant differences.",
+          "score": 42.74809160305343
+        }
+      ],
+      "avg_score": 44.0,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Austin_2008",
+      "citation": "Austin, G. (2008) 'The ‘reversal of fortune’ thesis and the compression of history: Perspectives from African and comparative economic history', Journal of International Development: The Journal of the Development Studies Association, 20(8), pp. 996-1027.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the introduction of European institutions promoting economic growth (Austin_2008 p.5)",
+        "By settling in areas where they could live longest, Europeans introduced institutions that essentially promoted economic continuity (Austin_2008 p.5)",
+        "The primacy of a single cause (institutions) for long-run growth is emphasized by the authors (Austin_2008 p.26)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 24,
+          "text": "AJR’s theoretical conclusion, of institutions as ‘the’ fundamental cause of long-run economic growth, is attractive in its logical economy.",
+          "score": 65.2892561983471
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 26,
+          "text": "Institutions as the fundamental cause of long-rungrowth.",
+          "score": 65.06024096385542
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 3,
+          "text": "AustinFor economists and economic historians studying Africa the signiﬁcance of the RF thesisis more fundamental.",
+          "score": 50.23255813953488
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 26,
+          "text": "The rise of Europe: Atlantic trade, institutional changeand economic growth.",
+          "score": 49.45054945054945
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 5,
+          "text": "AJR’s answer is thatEuropeans settled where they could live longest; and where they settled in large numbers,they introduced the same kind of institutions that they lived with in Europe, ones whichessentially promoted economic growth.",
+          "score": 49.201277955271564
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 26,
+          "text": "Methodologically, the authors’ emphasis on the primacy of a single cause isstimulating but insufﬁcient.",
+          "score": 48.78048780487805
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 18,
+          "text": "According to thethesis, this is because of continuity in the rent-seeking and investment-discouragingcharacter of the institutional framework.",
+          "score": 48.13278008298755
+        },
+        {
+          "type": "quote",
+          "doc_id": "Austin_2008",
+          "page": 26,
+          "text": "Further complications are likely to arise when specialists onother regions reﬂect in detail on the thesis.",
+          "score": 48.113207547169814
+        }
+      ],
+      "avg_score": 53.03,
+      "cluster": "Institutions and Political Factors"
+    },
+    {
+      "doc_id": "Bohannan_1959",
+      "citation": "Bohannan, P. (1959) 'The impact of money on an African subsistence economy', The Journal of Economic History, 19(4), pp. 491-503.",
+      "stance": "tangential",
+      "mechanisms": [
+        "Through the spread of market characteristics (such as exchanges and money) dominates the Tiv society, leading to a significant transformation in their institutions.",
+        "The custom of bridewealth payment in a non-equivalent medium within Tiv culture serves as a mechanism for the disconnection between exchange and equivalence, potentially impacting long-term growth."
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 13,
+          "text": "The single sphere takes many of its characteristics from the market, so that the new situation can be considered a spread of the market.",
+          "score": 51.082251082251084
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 7,
+          "text": "The two institutions most intimately connected with conveyance are markets and marriage.",
+          "score": 50.51546391752577
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 7,
+          "text": "Exchanges within a category-particularly that of subsistence, the only one intact today-excite no moral judgments.",
+          "score": 48.18181818181818
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 10,
+          "text": "One of the most startling innovations of the British administration was a general peace.",
+          "score": 48.1283422459893
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 12,
+          "text": "Not only is the money a general-purpose money, but it applies to the full range of exchangeable goods.",
+          "score": 47.05882352941177
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 12,
+          "text": "Today all conversions and most convey- ances are made in terms of coinage.",
+          "score": 46.666666666666664
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 9,
+          "text": "In this entire process, metal rods hold a pivotal position, and it is not surprising that early administrators considered them money.",
+          "score": 46.02510460251046
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bohannan_1959",
+          "page": 7,
+          "text": "The Tiv cus- tom that approached bridewealth was not an exchange of equivalents, but payment in a medium that was specifically not equivalent.",
+          "score": 45.95744680851064
+        }
+      ],
+      "avg_score": 47.95,
+      "cluster": "Institutional Persistence and Evolution"
+    },
+    {
+      "doc_id": "Bolt&vanZanden_2014",
+      "citation": "Bolt, J. and Van Zanden, J. (2014) 'The Maddison Project: collaborative research on historical national accounts', The Economic History Review, 67(3), pp. 627-651.",
+      "stance": "tangential",
+      "mechanisms": [
+        "Through consistent growth of GDP per capita in the North Sea area (Bolt&vanZanden_2014 p.10)",
+        "By confirming Maddison's interpretation and adding long-term trends about economic development (Bolt&vanZanden_2014 p.5)",
+        "By comparing the terms of trade per head between different countries, revealing growth patterns (Bolt&vanZanden_2014 p.6)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 10,
+          "text": "To begin with, there is consistent growth ofGDP per capita in the North Sea area from c.",
+          "score": 47.422680412371136
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 15,
+          "text": "L., ‘History lessons: institutions, factor endowments, and paths of developmentin the new world’, Journal of Economic Perspectives, 14 (2000), pp.",
+          "score": 46.5863453815261
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 5,
+          "text": "Recent studies on this topic generallyconﬁrm Maddison’s interpretation, but they add more information about long-term trends that bring to light more details of the matter.",
+          "score": 46.15384615384615
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 15,
+          "text": "Wright, eds., Historical statistics of the United States: earliest times to the present, pt.",
+          "score": 44.329896907216494
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 6,
+          "text": "Terms of trade per head is calculated as the value ofcurrent exports deﬂated by the price of imports, which was then divided by each country’s population; ibid.,p.",
+          "score": 44.01544401544402
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 15,
+          "text": "J., ‘The size of the economy and the distribution of income in the Roman Empire’,Journal of Roman Studies, 99 (2009), pp.",
+          "score": 43.47826086956522
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 10,
+          "text": "In particular the gap withJapan was large—but Japan was also growing consistently during the centuries,both in GDP per capita and in population.",
+          "score": 42.67782426778243
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bolt&vanZanden_2014",
+          "page": 14,
+          "text": "B., ‘A compromise estimate of German net national product, 1851–1913, and itsimplications for growth and business cycles’, Journal of Economic History, 65 (2005), pp.",
+          "score": 40.75471698113208
+        }
+      ],
+      "avg_score": 44.43,
+      "cluster": "Institutions and Economic Growth in Europe"
+    },
+    {
+      "doc_id": "Braudel&Wallerstein_2009",
+      "citation": "Braudel, F. and Wallerstein, I. (2009) 'History and the social sciences: the longue dur\\'ee', Review (Fernand Braudel Center), pp. 171-203.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the endurance and survival of culture in the immense domain (Braudel&Wallerstein_2009 p.10)",
+        "By the disagreement between historians and social scientists on fundamental questions (Braudel&Wallerstein_2009 p.16, p.30)",
+        "As a result of the belief among historians that the whole truth is located in authentic documents (Braudel&Wallerstein_2009 p.6)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 10,
+          "text": "We find the same degree of endurance and survival in the im- mense domain of culture.",
+          "score": 47.82608695652174
+        },
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 16,
+          "text": "I do not think this is the fundamental question.",
+          "score": 47.61904761904762
+        },
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 16,
+          "text": "So historians and social scientists can eternally pass the ball back and forth between the dead document and the too living tes- timony, between the distant past and the too close present.",
+          "score": 47.24409448818898
+        },
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 10,
+          "text": "The culture of the intellectual elites is the same story.",
+          "score": 46.540880503144656
+        },
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 6,
+          "text": "But this massive array does not constitute the whole thick reality of history that we may subject to careful scientific reflection.",
+          "score": 46.413502109704645
+        },
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 30,
+          "text": "This disagreement is more fundamental than it may seem.",
+          "score": 45.962732919254655
+        },
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 6,
+          "text": "The massive discovery of documents led historians to believe that the whole of truth was located in authentic documents.",
+          "score": 45.73991031390135
+        },
+        {
+          "type": "quote",
+          "doc_id": "Braudel&Wallerstein_2009",
+          "page": 3,
+          "text": "Each one tries to grasp the social in its \"totality.\" Each one encroaches on the other, believing that it is remaining in its corner.",
+          "score": 45.662100456621005
+        }
+      ],
+      "avg_score": 46.63,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "Broadberry&Gardner_2022",
+      "citation": "Broadberry, S. and Gardner, L. (2022) 'Economic growth in Sub-Saharan Africa, 1885--2008: Evidence from eight countries', Explorations in Economic History, 83, pp. 101424.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the limited availability of data on long-run performance, the questions asked about African growth have been shaped (Broadberry&Gardner_2022 p.1)",
+        "The lack of resilience in Africa's economic growth continued to be a problem into the twentieth century (Broadberry&Gardner_2022 p.3)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 1,
+          "text": "As a result of this absence, Africa remains largely absent from discussions of long-run growth.",
+          "score": 56.56565656565657
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 2,
+          "text": "This indicates that the focus of current literature on the speciﬁc circumstances of that period may be misleading in terms of understanding Africa’s long-run performance.",
+          "score": 49.808429118773944
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 1,
+          "text": "The questions asked by these authors and others have been shaped by the limited availability of data on the long-run performance of African economies.",
+          "score": 49.59349593495935
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 10,
+          "text": "This is contrary to the view expressed in early economic histories of Africa, which assumed that any economic growth above subsistence resulted from European colonial interventions.",
+          "score": 48.201438848920866
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 18,
+          "text": "They show that the growth experienced during the past two decades is not unprecedented in African history.",
+          "score": 48.07692307692308
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 2,
+          "text": "This is not yet a comprehensive picture of Africa’s long run growth, since it covers only countries that were British colonies.",
+          "score": 48.06866952789699
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 3,
+          "text": "The problem was not the absence of growth, but rather the lack of resilience, which continued to be a problem in Africa into the twentieth century.",
+          "score": 47.863247863247864
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gardner_2022",
+          "page": 2,
+          "text": "The data also show considerable heterogeneity in the growth experience of individual African countries.",
+          "score": 47.84688995215311
+        }
+      ],
+      "avg_score": 49.5,
+      "cluster": "Institutions and Political Factors"
+    },
+    {
+      "doc_id": "Broadberry&Gupta_2006",
+      "citation": "Broadberry, S. and Gupta, B. (2006) 'The early modern great divergence: wages, prices and economic development in Europe and Asia, 1500--1800', The Economic History Review, 59(1), pp. 2-31.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through high agricultural productivity in India, the price of grain remained low (Broadberry&Gupta_2006 p.2)",
+        "In north-western Europe, institutional change led to investment in agriculture and increased agricultural labor productivity (Broadberry&Gupta_2006 p.15)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 11,
+          "text": "First, whatever thelimitations of the data that we have been able to mobilize for this study, itallows us to make long-run comparisons between Europe and Asia.",
+          "score": 48.85496183206107
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 15,
+          "text": "Second,why did rising productivity in Indian agriculture lead to an abundance ofgrain rather than a reallocation of labour to industry and services?",
+          "score": 47.01195219123506
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 24,
+          "text": "This means that we cannot infer equal levels of economic develop-ment in parts of Asia and Europe from observations based on grain wagesalone.",
+          "score": 46.53061224489796
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 2,
+          "text": "Despite this, silver wage leadership passed from thesouth to the north, with England showing the most rapid growth.",
+          "score": 46.08294930875576
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 15,
+          "text": "In the developing parts of north-western Europe, institutionalchange is usually seen as bringing about investment in agriculture, leadingin turn to high agricultural labour productivity.",
+          "score": 45.89041095890411
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 11,
+          "text": "Although the data have been compiled froma variety of sources and refer to different regions, the magnitudes arecomparable.",
+          "score": 45.333333333333336
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 22,
+          "text": "However, note that this does not mean that there was no differencein the level of development between Europe and Asia.",
+          "score": 44.74885844748859
+        },
+        {
+          "type": "quote",
+          "doc_id": "Broadberry&Gupta_2006",
+          "page": 2,
+          "text": "Parthasarathi treats this as evidence of the lowprice of grain in southern India, which he sees as the result of high agricul-tural productivity.",
+          "score": 44.53781512605042
+        }
+      ],
+      "avg_score": 46.12,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Bryant_2006",
+      "citation": "Bryant, J. (2006) 'The West and the rest revisited: Debating capitalist origins, European colonialism, and the advent of modernity', Canadian Journal of Sociology/Cahiers canadiens de sociologie, pp. 403-444.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the fusion of mercantilist imperialism and technologically driven capitalism",
+        "By challenging the empirical validity and analytical coherence of the revisionist position",
+        "By focusing on finely-grained cultural and institutional comparisons between East and West"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 12,
+          "text": "His specific substantive rejoinders, however, are of questionablecogency.7On the issue of whether European political institutions provided anadvantageous setting or support for developmental modernization, Goody isinsistent that alleged historical differences have been overdrawn.",
+          "score": 47.48201438848921
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 1,
+          "text": "Thanks also to NicoStehr for his support in developing this into a more challenging project.",
+          "score": 44.44444444444444
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 1,
+          "text": "It will be argued here that the revisionist position is both empiricallysuspect and analytically incoherent.",
+          "score": 43.925233644859816
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 8,
+          "text": "410 Canadian Journal of Sociologyparallels, continuities, and connections across the major societies of the vastEurasian landmass.",
+          "score": 43.66812227074236
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 15,
+          "text": "Finely-grained cultural and institutional comparisons between East and West have beenruled out in favour of purported commonalities grounded in the pervasivenessof “merchant cultures” and attending market dynamics.",
+          "score": 43.36569579288026
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 5,
+          "text": "A broad base of agreement does exist, however, on what might becalled the fundamental axis of difference: the nascent European fusion ofmercantilist imperialism with a technologically driven capitalistic transforma-",
+          "score": 43.31210191082803
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 1,
+          "text": "BryantAbstract: The ascent of the western European powers to global hegemony in the early modernperiod remains a central problematic in social scientific inquiry.",
+          "score": 42.911877394636015
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryant_2006",
+          "page": 3,
+          "text": "There can be no downplaying the radicalness of this revisionist dissent.",
+          "score": 42.69662921348315
+        }
+      ],
+      "avg_score": 43.98,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "BroadberryEtal_2015",
+      "citation": "Broadberry, S., Custodis, J. and Gupta, B. (2015) 'India and the great divergence: An Anglo-Indian comparison of GDP per capita, 1600--1871', Explorations in Economic History, 55, pp. 58-75.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the growth of agricultural demand and checking it against the growth of grain supply over the long run (BroadberryEtal_2015 p.4)",
+        "By applying a methodology to provide cross checks on the consistency of levels and growth rate information (BroadberryEtal_2015 p.4)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 4,
+          "text": "However, growth wasfaster in the nineteenth century than during the seven-teenth and eighteenth centuries.",
+          "score": 48.07692307692308
+        },
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 4,
+          "text": "This methodologyof providing cross checks on the consistency of levelsand growth rate information will be applied also to theGDP per capita data.",
+          "score": 47.808764940239044
+        },
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 2,
+          "text": "We begin in Section 2with a brief survey of the existing literature on India's longrun economic performance.",
+          "score": 46.728971962616825
+        },
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 4,
+          "text": "The growthof agricultural demand can be checked against the growthof the grain supply over the long run to provide the first ofthe key cross-checks highlighted in the Introduction.",
+          "score": 45.21072796934866
+        },
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 5,
+          "text": "Allen also assumes that agricultural consump-tion is equal to agricultural production.",
+          "score": 44.6927374301676
+        },
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 4,
+          "text": "Thisprovides the starting point of our population estimates inTable 1.",
+          "score": 44.31818181818182
+        },
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 12,
+          "text": "Time series projectionsThe GDP series from Table 11 can be combined withthe population data from Table 1 to establish in Table 12the path of GDP per capita in India.",
+          "score": 44.166666666666664
+        },
+        {
+          "type": "quote",
+          "doc_id": "BroadberryEtal_2015",
+          "page": 2,
+          "text": "Themiddle class merchants and rich peasants that Europeantravellers most frequently came into contact with alsoenjoyed a comfortable life-style.",
+          "score": 44.0
+        }
+      ],
+      "avg_score": 45.63,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Bryceson_2002",
+      "citation": "Bryceson, D. (2002) 'The scramble in Africa: reorienting rural livelihoods', World Development, 30(5), pp. 725-739.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the removal of traditional chieftaincy and dissolution of Ciskei Bantustan (Bryceson_2002 p.9), cultural changes are influencing institutions.",
+        "By affecting other activities in a portfolio when a specific one is targeted for improvement (Bryceson_2002 p.12), cultural factors impact long-term growth indirectly.",
+        "The lack of in situ purchasing power in non-agricultural village activities (Bryceson_2002 p.12) hinders economic development, suggesting a role for culture in shaping economic conditions."
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 2,
+          "text": "Section 4 considerssome of the structural changes taking place inAfrican peasantries’ socialinstitutions.",
+          "score": 47.39336492890995
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 12,
+          "text": "When a speciﬁc activity is targeted forimprovement, other activities in the portfolioare aﬀected.",
+          "score": 47.29064039408867
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 12,
+          "text": "One of themajor sticking points of village-based nonagri-cultural activities is the lack of in situ pur-chasing power.",
+          "score": 46.788990825688074
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 9,
+          "text": "This new-found activism was linked tothe removal of the traditional chieﬂy TribalAuthority with the dissolution of the Ciskeibantustan.",
+          "score": 46.08695652173913
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 5,
+          "text": "The moral economy ofgift-giving is under pressure.In many case studies, the largest expenditurewas on staple food purchases.",
+          "score": 45.21739130434783
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 12,
+          "text": "This entails resuscitatingprimary education that has slumped in sub-Saharan Africa due to the budgetary cut-backs and economic stringency of the SAP era(Watkins, 1999).",
+          "score": 45.18518518518518
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 2,
+          "text": "Section 2 presents a schematic con-sideration of agricultural trends as a prelude toSection 3’s more detailed examination of recentrural livelihood patterns.",
+          "score": 44.96124031007752
+        },
+        {
+          "type": "quote",
+          "doc_id": "Bryceson_2002",
+          "page": 6,
+          "text": "Most of the surveys upon whichthese 40% estimates are based were conductedduring the 1980s or early 1990s.",
+          "score": 44.23076923076923
+        }
+      ],
+      "avg_score": 45.89,
+      "cluster": "Institutions and Political Factors"
+    },
+    {
+      "doc_id": "Domar_1970",
+      "citation": "Domar, E. (1970) 'The causes of slavery or serfdom: a hypothesis', The Journal of Economic History, pp. 1-15.",
+      "stance": "tangential",
+      "mechanisms": [
+        "Through the ownership of peasants, a non-working landowning class could yield an income (Domar_1970 p.3)",
+        "The productivity of labor with poor technique and abundant land could be quite high, suggesting causes for slavery (Domar_1970 p.5)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 5,
+          "text": "Traditionally it was assumed that it would or did disappear because of the inherent superiority of free labor.",
+          "score": 48.57142857142857
+        },
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 5,
+          "text": "Causes of Slavery 21 and less suggests that the productivity of their labor (with poor technique, little capital, but abundant land) must have been quite high.",
+          "score": 45.80152671755725
+        },
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 3,
+          "text": "Hence it was the ownership of peasants and not of land that could yield an income to the ser- vitors or to any non-working landowning class.",
+          "score": 45.76271186440678
+        },
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 4,
+          "text": "The Russian situation prior to the peasants' enserfment corresponds to this case.",
+          "score": 45.65217391304348
+        },
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 5,
+          "text": "For the same reasons the model cannot predict the net effect of a change in the land/labor ratio on the position of the peasants.",
+          "score": 45.283018867924525
+        },
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 3,
+          "text": "Assume that labor and land are the only factors of production (no capital or management), and that land of uniform quality and location is ubiquitous.",
+          "score": 45.1063829787234
+        },
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 4,
+          "text": "The Amer- ican North in the Colonial period and in the nineteenth century would be a good example of an agricultural structure of this type.",
+          "score": 44.91525423728814
+        },
+        {
+          "type": "quote",
+          "doc_id": "Domar_1970",
+          "page": 10,
+          "text": "On the theory that the length of a report should be proportional to the intensity of research done, this sec- tion will be very short.",
+          "score": 44.24778761061947
+        }
+      ],
+      "avg_score": 45.67,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "Clark&Jacks_2007",
+      "citation": "Clark, G. and Jacks, D. (2007) 'Coal and the industrial revolution, 1700--1869', European Review of Economic History, 11(1), pp. 39-72.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through persistent attempts to restrict production, culture may have influenced the low mineral rents in the northeast (Clark&Jacks_2007 p.14)",
+        "By suggesting that transport costs to water were generally low, culture might have had minimal impact on mineral rents (Clark&Jacks_2007 p.11)",
+        "Through coal mining being a 'bit actor' in productivity advances, the Industrial Revolution may have been driven more by factors other than coal (Clark&Jacks_2007 p.24)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 14,
+          "text": "Yet the history of this period is that mineral rents in the northeastwere low despite persistent attempts to restrict production.",
+          "score": 45.887445887445885
+        },
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 21,
+          "text": "Thus the return on investing in mines cannot have strayedtoo far in the long run from investments in other assets such as mortgages.",
+          "score": 45.6140350877193
+        },
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 11,
+          "text": "The implication of this is that the transport costs to the water weregenerally low, so that they did not have much impact on mineral rents.",
+          "score": 44.91525423728814
+        },
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 24,
+          "text": "Coal mining really was a bit actor in theproductivity advances of the Industrial Revolution drama.",
+          "score": 44.11764705882353
+        },
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 24,
+          "text": "Further productivity growth in coal mining is much belowthe 0.55 per cent per year productivity growth for the economy as a wholefound by Crafts and Harley (1992).",
+          "score": 44.08163265306123
+        },
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 30,
+          "text": "But itcertainly suggests that Pomeranz’s and Wrigley’s conclusions on the vitalrole of English coal in the Industrial Revolution are, equivalently, just spec-ulations.",
+          "score": 43.86617100371747
+        },
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 24,
+          "text": "Coal and the industrial revolutionThis productivity result above is entirely consistent with the cliometricinterpretation of the coal industry.",
+          "score": 43.15352697095436
+        },
+        {
+          "type": "quote",
+          "doc_id": "Clark&Jacks_2007",
+          "page": 27,
+          "text": "Ireland was the recipient of supplies fromCumbria and other West Coast English coalﬁelds.",
+          "score": 43.07692307692308
+        }
+      ],
+      "avg_score": 44.34,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Feinstein_1998",
+      "citation": "Feinstein, C. (1998) 'Pessimism perpetuated: real wages and the standard of living in Britain during and after the industrial revolution', The Journal of Economic History, 58(3), pp. 625-658.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the difference in agricultural sector earnings between Ireland and Britain (Feinstein_1998 p.24)",
+        "By questioning the reconciliation of long-term growth verdict with trade statistics on imported goods like sugar, tea, and tobacco (Feinstein_1998 p.6)",
+        "Via the abundant labor supply in the first half of the 19th century (Feinstein_1998 p.28)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 24,
+          "text": "Agri- culture was the major sector in which Ireland had both large numbers of wage earners and a pattern of changes in earnings appreciably different from that in Britain.",
+          "score": 47.014925373134325
+        },
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 6,
+          "text": "LW's super-optimistic verdict was quickly challenged by Joel Mokyr, who questioned whether it could be reconciled with evidence from trade statistics on the per capita consumption of imported sugar, tea, and tobacco.10 Sara Horrell and Jane Humphries compiled new estimates of real family earnings that appeared to confirm the broad pattern of a long-run increase, but since they relied on the LW cost-of-living index for the defla- tion of their new income series this was not entirely an independent corrob- oration.\" 1 Two investigations of specific industries yielded conflicting ver- dicts, as tends to happen with such partial evidence.",
+          "score": 46.3768115942029
+        },
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 5,
+          "text": "5 The unusual severity of the harvest failures and their impact on grain prices are analyzed in Chambers and Mingay, Agricultural Revolution, pp.",
+          "score": 45.34412955465587
+        },
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 28,
+          "text": "The existence of an abundant supply of labor in the first half of the nine- teenth century was the central feature in H.",
+          "score": 44.97607655502392
+        },
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 28,
+          "text": "Habakkuk's analysis of factor supplies, with the first signs of a tightening located only in the 185 0s.",
+          "score": 44.33497536945813
+        },
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 2,
+          "text": "This long plateau is shown to be consistent with other economic, political, and demographic indicators.",
+          "score": 44.01913875598086
+        },
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 9,
+          "text": "This is undoubtedly a heroic assumption, given the sweeping changes that occurred during this period.",
+          "score": 43.47826086956522
+        },
+        {
+          "type": "quote",
+          "doc_id": "Feinstein_1998",
+          "page": 3,
+          "text": "The outcome is then reviewed and evaluated in relation both to other types of evidence and to the long history of the debate.",
+          "score": 43.31797235023041
+        }
+      ],
+      "avg_score": 44.86,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Frankema&vanWaijenburg_2012",
+      "citation": "Frankema, E. (2012) 'The origins of formal education in sub-Saharan Africa: was British rule more benign?', European Review of Economic History, 16(4), pp. 335-355.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the compression of history as described by Austin (p.4), cultural factors may have significantly influenced long-run African growth before 1950.",
+        "Price hikes due to war rationing schemes and collapse of international trade (p.17) reduced purchasing power, potentially impacting long-term African growth."
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 4,
+          "text": "Austin as the “compression of history,” ignores the fact that we still know very little about Africa’s comparative growth performance before 1950.",
+          "score": 48.38709677419355
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 17,
+          "text": "Price hikes as a consequence of war rationing schemes and a collapse of international trade dramatically reduced the purchasing power of sticky nominal wages.",
+          "score": 46.875
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 5,
+          "text": "This leaves room for different interpretations of long-term African growth, such as the “lost decades” perspective recently put forward by Robert Bates, John Coatsworth, and Jeffrey Williamson.",
+          "score": 46.15384615384615
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 5,
+          "text": "Jerven does not see any evidence, however, for the idea that current GDP estimates are any better than those of some fifty years ago.",
+          "score": 45.95744680851064
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 3,
+          "text": "Further, our data include the value of in-kind payments in addition to the cash component.",
+          "score": 45.833333333333336
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 3,
+          "text": "Finally, our series are internationally comparable because they are based on standardized consumption baskets.",
+          "score": 45.283018867924525
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 27,
+          "text": "Real wages increased during the colonial era in all of the countries we studied.",
+          "score": 45.05494505494506
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema&vanWaijenburg_2012",
+          "page": 3,
+          "text": "Our findings have implications for the methodological debate about African growth analyses.",
+          "score": 44.67005076142132
+        }
+      ],
+      "avg_score": 46.03,
+      "cluster": "Colonial Experience and Institutions"
+    },
+    {
+      "doc_id": "Frankema_2012",
+      "citation": "Frankema, E. (2012) 'The origins of formal education in sub-Saharan Africa: was British rule more benign?', European Review of Economic History, 16(4), pp. 335-355.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the application of a consistent 25% share for age distribution data in colonial Africa (Frankema_2012 p.7)",
+        "By adopting French curriculum and language of instruction in government schools, reflecting the imperial philosophy of assimilation (Frankema_2012 p.5)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 7,
+          "text": "Given the lack of age distribution data for colonial Africa, a 25 percent share was applied in all cases.",
+          "score": 48.34123222748815
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 7,
+          "text": "Inadequate population census data complicate the computation of historical enrolment rates for sub-Saharan Africa.",
+          "score": 48.18181818181818
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 19,
+          "text": "These specifica- tions alternate the inclusion of the malaria ecology variable on the one hand, and the Islam and state centralization variables on the other hand.",
+          "score": 47.15447154471545
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 2,
+          "text": "This study investigates the extent to which the British legacy can be attributed to deliberate educational policies in the first place.",
+          "score": 46.95652173913044
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 5,
+          "text": "In line with their imperial philos- ophy of assimilation , French government schools adopted the French curriculum and language of instruction.",
+          "score": 46.86192468619247
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 2,
+          "text": "This study argues that the impact of British edu- cational policies and investments on the supply of schooling in British Africa should not be overstated.",
+          "score": 46.53061224489796
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 2,
+          "text": "The consensus holds that British colonial rule was less repressive and more supportive of long- term development goals than the rule of its European contenders.",
+          "score": 46.51162790697674
+        },
+        {
+          "type": "quote",
+          "doc_id": "Frankema_2012",
+          "page": 2,
+          "text": "This study does not question the educational lead of British African colonies nor its long- term effects.",
+          "score": 46.44549763033175
+        }
+      ],
+      "avg_score": 47.12,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Goldin_2006",
+      "citation": "Goldin, C. (2006) 'The quiet revolution that transformed women's employment, education, and family', American Economic Review, 96(2), pp. 1-21.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through a shift in identity and societal worth, employment became more than just a means to earn money (Goldin_2006 p.1)",
+        "The substitution elasticity of labor supply grew and the income effect shrank, influencing long-run growth (Goldin_2006 p.3)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 3,
+          "text": "The studyof labor was once mired in the institutions of thelabor market.",
+          "score": 51.68539325842696
+        },
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 3,
+          "text": "Forvarious reasons that will become clear, the sub-stitution elasticity of labor supply eventuallygrew and the income effect (in absolute value)shrank.",
+          "score": 48.22134387351779
+        },
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 2,
+          "text": "Their identities, just like that of women inpoor countries, were not found in their occupa-tions.",
+          "score": 46.30541871921182
+        },
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 7,
+          "text": "Note that Long did not directly consider theexistence of a substitution effect in addition to an incomeeffect.",
+          "score": 46.2962962962963
+        },
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 14,
+          "text": "Others pos-ited, along the lines of the Coase Theorem, that the legalchanges should not have mattered.",
+          "score": 45.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 1,
+          "text": "It was a change from agents whowork because they and their families “needthe money” to those who are employed, atleast in part, because occupation and employ-ment deﬁne one’s fundamental identity andsocietal worth.",
+          "score": 44.8051948051948
+        },
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 12,
+          "text": "Most perceive their work as afundamental aspect of their satisfaction in lifeand view their place of work as an integral partof their social world.",
+          "score": 44.642857142857146
+        },
+        {
+          "type": "quote",
+          "doc_id": "Goldin_2006",
+          "page": 6,
+          "text": "Some advancement was possible in of-ﬁces and elsewhere, but not much, according tomost estimates of earnings functions.",
+          "score": 44.44444444444444
+        }
+      ],
+      "avg_score": 46.43,
+      "cluster": "Institutions and Economic Growth in Europe"
+    },
+    {
+      "doc_id": "Hopkins_2009",
+      "citation": "Hopkins, A. (2009) 'The new economic history of Africa', The Journal of African History, 50(2), pp. 155-177.",
+      "stance": "supports",
+      "mechanisms": [
+        "Institutional change is gradual and initiated through African initiatives as well as exogenous causes (Hopkins_2009 p.17)",
+        "Europeans installed appropriate institutions that provided incentives for investment through enabling conditions (Hopkins_2009 p.10)",
+        "Ethnicity, a social institution, is claimed to have particular relevance to Africa's development problems (Hopkins_2009 p.17)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 12,
+          "text": "Instead, they initiated two paths of development, and hence created two institutional legacies.",
+          "score": 52.79187817258883
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 8,
+          "text": "As applied to Africa, the hypothesis further as sumes that institutional change is gradual.",
+          "score": 50.76142131979695
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 11,
+          "text": "To the extent that there is agreement on the state of the debate, it is accepted that institutions are entwined with one another and with non-institutional influences in ways that cannot usefully be disentangled by referring to first principles or assumed best practice, but need to be placed in specific contexts that reflect the particularities, including the history, of each case.33 A further methodological problem arises from the application of cross country regression analysis.34 This technique has established itself as both a valuable and a controversial econometric tool.",
+          "score": 50.70422535211268
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 17,
+          "text": "In colonies of trade, col onial rule was negotiated as well as imposed, and institutional change was the product of African initiatives as well as of exogenous causes, such as popu lation growth.",
+          "score": 49.63503649635037
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 10,
+          "text": "The task of policy is to adapt inappropriate institutions to present development needs.",
+          "score": 49.473684210526315
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 12,
+          "text": "Colonies founded during the second wave of imperialism, on the other hand, were likely to have poorer institutions but greater chances of establishing demo cratic governments.",
+          "score": 48.90510948905109
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 17,
+          "text": "ETHNICITY AND DEVELOPMENT William Easterly and Ross Levine's contribution to the debate deals with a social institution, ethnicity, which they claim has particular relevance to Africa's development problems.54 They argue that cross-country variations in the incidence of ethnic diversity explain a substantial part of the differ ences in public policies, political institutions and other causes of long-run development.",
+          "score": 47.48201438848921
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2009",
+          "page": 10,
+          "text": "These conditions enabled Europeans to settle and install appropriate institutions that provided incentives for investment.",
+          "score": 47.36842105263158
+        }
+      ],
+      "avg_score": 49.64,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Humphries_2013",
+      "citation": "Humphries, J. (2013) 'The lure of aggregates and the pitfalls of the patriarchal perspective: a critique of the high wage economy interpretation of the British industrial revolution', The Economic History Review, 66(3), pp. 693-714.",
+      "stance": "critiques",
+      "mechanisms": [
+        "Through the impact of low nutritional status on adult body size (Humphries_2013 p.6)",
+        "By recording the proportion of children living in lone-parent families (Humphries_2013 p.14)",
+        "Via the growing division of labor, rise of workshop production, and emergence of the factory system (Humphries_2013 p.18)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 6,
+          "text": "First,these people had smaller bodies as adults because of their low nutritional status as23 Allen, British industrial revolution, p.",
+          "score": 47.69874476987448
+        },
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 14,
+          "text": "These sources record not the propor-tion of children orphaned but those living in lone-parent families.",
+          "score": 45.933014354066984
+        },
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 6,
+          "text": "The FAO’s 1985 new energyrequirement indices cover a range of body sizes, patterns of physical activity, andneeds for compensatory growth.",
+          "score": 44.81327800829875
+        },
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 14,
+          "text": "For some unlucky children both parents died or disappeared leavingthem to the care of other kin, the poor law, or charities.",
+          "score": 43.946188340807176
+        },
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 10,
+          "text": "Other sources suggest that it isnot the estimate of women’s needs presented in this article that is excessive.",
+          "score": 43.60189573459716
+        },
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 18,
+          "text": "Eighteenth-century economic growth rested on a growing division oflabour, the rise of workshop production, and the eventual emergence of thefactory system.",
+          "score": 43.30708661417323
+        },
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 6,
+          "text": "Adaptationistsalso see children’s growth as an instrument of control in the homeostatic process, which moulds the ‘ultimatesize and shape of the adult’ to his/her environment, see Seckler, ‘ “Malnutrition” ’, p.",
+          "score": 43.04635761589404
+        },
+        {
+          "type": "quote",
+          "doc_id": "Humphries_2013",
+          "page": 15,
+          "text": "Moreover, to thesuspiciously inﬂated total of dead fathers must be added the non-trivial numberopenly, if painfully, reported as absent though not presumed dead.",
+          "score": 42.69662921348315
+        }
+      ],
+      "avg_score": 44.38,
+      "cluster": "Institutions and Health Factors"
+    },
+    {
+      "doc_id": "Hopkins_2019",
+      "citation": "Hopkins, A. (2019) 'Fifty years of African economic history', Economic History of Developing Regions, 34(1), pp. 1-15.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the analysis of long-run data from the colonial period (Hopkins_2019 p.12)",
+        "By attaching weight to capitalist forces and the long-run evolution of social structures (Hopkins_2019 p.9)",
+        "With a commitment to, and feel for, the past, which illuminates understanding of long-run development problems (Hopkins_2019 p.13)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 12,
+          "text": "The colonial period has provided the mostsecure starting point because it offers the best chance of assembling long-run setsof data.",
+          "score": 50.427350427350426
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 9,
+          "text": "Postmodernism upheldradical approaches to global issues in the face of conservative triumphalism.",
+          "score": 47.29064039408867
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 13,
+          "text": "Themost recent work illuminates our understanding of long-run development problemsin ways that other historians can recognize, respect, and incorporate into their ownthinking.",
+          "score": 46.263345195729535
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 11,
+          "text": "Reliance on the catch-all notion of path depen-dence to join the distant past to the present compounds the problem.",
+          "score": 45.63106796116505
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 10,
+          "text": "Practitioners in this branch of economics assigned pri-ority to institutions, which were deﬁned with increasing generosity to include pol-itical and cultural values as well as economic variables.",
+          "score": 45.42372881355932
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 9,
+          "text": "The newapproach appealed because it attached weight to capitalist forces and to the long-run evolution of social structures without being tied to a class-based analysis.",
+          "score": 45.353159851301115
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 13,
+          "text": "It does so at least partly because the practitioners are either Africans orAfricanists with a commitment to, and feel for, the past.",
+          "score": 45.2991452991453
+        },
+        {
+          "type": "quote",
+          "doc_id": "Hopkins_2019",
+          "page": 4,
+          "text": "Special terms constitutedpasswords that had to be learnt and recited to authenticate membership.",
+          "score": 45.22613065326633
+        }
+      ],
+      "avg_score": 46.36,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Koepke&Baten_2005",
+      "citation": "Koepke, N. and Baten, J. (2005) 'The biological standard of living in Europe during the last two millennia', European Review of Economic History, 9(1), pp. 61-95.",
+      "stance": "tangential",
+      "mechanisms": [
+        "Through the relationship between climate and human living standards",
+        "By measuring growth variability and environmental quality in Guatemalan children",
+        "Via the interdependency of institutions and private entrepreneurs"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 20,
+          "text": "ClimateOne of the most fascinating topics in long-run economic history is therelationship between climate and human living standards.",
+          "score": 49.37238493723849
+        },
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 32,
+          "text": "Stature reconstruction from long bones in ancientpopulation samples: an approach to the problem of its reliability.",
+          "score": 46.15384615384615
+        },
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 19,
+          "text": "Landper capita and urbanisationWas Malthus right with his argument that land is the limiting factor of humandevelopment?",
+          "score": 46.017699115044245
+        },
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 32,
+          "text": "Measurement of growth variability and environmental quality inGuatemalan children.",
+          "score": 44.680851063829785
+        },
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 31,
+          "text": "Cohen and G.Armelagos, Palaeopathology at the Origins of Agriculture.",
+          "score": 44.57142857142857
+        },
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 33,
+          "text": "Bongenaar (ed.), Interdependency of Institutionsand Private Entrepreneurs.",
+          "score": 44.44444444444444
+        },
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 33,
+          "text": "Regional differences and temporal development of the qualityof nutrition in the Roman provinces of Germania and Raetia from the ﬁrstcentury to the fourth century AD.",
+          "score": 44.44444444444444
+        },
+        {
+          "type": "quote",
+          "doc_id": "Koepke&Baten_2005",
+          "page": 19,
+          "text": "Did population growth tend to outpace food production asa result of decreasing marginal product, culminating in major demographiccatastrophes?",
+          "score": 44.354838709677416
+        }
+      ],
+      "avg_score": 45.5,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Komlos_1998",
+      "citation": "Komlos, J. (1998) 'Shrinking in a growing economy? The mystery of physical stature during the Industrial Revolution', The Journal of Economic History, 58(3), pp. 779-802.",
+      "stance": "tangential",
+      "mechanisms": [
+        "Through the invention of refrigeration enabling perishable agricultural products to be shipped over longer distances (Komlos_1998 p.17)",
+        "By the relative price of food declining despite rapid population growth (Komlos_1998 p.12)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 12,
+          "text": "Note that in the twentieth century the relative price of food declined, in spite of rapid population growth.",
+          "score": 53.92156862745098
+        },
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 12,
+          "text": "Nonetheless, one should not conflate the two effects, because population growth does not have to lead to a rise in food prices.",
+          "score": 49.557522123893804
+        },
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 6,
+          "text": "19 In a historical context this was an unprecedented achievement, given the rapid rate of population growth at the time.",
+          "score": 47.747747747747745
+        },
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 17,
+          "text": "The invention of refrigeration enabled perishable agricultural products to be shipped over longer distances.",
+          "score": 47.66355140186916
+        },
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 14,
+          "text": "Insofar as these results pertain to adults, the issue of intensification of child labor, and its effect on adult height, remains open.",
+          "score": 47.257383966244724
+        },
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 8,
+          "text": "30 A study of the contemporary Third World fmds that increases in rice prices have a negative effect on children's height.",
+          "score": 46.49122807017544
+        },
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 12,
+          "text": "54 To be sure, British agricultural productivity was relatively advanced, but even it did not keep pace with population growth.",
+          "score": 46.351931330472105
+        },
+        {
+          "type": "quote",
+          "doc_id": "Komlos_1998",
+          "page": 2,
+          "text": "So it is plausible that the nutritional cycles they experienced were also similar.",
+          "score": 45.744680851063826
+        }
+      ],
+      "avg_score": 48.09,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Kuznets_1973",
+      "citation": "Kuznets, S. (1973) 'Modern economic growth: findings and reflections', The American Economic Review, 63(3), pp. 247-258.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the concentration of population at the low end of the product per capita range (Kuznets_1973 p.8)",
+        "By exploiting the potential of modern economic growth, which is a common failure among Less Developed Countries (Kuznets_1973 p.9)",
+        "As a result of advancing technology changing the scale of production plants and the character of economic enterprise units (Kuznets_1973 p.4)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 8,
+          "text": "Even more significant is the con-centration of the population at the low endof the product per capita range.",
+          "score": 48.51485148514851
+        },
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 8,
+          "text": "Japan is the only nationoutside of those rooted in European civi-lization that has joined the group of devel-oped countries so far.",
+          "score": 47.82608695652174
+        },
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 8,
+          "text": "The Less Developed CountriesTwo major groups of factors appear tohave limited the spread of modern eco-nomic growth.",
+          "score": 47.48858447488585
+        },
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 8,
+          "text": "Second, one mayassume that once an unexpected negativeresult of growth emerges, the potential ofmaterial and social technology is aimed atits reduction or removal.",
+          "score": 45.353159851301115
+        },
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 4,
+          "text": "As already indi-cated, advancing technology changes thescale of production plants and the charac-ter of the economic enterprise units.",
+          "score": 44.63519313304721
+        },
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 2,
+          "text": "Even withadjustments to allow for hidden costs and inputs, growthin productivity accounts for over half of the growth inproduct per capita (see Kuznets (1971), pp.",
+          "score": 44.528301886792455
+        },
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 9,
+          "text": "To be sure,their common failure to exploit the poten-tial of modern economic growth meansseveral specific common features: a low percapita product, a large share of agricultureor other extractive industries, a generallysmall scale of production.",
+          "score": 44.31137724550898
+        },
+        {
+          "type": "quote",
+          "doc_id": "Kuznets_1973",
+          "page": 6,
+          "text": "In some cases, these conflicts didbreak out into overt civil war, the CivilWar in the United States being a conspicu-ous example.",
+          "score": 44.15584415584416
+        }
+      ],
+      "avg_score": 45.85,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Lindert&Williamson_1985",
+      "citation": "Lindert, P. and Williamson, J. (1985) 'Growth, equality, and history', Explorations in Economic History, 22(4), pp. 341-377.",
+      "stance": "complicates",
+      "mechanisms": [
+        "Through shifts in final-product demand as a share of national product (Lindert&Williamson_1985 p.10)",
+        "By identifying factor-demand and factor-supply forces that account for both distributional trends and the pattern and rate of economic growth (Lindert&Williamson_1985 p.9)",
+        "By examining the structure of factor returns, focusing on the relationship between rates of return and income levels within a society (Lindert&Williamson_1985 p.8)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 4,
+          "text": "Space also prevents a treatment of distribution trends in the socialist bloc.",
+          "score": 48.08743169398907
+        },
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 9,
+          "text": "Furthermore, the task of explaining long-run distribution trends thus rejoins the search for the explanations of growth itself.",
+          "score": 47.747747747747745
+        },
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 10,
+          "text": "The is to find large shifts in final- product demand to the growth and distribution is purchases of goods and services as the 20th-century a share of national product.",
+          "score": 47.65625
+        },
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 29,
+          "text": "What about the policy suggests that the “growth-equality more policy improvements fundamental which move debate on the’efficiency trade-off debate?",
+          "score": 47.107438016528924
+        },
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 9,
+          "text": "That is, we seek the factor-demand and factor-supply forces that can, account for both distributional trends and the pattern and rate of economic growth.",
+          "score": 46.963562753036435
+        },
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 8,
+          "text": "Perhaps products of the diffusion but higher that a society begins with perfect equality, with level of income.",
+          "score": 46.889952153110045
+        },
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 8,
+          "text": "rates of factor returns, so knew the same, with focus‘ on the structure of cannot be avoided.",
+          "score": 46.875
+        },
+        {
+          "type": "quote",
+          "doc_id": "Lindert&Williamson_1985",
+          "page": 4,
+          "text": "Since these leveling figures are “pre-fist,” in the last quarter of the the and since a major role.",
+          "score": 46.7005076142132
+        }
+      ],
+      "avg_score": 47.25,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "McCloskey_2015",
+      "citation": "McCloskey, D. (2015) 'It was ideas and ideologies, not interests or institutions, which changed in Northwestern Europe, 1600--1848', Journal of Evolutionary Economics, 25(1), pp. 57-68.",
+      "stance": "supports",
+      "mechanisms": [],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 10,
+          "text": "In 1982 he explained to aWestern audience that such an institutional change comes from accumulated informa-tion combined with interest.",
+          "score": 46.47302904564315
+        },
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 5,
+          "text": "It was a denial of comparativeadvantage in the pursuit of treasure by foreign trade.",
+          "score": 45.98930481283423
+        },
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 5,
+          "text": "Business schools, which focus naturally on the fortunes of the individualfirm, teach that “competitiveness” is all.",
+          "score": 45.16129032258065
+        },
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 5,
+          "text": "The trouble is that the “success” we are talking aboutdown to 1815 was a zero-sum extension of trading by way of Empire and militaryvictories.",
+          "score": 44.89795918367347
+        },
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 8,
+          "text": "Yet it is doubtful that the inventor ofthe “atmospheric” steam engine, Newcomen, an artisan familiar with pumps, knewmuch about high science.",
+          "score": 44.534412955465584
+        },
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 2,
+          "text": "It is no surprise that itdoes not achieve the unification we seek.",
+          "score": 44.18604651162791
+        },
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 2,
+          "text": "It in turn depended on the story of triumph andtragedy put forward in The Communist Manifesto.",
+          "score": 43.65482233502538
+        },
+        {
+          "type": "quote",
+          "doc_id": "McCloskey_2015",
+          "page": 8,
+          "text": "None of the early medical advances that Johansson describes had much to dowith theoretical breakthroughs.",
+          "score": 43.60189573459716
+        }
+      ],
+      "avg_score": 44.81,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "Mokyr_2005",
+      "citation": "Mokyr, J. (2005) 'The intellectual origins of modern economic growth', The Journal of Economic History, 65(2), pp. 285-351.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the dominance of cultural beliefs in the elites of the eighteenth-century West, new useful knowledge was created, diffused, and put to use.",
+        "The interactions between these elements (cultural beliefs, institutions, and mechanisms) is complex but plays a key role in generating modern growth."
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 3,
+          "text": "It may have been slow, it may have been not all that industrial and even less revolutionary, it may not even have been wholly British, but it was the taproot of modem economic growth.",
+          "score": 49.59349593495935
+        },
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 8,
+          "text": "And yet the cultural beliefs that began to dominate the elites of the eighteenth- century West created the attitudes, the institutions, and the mechanisms by which new useful knowledge was created, diffused, and put to good use.",
+          "score": 48.20846905537459
+        },
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 56,
+          "text": "Even the great Dutch prosperity of the seventeenth century dissipated and petered out in the end.",
+          "score": 48.205128205128204
+        },
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 3,
+          "text": "It was qualitatively different in at least three fundamental aspects.",
+          "score": 48.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 55,
+          "text": "The interactions between these elements is of course complex and makes positive identification of causal factors difficult.",
+          "score": 47.78761061946903
+        },
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 55,
+          "text": "After 1815, however, the Pax Britan- nica heralded in a new culture of peace and trade.",
+          "score": 47.66839378238342
+        },
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 56,
+          "text": "Such an approach to modem growth would imply that the differences between the nations of the West should be less important than their basic commonalities.",
+          "score": 47.61904761904762
+        },
+        {
+          "type": "quote",
+          "doc_id": "Mokyr_2005",
+          "page": 56,
+          "text": "The point is not so much that there were no national differ- ences in the institutions and culture that generated useful knowledge in France, Germany, or Britain, as that when the knowledge was accepted, it was readily diffused within the world in which the Enlightenment had taken root through periodicals, translations, international exhibitions and conferences, and personal communications.",
+          "score": 46.3768115942029
+        }
+      ],
+      "avg_score": 47.93,
+      "cluster": "Institutions and Cultural Norms"
+    },
+    {
+      "doc_id": "North&Weingast_1989",
+      "citation": "North, D. (1989) 'Institutions and economic growth: An historical introduction', World Development, 17(9), pp. 1319-1332.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the new institutions, the government could commit credibly to upholding property rights (North&Weingast_1989 p.2)",
+        "Political institutions and constitution fostered long-term growth in England (North&Weingast_1989 p.4, p.29, p.30)",
+        "Absence of constraints on absolutist states led to economic conditions that retarded long-run economic growth (North&Weingast_1989 p.7)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 2,
+          "text": "We argue that the new institutions allowed the government to commit credibly to upholding property rights.",
+          "score": 53.65853658536585
+        },
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 5,
+          "text": "806 North and Weingast little prospect for long-run growth, or whether it produces rules that foster long-term growth.",
+          "score": 53.57142857142857
+        },
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 4,
+          "text": "Section I develops the importance of political institutions and the constitution and their relevance for the sections that follow.",
+          "score": 52.67857142857143
+        },
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 7,
+          "text": "Absolutist states which faced no such constraint, such as early modem Spain, created economic conditions that retarded long-run economic growth.",
+          "score": 51.69491525423729
+        },
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 29,
+          "text": "It is clear that the institutional changes of the Glorious Revolution permitted the drive toward British hegemony and dominance of the world.",
+          "score": 50.86206896551724
+        },
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 27,
+          "text": "We have shown how the political institutions governing society can be considered endogenously.",
+          "score": 50.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 27,
+          "text": "Thus it appears that the growth of private capital markets paralleled that of public capital markets.",
+          "score": 49.21465968586387
+        },
+        {
+          "type": "quote",
+          "doc_id": "North&Weingast_1989",
+          "page": 30,
+          "text": "And we have told a story of how these institutions did come about in England.",
+          "score": 49.18032786885246
+        }
+      ],
+      "avg_score": 51.36,
+      "cluster": "Institutions and Political Factors"
+    },
+    {
+      "doc_id": "North_1989",
+      "citation": "North, D. (1989) 'Institutions and economic growth: An historical introduction', World Development, 17(9), pp. 1319-1332.",
+      "stance": "supports",
+      "mechanisms": [
+        "Institutional change is determined by the interaction of relative prices (How), leading to fundamental changes in institutions (What)",
+        "The evolution of institutions is important due to the costliness of measuring rules (How)",
+        "Economic growth is influenced by the specification and protection of property rights (What)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 7,
+          "text": "fundamental changes induced The second issue of institutional change is what determines the direction of change.",
+          "score": 59.53488372093023
+        },
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 6,
+          "text": "but it are the con- interaction; institutions only But institutions do change, and fundamental changes in relative prices do lead to institutional change.",
+          "score": 53.278688524590166
+        },
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 7,
+          "text": "that the common evolve.",
+          "score": 51.61290322580645
+        },
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 4,
+          "text": "They are evolution of institutions important at a moment of time precisely because and the imper- of the costliness of measurement of rules.",
+          "score": 51.30434782608695
+        },
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 5,
+          "text": "to stress that economic growth of techno- (political and increase as a consequence is, either the specification rights may that affect of property",
+          "score": 50.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 12,
+          "text": "We are only to extend economic and political theory to the study of institutions.30 introduc- tion gives some indication of the promise of this approach for the study of economic history and economic growth.",
+          "score": 49.81132075471698
+        },
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 1,
+          "text": "I look at the institutional development of economies and the Northwest that preceded frameworks Ordinance to the in early America.",
+          "score": 49.12280701754386
+        },
+        {
+          "type": "quote",
+          "doc_id": "North_1989",
+          "page": 6,
+          "text": "If the tracts are nested of a more renegotiation it fundamental alteration (or involves rule, he (and presumably they) may find",
+          "score": 48.927038626609445
+        }
+      ],
+      "avg_score": 51.7,
+      "cluster": "Institutions and Technological Change"
+    },
+    {
+      "doc_id": "Nunn&Wantchekon_2011",
+      "citation": "Nunn, N. and Wantchekon, L. (2011) 'The slave trade and the origins of mistrust in Africa', American Economic Review, 101(7), pp. 3221-3252.",
+      "stance": "supports",
+      "mechanisms": [
+        "The impact of the slave trade is primarily through factors internal to the individual, such as cultural norms, beliefs, and values.",
+        "Historical distance from the coast of an individual’s ethnic group serves as an instrument for slave exports, influencing long-term growth."
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 6,
+          "text": "This creates a self-enforcing outcome by which low levels of trust and weak institutions persist among future generations.",
+          "score": 51.75438596491228
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 1,
+          "text": "Evidence from a variety of identification strategies suggests that the relationship is causal.",
+          "score": 50.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 7,
+          "text": "In that case, the effects of the shock will have persisted for nearly as long as the shock itself.",
+          "score": 49.19786096256684
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 29,
+          "text": "Generally, the empirical literature has focused on either showing that culture exists or on identifying the economic impacts of cultural differences.",
+          "score": 46.774193548387096
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 29,
+          "text": "Finally, we reported IV estimates that use the historical distance from the coast of an individual’s ethnic group as an instrument for slave exports.",
+          "score": 46.774193548387096
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 1,
+          "text": "Examining causal mecha-nisms, we show that most of the impact of the slave trade is through factors that are internal to the individual, such as cultural norms, beliefs, and values.",
+          "score": 46.494464944649444
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 16,
+          "text": "The first exploits information on the locations and sizes of urban cen- on the location of African cities with 1987ters.",
+          "score": 46.2962962962963
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 3,
+          "text": "This is different from our baseline measure, which is the average number of slaves taken from an individual’s ethnic group.",
+          "score": 46.15384615384615
+        }
+      ],
+      "avg_score": 47.93,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Nunn_2008",
+      "citation": "Nunn, N. (2008) 'The long-term effects of Africa's slave trades', The Quarterly Journal of Economics, 123(1), pp. 139-176.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the development of institutions facilitating trade with Europeans (Nunn_2008 p.19)",
+        "By using distances from countries to slave demand locations as instruments for estimating the causal effect of the slave trades on economic development (Nunn_2008 p.30)",
+        "Via the most developed areas of Africa being more likely to participate in the slave trades (Nunn_2008 p.2 and p.30)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 19,
+          "text": "During thistime, only societies with institutions that were sufﬁciently devel-oped were able to facilitate trade with the Europeans.",
+          "score": 50.87719298245614
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 30,
+          "text": "I also usedthe distances from each country to the locations of the demandfor slaves as instruments to estimate the causal effect of the slavetrades on economic development.",
+          "score": 49.23076923076923
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 3,
+          "text": "Section IV documentsthe correlations that exist in the data, and Section V turns tothe issue of causality.",
+          "score": 49.01960784313726
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 19,
+          "text": "Second, I use the distance from each country to the locationof the demand for slaves as instruments for slave exports.",
+          "score": 47.16981132075472
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 25,
+          "text": "They also sug-gest that the OLS estimates may even be a lower bound estimateof the strength of the slave trade–income relationship.VI.",
+          "score": 46.55172413793103
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 25,
+          "text": "These magnitude are signiﬁcantlylarger than the magnitudes of the OLS estimates.",
+          "score": 46.15384615384615
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 2,
+          "text": "Both sources of evidence show that it wasactually the most developed areas of Africa that tended to selectinto the slave trades.",
+          "score": 45.945945945945944
+        },
+        {
+          "type": "quote",
+          "doc_id": "Nunn_2008",
+          "page": 30,
+          "text": "I ﬁrst reviewed the historical evidence on the character-istics of African societies that were most affected by the slavetrades.",
+          "score": 45.13274336283186
+        }
+      ],
+      "avg_score": 47.51,
+      "cluster": "Institutions and Economic Growth in Africa"
+    },
+    {
+      "doc_id": "Pamuk_2007",
+      "citation": "Pamuk, c. (2007) 'The Black Death and the origins of the ‘Great Divergence’ across Europe, 1300--1600', European Review of Economic History, 11(3), pp. 289-317.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the persistent and long-term character of the plague (Pamuk_2007 p.5), a degree of immunity was acquired, leading to population growth",
+        "By triggering a series of institutional changes with far-reaching consequences (Pamuk_2007 p.24), such as commercialization of agriculture and growing adaptability to changing conditions"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 5,
+          "text": "It appears that the population did notbegin to overcome the plague until it acquired a degree of immunity.",
+          "score": 49.03846153846154
+        },
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 24,
+          "text": "Perhapsmost importantly, this exogenous shock triggered a series of institutionalchanges with far-reaching consequences.",
+          "score": 48.67256637168141
+        },
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 24,
+          "text": "I have suggesteda number of important changes that emerged in this high-wage environmentand contributed to the long-term economic development of Europe.",
+          "score": 47.05882352941177
+        },
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 5,
+          "text": "Thispersistent and long-term character of the plague distinguishes it from otherepidemics.",
+          "score": 46.93877551020408
+        },
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 24,
+          "text": "These changespaved the way for the growing commercialisation of agriculture.",
+          "score": 46.06741573033708
+        },
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 18,
+          "text": "In fact, the existing estimates suggest that levels of percapita GDP were higher in Italy than in the northwestern countries duringthese three centuries.",
+          "score": 46.03174603174603
+        },
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 20,
+          "text": "They also ensured that the high-wage environment in Englandwould continue for a longer period.",
+          "score": 46.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Pamuk_2007",
+          "page": 25,
+          "text": "Countriesor regions with more ﬂexible structures and institutions adapted morereadily to the changing conditions and changing relative prices.",
+          "score": 45.95744680851064
+        }
+      ],
+      "avg_score": 46.97,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "Peters_2004",
+      "citation": "Peters, P. (2004) 'Inequality and social conflict over land in Africa', Journal of Agrarian Change, 4(3), pp. 269-314.",
+      "stance": "supports",
+      "mechanisms": [
+        "Culture's autonomous development inhibits class formation through maintaining kinship and village institutions",
+        "Merchant control obstructs technical progress in agriculture by hindering private and hereditary property",
+        "The lack of external coercive capacity in post-colonial states allows for the use of violence and illicit means to establish transnational contacts"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 16,
+          "text": "He insists that culture has ‘its ownautonomy and its own dynamic of development’.",
+          "score": 51.336898395721924
+        },
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 18,
+          "text": "Before presenting the cases that reveal these conﬂicts, I shall outlineanother key set of processes against which to read the case materials.",
+          "score": 46.91358024691358
+        },
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 16,
+          "text": "The merchant control broke an emerging ‘middle class’ twice inthe nineteenth century, so that the ‘continual reduction of internal differentiation.",
+          "score": 45.8498023715415
+        },
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 37,
+          "text": "But it is an obstacle to technical progress [which in agriculture] cannot berealized outside of private and hereditary property’ (cited in Bassett 1993a, 13).",
+          "score": 45.21072796934866
+        },
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 18,
+          "text": ".’(2002, 5–6).While such facts are widely accepted as descriptive of the postcolonial states inAfrica, their interpretation differs considerably.",
+          "score": 44.62151394422311
+        },
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 18,
+          "text": "Associatedwith this position is the relegation of the use of violence and illicit means ofestablishing transnational contacts of governing and accumulating wealth topathology.",
+          "score": 44.19475655430712
+        },
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 16,
+          "text": "the inhibiting of class formation – kept kinship and village institutionscrucial both to mobilizing labor and .",
+          "score": 44.13145539906103
+        },
+        {
+          "type": "quote",
+          "doc_id": "Peters_2004",
+          "page": 18,
+          "text": "Cooper attributes this pattern to the fact that ‘the post-colonial gatekeeperstate, lacking the external coercive capacity of its predecessor [the colonial state],was .",
+          "score": 43.7037037037037
+        }
+      ],
+      "avg_score": 45.75,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Ogilvie_2007",
+      "citation": "Ogilvie, S. (2007) '‘Whatever is, is right’? Economic institutions in pre-industrial Europe', The Economic History Review, 60(4), pp. 649-684.",
+      "stance": "supports",
+      "mechanisms": [
+        "Civic cultures encourage institutions that favor economic growth and political accountability (Ogilvie_2007 p.12)",
+        "British cultural beliefs shape the development of different economic institutions in colonies (Ogilvie_2007 p.30)",
+        "Cultures holding 'right' beliefs arrive at the right institutional equilibrium, leading to prosperity (Ogilvie_2007 p.28)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 12,
+          "text": "These ‘civic’ cultures inturn encourage institutions that favour economic growth and politicalaccountability.",
+          "score": 55.81395348837209
+        },
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 30,
+          "text": "have pointed out that ‘British’ cultural beliefs gave riseto very different economic institutions in different colonies.",
+          "score": 51.851851851851855
+        },
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 28,
+          "text": "If we brought these into our toolkit, might we constructbetter models of how institutions work?So North progressively abandoned his efﬁciency theories in the courseof the 1980s, espousing the view that institutions evolved not because theywere efﬁcient but because they were fostered by the ‘mental model’ of aparticular culture.98 Thus efﬁcient economic institutions were generated bygood mental models in the western world, and less efﬁcient institutions bydifferent mental models in ‘primitive societies’, or early modern Iberia, orthe present-day Third World.99 Other economic historians underwent aneven more far-reaching reorientation, as we have seen, advocating an‘endogenous-culture’ approach which deﬁned an institution as a system ofrules and cultural beliefs, in which beliefs were the dominant compo-nent.100 Thus Greif counterposed the ‘collectivist’ cultural beliefs of themedieval Maghribi traders (‘non-Muslims who adopted the values of thethe Genoese.101Muslim society’) with the ‘individualistic’ culture ofDespite facing the same technology and the same commercial opportuni-ties, the two groups adopted widely differing solutions to the problem ofcontract enforcement, with the Maghribis choosing institutions that pro-vided collective enforcement while the Genoese chose ‘legal, political, and(second-party) economic organizations for enforcement and coordination’.The only possible explanation for this, according to Greif, is that theMaghribis held collectivist beliefs and the Genoese held individualisticones.",
+          "score": 49.645390070921984
+        },
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 30,
+          "text": "In denselysettled societies such as India and the Caribbean, British culture gave rise tohighly oppressive economic institutions devoted to extracting resources fromthe indigenous population.",
+          "score": 49.158249158249156
+        },
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 13,
+          "text": "is the linchpin of institutions’.59These perspectives, which derive from a certain game-theoreticalapproach, deﬁne institutions as ‘endogenous’ and ‘self-enforcing’, and thusseek to make cultural beliefs endogenous to institutions.60 But in doing sothey equivocate on a fundamental issue.",
+          "score": 48.57142857142857
+        },
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 28,
+          "text": "Cultures that hold the ‘right’ beliefs arrive at the right institutionalequilibrium and therefore prosper.",
+          "score": 48.07692307692308
+        },
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 11,
+          "text": "This in turn is supposed to havemotivated them to choose and follow capitalist institutional rules.",
+          "score": 47.524752475247524
+        },
+        {
+          "type": "quote",
+          "doc_id": "Ogilvie_2007",
+          "page": 31,
+          "text": "First, if the same cultural beliefs coexist with different rules, andthis gives rise to different economic outcomes, then can beliefs really be the‘linchpin’ of economic institutions?",
+          "score": 47.32824427480916
+        }
+      ],
+      "avg_score": 49.75,
+      "cluster": "Institutions and Economic Growth in Africa"
+    },
+    {
+      "doc_id": "Skocpol&Sommers_1980",
+      "citation": "Skocpol, T. and Somers, M. (1980) 'The uses of comparative history in macrosocial inquiry', Comparative Studies in Society and History, 22(2), pp. 174-197.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the juxtaposition of historical cases to demonstrate theory (parallel demonstration of theory)",
+        "By contrasting contexts to validate causal arguments about specific countries",
+        "Using in-genius historical comparisons across space and time to dispose of explanations"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 3,
+          "text": "Each of thethree major types of comparative history assigns a distinctive purpose tothe juxtaposition of historical cases.",
+          "score": 45.945945945945944
+        },
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 24,
+          "text": "For each type at its own distinctive limits tends tosuggest needs and possibilities for studies of the other types.",
+          "score": 45.248868778280546
+        },
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 3,
+          "text": "But in addition there are twoother major types: comparative history as the parallel demonstration oftheory; and comparative history as the contrast of contexts.",
+          "score": 44.35146443514645
+        },
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 24,
+          "text": "Rather it encompasses at least three major logics withdistinct purposes, characteristics, strengths, and limitations.",
+          "score": 43.946188340807176
+        },
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 15,
+          "text": "Methodically, Hamilton makes in-genious use of historical comparisons across space and time to dispose ofthe first two explanations.",
+          "score": 43.69747899159664
+        },
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 8,
+          "text": "No contemporary scholar hasdone more to explicate, as well as to apply, the logic of this variant ofcomparative history.",
+          "score": 43.63636363636363
+        },
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 13,
+          "text": "Skocpol uses contrasts to various sets of countries (invarious periods of their histories) to validate different specific parts of hercausal arguments about France, Russia, and China.",
+          "score": 43.57142857142857
+        },
+        {
+          "type": "quote",
+          "doc_id": "Skocpol&Sommers_1980",
+          "page": 13,
+          "text": "In Skocpol'sStates and Social Revolutions only the \"positive\" cases of social revolutionreceive extensive discussion.",
+          "score": 43.04932735426009
+        }
+      ],
+      "avg_score": 44.18,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Sokoloff&Engerman_2000",
+      "citation": "Sokoloff, K. and Engerman, S. (2000) 'History lessons: institutions, factor endowments, and paths of development in the new world', Journal of Economic Perspectives, 14(3), pp. 217-232.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the extremely different environments in which European colonies were established leading to societies with varying degrees of inequality",
+        "By the specific focus on how these environmental differences affected societal inequality and institutionalization efforts by elites",
+        "With abundant land and low capital requirements enabling a majority of adults to operate as independent proprietors"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 12,
+          "text": "This path of institutional development may in turn haveaffected growth.",
+          "score": 50.847457627118644
+        },
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 2,
+          "text": "But ascribing differences in development to differences ininstitutions raises the challenge of explaining where the differences in institutionscome from.",
+          "score": 48.24561403508772
+        },
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 4,
+          "text": "What is new, however, is the specific focus on how the extremelydifferent environments in which the Europeans established their colonies may haveled to societies with very different degrees of inequality, and on how these differ-ences might have persisted over time and affected the course of developmentthrough their impact on the institutions that evolved.",
+          "score": 47.48201438848921
+        },
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 7,
+          "text": "Withabundant land and low capital requirements, the great majority of adult men wereable to operate as independent proprietors.",
+          "score": 45.493562231759654
+        },
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 7,
+          "text": "In sociedes that began with greater equalityor homogeneity among the populadon, however, efforts hy elites to insdtudonalize",
+          "score": 45.21739130434783
+        },
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 2,
+          "text": "Douglass North (1988), for example, is one of many who haveattributed the relative success of the United States and Canada to British institu-tions being more conducive to growth than those of Spain and other Europeancolonizers.",
+          "score": 44.79495268138801
+        },
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 12,
+          "text": "All of the New World societies enjoyed high levels ofproduct per capita early in their histories.",
+          "score": 44.33497536945813
+        },
+        {
+          "type": "quote",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 12,
+          "text": "Despite enormous wealth, the Britishcolonies (with the exception of Barbados) were very slow to organize schoolinginstitutions that served broad segments of the population.",
+          "score": 44.19475655430712
+        }
+      ],
+      "avg_score": 46.33,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Simson_2019",
+      "citation": "Simson, R. (2019) 'Africa's clientelist budget policies revisited: public expenditure and employment in Kenya, Tanzania and Uganda, 1960--2010', The Economic History Review, 72(4), pp. 1409-1438.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through expansion of the education system towards the end of the colonial era and into the post-colonial era (Simson_2019 p.12)",
+        "By increasing budget share for frontline service provision, such as education and health, leading to a continued growth in employment until the 1990s (Simson_2019 p.25)",
+        "As public sector jobs serve as the main instrument of patronage politics, with public goods being targeted or withheld based on political affiliations (Acemoglu and Robinson, Simson_2019 p.2)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 25,
+          "text": "Revenue and expenditure then plateaued or fellin the 1980s, or earlier in the Ugandan case, as growth slowed.",
+          "score": 47.11538461538461
+        },
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 1,
+          "text": "All three states grewand contracted in roughly the same periods as other regions of the world, althoughtheir contraction after 1980 was particularly marked.",
+          "score": 44.96124031007752
+        },
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 25,
+          "text": "On the basis of these three cases alone the correlationappears to run in the opposite direction to that proposed in the structuraladjustment and patronage literature.",
+          "score": 44.881889763779526
+        },
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 12,
+          "text": "Towards the end of the colonial era the East African governmentsbegan a rapid expansion of the education system which continued into the post-colonial era.",
+          "score": 44.62809917355372
+        },
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 25,
+          "text": "Within the wage budget, frontline serviceprovision, such as education and to a lesser extent health, claimed an increasedbudget share.",
+          "score": 44.166666666666664
+        },
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 25,
+          "text": "The level of employment continued to grow for slightly longer thanexpenditure did, but declined sharply in the 1990s as ﬁscal conditions bottomedout.",
+          "score": 43.92156862745098
+        },
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 2,
+          "text": "Acemoglu and Robinson viewpublic sector jobs as the main instrument of patronage politics because ‘[p]ublicgoods cannot be targeted to one’s friends and they cannot be withheld from one’sfoes.",
+          "score": 43.66197183098591
+        },
+        {
+          "type": "quote",
+          "doc_id": "Simson_2019",
+          "page": 25,
+          "text": "With the recovery in growth in the 2000s, the employment levels stabilized andhave recently begun to rise once more.",
+          "score": 43.60189573459716
+        }
+      ],
+      "avg_score": 44.62,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Stern_2004",
+      "citation": "Stern, D. (2004) 'The rise and fall of the environmental Kuznets curve', World Development, 32(8), pp. 1419-1439.",
+      "stance": "critiques",
+      "mechanisms": [
+        "Through the variation of coefficient estimates for high-income and low-income countries (Stern_2004 p.8)",
+        "By the decline of lack of clean water and urban sanitation with increasing income over time (Stern_2004 p.6)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 1,
+          "text": "— This paper presents a critical history of the environmental Kuznets curve (EKC).",
+          "score": 47.87234042553192
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 6,
+          "text": "They found that lack ofclean water and lack of urban sanitation declineuniformly with increasing income, and overtime.",
+          "score": 47.44186046511628
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 6,
+          "text": "This is a greater range of income levelsthan is found in the OECD-based panels forrecent decades.",
+          "score": 47.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 9,
+          "text": "Figure 2 presents projectedsulfur emissions using the EKC in Figure 1 andUN and World Bank forecasts of economic andpopulation growth.",
+          "score": 46.351931330472105
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 15,
+          "text": "The model endogenously com-putes the changes in trade over the forecasthorizon and therefore the changes in emissionsassociated with imports and exports.",
+          "score": 45.76271186440678
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 9,
+          "text": "There are no clear answers on theimpact of trade on pollution from the empiricalEKC literature.Stern et al.",
+          "score": 45.714285714285715
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 8,
+          "text": "In this case, a 10-piece spline wasﬁtted to the data such that the coeﬃcient esti-mates for high-income countries are allowed tovary from those for low-income countries.",
+          "score": 45.69288389513109
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stern_2004",
+          "page": 17,
+          "text": "The overall shape is that of their‘‘new toxics’’ EKC––a monotonic increase ofemissions in income.",
+          "score": 45.320197044334975
+        }
+      ],
+      "avg_score": 46.39,
+      "cluster": "Institutions and Economic Growth in Asia"
+    },
+    {
+      "doc_id": "Stoler_1989",
+      "citation": "Stoler, A. (1989) 'Rethinking colonial categories: European communities and the boundaries of rule', Comparative Studies in Society and History, 31(1), pp. 134-161.",
+      "stance": "tangential",
+      "mechanisms": [
+        "Through the construction of communities to sustain a particular structure and form (Stoler_1989 p.17)",
+        "By permeating political strategies with racist rationales, creating a sense of colonial community and context that supports colonial authority and specific relations of production and power (Stoler_1989 p.6, p.22)",
+        "By conflating the makers of metropole policy with its local practitioners, potentially influencing the implementation and effectiveness of policies (Stoler_1989 p.3)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 17,
+          "text": "These culturalartifices were less important than the fact that these communities were con-structed to sustain a particular structure and form.",
+          "score": 44.44444444444444
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 6,
+          "text": "It is significant that racist rationales permeated thepolitical strategies of both the corporate elite and their less-privileged Euro-pean class opposition.",
+          "score": 44.274809160305345
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 3,
+          "text": "Curiously, in spite of this innovation, the objects of our study, if notthe units of our analysis, have remained much the same.",
+          "score": 43.83561643835616
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 3,
+          "text": "While such a treatment encourages certain lines of novel enquiry, itcloses off others.",
+          "score": 43.75
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 22,
+          "text": "mestizo progency threatened the preogatives of a narrowing elite sector\"(Nash 1980:141).",
+          "score": 43.29896907216495
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 6,
+          "text": "In other words, it provides a way of creating the sense of (colonial)community and context that allows for colonial authority and for a particularset of relations of production and power.",
+          "score": 42.96296296296296
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 14,
+          "text": "The idea that anyEuropean murdered (regardless of cause) was a hero emphasized the commonenemy and shared threat.",
+          "score": 42.922374429223744
+        },
+        {
+          "type": "quote",
+          "doc_id": "Stoler_1989",
+          "page": 3,
+          "text": "The makers of metropole policy become conflated with itslocal practitioners.",
+          "score": 42.857142857142854
+        }
+      ],
+      "avg_score": 43.54,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "Whatley_2018",
+      "citation": "Whatley, W. (2018) 'The gun-slave hypothesis and the 18th century British slave trade', Explorations in Economic History, 67, pp. 80-104.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the demand for plantation labor in America and the introduction of gunpowder technology into Africa (Whatley_2018 p.2)",
+        "By the impact of British gunpowder exports on the significant increase in British slave exports (Whatley_2018 p.13)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 2,
+          "text": "Were the major determinants of growth in the international slave trade internal to Africa or external to Africa?",
+          "score": 52.132701421800945
+        },
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 11,
+          "text": "None of the variables adjust to deviations from long-run equilibrium, indicating that the model is not really one of co-integration.",
+          "score": 48.484848484848484
+        },
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 2,
+          "text": "Shocks include the American demand for plantation labor and the introduction of gunpowder technology into the African context.",
+          "score": 48.214285714285715
+        },
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 13,
+          "text": "Now British slave exports increase signiﬁcantly when British gunpowder is above long-run equilibrium: 𝛼s = .15 with a p-value of 0.053.",
+          "score": 48.06866952789699
+        },
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 13,
+          "text": "For our purposes we might want to impose constraints that explicitly capture the dynamics between gunpowder and slaves.",
+          "score": 48.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 8,
+          "text": "The 𝛼j s estimate the speed at which the variables adjust to deviations from long-run equilibrium.",
+          "score": 48.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 7,
+          "text": "23 The analysis that follows assumes that the ﬂow of gunpowder largely determines the productive capacity of the gunpowder technology.",
+          "score": 47.66355140186916
+        },
+        {
+          "type": "quote",
+          "doc_id": "Whatley_2018",
+          "page": 8,
+          "text": "The 𝜃ij s are estimates of past-dependence, or the eﬀects of changes in the past on changes in the current period.",
+          "score": 47.474747474747474
+        }
+      ],
+      "avg_score": 48.5,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "Temin_2002",
+      "citation": "Temin, P. (2002) 'The golden age of European growth reconsidered', European Review of Economic History, 6(1), pp. 3-22.",
+      "stance": "tangential",
+      "mechanisms": [
+        "The exhaustion of cheap labor caused economic growth to slow (Temin_2002 p.4)",
+        "The low share of the labor force in agriculture contributed to slow British growth during the Golden Age (Temin_2002 p.14)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 17,
+          "text": "Growth slowed in thes and s because the disequilibrium that had generated unusuallyrapid growth no longer existed.",
+          "score": 50.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 14,
+          "text": "For the slow British growth isexplained quite fully by the low share of the labour force in agriculture atthe start of the Golden Age.",
+          "score": 49.77777777777778
+        },
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 4,
+          "text": "It was the exhaustion ofcheap labour that caused economic growth to slow.",
+          "score": 48.04469273743017
+        },
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 16,
+          "text": "It can be seen also in the rate of change of the share of labourin agriculture.",
+          "score": 48.0
+        },
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 10,
+          "text": "Jones characterisedthe fast growth as growth miracles and asserted that they were most preva-lent among poorer countries, although not among the poorest.",
+          "score": 47.96747967479675
+        },
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 14,
+          "text": "These past accomplishments implied slow growthduring the Golden Age.It follows that postwar British economic policies were not the cause ofslow economic growth.",
+          "score": 47.430830039525695
+        },
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 14,
+          "text": "This decade, of course, contained theeffects of two oil shocks which disrupted the longer-run processes of interesthere.",
+          "score": 47.27272727272727
+        },
+        {
+          "type": "quote",
+          "doc_id": "Temin_2002",
+          "page": 4,
+          "text": "Many people argued thatmovements in aggregate supply led to the slowdown of growth as well ashigher inflation.",
+          "score": 47.22222222222222
+        }
+      ],
+      "avg_score": 48.21,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "Williamson_1996",
+      "citation": "Williamson, J. (1996) 'Globalization, convergence, and history', The Journal of Economic History, 56(2), pp. 277-306.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the elimination of market failures in institutionally weak countries",
+        "By the impact of cultural factors becoming a major player in the late twentieth century"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 25,
+          "text": "Understanding the sources of convergence is fundamental to under- standing who gains and who loses from convergence and thus to under- standing policy responses.",
+          "score": 47.36842105263158
+        },
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 4,
+          "text": "To answer that question, we have to agree on the meaning of convergence.",
+          "score": 47.19101123595506
+        },
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 25,
+          "text": "Second: Suppose the source of convergence lay with the elimination of some market failure in institutionally weak, rent-seeking, and price- distorted poor countries.",
+          "score": 46.96969696969697
+        },
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 20,
+          "text": "I suspect it became a major player only in the late twentieth century.",
+          "score": 46.59090909090909
+        },
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 20,
+          "text": "Does it follow that schooling also played a powerful role in the late nineteenth century?",
+          "score": 46.15384615384615
+        },
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 13,
+          "text": "Yet the real obsession of that time was instead the macroimpact of the immigrants on American employment conditions, living standards, and wages.",
+          "score": 45.833333333333336
+        },
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 25,
+          "text": "But productivity advance was not factor neutral in the late nineteenth century.",
+          "score": 45.4054054054054
+        },
+        {
+          "type": "quote",
+          "doc_id": "Williamson_1996",
+          "page": 25,
+          "text": "Bromide Number Two: Catch-up achieved by faster growth among poorer countries has much more positive welfare implications than catch-up by slower growth among richer countries.",
+          "score": 45.11278195488722
+        }
+      ],
+      "avg_score": 46.33,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "deVries_1994",
+      "citation": "De Vries, J. (1994) 'The industrial revolution and the industrious revolution', The Journal of Economic History, 54(2), pp. 249-270.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through the pruning of traditional historical organization, new growth opportunities emerge (deVries_1994 p.4)",
+        "By challenging the Renaissance and redefining the role of medievalists, a shift in historical perspective occurs (deVries_1994 p.6)",
+        "The household unit serves as the context for the realization of early modern revisionist insights (deVries_1994 p.8)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 7,
+          "text": "5, to such effect that it eventually found a place in the column fillers of the New Yorker (old style).",
+          "score": 45.853658536585364
+        },
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 17,
+          "text": "We are told every day that it no longer defines more than a small percentage of households in this country and not much more in most European countries.",
+          "score": 45.6
+        },
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 6,
+          "text": "The medievalists aimed to dethrone the Renais- sance, formed a movement of scholars committed to doing so-and failed.",
+          "score": 45.45454545454545
+        },
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 3,
+          "text": "This event is the collapse of the traditional dramatic organization of Western history.",
+          "score": 45.16129032258065
+        },
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 8,
+          "text": "No one is better at that than Joel Mokyr, and at the end of his article \"Demand vs.",
+          "score": 45.16129032258065
+        },
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 4,
+          "text": "It is as though the pruning of a tree allowed saplings long stunted by the shadows to flourish for the first time.",
+          "score": 44.339622641509436
+        },
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 8,
+          "text": "The insights of the early modem revisionists play them- selves out, nearly all of them, in the context of the household unit.",
+          "score": 44.23963133640553
+        },
+        {
+          "type": "quote",
+          "doc_id": "deVries_1994",
+          "page": 6,
+          "text": "This was no movement of angry scholars eager to drag the Industrial Revolution down from its pedestal.",
+          "score": 44.23076923076923
+        }
+      ],
+      "avg_score": 45.01,
+      "cluster": "Institutions and Agriculture"
+    },
+    {
+      "doc_id": "vanZanden_1999",
+      "citation": "Van Zanden, J. (1999) 'Wages and the standard of living in Europe, 1500--1800', European Review of Economic History, 3(2), pp. 175-197.",
+      "stance": "complicates",
+      "mechanisms": [
+        "Through the intrinsic value of coinage and exchange rates (vanZanden_1999 p.6)",
+        "By the dominant use of rye in eastern and central Europe affecting available data series (vanZanden_1999 p.6)",
+        "Via the decision-making process of households influenced by significant exogenous 'inputs' (vanZanden_1999 p.18)"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 6,
+          "text": "Itcan be assumed that in the long run there was a link between the rate ofexchange and the intrinsic value of the coinage.",
+          "score": 49.074074074074076
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 6,
+          "text": "In eastern andcentral Europe, where rye was dominant, it is difficult to find other seriesthan those for rye.",
+          "score": 47.44186046511628
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 15,
+          "text": "nominalwages deflated by an index of the cost of living (or a composite unit ofconsumables as they like to call it).",
+          "score": 45.662100456621005
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 1,
+          "text": "This also has implications for the hypothesis that an 'industriousrevolution' occurred in Western Europe during this period.",
+          "score": 45.21739130434783
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 18,
+          "text": "Recent anthropometric research has for example shown that duringearly industrialisation the 'biological standard of living' (i.e.",
+          "score": 45.1063829787234
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 15,
+          "text": "But an even more important problem isthat in the long run the prices of wheat and rye may have developeddifferently from those of other commodities.",
+          "score": 44.534412955465584
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 18,
+          "text": "As probably the most significant exogenous 'input' intothe decision making process of these households, it affected all other optionsfaced by the members of the household.",
+          "score": 44.3609022556391
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_1999",
+          "page": 4,
+          "text": "But the link between the two isless direct than the first generation of wage studies supposed.",
+          "score": 43.75
+        }
+      ],
+      "avg_score": 45.64,
+      "cluster": "Other"
+    },
+    {
+      "doc_id": "vanZanden_2009",
+      "citation": "Van Zanden, J. (2009) 'The skill premium and the ‘Great Divergence’', European Review of Economic History, 13(1), pp. 121-153.",
+      "stance": "supports",
+      "mechanisms": [
+        "Through human capital formation, culture potentially impacts long-term economic growth",
+        "The skill premium in the construction industry is influenced by institutional efficiency and guild organization",
+        "The 'Great Divergence' between demographic growth and skill premium could be a result of factor endowments and institution quality"
+      ],
+      "quotes": [
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 24,
+          "text": "Effects on economic growth?New growth theory postulates that human capital formation is one of thedeterminants of long-term economic growth.",
+          "score": 48.717948717948715
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 4,
+          "text": "This will probably lead to a rising skill premiumin the construction industry in periods of growth and a decline in periodsof recession.",
+          "score": 46.413502109704645
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 3,
+          "text": "The skill premium and the ‘Great Divergence’123the factor endowments and the relative efﬁciency of institutions in general.Finally, the construction industry was in large parts of Europe organisedin guilds.",
+          "score": 45.57823129251701
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 21,
+          "text": "Perhaps the ‘delinking’between demographic growth and the skill premium occurring in the NorthSea area in the ﬁfteenth century is more striking than the continuation ofthis link in the rest of Europe.",
+          "score": 44.285714285714285
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 27,
+          "text": "A low skillpremium also seems to point to relatively high levels of investment in humancapital, which, following endogenous growth theory, will result in long-termeconomic growth.",
+          "score": 43.727598566308245
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 1,
+          "text": "The explanation for these global patterns focuses onfactor proportions, the quality of institutions and demand-related factors.Moreover, it is argued that the skill premium measured in this way is also apredictor of long-term economic performance.1.",
+          "score": 43.47826086956522
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 21,
+          "text": "The existence of guilds could not guarantee the long-term stability ofthe skill premium at the 50–60 per cent level that was typical of ﬁfteenth-century Europe.",
+          "score": 43.24324324324324
+        },
+        {
+          "type": "quote",
+          "doc_id": "vanZanden_2009",
+          "page": 24,
+          "text": "If this is correct, one wouldexpect that the different conditions for human capital formation, reﬂectedin the differences in the skill premium analysed in this article, have affectedlong-term economic growth.",
+          "score": 42.95302013422819
+        }
+      ],
+      "avg_score": 44.8,
+      "cluster": "Institutions and Agriculture"
+    }
+  ],
+  "restarts_required": 0
+}

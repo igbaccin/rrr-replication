@@ -1,0 +1,15 @@
+{
+  "n_strict_citations": 0,
+  "n_loose_citations": 3,
+  "n_total_citation_like": 3,
+  "e1": 1,
+  "e1_strict_fabricated": 0,
+  "corpus_matches": 2,
+  "e2": "N/A",
+  "e3": 0,
+  "n_docs_cited": 2,
+  "word_count": 623,
+  "run": 10,
+  "elapsed_s": 8.3,
+  "refusal": false
+}

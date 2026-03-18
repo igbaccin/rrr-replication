@@ -1,0 +1,28 @@
+{
+  "n_e2_events": 2,
+  "docs_affected": [
+    "Komlos_1998",
+    "North_1989"
+  ],
+  "ref_truncation_count": 0,
+  "rows": [
+    {
+      "doc_id": "North_1989",
+      "cited_page": 27,
+      "max_valid_page": 12,
+      "overshoot": 15,
+      "context": "a wider framework, underscoring their collective impact on economic development (North_1989: p.27).  Similarly, Jan de Vries (1994) argues that Europe's urban network, connecting",
+      "run_id": "run_010",
+      "diagnosis": "large_overshoot"
+    },
+    {
+      "doc_id": "Komlos_1998",
+      "cited_page": 793,
+      "max_valid_page": 17,
+      "overshoot": 776,
+      "context": "olution as an indicator of economic processes and associated structural changes (Komlos_1998: p.793). This suggests that while institutions may not be the sole determinant, they co",
+      "run_id": "run_082",
+      "diagnosis": "large_overshoot"
+    }
+  ]
+}

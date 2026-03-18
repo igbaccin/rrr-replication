@@ -1,0 +1,32 @@
+{
+  "n_citations": 22,
+  "e1": 0,
+  "e2": 0,
+  "e3": 7,
+  "docs_cited": [
+    "Akyeampong&Fofack_2014",
+    "Broadberry&Gardner_2022",
+    "Bryant_2006",
+    "Frankema_2012",
+    "Hopkins_2009",
+    "Humphries_2013",
+    "Komlos_1998",
+    "Kuznets_1973",
+    "Lindert&Williamson_1985",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "Sokoloff&Engerman_2000",
+    "Temin_2002",
+    "deVries_1994",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 19,
+  "word_count": 2505,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

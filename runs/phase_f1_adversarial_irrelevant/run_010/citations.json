@@ -1,0 +1,29 @@
+{
+  "n_citations": 26,
+  "e1": 0,
+  "e2": 0,
+  "e3": 1,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "Akyeampong&Fofack_2014",
+    "Austin_2007",
+    "Austin_2008",
+    "Broadberry&Gardner_2022",
+    "BroadberryEtal_2015",
+    "Bryceson_2002",
+    "Clark&Jacks_2007",
+    "Lindert&Williamson_1985",
+    "North_1989",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "Sokoloff&Engerman_2000",
+    "Stern_2004",
+    "Temin_2002"
+  ],
+  "n_docs_cited": 16,
+  "word_count": 1701,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

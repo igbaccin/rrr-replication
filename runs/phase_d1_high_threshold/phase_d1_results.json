@@ -1,0 +1,272 @@
+{
+  "summary": {
+    "phase": "phase_d1",
+    "n_runs": 20,
+    "n_completed": 0,
+    "n_refused": 20,
+    "refusal_rate_pct": 100.0,
+    "refusal_reasons": {
+      "insufficient_global_evidence": 20
+    },
+    "e1": {
+      "mean": 0,
+      "sd": 0,
+      "min": 0,
+      "max": 0
+    },
+    "e2": {
+      "mean": 0,
+      "sd": 0,
+      "min": 0,
+      "max": 0
+    },
+    "e3": {
+      "mean": 0,
+      "sd": 0,
+      "min": 0,
+      "max": 0
+    },
+    "words": {
+      "mean": 0,
+      "sd": 0,
+      "min": 0,
+      "max": 0
+    },
+    "docs_cited": {
+      "mean": 0,
+      "sd": 0,
+      "min": 0,
+      "max": 0
+    },
+    "zero_fab_pct": 0,
+    "zero_err_pct": 0,
+    "jaccard": {
+      "mean": 0,
+      "min": 0,
+      "max": 0
+    },
+    "core_docs": []
+  },
+  "per_run": [
+    {
+      "run_id": "run_001",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_002",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_003",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_004",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_005",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_006",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_007",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_008",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_009",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_010",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_011",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_012",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_013",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_014",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_015",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_016",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_017",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_018",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_019",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    },
+    {
+      "run_id": "run_020",
+      "refusal": true,
+      "reason": "insufficient_global_evidence",
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "n_citations": 0,
+      "n_docs_cited": 0,
+      "word_count": 0
+    }
+  ]
+}

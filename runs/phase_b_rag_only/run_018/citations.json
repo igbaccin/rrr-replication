@@ -1,0 +1,55 @@
+{
+  "n_citations": 40,
+  "e1": 2,
+  "e2": 0,
+  "e3": 4,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Akyeampong&Fofack_2014",
+    "Allen_2001",
+    "Austin_2007",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Bolt&vanZanden_2014",
+    "Braudel&Wallerstein_2009",
+    "Broadberry&Gardner_2022",
+    "Broadberry&Gupta_2006",
+    "Bryant_2006",
+    "Domar_1970",
+    "Feinstein_1998",
+    "Frankema_2012",
+    "Goldin_2006",
+    "Hopkins_2019",
+    "Humphries_2013",
+    "Komlos_1998",
+    "Kuznets_1973",
+    "Lindert&Williamson_1985",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Simson_2019",
+    "Skocpol&Sommers_1980",
+    "Sokoloff&Engerman_2000",
+    "Stoler_1989",
+    "Whatley_2018",
+    "Williamson_1996"
+  ],
+  "n_docs_cited": 31,
+  "word_count": 2263,
+  "e1_details": [
+    {
+      "doc_id": "1989",
+      "page": 2,
+      "context": "s, notably North & Weingast (1989) and Acemoglu et al. (2001). North & Weingast (1989: p.2) assert that the fundamental institutions of representative government, such as"
+    },
+    {
+      "doc_id": "1989",
+      "page": 1,
+      "context": "-governance, and rules established through an institutionalized process.  North (1989: p.1) emphasizes the importance of institutions in reducing transaction costs, thereb"
+    }
+  ],
+  "e2_details": [],
+  "refusal": false
+}

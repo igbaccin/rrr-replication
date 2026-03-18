@@ -1,0 +1,32 @@
+{
+  "n_citations": 30,
+  "e1": 0,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "Akyeampong&Fofack_2014",
+    "Allen_2001",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Broadberry&Gardner_2022",
+    "Bryceson_2002",
+    "Frankema_2012",
+    "Hopkins_2019",
+    "Kuznets_1973",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "Stern_2004",
+    "Temin_2002",
+    "vanZanden_1999"
+  ],
+  "n_docs_cited": 19,
+  "word_count": 2502,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

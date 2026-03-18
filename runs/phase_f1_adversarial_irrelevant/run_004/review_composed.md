@@ -1,0 +1,55 @@
+The debate surrounding the role of institutions in long-run economic growth has been a subject of intense discussion among economists and historians. The question at hand is whether institutions are crucial determinants of economic progress over extended periods, or if they play a minimal role in this regard.
+
+On one side of the argument, proponents such as Acemoglu et al. (AcemogluEtAl_2001: p.8) argue that institutional persistence is significant and can hinder investment and economic advancement. For instance, they assert that certain institutions were detrimental to progress in various regions (Acemoglu et al. 2001: p.27). Similarly, North & Weingast (North&Weingast_1989: p.7) contend that absolutist states with weak property rights and limited economic freedom stunted long-term growth.
+
+Conversely, others question the centrality of institutions in explaining economic growth. Hopkins (Hopkins_2009: p.11), for example, posits that institutions are intricately intertwined with other factors, making it difficult to isolate their impact on growth. Furthermore, Ogilvie (Ogilvie_2007: p.11) suggests that cultural beliefs and values can shape institutional structures, implying that they may not be the primary drivers of economic progress.
+
+The stakes in this debate are high, as understanding the factors influencing long-term economic growth is essential for policymakers aiming to foster development and reduce poverty. The ongoing discussion highlights the need for further research to clarify the role institutions play in shaping economic growth trajectories over extended periods.
+
+The assertion that institutions are inconsequential to long-run economic growth is substantiated by various scholars, as evidenced by their findings on the role of cultural factors, institutional entanglements, and historical events in shaping economic trajectories.
+
+Ogilvie (Ogilvie_2007: p.12) posits that certain 'civic' cultures encourage institutions conducive to economic growth and political accountability. Yet, he also acknowledges the significance of macro-inventions and path dependency in Britain's industrialization and subsequent economic growth (Ogilvie_2007: p.11). This suggests that while institutions may play a role, other factors such as technological advancements and historical circumstances can significantly impact long-term economic growth.
+
+He further argues that in regions where the European presence was marginal or took the form of colonial rule, unproductive institutions persisted (Hopkins_2009: p.10). This implies that external factors can influence the development and effectiveness of institutions, potentially overshadowing their impact on long-term economic growth.
+
+Abramovitz (Abramovitz_1986: p.21) notes a widespread belief that institutional changes are limiting the growth of Western countries, suggesting that even within developed economies, institutions may not be the primary drivers of long-run economic growth. Furthermore, his research focuses on countries that have successfully entered into modern economic growth, implying that less successful economies may exhibit different patterns (Abramovitz_1986: p.11).
+
+In a similar vein, Nunn (Nunn_2008: p.3) demonstrates that the slave trades had an adverse effect on economic development, suggesting that historical events can significantly impact institutional development and long-term economic growth. Whatley (Whatley_2018: p.11) also supports this notion by examining the effects of gunpowder and slave exports on economic adjustment parameters.
+
+Moreover, he suggests that demand-related factors can significantly influence economic performance (vanZanden_2009: p.1).
+
+Structural change, defined as the shift from agrarian to industrial economies, has been identified as a significant contributor to long-term economic growth (Austin_2008: p.4). This transition, which occurred predominantly in Europe and North America, was not solely driven by institutional changes but also by demand-related factors such as resource endowments and population growth (Austin_2008: p.26).
+
+The importance of these structural changes is further emphasized by Mokyr (2005), who argues that the Industrial Revolution, although not entirely British, was the 'taproot' of modern economic growth (Mokyr_2005: p.3). He suggests that nationalism, protectionism, and economic etatism were responses to the Enlightenment, not an inevitable corollary (Mokyr_2005: p.55).
+
+Feinstein (1998) also supports this argument by demonstrating a long plateau in Europe's economic growth that is consistent with other economic, political, and demographic indicators (Feinstein_1998: p.2). This suggests that institutional factors may not have been the primary drivers of this growth during this period.
+
+Broadberry & Gupta (2006) generalize these findings to encompass Asia, showing that in India and China, grain wages were comparable to those in north-western Europe, but silver wages were substantially lower (Broadberry&Gupta_2006: p.25). This implies that institutional differences may not have significantly impacted long-term economic growth in these regions.
+
+Austin (2007) also supports this perspective by highlighting the transition from slave to free labor, which led to an increase in absolute laborer income despite a concurrent increase in landowner bargaining power (Austin_2007: p.2). This shift, driven more by structural changes than institutional ones, contributed to long-term economic growth.
+
+The assertion that institutions are irrelevant to long-run economic growth is further supported by the examination of gender inequality and its relationship with economic development. In the context of Africa, Broadberry & Gardner (2022) argue that the continent's economic growth was not solely dependent on European colonial interventions but rather started much earlier, with open access to economic rents for all members of society (Broadberry&Gardner_2022: p.17). This suggests that structural changes, such as the absence of restrictive institutions, contributed significantly to long-term growth in Africa.
+
+Goldin's (2006) study on labor and gender identities also supports this argument. Goldin (Goldin_2006: p.3) notes that the study of labor was once focused on institutions within the labor market, but her work demonstrates a shift towards understanding the role of structural changes in shaping labor economics, particularly labor supply. Additionally, Goldin's research reveals that gender stereotyping can be avoided when examining non-agricultural specializations (Goldin_2006: p.13), suggesting that institutions may not be essential for economic growth.
+
+Bryceson's (2002) work on African peasantries further supports this perspective. Bryceson (Bryceson_2002: p.2) emphasizes the importance of considering policies' effects on peasantries themselves, rather than focusing solely on institutional changes. Furthermore, Bryceson's research indicates that gender stereotyping can be minimized by identifying village non-agricultural specializations (Bryceson_2002: p.13). This finding suggests that structural changes, rather than institutions, may play a more significant role in economic growth.
+
+Structural changes, rather than institutions, may not be the sole determinants of long-run economic growth as argued earlier (Bryceson_2002: p.13). Instead, some scholars argue that institutions play a crucial role in shaping economic development over the long term.
+
+Hopkins (2019) critiques the idea that structural changes are the primary drivers of economic growth, particularly in African societies. He posits that during periods of economic instability, institutions become more significant and can even assume a new importance (Hopkins_2019: p.9). Furthermore, he argues that class conflict offers limited insight into long-term movements within African societies, suggesting that other institutional factors may be at play (Hopkins_2019: p.8).
+
+Similarly, van Zanden (1999) challenges the notion that structural changes are the primary drivers of economic growth. He argues that the wage rate is exogenous for households and cannot be influenced by them in the short or long run (vanZanden_1999: p.4). This implies that institutions, such as labor markets and wage-setting mechanisms, have a significant impact on household welfare and, consequently, economic growth over the long term.
+
+While van Zanden (1999) posits that institutions significantly impact household welfare and long-term economic growth, Pamuk (2007) complicates this perspective by highlighting the role of institutional flexibility in facilitating adaptation to changing economic conditions.
+
+Pamuk (Pamuk_2007: p.23) asserts that the rapid response of late medieval Holland to new economic opportunities was due to its unusual degree of institutional flexibility. This suggests that, contrary to van Zanden's assertion, not all institutions may hinder or promote growth equally; instead, the adaptability of institutions could play a crucial role in long-term economic development.
+
+Furthermore, Pamuk (Pamuk_2007: p.25) contends that countries or regions with more flexible structures and institutions adapted more readily to changing conditions and relative prices. This implies that institutional rigidity may hinder a region's ability to capitalize on new economic opportunities, thereby potentially hindering long-term growth.
+
+Pamuk (Pamuk_2007: p.24) also suggests a number of important changes that emerged in a high-wage environment and contributed to the long-term economic development of Europe. This underscores the idea that institutions may not be irrelevant to long-run economic growth, but rather, the ability of institutions to facilitate structural change could be key.
+
+The literature review on the relevance of institutions to long-run economic growth presents a complex picture, with scholars offering nuanced perspectives that both support and challenge the notion of institutional irrelevance. North (1989) emphasizes the role of institutions in facilitating structural change and reducing transaction costs, which can contribute to economic growth. However, he does not explicitly argue that institutions are the primary driver of long-term economic development.
+
+Temin (2002) focuses on historical factors such as labor exhaustion and disequilibrium, which led to rapid economic growth in Europe. While these factors may have indirectly influenced institutional development, they do not directly address the role of institutions in long-run economic growth. Similarly, Bohannan (1959) discusses the impact of Western economic institutions on African societies but does not explicitly connect this to long-term economic growth.
+
+Sokoloff & Engerman (2000) suggest that initial factor endowments and subsequent institutional development may have affected long-run economic growth, but they do not argue that institutions are irrelevant to this process. Instead, they highlight the need for further research into the specific ways in which institutions interact with factor endowments to influence economic growth.

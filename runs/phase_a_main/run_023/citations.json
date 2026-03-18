@@ -1,0 +1,32 @@
+{
+  "n_citations": 24,
+  "e1": 0,
+  "e2": 0,
+  "e3": 4,
+  "docs_cited": [
+    "AllenEtAl_2011",
+    "Allen_2001",
+    "Austin_2007",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Broadberry&Gardner_2022",
+    "Domar_1970",
+    "Frankema_2012",
+    "Hopkins_2019",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Nunn&Wantchekon_2011",
+    "Nunn_2008",
+    "Pamuk_2007",
+    "Simson_2019",
+    "Stern_2004",
+    "deVries_1994",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 19,
+  "word_count": 2264,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

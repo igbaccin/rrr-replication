@@ -1,0 +1,43 @@
+{
+  "n_citations": 36,
+  "e1": 1,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Akyeampong&Fofack_2014",
+    "AllenEtAl_2011",
+    "Austin_2007",
+    "Bohannan_1959",
+    "Bolt&vanZanden_2014",
+    "Braudel&Wallerstein_2009",
+    "Broadberry&Gardner_2022",
+    "Bryceson_2002",
+    "Clark&Jacks_2007",
+    "Domar_1970",
+    "Feinstein_1998",
+    "Frankema_2012",
+    "Goldin_2006",
+    "Koepke&Baten_2005",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Nunn&Wantchekon_2011",
+    "Ogilvie_2007",
+    "Peters_2004",
+    "Sokoloff&Engerman_2000"
+  ],
+  "n_docs_cited": 24,
+  "word_count": 2364,
+  "e1_details": [
+    {
+      "doc_id": "2001",
+      "page": 4,
+      "context": "itself, implying that institutions play a role in fostering such growth. Allen (2001: p.4) also highlights that wages and prices have long been central concerns of econom"
+    }
+  ],
+  "e2_details": [],
+  "refusal": false
+}

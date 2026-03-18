@@ -1,0 +1,22 @@
+{
+  "n_citations": 15,
+  "e1": 0,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "AcemogluEtAl_2002",
+    "Austin_2008",
+    "Feinstein_1998",
+    "Hopkins_2009",
+    "North_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Whatley_2018",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 9,
+  "word_count": 1623,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

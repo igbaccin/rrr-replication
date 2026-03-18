@@ -1,0 +1,24 @@
+{
+  "n_citations": 14,
+  "e1": 0,
+  "e2": 0,
+  "e3": 1,
+  "docs_cited": [
+    "Austin_2008",
+    "Feinstein_1998",
+    "Humphries_2013",
+    "Lindert&Williamson_1985",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Pamuk_2007",
+    "Peters_2004",
+    "Stern_2004",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 11,
+  "word_count": 1472,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

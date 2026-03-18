@@ -1,0 +1,24 @@
+{
+  "n_citations": 21,
+  "e1": 0,
+  "e2": 0,
+  "e3": 2,
+  "docs_cited": [
+    "AcemogluEtAl_2002",
+    "AllenEtAl_2011",
+    "Austin_2008",
+    "Feinstein_1998",
+    "Hopkins_2009",
+    "Humphries_2013",
+    "Mokyr_2005",
+    "North_1989",
+    "Ogilvie_2007",
+    "Peters_2004",
+    "Whatley_2018"
+  ],
+  "n_docs_cited": 11,
+  "word_count": 1710,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

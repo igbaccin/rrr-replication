@@ -1,0 +1,28 @@
+{
+  "n_citations": 23,
+  "e1": 0,
+  "e2": 0,
+  "e3": 5,
+  "docs_cited": [
+    "Bohannan_1959",
+    "Domar_1970",
+    "Frankema&vanWaijenburg_2012",
+    "Frankema_2012",
+    "Hopkins_2009",
+    "Lindert&Williamson_1985",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Nunn_2008",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "Williamson_1996",
+    "deVries_1994"
+  ],
+  "n_docs_cited": 15,
+  "word_count": 2096,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

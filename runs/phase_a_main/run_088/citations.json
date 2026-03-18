@@ -1,0 +1,26 @@
+{
+  "n_citations": 28,
+  "e1": 0,
+  "e2": 0,
+  "e3": 4,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Akyeampong&Fofack_2014",
+    "AllenEtAl_2011",
+    "Allen_2001",
+    "Bohannan_1959",
+    "Bolt&vanZanden_2014",
+    "Broadberry&Gardner_2022",
+    "Domar_1970",
+    "Kuznets_1973",
+    "North&Weingast_1989",
+    "Simson_2019",
+    "Stoler_1989",
+    "Temin_2002"
+  ],
+  "n_docs_cited": 13,
+  "word_count": 2050,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

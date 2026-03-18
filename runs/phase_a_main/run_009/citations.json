@@ -1,0 +1,33 @@
+{
+  "n_citations": 33,
+  "e1": 0,
+  "e2": 0,
+  "e3": 3,
+  "docs_cited": [
+    "Abramovitz_1986",
+    "AcemogluEtAl_2001",
+    "AcemogluEtAl_2002",
+    "Bohannan_1959",
+    "Braudel&Wallerstein_2009",
+    "Bryant_2006",
+    "Bryceson_2002",
+    "Clark&Jacks_2007",
+    "Domar_1970",
+    "Feinstein_1998",
+    "Frankema_2012",
+    "Hopkins_2009",
+    "Kuznets_1973",
+    "Lindert&Williamson_1985",
+    "McCloskey_2015",
+    "Mokyr_2005",
+    "Nunn&Wantchekon_2011",
+    "Temin_2002",
+    "deVries_1994",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 20,
+  "word_count": 2309,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

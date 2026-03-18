@@ -1,0 +1,142 @@
+[Layered-T2] score_query=institutions economic growth long-run fundamental cause
+[Layered-T2] starting per-document sweep over 50 docs (concurrency=2)
+[Layered-T2] clustering mechanisms...
+[Clustering] 104 mechanisms -> 12 clusters (96 assigned, 8 to Other)
+[Layered-T2] per-document sweep complete: 49 docs summarised
+[Layered-T2] stance distribution: {'supports': 22, 'complicates': 20, 'tangential': 2, 'critiques': 5}
+
+[Layered-T2] wrote: runs/review_narrative.md and runs/review_ledger.json
+[Layered-T2] appendix: runs/T2_review.md
+[Layered-T2] composing long-form literature review...
+[Writer] Stance distribution: {'supports': 22, 'complicates': 20, 'tangential': 2, 'critiques': 5}
+[Writer] Adaptive clusters: supports=3, critiques=1, complicates=3
+[Writer] Generating 9 sections (opening + 7 stance sections + closing)...
+[Writer] Opening: 356 words
+[Writer] SUPPORTS/Institutional Change and Economic Performance: 237 words
+[Writer] SUPPORTS/Institutions and Data Analysis: 245 words
+[Writer] SUPPORTS/Other: 184 words
+[Writer] CRITIQUES/Institutions and Agriculture: 238 words
+=== DEBUG: AUSTIN IN THIS CHUNK ===
+Stance: complicates, Cluster: Institutional Change and Economic Performance
+Allowed list:
+  - Austin_2008: p.1, p.3, p.4, p.24, p.25, p.26
+  - Temin_2002: p.4, p.7, p.14, p.16
+  - Lindert&Williamson_1985: p.1, p.2, p.8, p.9, p.14, p.25
+  - Williamson_1996: p.2, p.4, p.15, p.16, p.17, p.20
+  - vanZanden_1999: p.1, p.2, p.4, p.6, p.13
+=== END DEBUG ===
+[Writer] COMPLICATES/Institutional Change and Economic Performance: 271 words
+[Writer] COMPLICATES/Institutions and Colonialism: 235 words
+[Writer] COMPLICATES/Institutions and Industrialization: 232 words
+[Writer] Closing: 243 words
+[Writer] review_composed.md written (2241 words).
+[Writer] stats: chunks=9 distinct_docs=27 repairs=0 AJR=0 case=0 removed=0
+[Layered-T2] composed review written at: runs/review_composed.md
+
+================================================================================
+LONG-FORM LITERATURE REVIEW
+================================================================================
+
+The question of whether institutions are the fundamental cause of long-term economic growth has sparked extensive debate among scholars. This discussion is crucial as it sheds light on the factors that drive growth and development in various regions over time.
+
+Supporting this thesis, Kuznets (1973) argues that rapid changes in economic structure, along with social innovations, are major factors contributing to both economic and social growth (Kuznets_1973: p.4). North & Weingast (1989) also support this view, emphasizing the relationship between representative government, multiple veto points, and the development of markets (North&Weingast_1989: p.2). Acemoglu et al. (2001) further assert that certain institutions can either promote or hinder investment and economic progress (AcemogluEtAl_2001: p.27).
+
+On the other hand, Austin (2008) complicates this argument by suggesting that while institutions play a significant role in economic growth, they may not always be the primary cause (Austin_2008: p.24). For instance, he argues that trades such as the Atlantic slave trade reinforced rather than originated Africa's relatively poor economic position compared to Western Europe (Austin_2008: p.24).
+
+Broadberry & Gardner (2022) also add nuance to this discussion, pointing out that a lack of data on aggregate economic performance before 1950 has led to Sub-Saharan Africa's absence from recent debates about comparative long-run growth (Broadberry&Gardner_2022: p.1). Komlos (1998) also complicates the issue by arguing that while socio-economic changes associated with modern economic growth were sufficient to bring about declines in physical stature, they may not have been the sole cause (Komlos_1998: p.17).
+
+As this literature review demonstrates, the debate over whether institutions are the fundamental cause of long-term economic growth is complex and multifaceted. While some scholars argue that institutions play a crucial role in driving growth, others suggest that other factors such as trade or socio-economic changes may also be significant contributors. The stakes of this debate are high, as understanding the factors that drive economic growth can help policymakers design effective strategies to promote development and reduce poverty. This discussion continues as scholars continue to explore the role of institutions in long-term economic growth and development.
+
+The role of institutions in long-term economic growth and development is further underscored by the works of scholars such as North & Weingast (1989) and Mokyr (2005). North & Weingast (1989) emphasize that the fundamental institutions of representative government, including multiple veto points and the primacy of common law courts over economic affairs, are crucial for the development of markets and long-run economic success. They argue that these institutions enable a balance between the concentrated and dispersed interests, which in turn fosters economic growth (North&Weingast_1989: p.28).
+
+Mokyr (2005) also supports this view by suggesting that changes in intellectual realm, particularly the development of useful knowledge, have significantly contributed to the change in the rate and nature of economic growth in the West. He argues that the Industrial Revolution after 1760 took its time to start affecting GDP per capita in the West due to the gradual diffusion of new ideas (Mokyr_2005: p.3).
+
+Moreover, Hopkins (2009) and vanZanden (2009) provide evidence supporting the relationship between institutions and economic growth. Hopkins (2009) highlights that ethnic fragmentation may not always be responsible for unproductive institutions, as other causes of solidarity and motives for action should be considered (Hopkins_2009: p.22). On the other hand, vanZanden (2009) suggests that fundamental changes in labor markets, such as a lower skill premium, can contribute to economic growth due to better integration and less segmentation of labor markets (vanZanden_2009: p.23).
+
+Institutional arrangements significantly influence long-term economic growth, as supported by various scholars. Douglas North (1989) emphasizes the importance of institutions in reducing transaction costs and promoting capital market development, which ultimately contributes to economic growth (North_1989: p.9). Similarly, Sokoloff and Engerman (2000) argue that initial conditions, particularly institutional factors, have had profound and enduring impacts on long-run economic growth (Sokoloff&Engerman_2000: p.4).
+
+In the context of Africa, Frankema and van Waijenburg (2012) highlight how West African commercial centers attracted large economic migrants, leading to population growth rates exceeding 3% per annum in cities like Accra (Frankema&vanWaijenburg_2012: p.15). This influx of labor contributed to the real wage rise and economic development in these regions.
+
+Broadberry and Gupta (2006) also underscore the role of institutions in shaping economic growth, suggesting that service sector development played a crucial role during the early modern period (Broadberry&Gupta_2006: p.9). They further argue that differences in living standards across parts of Asia and Europe cannot be solely attributed to grain wages, indicating the importance of institutional factors in driving economic development.
+
+Nunn and Wantchekon (2011) provide evidence for both internal and external channels through which institutions impact economic growth (Nunn&Wantchekon_2011: p.4). Their research suggests that the internal channel, which refers to the influence of institutions on domestic policies and behaviors, is at least twice as large as the external channel, demonstrating the significant role of institutions in shaping long-term economic growth.
+
+Institutions play a pivotal role in shaping long-term economic growth, as demonstrated by various studies. Acemoglu et al. (2001) argue that fundamental institutions have a significant impact on property rights and investment, leading to either economic progress or stagnation (AcemogluEtAl_2001: p.27). They also emphasize that differences in mortality rates are not the primary cause of institutional variations (AcemogluEtAl_2001: p.3), highlighting the internal factors influencing institutional development.
+
+Similarly, Ogilvie (2007) discusses the interdependency of economic institutions within a broader framework and their resistance to external encroachment (Ogilvie_2007: p.27). This study acknowledges that economists have been making efforts to bring institutions into economic analysis, recognizing their indispensable role in understanding long-term growth patterns (Ogilvie_2007: p.3).
+
+These findings support the contention that institutions are indeed the fundamental cause of long-run economic growth. The internal channel, through which institutions influence domestic policies and behaviors, is evidently significant, as demonstrated by Acemoglu et al. (2001) and Ogilvie (2007). Future investigations may delve deeper into understanding the specific mechanisms through which institutions shape economic growth and the factors influencing their persistence over time.
+
+The argument that institutions are the primary cause of long-run economic growth faces challenge when considering the impact of ideas and ideologies on economic development, particularly in France and Spain during critical periods. McCloskey (2015) suggests that reactionary parties in France, uninterested in economic growth but focused on imposing a rigid form of Catholicism, hindered economic progress for two centuries after the Unfinished Revolution of 1789 (McCloskey_2015: p.9). Similarly, in Spain, economic growth was throttled despite the examples of the Dutch and British (McCloskey_2015: p.9). These instances demonstrate that ideological factors can significantly influence economic development, potentially challenging the emphasis on institutions as the primary driver of long-term growth.
+
+Moreover, Feinstein (1998) notes that in rural areas, changes in farming were not sufficient to alleviate labor surplus until the 1850s and 1860s, which may suggest that agricultural conditions could have a substantial impact on economic growth over extended periods (Feinstein_1998: p.28). This finding challenges the assertion that institutions are the fundamental cause of long-run economic growth, as it implies that factors related to agriculture and labor markets might play a more significant role in shaping economic development than previously assumed.
+
+These studies highlight the importance of considering ideological and agricultural factors when examining the relationship between institutions and economic growth. Further exploration into these areas may provide valuable insights into the complex interplay between various factors contributing to long-term economic development.
+
+The literature further substantiates the notion that institutions play a pivotal role in long-run economic growth, yet complicates this perspective by introducing various factors that intertwine with institutional change and economic performance.
+
+Austin (2008) posits that institutions are indeed significant for long-term economic growth but argues against the notion that these institutions solely originated economic differences among regions such as Africa compared to Western Europe. Instead, he suggests examining growth theories within a historical context to reveal recurring relationships due to similar situations or path dependencies (Austin_2008: p.1). This perspective underscores the importance of considering institutional change over time and its impact on economic development.
+
+Temin (2002) complicates the argument by suggesting that economic growth can be hindered by factors other than institutions, such as labor market characteristics and external events like oil shocks (Temin_2002: p.4). For example, he proposes that the exhaustion of cheap labor caused economic growth to slow in certain regions, rather than institutions being the primary cause (Temin_2002: p.4). This perspective emphasizes the need to consider various factors contributing to long-term economic development beyond just institutional change.
+
+Lindert & Williamson (1985) also add nuance to the argument by exploring the relationship between inequality and growth, suggesting that policymakers often overlooked this connection in their pursuit of economic growth (Lindert&Williamson_1985: p.1). They argue that understanding the causal direction between inequality and growth is essential for developing effective policies aimed at promoting long-term economic development (Lindert&Williamson_1985: p.8). This perspective highlights the importance of considering both institutional change and income distribution when examining the relationship between institutions and economic growth.
+
+The relationship between institutions and long-run economic growth is further nuanced when considering the impact of colonialism. Colonial education, as argued by Bolt and Bezemer (2009), played a significant role in explaining long-term growth disparities in Africa, with former British colonies exhibiting faster growth due to their educational lead (Frankema_2012: p.2). This suggests that the institutional legacies of colonial education may have contributed to economic development in some regions.
+
+Moreover, the study of labor was once heavily influenced by the institutions of the labor market (Goldin_2006: p.3). The distinction between evolution and revolution in this context pertains to three aspects of women’s choices and decisions (Goldin_2006: p.1). This highlights the importance of understanding how institutional changes related to labor markets can impact economic growth.
+
+Furthermore, the comparison between Japan and China, as presented by Moulder in Skocpol & Sommers (1980), reveals the particularities of the cases (Skocpol&Sommers_1980: p.9). This comparison underscores the importance of selecting appropriate case studies when examining the relationship between institutions and economic growth, as the chosen cases can significantly shape the findings.
+
+Lastly, Stoler (1989) argues that colonizers lived in "imagined communities" designed to overcome economic and social disparities (Stoler_1989: p.5). This perspective suggests that institutional arrangements during colonial times may have been intentionally structured to facilitate economic growth, further complicating our understanding of the relationship between institutions and long-run economic development.
+
+Institutions and Industrialization played significant roles in shaping long-run economic growth, as suggested by various scholars. Simson (2019) highlights the emphasis placed on industrial development, educational expansion, and military autonomy during colonial times in several African countries (Simson_2019: p.27). This focus on industrialization might have contributed to the observed economic growth in these regions during the 1960s and 1970s, as well as their recovery in the 2000s (Simson_2019: p.25, p.4).
+
+Moreover, Hopkins (2019) discusses how the economic base in Africa appeared to crumble during certain periods, leading to an increased importance of the superstructure (Hopkins_2019: p.9). This shift might have facilitated changes in institutions and policies that ultimately influenced long-term economic growth.
+
+Clark & Jacks (2007) focus on the coal industry during the Industrial Revolution, suggesting that technological advancements within this sector enabled it to respond to increases in demand, thereby contributing to overall productivity advances (Clark&Jacks_2007: p.4, p.24). This case study demonstrates how institutional arrangements and technological developments can interact to drive long-run economic growth.
+
+These sources complicate the argument that institutions are the fundamental cause of long-run economic growth by showing how various factors, such as industrialization, superstructure changes, and technological advancements, interplay with institutions to shape economic outcomes over time. Further exploration of these interactions could provide additional insights into the relationship between institutions and long-term economic development.
+
+Institutions play a crucial role in shaping long-run economic growth, as they influence the distribution of resources, incentivize technological advancements, and foster competition among employers (Domar_1970: p.4). Domar posits that with labor tied to land or to an owner, competition among employers ceases, thus hindering economic development (Domar_1970: p.4). On the other hand, Bohannan (1959) suggests that Western impact is not limited to economic institutions but extends to social and cultural aspects as well (Bohannan_1959: p.10).
+
+While both scholars acknowledge the importance of institutions in determining economic outcomes over time, they differ in their focus and scope. Domar's analysis primarily focuses on labor markets, while Bohannan expands the discussion to include cultural and social aspects influenced by Western impact.
+
+Despite these differences, there is a common thread in their arguments: institutions have a profound effect on economic growth. However, what remains unresolved is the specific mechanisms through which institutions interact with technological advancements to shape long-term economic development. Further exploration of these interactions could provide additional insights into this relationship.
+
+For instance, Domar (1970) mentions Phillips' study on the economic cost of slaveholding in the Cotton Belt, which could potentially shed light on how institutions affect technological advancements (Domar_1970: p.16). Similarly, Bohannan's discussion on the Tiv economy and its link to the outside world through trading companies suggests that institutions may facilitate or hinder access to global markets, thereby influencing technological diffusion (Bohannan_1959: p.10).
+
+================================================================================
+
+
+================================================================================
+REFERENCES (cited in review)
+================================================================================
+
+1. Acemoglu, D., Johnson, S. and Robinson, J. (2001) 'The colonial origins of comparative development: An empirical investigation', American Economic Review, 91(5), pp. 1369-1401.
+2. Austin, G. (2008) 'The ‘reversal of fortune’ thesis and the compression of history: Perspectives from African and comparative economic history', Journal of International Development: The Journal of the Development Studies Association, 20(8), pp. 996-1027.
+3. Bohannan, P. (1959) 'The impact of money on an African subsistence economy', The Journal of Economic History, 19(4), pp. 491-503.
+4. Broadberry, S. and Gardner, L. (2022) 'Economic growth in Sub-Saharan Africa, 1885--2008: Evidence from eight countries', Explorations in Economic History, 83, pp. 101424.
+5. Broadberry, S. and Gupta, B. (2006) 'The early modern great divergence: wages, prices and economic development in Europe and Asia, 1500--1800', The Economic History Review, 59(1), pp. 2-31.
+6. Domar, E. (1970) 'The causes of slavery or serfdom: a hypothesis', The Journal of Economic History, pp. 1-15.
+7. Feinstein, C. (1998) 'Pessimism perpetuated: real wages and the standard of living in Britain during and after the industrial revolution', The Journal of Economic History, 58(3), pp. 625-658.
+8. Frankema, E. (2012) 'The origins of formal education in sub-Saharan Africa: was British rule more benign?', European Review of Economic History, 16(4), pp. 335-355.
+9. Goldin, C. (2006) 'The quiet revolution that transformed women's employment, education, and family', American Economic Review, 96(2), pp. 1-21.
+10. Hopkins, A. (2009) 'The new economic history of Africa', The Journal of African History, 50(2), pp. 155-177.
+11. Hopkins, A. (2019) 'Fifty years of African economic history', Economic History of Developing Regions, 34(1), pp. 1-15.
+12. Komlos, J. (1998) 'Shrinking in a growing economy? The mystery of physical stature during the Industrial Revolution', The Journal of Economic History, 58(3), pp. 779-802.
+13. Kuznets, S. (1973) 'Modern economic growth: findings and reflections', The American Economic Review, 63(3), pp. 247-258.
+14. Lindert, P. and Williamson, J. (1985) 'Growth, equality, and history', Explorations in Economic History, 22(4), pp. 341-377.
+15. McCloskey, D. (2015) 'It was ideas and ideologies, not interests or institutions, which changed in Northwestern Europe, 1600--1848', Journal of Evolutionary Economics, 25(1), pp. 57-68.
+16. Mokyr, J. (2005) 'The intellectual origins of modern economic growth', The Journal of Economic History, 65(2), pp. 285-351.
+17. North, D. (1989) 'Institutions and economic growth: An historical introduction', World Development, 17(9), pp. 1319-1332.
+18. Nunn, N. and Wantchekon, L. (2011) 'The slave trade and the origins of mistrust in Africa', American Economic Review, 101(7), pp. 3221-3252.
+19. Ogilvie, S. (2007) '‘Whatever is, is right’? Economic institutions in pre-industrial Europe', The Economic History Review, 60(4), pp. 649-684.
+20. Simson, R. (2019) 'Africa's clientelist budget policies revisited: public expenditure and employment in Kenya, Tanzania and Uganda, 1960--2010', The Economic History Review, 72(4), pp. 1409-1438.
+21. Skocpol, T. and Somers, M. (1980) 'The uses of comparative history in macrosocial inquiry', Comparative Studies in Society and History, 22(2), pp. 174-197.
+22. Sokoloff, K. and Engerman, S. (2000) 'History lessons: institutions, factor endowments, and paths of development in the new world', Journal of Economic Perspectives, 14(3), pp. 217-232.
+23. Stoler, A. (1989) 'Rethinking colonial categories: European communities and the boundaries of rule', Comparative Studies in Society and History, 31(1), pp. 134-161.
+24. Temin, P. (2002) 'The golden age of European growth reconsidered', European Review of Economic History, 6(1), pp. 3-22.
+25. Van Zanden, J. (2009) 'The skill premium and the ‘Great Divergence’', European Review of Economic History, 13(1), pp. 121-153.
+
+================================================================================
+

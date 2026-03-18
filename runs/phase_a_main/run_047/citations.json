@@ -1,0 +1,27 @@
+{
+  "n_citations": 27,
+  "e1": 0,
+  "e2": 0,
+  "e3": 6,
+  "docs_cited": [
+    "AllenEtAl_2011",
+    "Austin_2008",
+    "Bohannan_1959",
+    "Bryceson_2002",
+    "Domar_1970",
+    "Humphries_2013",
+    "Kuznets_1973",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "North_1989",
+    "Ogilvie_2007",
+    "Simson_2019",
+    "Sokoloff&Engerman_2000",
+    "deVries_1994"
+  ],
+  "n_docs_cited": 14,
+  "word_count": 2469,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}

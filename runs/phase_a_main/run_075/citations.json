@@ -1,0 +1,30 @@
+{
+  "n_citations": 23,
+  "e1": 0,
+  "e2": 0,
+  "e3": 5,
+  "docs_cited": [
+    "AcemogluEtAl_2001",
+    "Bohannan_1959",
+    "Braudel&Wallerstein_2009",
+    "BroadberryEtal_2015",
+    "Domar_1970",
+    "Frankema&vanWaijenburg_2012",
+    "Frankema_2012",
+    "Hopkins_2019",
+    "Mokyr_2005",
+    "North&Weingast_1989",
+    "Nunn&Wantchekon_2011",
+    "Nunn_2008",
+    "Pamuk_2007",
+    "Sokoloff&Engerman_2000",
+    "Stern_2004",
+    "Williamson_1996",
+    "vanZanden_2009"
+  ],
+  "n_docs_cited": 17,
+  "word_count": 2397,
+  "e1_details": [],
+  "e2_details": [],
+  "refusal": false
+}
