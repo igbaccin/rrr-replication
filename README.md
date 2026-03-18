@@ -2,8 +2,6 @@
 
 **Paper:** "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History"
 
-**Author:** Igor Martins, Department of Economic History, Lund University
-
 ---
 
 ## What this package contains
