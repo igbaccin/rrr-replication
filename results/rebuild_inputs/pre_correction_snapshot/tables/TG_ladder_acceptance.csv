@@ -1,0 +1,13 @@
+Model,Params (B),Size,N,Refusal %,"Zero-error % (E1-E5, scored)",Docs median,Words median,Word metric,Coverage pass %,Control refusal %,Discrimination (pp),Min/run,Planner fallback %,ACCEPTABLE
+gemma3:270m,0.27,291 MB,25,100.0,0.0,0,0,archived_aggregate_raw_text_unavailable,0.0,n/a,n/a,0.5,n/a,no
+qwen3:0.6b,0.6,522 MB,25,64.0,44.4,4,433,body_only_raw_markdown,36.0,n/a,n/a,0.6,0.0,no
+gemma3:1b,1.0,815 MB,25,88.0,0.0,16,1650,body_only_raw_markdown,12.0,n/a,n/a,0.8,0.0,no
+qwen3:1.7b,1.7,1.4 GB,25,0.0,100.0,9,540,body_only_raw_markdown,100.0,n/a,n/a,1.6,0.0,no
+ministral-3:3b,3.0,3.0 GB,25,0.0,76.0,20,2497,body_only_raw_markdown,100.0,n/a,n/a,2.8,0.0,no
+gemma3:4b,4.0,3.3 GB,25,100.0,0.0,0,0,archived_aggregate_raw_text_unavailable,0.0,n/a,n/a,0.9,n/a,no
+qwen3:4b,4.0,2.5 GB,25,0.0,8.0,14,1404,body_only_raw_markdown,100.0,n/a,n/a,2.0,100.0,no
+mistral:7b,7.0,4.4 GB,25,0.0,36.0,21,3219,body_only_raw_markdown,100.0,n/a,n/a,3.0,0.0,no
+qwen3:8b,8.0,5.2 GB,25,0.0,96.0,15,1156,body_only_raw_markdown,100.0,n/a,n/a,2.1,0.0,no
+gemma3:12b,12.0,8.1 GB,25,0.0,96.0,22,1744,body_only_raw_markdown,100.0,n/a,n/a,3.6,0.0,no
+qwen3:14b,14.0,9.3 GB,25,0.0,100.0,15,1024,body_only_raw_markdown,100.0,n/a,n/a,2.4,0.0,no
+mistral-small:24b,24.0,14 GB,25,0.0,100.0,13,1899,body_only_raw_markdown,100.0,n/a,n/a,3.8,0.0,no

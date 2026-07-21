@@ -15,7 +15,18 @@ Usage:
     python3 scripts/aggregate_comprehensive.py runs/comprehensive_<timestamp>
 """
 
-import os, sys, json, glob
+import json
+import os
+import sys
+
+# v16.7 (P3): the summary prints box-drawing/±/→ characters. On a Windows
+# cp1252 console this raises UnicodeEncodeError; force UTF-8 so the quick
+# aggregate runs locally too (Linux pods were already fine).
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
 
 
 def _load(path):
@@ -57,10 +68,18 @@ def main():
     if p:
         phases["phase_a"] = p.get("summary", {})
 
-    # Phase B: RAG-only
-    p = _load(os.path.join(battery_dir, "phase_b_rag_only", "phase_b_results.json"))
+    # Phase B: validation-gate ablation (v16.2 relabel; legacy dir name
+    # kept as a fallback so old battery dirs still aggregate)
+    p = _load(os.path.join(battery_dir, "phase_b_validation_off", "phase_b_results.json"))
+    if p is None:
+        p = _load(os.path.join(battery_dir, "phase_b_rag_only", "phase_b_results.json"))
     if p:
         phases["phase_b"] = p.get("summary", {})
+
+    # Phase B2 (v16.3): true RAG baseline (retrieval -> single generation)
+    p = _load(os.path.join(battery_dir, "phase_b2_rag_only", "phase_b2_results.json"))
+    if p:
+        phases["phase_b2"] = p.get("summary", {})
 
     # Phase C: Unrestricted
     p = _load(os.path.join(battery_dir, "phase_c_unrestricted", "phase_c_results.json"))
@@ -92,6 +111,16 @@ def main():
     if p:
         phases["phase_f2"] = p.get("summary", {})
 
+    # v16.6: single-dir phases previously omitted from the quick summary
+    for _key, _dir, _stem in [
+        ("phase_c2", "phase_c2_prompt_constrained", "phase_c2"),
+        ("phase_d0", "phase_d0_gibberish", "phase_d0"),
+        ("phase_d3", "phase_d3_marginal_fit", "phase_d3"),
+    ]:
+        _p = _load(os.path.join(battery_dir, _dir, f"{_stem}_results.json"))
+        if _p:
+            phases[_key] = _p.get("summary", {})
+
     # ── Build comparison tables ─────────────────────────────────
 
     # TABLE 4: Cross-condition comparison (A vs B vs C)
@@ -100,8 +129,10 @@ def main():
     table4["latex_rows"] = []
 
     for label, key in [("RRR (full)", "phase_a"),
-                        ("RAG-only (no validation)", "phase_b"),
-                        ("Unrestricted LLM", "phase_c")]:
+                        ("True RAG baseline (retrieval -> single pass)", "phase_b2"),
+                        ("Validation-gate ablation (validation off)", "phase_b"),
+                        ("Unrestricted LLM", "phase_c"),
+                        ("Unrestricted + prohibition prompt", "phase_c2")]:
         s = phases.get(key, {})
         if not s:
             continue
@@ -127,13 +158,15 @@ def main():
             f"{label} & {n_val} & {e1_l} & {e2_l} & {e3_l} & {zf}\\% \\\\"
         )
 
-    # TABLE 5: Refusal stress test (D1 + D2)
+    # TABLE 5: Refusal stress test (full D0-D3 spectrum, v16.7)
     table5 = {"columns": ["Condition", "N", "Refusal rate %", "Top reason", "E1 (completed)", "E2 (completed)"]}
     table5["rows"] = []
     table5["latex_rows"] = []
 
-    for label, key in [("High thresholds", "phase_d1"),
-                        ("Narrow prompt", "phase_d2")]:
+    for label, key in [("Gibberish topic (deterministic gate)", "phase_d0"),
+                        ("High thresholds", "phase_d1"),
+                        ("Narrow prompt", "phase_d2"),
+                        ("Marginal fit", "phase_d3")]:
         s = phases.get(key, {})
         if not s:
             continue

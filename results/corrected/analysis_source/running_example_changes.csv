@@ -1,0 +1,8 @@
+metric,old,corrected,delta
+Body words,1997,1592,-405
+Parsed citations,40,25,-15
+Distinct documents,12,12,0
+Distinct document-page pairs,25,20,-5
+Attribution retries,1,2,1
+Zero-citation paragraphs dropped,1,4,3
+Unknown evidence IDs,0,1,1

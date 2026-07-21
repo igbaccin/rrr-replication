@@ -1,0 +1,16 @@
+\begin{table}[ht]
+\centering
+\caption{Performance under successively stronger evidence contracts}
+\scriptsize
+\begin{tabular}{lrrrrrrrrrrrrrrrrrrrr}
+\toprule
+contract\_level & condition & checker\_scope & attempts & reviews & scored & mean\_e1 & zero\_e1\_pct & mean\_e2 & mean\_e3 & mean\_e4 & mean\_e5 & zero\_e1\_e5\_pct & mean\_citations & mean\_words & sd\_words & archived\_mean\_words & word\_metric\_basis & raw\_reviews\_for\_words & reference\_headings\_removed & mean\_documents \\
+\midrule
+1 & Unrestricted generation & E1 & 100 & 100 & 100 & 9.03 & 7.0 &  &  &  &  &  & 10.85 & 847.68 & 112.98 & 856.21 & body\_only\_raw\_markdown & 100 & 4 & 1.82 \\
+2 & Corpus instruction & E1 & 100 & 100 & 100 & 0.08 & 93.0 &  &  &  &  &  & 14.74 & 944.29 & 174.98 & 944.29 & body\_only\_raw\_markdown & 100 & 0 & 14.66 \\
+3 & Single-pass retrieval & E1-E5 & 100 & 100 & 100 & 0 & 100.0 & 0.01 & 0.25 & 0.1 & 0 & 87.0 & 10.34 & 703.66 & 81.69 & 703.66 & body\_only\_raw\_markdown & 100 & 0 & 8.43 \\
+4 & Selected-check ablation & E1-E5 & 100 & 100 & 100 & 0.05 & 95.0 & 0 & 0 & 0 & 0 & 95 & 34.09 & 1827.16 & 354.47 & 1827.16 & corrected\_review\_body & 100 & 0 & 14.59 \\
+5 & Full RRR & E1-E5 & 100 & 100 & 100 & 0 & 100.0 & 0 & 0 & 0 & 0 & 100 & 31.84 & 1682.2 & 252.88 & 1682.2 & corrected\_review\_body & 100 & 0 & 13.44 \\
+\bottomrule
+\end{tabular}
+\end{table}

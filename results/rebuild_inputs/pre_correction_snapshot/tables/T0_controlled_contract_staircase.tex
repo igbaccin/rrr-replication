@@ -1,0 +1,33 @@
+\begin{table*}[ht]
+\centering
+\caption{Controlled-contract staircase and page-checked outcomes}
+\begin{threeparttable}
+\small
+\textit{Panel A. Corpus-boundary performance across five conditions}\\[0.35em]
+\begin{tabular}{lrrrr}
+\toprule
+Condition & Attempts & Reviews & Mean E1 & Zero E1 (\%) \\
+\midrule
+Unrestricted generation & 100 & 100 & 9.03 & 7.0 \\
+Corpus instruction & 100 & 100 & 0.08 & 93.0 \\
+Single-pass retrieval & 100 & 100 & 0.00 & 100.0 \\
+Selected-check ablation & 100 & 100 & 0.04 & 96.0 \\
+Full RRR & 100 & 100 & 0.00 & 100.0 \\
+\bottomrule
+\end{tabular}
+\par\vspace{0.8em}
+\textit{Panel B. Common E1--E5 checker for conditions receiving page text}\\[0.35em]
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Condition & E2 & E3 & E4 & E5 & Clean (\%) & Body words & Documents & Citations \\
+\midrule
+Single-pass retrieval & 0.01 & 0.25 & 0.10 & 0.00 & 87.0 & 703.66 & 8.43 & 10.34 \\
+Selected-check ablation & 0.00 & 0.01 & 0.03 & 0.00 & 92.0 & 2042.93 & 14.68 & 42.08 \\
+Full RRR & 0.00 & 0.02 & 0.00 & 0.00 & 98.0 & 1919.47 & 13.45 & 40.08 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\scriptsize
+\item Notes: E1 records an out-of-corpus identity. Panel B uses the common page-level checker; clean reviews contain zero E1--E5 events. Means use scored reviews.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

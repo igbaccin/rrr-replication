@@ -1,0 +1,6 @@
+contract_level,condition,checker_scope,attempts,reviews,scored,mean_e1,zero_e1_pct,mean_e2,mean_e3,mean_e4,mean_e5,zero_e1_e5_pct,mean_citations,mean_words,sd_words,archived_mean_words,word_metric_basis,raw_reviews_for_words,reference_headings_removed,mean_documents
+1,Unrestricted generation,E1,100,100,100,9.03,7.0,,,,,,10.85,847.68,112.98,856.21,body_only_raw_markdown,100,4,1.82
+2,Corpus instruction,E1,100,100,100,0.08,93.0,,,,,,14.74,944.29,174.98,944.29,body_only_raw_markdown,100,0,14.66
+3,Single-pass retrieval,E1-E5,100,100,100,0,100.0,0.01,0.25,0.1,0,87.0,10.34,703.66,81.69,703.66,body_only_raw_markdown,100,0,8.43
+4,Selected-check ablation,E1-E5,100,100,100,0.04,96.0,0,0.01,0.03,0,92.0,42.08,2042.93,364.59,2438.04,body_only_raw_markdown,100,100,14.68
+5,Full RRR,E1-E5,100,100,100,0,100.0,0,0.02,0,0,98.0,40.08,1919.47,261.43,2278.7,body_only_raw_markdown,100,100,13.45

@@ -1,0 +1,10 @@
+Guardrail layer,Runs where fired,Total events,Mean/run,Max/run
+Invalid-citation sentence removal,14.0%,20,0.2,4
+Zero-citation paragraph drop,97.0%,399,3.99,13
+Unknown evidence-id markers,1.0%,2,0.02,2
+Attribution mismatches (renderer gate),63.0%,119,1.19,6
+Attribution retries,63.0%,79,0.79,3
+Unverified-quotation strips,13.0%,15,0.15,2
+Stitch rewrites reverted (citation drift),39.0%,78,0.78,6
+Coverage fallback sentences,34.0%,55,0.55,3
+Coverage LLM retries,0.0%,0,0,0

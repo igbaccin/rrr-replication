@@ -1,0 +1,23 @@
+\begin{table}[ht]
+\centering
+\caption{Guardrail activation in 100 corrected full-RRR runs}
+\scriptsize
+\begin{tabular}{lrrrr}
+\toprule
+Guardrail layer & Runs where fired & Total events & Mean/run & Max/run \\
+\midrule
+Invalid-citation sentence removal & 2\% & 2 & 0.02 & 1 \\
+Unknown evidence-id markers & 15\% & 26 & 0.26 & 4 \\
+Attribution mismatches (renderer gate) & 48\% & 78 & 0.78 & 4 \\
+Attribution retries & 48\% & 55 & 0.55 & 3 \\
+Attribution retries accepted & 38\% & 45 & 0.45 & 3 \\
+Zero-citation paragraph drop & 100\% & 438 & 4.38 & 12 \\
+Unverified-quotation strips & 14\% & 17 & 0.17 & 3 \\
+Stitch rewrites reverted (citation drift) & 37\% & 60 & 0.6 & 5 \\
+Coverage fallback sentences & 29\% & 52 & 0.52 & 4 \\
+Redundant passages removed & 100\% & 981 & 9.81 & 18 \\
+Style sentences removed & 100\% & 853 & 8.53 & 16 \\
+Double parentheses collapsed & 99\% & 1138 & 11.38 & 25 \\
+\bottomrule
+\end{tabular}
+\end{table}

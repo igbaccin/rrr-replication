@@ -1,0 +1,61 @@
+model_tag,model,parameters_b,probe,probe_label,attempts,clean_reviews,reviews_with_error,substantive_refusals,structured_failures,postcomposition_failures,execution_failures,scored_reviews,mean_e1,mean_e2,mean_e3,mean_e4,mean_e5,mean_words,sd_words,word_metric_basis,mean_documents,mean_citations
+gemma3:270m,Gemma 3 270M,0.27,flagship,Institutional-growth task,25,0,0,0,25,0,25,0,,,,,,,,,,
+gemma3:270m,Gemma 3 270M,0.27,wordsalad,Word salad,20,0,0,0,20,0,20,0,,,,,,,,,,
+gemma3:270m,Gemma 3 270M,0.27,far,Far-domain physics,20,0,0,0,20,0,20,0,,,,,,,,,,
+gemma3:270m,Gemma 3 270M,0.27,mid,Literary modernism,20,0,0,0,20,0,20,0,,,,,,,,,,
+gemma3:270m,Gemma 3 270M,0.27,near,Soviet-planning near miss,20,0,0,0,20,0,20,0,,,,,,,,,,
+gemma3:1b,Gemma 3 1B,1.0,flagship,Institutional-growth task,25,1,2,0,22,0,22,3,0,0,1.67,0.67,0,792.67,355.4,corrected_review_body,16.33,20
+gemma3:1b,Gemma 3 1B,1.0,wordsalad,Word salad,20,0,0,0,20,0,20,0,,,,,,,,,,
+gemma3:1b,Gemma 3 1B,1.0,far,Far-domain physics,20,0,0,0,20,0,20,0,,,,,,,,,,
+gemma3:1b,Gemma 3 1B,1.0,mid,Literary modernism,20,0,0,0,20,0,20,0,,,,,,,,,,
+gemma3:1b,Gemma 3 1B,1.0,near,Soviet-planning near miss,20,1,5,0,14,0,14,6,0,0,3,0.33,0,1149.83,350.94,corrected_review_body,16.5,19.5
+gemma3:4b,Gemma 3 4B,4.0,flagship,Institutional-growth task,25,0,0,25,0,0,0,0,,,,,,,,,,
+gemma3:4b,Gemma 3 4B,4.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+gemma3:4b,Gemma 3 4B,4.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+gemma3:4b,Gemma 3 4B,4.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+gemma3:4b,Gemma 3 4B,4.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,,,,,,,,,,
+gemma3:12b,Gemma 3 12B,12.0,flagship,Institutional-growth task,25,25,0,0,0,0,0,25,0,0,0,0,0,1641.96,182.18,corrected_review_body,21.64,50.64
+gemma3:12b,Gemma 3 12B,12.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+gemma3:12b,Gemma 3 12B,12.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+gemma3:12b,Gemma 3 12B,12.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+gemma3:12b,Gemma 3 12B,12.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,,,,,,,,,,
+ministral-3:3b,Ministral 3B,3.0,flagship,Institutional-growth task,25,18,7,0,0,0,0,25,0,0,0.04,0.12,0.12,2242.72,401.07,corrected_review_body,19.28,32
+ministral-3:3b,Ministral 3B,3.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+ministral-3:3b,Ministral 3B,3.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+ministral-3:3b,Ministral 3B,3.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+ministral-3:3b,Ministral 3B,3.0,near,Soviet-planning near miss,20,3,0,17,0,0,0,3,0,0,0,0,0,1435.67,377.65,corrected_review_body,10.67,19.33
+mistral:7b,Mistral 7B,7.0,flagship,Institutional-growth task,25,10,15,0,0,0,0,25,0.12,0,3.48,0,0,2558.4,480.55,corrected_review_body,20.72,42.8
+mistral:7b,Mistral 7B,7.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+mistral:7b,Mistral 7B,7.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+mistral:7b,Mistral 7B,7.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+mistral:7b,Mistral 7B,7.0,near,Soviet-planning near miss,20,2,4,1,13,0,13,6,0,0,2.67,0,0,2724.17,577.94,corrected_review_body,22.5,46.5
+mistral-small:24b,Mistral Small 24B,24.0,flagship,Institutional-growth task,25,24,1,0,0,0,0,25,0,0,0.12,0,0,1689.52,265.0,corrected_review_body,13.92,32
+mistral-small:24b,Mistral Small 24B,24.0,wordsalad,Word salad,20,0,0,0,20,0,20,0,,,,,,,,,,
+mistral-small:24b,Mistral Small 24B,24.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+mistral-small:24b,Mistral Small 24B,24.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+mistral-small:24b,Mistral Small 24B,24.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:0.6b,Qwen 3 0.6B,0.6,flagship,Institutional-growth task,25,6,3,0,16,0,16,9,0,0,0.89,0,0,629.33,404.26,corrected_review_body,5.67,13.44
+qwen3:0.6b,Qwen 3 0.6B,0.6,wordsalad,Word salad,20,14,4,0,1,1,2,18,0,0,0.33,0,0,394.33,160.29,corrected_review_body,4.83,12.17
+qwen3:0.6b,Qwen 3 0.6B,0.6,far,Far-domain physics,20,17,3,0,0,0,0,20,0,0,0.3,0,0,367.9,190.29,corrected_review_body,5,13.6
+qwen3:0.6b,Qwen 3 0.6B,0.6,mid,Literary modernism,20,13,6,0,1,0,1,19,0,0,1.21,0,0,377.53,135.98,corrected_review_body,4.53,10.53
+qwen3:0.6b,Qwen 3 0.6B,0.6,near,Soviet-planning near miss,20,16,4,0,0,0,0,20,0,0,0.45,0,0,428.7,202.0,corrected_review_body,5,13.2
+qwen3:1.7b,Qwen 3 1.7B,1.7,flagship,Institutional-growth task,25,25,0,0,0,0,0,25,0,0,0,0,0,596.08,255.93,corrected_review_body,8.8,12.8
+qwen3:1.7b,Qwen 3 1.7B,1.7,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:1.7b,Qwen 3 1.7B,1.7,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:1.7b,Qwen 3 1.7B,1.7,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:1.7b,Qwen 3 1.7B,1.7,near,Soviet-planning near miss,20,0,1,19,0,0,0,1,0,0,1,0,0,917,0.0,corrected_review_body,9,9
+qwen3:4b,Qwen 3 4B,4.0,flagship,Institutional-growth task,25,1,24,0,0,0,0,25,0,0,8.32,1.44,0,1715.68,571.78,corrected_review_body,14.24,79.56
+qwen3:4b,Qwen 3 4B,4.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:4b,Qwen 3 4B,4.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:4b,Qwen 3 4B,4.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:4b,Qwen 3 4B,4.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:8b,Qwen 3 8B,8.0,flagship,Institutional-growth task,25,25,0,0,0,0,0,25,0,0,0,0,0,989.72,248.41,corrected_review_body,14.4,19
+qwen3:8b,Qwen 3 8B,8.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:8b,Qwen 3 8B,8.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:8b,Qwen 3 8B,8.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:8b,Qwen 3 8B,8.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:14b,Qwen 3 14B,14.0,flagship,Institutional-growth task,25,25,0,0,0,0,0,25,0,0,0,0,0,980.76,168.82,corrected_review_body,14.6,18.92
+qwen3:14b,Qwen 3 14B,14.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:14b,Qwen 3 14B,14.0,far,Far-domain physics,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:14b,Qwen 3 14B,14.0,mid,Literary modernism,20,0,0,20,0,0,0,0,,,,,,,,,,
+qwen3:14b,Qwen 3 14B,14.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,,,,,,,,,,

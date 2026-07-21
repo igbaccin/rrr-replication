@@ -1,0 +1,17 @@
+Measure,Value
+Runs completed (of attempted),100 of 100
+Refusals,0 (0.0%)
+E1: out-of-corpus citations / run,0 +/- 0
+E2: invalid-page citations / run,0 +/- 0
+E3: hard format violations / run,0 +/- 0
+E4: unverified quotations / run,0 +/- 0
+E5: mis-attributed quotes / run,0 +/- 0
+Runs with zero E1,100.0%
+Runs with zero E1-E5,100%
+Citations / run,31.84 +/- 4.42
+Runs scored (checker succeeded),100 of 100 completed
+Distinct documents cited / run,13.44 +/- 1.93
+Body words / run,1682.2 +/- 252.88
+Word-count basis,corrected_review_body
+Pairwise citation-set Jaccard,0.726
+Core documents (>=80% of runs),10

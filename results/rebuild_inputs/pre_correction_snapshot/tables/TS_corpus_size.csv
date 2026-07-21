@@ -1,0 +1,4 @@
+Corpus docs,N,Refusal %,E1,E4,Zero-error %,Docs cited,Body words,Word metric
+10,25,0.0,0 ± 0.0,0 ± 0.0,100.0,9.4 ± 0.58,1645.16 +/- 249.02,body_only_raw_markdown
+25,25,0.0,0 ± 0.0,0 ± 0.0,96.0,14.28 ± 2.54,2044.44 +/- 354.46,body_only_raw_markdown
+50,25,0.0,0 ± 0.0,0 ± 0.0,100.0,14.6 ± 2.52,1984.4 +/- 348.47,body_only_raw_markdown

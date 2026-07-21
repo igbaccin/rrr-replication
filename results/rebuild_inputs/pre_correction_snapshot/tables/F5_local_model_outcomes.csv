@@ -1,0 +1,61 @@
+model_tag,model,parameters_b,probe,probe_label,attempts,clean_reviews,reviews_with_error,substantive_refusals,structured_failures,scored_reviews,mean_e1,mean_e2,mean_e3,mean_e4,mean_e5,mean_words,sd_words,archived_mean_words,word_metric_basis,raw_reviews_for_words,reference_headings_removed,mean_documents,mean_citations
+gemma3:270m,Gemma 3 270M,0.27,flagship,Institutional-growth task,25,0,0,0,25,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:270m,Gemma 3 270M,0.27,wordsalad,Word salad,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:270m,Gemma 3 270M,0.27,far,Far-domain physics,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:270m,Gemma 3 270M,0.27,mid,Literary modernism,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:270m,Gemma 3 270M,0.27,near,Soviet-planning near miss,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:1b,Gemma 3 1B,1.0,flagship,Institutional-growth task,25,0,3,0,22,3,0,0,3,0,0,1931.33,967.19,2392.67,body_only_raw_markdown,3,3,17.33,32.67
+gemma3:1b,Gemma 3 1B,1.0,wordsalad,Word salad,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:1b,Gemma 3 1B,1.0,far,Far-domain physics,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:1b,Gemma 3 1B,1.0,mid,Literary modernism,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:1b,Gemma 3 1B,1.0,near,Soviet-planning near miss,20,2,4,0,14,6,0,0,3,1.67,0.33,879.5,469.51,1316.67,body_only_raw_markdown,6,6,16.33,21.33
+gemma3:4b,Gemma 3 4B,4.0,flagship,Institutional-growth task,25,0,0,25,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:4b,Gemma 3 4B,4.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:4b,Gemma 3 4B,4.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:4b,Gemma 3 4B,4.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:4b,Gemma 3 4B,4.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:12b,Gemma 3 12B,12.0,flagship,Institutional-growth task,25,24,1,0,0,25,0,0,0.12,0,0,1784.44,239.22,2353.6,body_only_raw_markdown,25,25,21.84,59.2
+gemma3:12b,Gemma 3 12B,12.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:12b,Gemma 3 12B,12.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:12b,Gemma 3 12B,12.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+gemma3:12b,Gemma 3 12B,12.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+ministral-3:3b,Ministral 3B,3.0,flagship,Institutional-growth task,25,19,6,0,0,25,0,0,0,0.24,0.04,2402.44,428.98,2912.52,body_only_raw_markdown,25,25,19.04,39
+ministral-3:3b,Ministral 3B,3.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+ministral-3:3b,Ministral 3B,3.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+ministral-3:3b,Ministral 3B,3.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+ministral-3:3b,Ministral 3B,3.0,near,Soviet-planning near miss,20,3,0,17,0,3,0,0,0,0,0,1610.67,365.01,1918,body_only_raw_markdown,3,3,11.33,23.33
+mistral:7b,Mistral 7B,7.0,flagship,Institutional-growth task,25,9,16,0,0,25,0.04,0,3.36,0.28,0,3164.84,614.99,3728.2,body_only_raw_markdown,25,25,20.92,57.44
+mistral:7b,Mistral 7B,7.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+mistral:7b,Mistral 7B,7.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+mistral:7b,Mistral 7B,7.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+mistral:7b,Mistral 7B,7.0,near,Soviet-planning near miss,20,2,4,1,13,6,0,0,4,0.5,0,3211.17,433.89,3814.67,body_only_raw_markdown,6,6,22.17,56.83
+mistral-small:24b,Mistral Small 24B,24.0,flagship,Institutional-growth task,25,25,0,0,0,25,0,0,0,0,0,1921.2,301.3,2296.48,body_only_raw_markdown,25,25,13.92,40.4
+mistral-small:24b,Mistral Small 24B,24.0,wordsalad,Word salad,20,0,0,0,20,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+mistral-small:24b,Mistral Small 24B,24.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+mistral-small:24b,Mistral Small 24B,24.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+mistral-small:24b,Mistral Small 24B,24.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:0.6b,Qwen 3 0.6B,0.6,flagship,Institutional-growth task,25,4,5,0,16,9,0,0,3.33,0.44,0.22,572.89,243.85,683,body_only_raw_markdown,9,9,4,10.11
+qwen3:0.6b,Qwen 3 0.6B,0.6,wordsalad,Word salad,20,9,10,0,1,19,0,0,6.47,1.63,0,420.68,234.3,557.32,body_only_raw_markdown,19,19,4.37,16.63
+qwen3:0.6b,Qwen 3 0.6B,0.6,far,Far-domain physics,20,15,5,0,0,20,0,0,0.6,0,0,305.25,182.24,425.8,body_only_raw_markdown,20,20,4.4,10
+qwen3:0.6b,Qwen 3 0.6B,0.6,mid,Literary modernism,20,13,6,0,1,19,0,0,2.16,0,0,398.21,195.32,495.37,body_only_raw_markdown,19,19,4.16,11.47
+qwen3:0.6b,Qwen 3 0.6B,0.6,near,Soviet-planning near miss,20,15,5,0,0,20,0,0,0.6,0.05,0,368.6,217.36,485.55,body_only_raw_markdown,20,20,4.2,10.7
+qwen3:1.7b,Qwen 3 1.7B,1.7,flagship,Institutional-growth task,25,25,0,0,0,25,0,0,0,0,0,588.76,290.59,852.24,body_only_raw_markdown,25,25,8.76,11.12
+qwen3:1.7b,Qwen 3 1.7B,1.7,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:1.7b,Qwen 3 1.7B,1.7,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:1.7b,Qwen 3 1.7B,1.7,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:1.7b,Qwen 3 1.7B,1.7,near,Soviet-planning near miss,20,1,0,19,0,1,0,0,0,0,0,1012,0.0,1322,body_only_raw_markdown,1,1,10,13
+qwen3:4b,Qwen 3 4B,4.0,flagship,Institutional-growth task,25,2,23,0,0,25,0,0,5.96,1.24,0,1508.08,601.85,1838.4,body_only_raw_markdown,25,25,13,66.88
+qwen3:4b,Qwen 3 4B,4.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:4b,Qwen 3 4B,4.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:4b,Qwen 3 4B,4.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:4b,Qwen 3 4B,4.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:8b,Qwen 3 8B,8.0,flagship,Institutional-growth task,25,24,1,0,0,25,0.04,0,0,0,0,1176.36,355.62,1554.56,body_only_raw_markdown,25,25,14.76,20.76
+qwen3:8b,Qwen 3 8B,8.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:8b,Qwen 3 8B,8.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:8b,Qwen 3 8B,8.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:8b,Qwen 3 8B,8.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:14b,Qwen 3 14B,14.0,flagship,Institutional-growth task,25,25,0,0,0,25,0,0,0,0,0,1018.4,154.38,1413.52,body_only_raw_markdown,25,25,14.88,19.04
+qwen3:14b,Qwen 3 14B,14.0,wordsalad,Word salad,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:14b,Qwen 3 14B,14.0,far,Far-domain physics,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:14b,Qwen 3 14B,14.0,mid,Literary modernism,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0
+qwen3:14b,Qwen 3 14B,14.0,near,Soviet-planning near miss,20,0,0,20,0,0,0,0,0,0,0,0,0,0,archived_aggregate_raw_text_unavailable,0,,0,0

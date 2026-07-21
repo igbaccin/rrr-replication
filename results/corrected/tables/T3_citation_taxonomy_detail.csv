@@ -1,0 +1,223 @@
+condition,surname,year,example,runs_seen,class
+phase_c2_prompt_constrained,abramovitz,1986,(Abramovitz_1986: p. 387,2,in_corpus
+phase_c2_prompt_constrained,acemoglu,2001,(AcemogluEtAl_2001: p. 1384,98,in_corpus
+phase_c2_prompt_constrained,acemoglu,2002,(AcemogluEtAl_2002: p. 136,85,in_corpus
+phase_c2_prompt_constrained,acemoglu,2003,(AcemogluEtAl_2003: p. 1245,1,real_not_in_corpus
+phase_c2_prompt_constrained,akyeampong,2014,(Akyeampong&Fofack_2014: p. 38,43,in_corpus
+phase_c2_prompt_constrained,allen,2001,(Allen_2001: p.38,13,in_corpus
+phase_c2_prompt_constrained,allen,2011,(AllenEtAl_2011: p.78,57,in_corpus
+phase_c2_prompt_constrained,austin,2007,(Austin_2007: p. 45,5,in_corpus
+phase_c2_prompt_constrained,austin,2008,(Austin_2008: p.15,5,in_corpus
+phase_c2_prompt_constrained,bohannan,1959,(Bohannan_1959: p.23,3,in_corpus
+phase_c2_prompt_constrained,bolt,2014,(Bolt&vanZanden_2014: p. 67,3,in_corpus
+phase_c2_prompt_constrained,broadberry,2006,(Broadberry&Gupta_2006: p. 43,55,in_corpus
+phase_c2_prompt_constrained,broadberry,2015,(BroadberryEtal_2015: p. 43,42,in_corpus
+phase_c2_prompt_constrained,broadberry,2022,(Broadberry&Gardner_2022: p. 15,84,in_corpus
+phase_c2_prompt_constrained,bryceson,2002,(Bryceson_2002: p. 14,2,in_corpus
+phase_c2_prompt_constrained,clark,2007,(Clark&Jacks_2007: p. 34,11,in_corpus
+phase_c2_prompt_constrained,devries,1994,(deVries_1994: p. 38,5,in_corpus
+phase_c2_prompt_constrained,domar,1970,(Domar_1970: p.8,5,in_corpus
+phase_c2_prompt_constrained,feinstein,1998,Feinstein (1998,3,in_corpus
+phase_c2_prompt_constrained,frankema,2012,(Frankema_2012: p. 56,72,in_corpus
+phase_c2_prompt_constrained,goldin,2006,Goldin (2006,9,in_corpus
+phase_c2_prompt_constrained,hopkins,2009,(Hopkins_2009: p. 153,21,in_corpus
+phase_c2_prompt_constrained,hopkins,2019,(Hopkins_2019: p.34,4,in_corpus
+phase_c2_prompt_constrained,hornbeck,2010,(Hornbeck_2010: p. 38,4,in_corpus
+phase_c2_prompt_constrained,humphries,2013,(Humphries_2013: p.45,42,in_corpus
+phase_c2_prompt_constrained,koepke,2005,(Koepke&Baten_2005: p. 45,2,in_corpus
+phase_c2_prompt_constrained,komlos,1998,(Komlos_1998: p. 27,13,in_corpus
+phase_c2_prompt_constrained,kuznets,1973,(Kuznets_1973: p. 26,17,in_corpus
+phase_c2_prompt_constrained,lindert,1985,(Lindert&Williamson_1985: p. 67,7,in_corpus
+phase_c2_prompt_constrained,mccloskey,2015,(McCloskey_2015: p.43,27,in_corpus
+phase_c2_prompt_constrained,mokyr,2005,(Mokyr_2005: p. 18,94,in_corpus
+phase_c2_prompt_constrained,north,1989,(North_1989: p. 13,97,in_corpus
+phase_c2_prompt_constrained,nunn,2008,(Nunn_2008: p. 14,32,in_corpus
+phase_c2_prompt_constrained,nunn,2011,(Nunn&Wantchekon_2011: p. 38,65,in_corpus
+phase_c2_prompt_constrained,ogilvie,2007,Ogilvie (2007,38,in_corpus
+phase_c2_prompt_constrained,pamuk,2007,(Pamuk_2007: p. 18,1,in_corpus
+phase_c2_prompt_constrained,robinson,2001,Robinson (2001,4,in_corpus
+phase_c2_prompt_constrained,robinson,2002,Robinson (2002,1,in_corpus
+phase_c2_prompt_constrained,robinson,2012,Robinson (2012,1,real_not_in_corpus
+phase_c2_prompt_constrained,sachs,2005,(Sachs&Mellinger_2005: p.4,1,real_not_in_corpus
+phase_c2_prompt_constrained,simson,2019,(Simson_2019: p.35,2,in_corpus
+phase_c2_prompt_constrained,skocpol,1980,Skocpol and Sommers (1980,32,in_corpus
+phase_c2_prompt_constrained,sokoloff,2000,(Sokoloff&Engerman_2000: p. 38,20,in_corpus
+phase_c2_prompt_constrained,stern,2004,(Stern_2004: p. 15,10,in_corpus
+phase_c2_prompt_constrained,stoler,1989,(Stoler_1989: p. 64,3,in_corpus
+phase_c2_prompt_constrained,temin,2002,(Temin_2002: p. 45,9,in_corpus
+phase_c2_prompt_constrained,vanzanden,1999,(vanZanden_1999: p. 28,11,in_corpus
+phase_c2_prompt_constrained,vanzanden,2009,(vanZanden_2009: p. 8,7,in_corpus
+phase_c2_prompt_constrained,vries,1994,Vries (1994,3,in_corpus
+phase_c2_prompt_constrained,waijenburg,2012,Waijenburg (2012,60,in_corpus
+phase_c2_prompt_constrained,weingast,2009,Weingast (2009,1,real_not_in_corpus
+phase_c2_prompt_constrained,whatley,2018,(Whatley_2018: p. 45,11,in_corpus
+phase_c2_prompt_constrained,williamson,1996,(Williamson_1996: p.23,10,in_corpus
+phase_c2_prompt_constrained,zanden,1999,Zanden (1999,11,in_corpus
+phase_c2_prompt_constrained,zanden,2009,Zanden (2009,7,in_corpus
+phase_c2_prompt_constrained,zanden,2014,Zanden (2014,2,in_corpus
+phase_c_unrestricted,a,2012,(A&R_2012: p.35,1,unresolved
+phase_c_unrestricted,acemoglu,2001,(Acemoglu_2001: p.1369,42,in_corpus
+phase_c_unrestricted,acemoglu,2005,Acemoglu et al. (2005,13,real_not_in_corpus
+phase_c_unrestricted,acemoglu,2008,(Acemoglu_2008: p.14,1,real_not_in_corpus
+phase_c_unrestricted,acemoglu,2012,(Acemoglu_2012: p.395,9,real_not_in_corpus
+phase_c_unrestricted,acemoglu,2014,Acemoglu et al (2014,2,real_not_in_corpus
+phase_c_unrestricted,acemoglu,2019,Acemoglu et al. (2019,2,real_not_in_corpus
+phase_c_unrestricted,acevedo,2008,(Acevedo_2008: p.345,1,real_not_in_corpus
+phase_c_unrestricted,aj,2007,(AJ_2007: p.168,1,unresolved
+phase_c_unrestricted,ajr,2001,(AJR_2001: p.85,3,unresolved
+phase_c_unrestricted,ajr,2002,(AJR_2002: p.13,1,unresolved
+phase_c_unrestricted,ajr,2005,(AJR_2005: p.137,2,unresolved
+phase_c_unrestricted,ajr,2012,(AJR_2012: p.39,2,unresolved
+phase_c_unrestricted,alesina,2003,(Alesina_2003: p.6,3,real_not_in_corpus
+phase_c_unrestricted,alesina,2005,Alesina & Ferrara (2005,1,real_not_in_corpus
+phase_c_unrestricted,alesina,2013,Alesina et al. (2013,1,real_not_in_corpus
+phase_c_unrestricted,allen,2009,(Allen_2009: p.15,4,real_not_in_corpus
+phase_c_unrestricted,allen,2011,(Allen_2011: p.34,1,in_corpus
+phase_c_unrestricted,aoki,2001,(Aoki_2001: p. 4,1,real_not_in_corpus
+phase_c_unrestricted,aoki,2015,Aoki (2015,1,real_not_in_corpus
+phase_c_unrestricted,barro,1997,(Barro_1997: p.3,1,real_not_in_corpus
+phase_c_unrestricted,bates,2013,(Bates_2013: p.45,1,real_not_in_corpus
+phase_c_unrestricted,becker,1964,(Becker_1964: p.12,2,real_not_in_corpus
+phase_c_unrestricted,becker,1993,(Becker_1993: p.25,1,real_not_in_corpus
+phase_c_unrestricted,beckert,2014,(Beckert_2014: p.35,1,real_not_in_corpus
+phase_c_unrestricted,besley,2010,Besley and Ghatak (2010,2,real_not_in_corpus
+phase_c_unrestricted,besley,2011,Besley and Persson (2011,6,real_not_in_corpus
+phase_c_unrestricted,besley,2014,Besley and Persson (2014,3,real_not_in_corpus
+phase_c_unrestricted,cardenas,2014,(Cardenas_2014: p.3,1,real_not_in_corpus
+phase_c_unrestricted,chang,2002,Chang (2002,1,real_not_in_corpus
+phase_c_unrestricted,chang,2007,(Chang_2007: p.4,2,real_not_in_corpus
+phase_c_unrestricted,clark,2007,(Clark_2007: p.14,7,in_corpus
+phase_c_unrestricted,clark,2009,(Clark_2009: p.345,1,real_not_in_corpus
+phase_c_unrestricted,comin,2006,Comin et al (2006,1,real_not_in_corpus
+phase_c_unrestricted,comin,2008,Comin et al. (2008,1,real_not_in_corpus
+phase_c_unrestricted,comin,2010,Comin et al. (2010,1,real_not_in_corpus
+phase_c_unrestricted,david,1985,(David_1985: p.3,1,real_not_in_corpus
+phase_c_unrestricted,desoto,2000,(DeSoto_2000: p.45,2,real_not_in_corpus
+phase_c_unrestricted,diamond,1997,(Diamond_1997: p. 42,29,real_not_in_corpus
+phase_c_unrestricted,durlauf,2008,Durlauf et al. (2008,1,real_not_in_corpus
+phase_c_unrestricted,easterly,2001,(Easterly_2001: p.35,1,real_not_in_corpus
+phase_c_unrestricted,easterly,2003,Easterly & Levine (2003,5,real_not_in_corpus
+phase_c_unrestricted,easterly,2007,(Easterly_2007: p. 16,1,real_not_in_corpus
+phase_c_unrestricted,easterly,2014,Easterly (2014,1,real_not_in_corpus
+phase_c_unrestricted,easterly,2016,Easterly and Levine (2016,1,real_not_in_corpus
+phase_c_unrestricted,engerman,1997,Engerman and Sokoloff (1997,1,real_not_in_corpus
+phase_c_unrestricted,engerman,2002,Engerman and Sokoloff (2002,4,real_not_in_corpus
+phase_c_unrestricted,engerman,2005,Engerman and Sokoloff (2005,15,real_not_in_corpus
+phase_c_unrestricted,engerman,2012,Engerman and Sokoloff (2012,12,real_not_in_corpus
+phase_c_unrestricted,engerman,2013,(Engerman_2013: p.89,1,real_not_in_corpus
+phase_c_unrestricted,fukuyama,2014,(Fukuyama_2014: p.37,1,real_not_in_corpus
+phase_c_unrestricted,galor,2000,(Galor_2000: p.85,1,real_not_in_corpus
+phase_c_unrestricted,galor,2011,(Galor_2011: p.857,2,real_not_in_corpus
+phase_c_unrestricted,glaeser,2004,Glaeser et al. (2004,3,real_not_in_corpus
+phase_c_unrestricted,glaeser,2010,Glaeser (2010,1,real_not_in_corpus
+phase_c_unrestricted,glaeser,2013,Glaeser (2013,1,real_not_in_corpus
+phase_c_unrestricted,greif,1989,(Greif_1989: p.863,4,real_not_in_corpus
+phase_c_unrestricted,greif,1993,(Greif_1993: p.867,1,real_not_in_corpus
+phase_c_unrestricted,greif,1994,(Greif_1994: p.867,20,real_not_in_corpus
+phase_c_unrestricted,greif,1998,(Greif_1998: p. 20,1,real_not_in_corpus
+phase_c_unrestricted,greif,2006,(Greif_2006: p.34,27,real_not_in_corpus
+phase_c_unrestricted,guiso,2006,Guiso et al. (2006,2,real_not_in_corpus
+phase_c_unrestricted,guiso,2015,Guiso et al. (2015,1,real_not_in_corpus
+phase_c_unrestricted,guiso,2016,Guiso et al. (2016,1,real_not_in_corpus
+phase_c_unrestricted,haber,2006,(Haber_2006: p.13,1,real_not_in_corpus
+phase_c_unrestricted,haber,2013,(Haber_2013: p.56,1,real_not_in_corpus
+phase_c_unrestricted,hall,1999,Hall and Jones (1999,7,real_not_in_corpus
+phase_c_unrestricted,hanushek,2012,Hanushek & Woessmann (2012,1,real_not_in_corpus
+phase_c_unrestricted,helmke,2004,Helmke and Levitsky (2004,1,real_not_in_corpus
+phase_c_unrestricted,helmke,2006,Helmke & Levitsky (2006,1,real_not_in_corpus
+phase_c_unrestricted,helmke,2012,Helmke and Greif (2012,1,real_not_in_corpus
+phase_c_unrestricted,hodgson,2004,(Hodgson_2004: p.38,1,real_not_in_corpus
+phase_c_unrestricted,horen,2015,Horen (2015,1,real_not_in_corpus
+phase_c_unrestricted,inglehart,2000,Inglehart and Baker (2000,1,real_not_in_corpus
+phase_c_unrestricted,johnson,2002,Johnson et al. (2002,1,in_corpus
+phase_c_unrestricted,johnson,2005,Johnson (2005,2,real_not_in_corpus
+phase_c_unrestricted,johnson,2007,Johnson (2007,1,real_not_in_corpus
+phase_c_unrestricted,kanbur,2001,(Kanbur_2001: p.45,1,real_not_in_corpus
+phase_c_unrestricted,kaufmann,2010,(Kaufmann_2010: p. 423,1,real_not_in_corpus
+phase_c_unrestricted,knack,1995,(Knack & Keefer 1995,1,real_not_in_corpus
+phase_c_unrestricted,knack,2006,Knack (2006,1,real_not_in_corpus
+phase_c_unrestricted,landes,1998,(Landes_1998: p.5,28,real_not_in_corpus
+phase_c_unrestricted,levine,2003,Levine (2003,1,real_not_in_corpus
+phase_c_unrestricted,levine,2005,(Levine_2005: p.3,1,real_not_in_corpus
+phase_c_unrestricted,lipset,1959,(Lipset_1959: p.75,1,real_not_in_corpus
+phase_c_unrestricted,lucas,2009,Lucas (2009,1,real_not_in_corpus
+phase_c_unrestricted,mahoney,2003,(Mahoney_2003: p. 5,1,real_not_in_corpus
+phase_c_unrestricted,mahoney,2004,(Mahoney_2004: p.367,1,real_not_in_corpus
+phase_c_unrestricted,mankiw,1992,Mankiw et al. (1992,1,real_not_in_corpus
+phase_c_unrestricted,mauro,1995,Mauro (1995,1,real_not_in_corpus
+phase_c_unrestricted,mccloskey,2010,(McCloskey_2010: p.56,1,real_not_in_corpus
+phase_c_unrestricted,mitchener,2014,(Mitchener_2014: p.35,1,real_not_in_corpus
+phase_c_unrestricted,mokyr,1992,(Mokyr_1992: p.23,5,real_not_in_corpus
+phase_c_unrestricted,mokyr,2005,(Mokyr_2005: p.14,2,in_corpus
+phase_c_unrestricted,mokyr,2009,(Mokyr_2009: p.3,9,real_not_in_corpus
+phase_c_unrestricted,mokyr,2016,(Mokyr_2016: p.3,5,real_not_in_corpus
+phase_c_unrestricted,mokyr,2017,Mokyr (2017,2,real_not_in_corpus
+phase_c_unrestricted,naidu,2014,(Naidu_2014: p.3,1,real_not_in_corpus
+phase_c_unrestricted,north,1973,North and Thomas (1973,2,real_not_in_corpus
+phase_c_unrestricted,north,1981,(North_1981: p.24,8,real_not_in_corpus
+phase_c_unrestricted,north,1990,(North_1990: p.3,96,real_not_in_corpus
+phase_c_unrestricted,north,1994,(North_1994: p.360,1,real_not_in_corpus
+phase_c_unrestricted,north,2005,(North_2005: p.78,1,real_not_in_corpus
+phase_c_unrestricted,north,2009,North et al. (2009,4,real_not_in_corpus
+phase_c_unrestricted,nunn,2007,(Nunn_2007: p. 13,1,real_not_in_corpus
+phase_c_unrestricted,nunn,2008,(Nunn_2008: p.14,1,in_corpus
+phase_c_unrestricted,nunn,2009,(Nunn_2009: p.1,3,real_not_in_corpus
+phase_c_unrestricted,nunn,2014,(Nunn_2014: p.36,2,real_not_in_corpus
+phase_c_unrestricted,olsson,2005,Olsson and Hibbs (2005,1,real_not_in_corpus
+phase_c_unrestricted,ostrom,1990,(Ostrom_1990: p.87,5,real_not_in_corpus
+phase_c_unrestricted,persson,2003,Persson and Tabellini (2003,2,real_not_in_corpus
+phase_c_unrestricted,persson,2004,Persson and Tabellini (2004,1,real_not_in_corpus
+phase_c_unrestricted,persson,2009,Persson and Tabellini (2009,1,real_not_in_corpus
+phase_c_unrestricted,persson,2013,Persson et al. (2013,1,real_not_in_corpus
+phase_c_unrestricted,pomeranz,2000,(Pomeranz_2000: p.4,15,real_not_in_corpus
+phase_c_unrestricted,porta,1998,Porta et al. (1998,8,real_not_in_corpus
+phase_c_unrestricted,porta,1999,Porta et al. (1999,3,real_not_in_corpus
+phase_c_unrestricted,przeworski,2000,Przeworski et al. (2000,1,real_not_in_corpus
+phase_c_unrestricted,putnam,1993,(Putnam_1993: p.167,1,real_not_in_corpus
+phase_c_unrestricted,putnam,2000,(Putnam_2000: p. 19,1,real_not_in_corpus
+phase_c_unrestricted,qian,2011,Qian (2011,1,real_not_in_corpus
+phase_c_unrestricted,robinson,2001,Robinson (2001,16,in_corpus
+phase_c_unrestricted,robinson,2003,Robinson (2003,1,real_not_in_corpus
+phase_c_unrestricted,robinson,2005,Robinson (2005,1,real_not_in_corpus
+phase_c_unrestricted,robinson,2012,Robinson (2012,8,real_not_in_corpus
+phase_c_unrestricted,rodrik,1998,(Rodrik_1998: p.53,1,real_not_in_corpus
+phase_c_unrestricted,rodrik,2003,Rodrik (2003,2,real_not_in_corpus
+phase_c_unrestricted,rodrik,2004,Rodrik et al. (2004,29,real_not_in_corpus
+phase_c_unrestricted,rodrik,2005,(Rodrik_2005: p.134,6,real_not_in_corpus
+phase_c_unrestricted,rodrik,2007,Rodrik (2007,3,real_not_in_corpus
+phase_c_unrestricted,rodrik,2013,Rodrik (2013,3,real_not_in_corpus
+phase_c_unrestricted,rodrik,2014,(Rodrik_2014: p.3,2,real_not_in_corpus
+phase_c_unrestricted,romer,1990,Romer (1990,1,real_not_in_corpus
+phase_c_unrestricted,rourke,2000,Rourke (2000,1,real_not_in_corpus
+phase_c_unrestricted,rourke,2007,Rourke (2007,2,real_not_in_corpus
+phase_c_unrestricted,rst,2004,(RST_2004: p.133,1,real_not_in_corpus
+phase_c_unrestricted,sachs,2001,(Sachs_2001: p.4,9,real_not_in_corpus
+phase_c_unrestricted,sachs,2003,(Sachs_2003: p.27,38,real_not_in_corpus
+phase_c_unrestricted,sachs,2005,(Sachs_2005: p.47,4,real_not_in_corpus
+phase_c_unrestricted,sokoloff,2012,Sokoloff (2012,1,real_not_in_corpus
+phase_c_unrestricted,solow,1987,(Solow_1987: p.2,1,real_not_in_corpus
+phase_c_unrestricted,soto,2000,Soto (2000,5,real_not_in_corpus
+phase_c_unrestricted,stantcheva,2013,Stantcheva (2013,1,real_not_in_corpus
+phase_c_unrestricted,stiglitz,2000,Stiglitz (2000,1,real_not_in_corpus
+phase_c_unrestricted,stiglitz,2002,(Stiglitz_2002: p.4,1,real_not_in_corpus
+phase_c_unrestricted,tabellini,2008,(Tabellini_2008: p. 16,1,real_not_in_corpus
+phase_c_unrestricted,tabellini,2010,Tabellini (2010,6,real_not_in_corpus
+phase_c_unrestricted,trebbi,2004,Trebbi (2004,3,real_not_in_corpus
+phase_c_unrestricted,treisman,2013,(Treisman_2013: p.56,1,real_not_in_corpus
+phase_c_unrestricted,vishny,1998,Vishny (1998,1,real_not_in_corpus
+phase_c_unrestricted,waijenburg,2019,Waijenburg (2019,1,real_not_in_corpus
+phase_c_unrestricted,weber,1930,(Weber_1930: p.17,1,real_not_in_corpus
+phase_c_unrestricted,weber,2003,(Weber_2003: p.18,1,real_not_in_corpus
+phase_c_unrestricted,weingast,1989,Weingast (1989,1,in_corpus
+phase_c_unrestricted,weingast,2001,Weingast (2001,1,real_not_in_corpus
+phase_c_unrestricted,williamson,1996,(Williamson_1996: p.4,1,in_corpus
+phase_c_unrestricted,williamson,2002,(Williamson_2002: p.15,1,real_not_in_corpus
+phase_c_unrestricted,williamson,2005,(Williamson_2005: p. 183,1,real_not_in_corpus
+phase_c_unrestricted,williamson,2006,(Williamson_2006: p.45,8,real_not_in_corpus
+phase_c_unrestricted,williamson,2009,(Williamson_2009: p.38,6,real_not_in_corpus
+phase_c_unrestricted,williamson,2011,(Williamson_2011: p.34,6,real_not_in_corpus
+phase_c_unrestricted,williamson,2013,(Williamson_2013: p.45,6,real_not_in_corpus
+phase_c_unrestricted,williamson,2014,(Williamson_2014: p.36,1,real_not_in_corpus
+phase_c_unrestricted,williamson,2016,(Williamson_2016: p.89,1,real_not_in_corpus
+phase_c_unrestricted,zingales,2001,Zingales (2001,1,real_not_in_corpus
+phase_c_unrestricted,zingales,2006,Zingales (2006,3,real_not_in_corpus

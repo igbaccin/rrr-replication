@@ -1,0 +1,15 @@
+artifact,status,reason,paper_action,manuscript_lines
+Architecture figure and writer methods,replace,The active architecture now uses one bounded call packet across every evidence surface.,"Rewrite the writer interface, artifact contract, and architecture diagram.",193-211; 390-570
+T0 controlled-contract staircase,mixed,"A and B are corrected writer results. B2, C, and C2 are preserved independent baselines.","Replace A and B cells, retain the hash-verified baseline cells.",282-294; 1451-1488
+T1 main integrity,replace,Every Phase A review changed.,"Replace checker, citation, word, stability, and source values.",108; 282-294; 862-890
+T2 condition comparison,mixed,"A and B changed, baseline and direct-workflow rows have separate provenance, and H3 used the original writer.","Replace A and B, retain eligible independent rows, and remove H3 from the accepted comparison.",282-314; 862-919
+T3 citation taxonomy,unchanged,The table covers preserved C and C2 outputs.,Retain with an explicit independent-baseline label.,921-943
+T4 guardrail activation,replace,All writer interventions were regenerated.,Replace every row from corrected A quality and metric files.,945-976
+T5 refusal calibration,unchanged_numeric,Topic-fit decisions and pre-writer terminal outcomes precede the corrected writer boundary.,Retain the values and revise the provenance note.,298-300; 980-1018
+Local-model ladder and outcome figures,replace,The 212 completed flagship reviews and 94 probe false accepts were replayed.,"Replace review outcomes, error means, words, documents, citations, and plotted segments.",304-314; 1024-1128; 1754-1758
+Corpus-size table and figure,replace,"All 75 S10, S25, and S50 reviews changed.","Replace clean-review, word, document, and citation values.",980-1018
+Stability and source-inclusion exhibits,replace_values,"Document membership is highly stable, while some run-level sets changed.",Regenerate every value from corrected cited-document sets.,320-328; 1204-1342
+Workflow comparison,mixed,Direct Claude Code and NotebookLM are writer-independent. H3 used the original writer and lies outside the accepted replay.,Retain eligible direct rows and exclude or label H3 as historical.,304-314; 1130-1198; 1492-1517
+Running example and excerpts,replace,"A run 001 changed in prose, citations, interventions, and call-level evidence records.","Retain upstream planning and ledger facts, then replace all writer and checker material.",193-211; 1355-1404; 1677-1749
+Cost and latency figure,definition_required,"Replay timings cover the corrected writer path, while July timings cover the complete pipeline.",Choose and document a comparable timing construction before reporting corrected cost.,results and appendix timing material
+Corpus register and preprocessing exhibits,unchanged,The correction begins after the stored review ledger.,Retain the existing corpus and preprocessing values.,594-733; 1426-1447; 1525-1672

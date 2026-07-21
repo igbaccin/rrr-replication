@@ -1,0 +1,4333 @@
+{
+  "summary": {
+    "phase": "phase_h_opus",
+    "arm_model": "claude-opus-4-8",
+    "n_runs": 51,
+    "n_completed": 51,
+    "n_refused": 0,
+    "refusal_rate_pct": 0.0,
+    "n_emission_failed": 0,
+    "emission_failure_pct": 0.0,
+    "n_scored": 51,
+    "n_checker_failed": 0,
+    "e1": {
+      "mean": 0,
+      "sd": 0.0,
+      "min": 0,
+      "max": 0
+    },
+    "e2": {
+      "mean": 0,
+      "sd": 0.0,
+      "min": 0,
+      "max": 0
+    },
+    "e3": {
+      "mean": 0.78,
+      "sd": 1.72,
+      "min": 0,
+      "max": 7
+    },
+    "e4": {
+      "mean": 0.94,
+      "sd": 1.01,
+      "min": 0,
+      "max": 3
+    },
+    "e5": {
+      "mean": 2.08,
+      "sd": 2.71,
+      "min": 0,
+      "max": 12
+    },
+    "n_citations": {
+      "mean": 23.14,
+      "sd": 4.81,
+      "min": 13,
+      "max": 36
+    },
+    "e1_loose_advisory": {
+      "mean": 0.12,
+      "sd": 0.38,
+      "min": 0,
+      "max": 2
+    },
+    "docs_cited": {
+      "mean": 9.8,
+      "sd": 1.47,
+      "min": 7,
+      "max": 13
+    },
+    "words": {
+      "mean": 1185.8,
+      "sd": 84.07,
+      "min": 1038,
+      "max": 1487
+    },
+    "zero_err_pct": 11.8,
+    "note": "Claude Code + contract-as-prompt; scored by scripts/check_citations.py"
+  },
+  "per_run": [
+    {
+      "run": 1,
+      "word_count": 1125,
+      "elapsed_s": 389.0,
+      "refusal": false,
+      "n_citations": 22,
+      "n_canonical_citations": 22,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 12,
+      "quotes_checked": 28,
+      "quotes_verified": 26,
+      "e1_details": [],
+      "e1_loose_advisory": [
+        {
+          "doc_id": null,
+          "label": "The",
+          "year": "1688",
+          "page": null,
+          "raw": "The 1688",
+          "context": "ights, but must make a credible commitment to them\" (North&Weingast_1989: p.2). The 1688 settlement, by binding the Crown through Parliament, supplied that credibility,",
+          "surface": "display_loose",
+          "reason": "bare_author_year_ambiguous_with_prose"
+        }
+      ],
+      "e1_loose_advisory_count": 1,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 4,
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.4"
+          ],
+          "quote": "contributed to the evolution of institutions that protected the privileges of the elites",
+          "context": "endowments suited to plantation agriculture generated extreme inequality, which \"contributed to the evolution of institutions that protected the privileges of the elites\" and thereby depressed long-run growth. This is not a rejection of the instituti"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 4,
+          "found_on_pages": [
+            1,
+            27
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.4"
+          ],
+          "quote": "estimate large effects of institutions on income per capita,",
+          "context": "esent\" (AcemogluEtAl_2001: p.1). Using settler mortality as an instrument, they \"estimate large effects of institutions on income per capita,\" concluding that \"Africa is poorer than the rest of the world not because of pur"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 2,
+      "word_count": 1267,
+      "elapsed_s": 224.0,
+      "refusal": false,
+      "n_citations": 28,
+      "n_canonical_citations": 28,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 11,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 8,
+      "quotes_checked": 36,
+      "quotes_verified": 24,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes",
+          "context": "ch as a 7-fold increase in Nigeria's income\" (AcemogluEtAl_2001: p.9). Notably, \"once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes\" (AcemogluEtAl_2001: p.1) — a claim that positions institutions as prior to, and"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "tried to replicate European institutions, with strong emphasis on private property and checks against government power",
+          "context": "nd were more likely to set up extractive institutions\" while elsewhere settlers \"tried to replicate European institutions, with strong emphasis on private property and checks against government power\" (AcemogluEtAl_2001: p.1), they used settler mortality as an instrument for pres"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 9,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.9",
+            "AcemogluEtAl_2001 p.9"
+          ],
+          "quote": "more than 100 years ago explains over 25 percent of the variation in current institutions",
+          "context": "ment for present-day institutions. The results were striking: settler mortality \"more than 100 years ago explains over 25 percent of the variation in current institutions\" (AcemogluEtAl_2001: p.9), and the estimated effect of institutions was \"relativ"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 9,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.9",
+            "AcemogluEtAl_2001 p.9"
+          ],
+          "quote": "relatively precisely estimated and large,",
+          "context": "tutions\" (AcemogluEtAl_2001: p.9), and the estimated effect of institutions was \"relatively precisely estimated and large,\" implying that raising \"Nigeria's institutions to the level of Chile could, in t"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 9,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.9",
+            "AcemogluEtAl_2001 p.9"
+          ],
+          "quote": "Nigeria's institutions to the level of Chile could, in the long run, lead to as much as a 7-fold increase in Nigeria's income",
+          "context": "titutions was \"relatively precisely estimated and large,\" implying that raising \"Nigeria's institutions to the level of Chile could, in the long run, lead to as much as a 7-fold increase in Nigeria's income\" (AcemogluEtAl_2001: p.9). Notably, \"once the effect of institutions is controll"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 13,
+          "found_on_pages": [
+            18
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.13"
+          ],
+          "quote": "capital markets are especially sensitive to the security of property rights, they provide a unique and highly visible indicator",
+          "context": "ut must make a credible commitment to them\" (North&Weingast_1989: p.2). Because \"capital markets are especially sensitive to the security of property rights, they provide a unique and highly visible indicator\" (North&Weingast_1989: p.13) of institutional change. Their evidence is arrestin"
+        },
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1",
+            "Nunn_2008 p.2"
+          ],
+          "quote": "subsequent state collapse and ethnic fractionalization",
+          "context": "ic performance\" (Nunn_2008: p.1), tracing a channel whereby the trades produced \"subsequent state collapse and ethnic fractionalization\" (Nunn_2008: p.2) — again locating a deep cause behind institutional weakness ra"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 6,
+          "found_on_pages": [
+            1,
+            3,
+            24
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.6"
+          ],
+          "quote": "the compression of history",
+          "context": "a more complex pattern of causation\" (Austin_2008: p.24). His central charge is \"the compression of history\": because AJR compare \"two moments, nearly half a millennium apart,\" the very \"c"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 6,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.6"
+          ],
+          "quote": "two moments, nearly half a millennium apart,",
+          "context": "p.24). His central charge is \"the compression of history\": because AJR compare \"two moments, nearly half a millennium apart,\" the very \"content of 'colonial rule' and 'property rights'… is far from stable"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 6,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.6"
+          ],
+          "quote": "content of 'colonial rule' and 'property rights'… is far from stable across the era(s)",
+          "context": "y\": because AJR compare \"two moments, nearly half a millennium apart,\" the very \"content of 'colonial rule' and 'property rights'… is far from stable across the era(s)\" (Austin_2008: p.6). Treating \"the last 400 or so years of the pre-colonial era"
+        },
+        {
+          "doc_id": "Mokyr_2005",
+          "cited_page": 1,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Mokyr_2005 p.1",
+            "Mokyr_2005 p.1"
+          ],
+          "quote": "appreciation of the importance of useful knowledge",
+          "context": "wledge, arguing that \"the eighteenth-century Enlightenment in the West\" and its \"appreciation of the importance of useful knowledge\" (Mokyr_2005: p.1) were indispensable, so that \"without the Enlightenment… an In"
+        },
+        {
+          "doc_id": "Mokyr_2005",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Mokyr_2005 p.1",
+            "Mokyr_2005 p.1"
+          ],
+          "quote": "without the Enlightenment… an Industrial Revolution could not",
+          "context": "e importance of useful knowledge\" (Mokyr_2005: p.1) were indispensable, so that \"without the Enlightenment… an Industrial Revolution could not\" have occurred (Mokyr_2005: p.1). Taken together, the corpus presents institutio"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 3,
+      "word_count": 1303,
+      "elapsed_s": 327.0,
+      "refusal": false,
+      "n_citations": 29,
+      "n_canonical_citations": 29,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 5,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 27,
+      "quotes_verified": 21,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "in those societies that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power",
+          "context": "ality\" (Sokoloff&Engerman_2000: p.4). This inequality became institutionalized: \"in those societies that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7), shaping suffrage, schooling, and land policy in"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.2",
+            "North_1989 p.2"
+          ],
+          "quote": "there are no institutions... and indeed in such a world growth is not a problem",
+          "context": "analytical premise with unusual clarity. In the frictionless neoclassical world \"there are no institutions... and indeed in such a world growth is not a problem\" (North_1989: p.2); it is only \"with positive transaction costs\" that \"instituti"
+        },
+        {
+          "doc_id": "North_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.2",
+            "North_1989 p.2"
+          ],
+          "quote": "with positive transaction costs",
+          "context": "d indeed in such a world growth is not a problem\" (North_1989: p.2); it is only \"with positive transaction costs\" that \"institutions matter\" (North_1989: p.2). Institutions, for North, are \"rul"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 21,
+          "found_on_pages": [
+            22
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.21"
+          ],
+          "quote": "approximately 40 percent of GNP",
+          "context": "ew during the nine years of war from £1 million to nearly £17 million,\" a level \"approximately 40 percent of GNP\" that had been \"previously unattainable\" (North&Weingast_1989: p.21). Institutio"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 21,
+          "found_on_pages": [
+            22
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.21"
+          ],
+          "quote": "previously unattainable",
+          "context": "to nearly £17 million,\" a level \"approximately 40 percent of GNP\" that had been \"previously unattainable\" (North&Weingast_1989: p.21). Institutions, on this reading, worked by binding t"
+        },
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1"
+          ],
+          "quote": "it was actually the most developed areas of Africa that tended to select into the slave trades",
+          "context": ".1). Crucially, the correlation cannot be dismissed as reverse causation, since \"it was actually the most developed areas of Africa that tended to select into the slave trades\" (Nunn_2008: p.1)—a selection pattern that, if anything, biases against his find"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 4,
+      "word_count": 1158,
+      "elapsed_s": 451.0,
+      "refusal": false,
+      "n_citations": 29,
+      "n_canonical_citations": 29,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 3,
+      "docs_cited": [
+        "Abramovitz_1986",
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 13,
+      "quotes_checked": 31,
+      "quotes_verified": 27,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7",
+            "Sokoloff&Engerman_2000 p.12"
+          ],
+          "quote": "those societies that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power",
+          "context": "quality they generated. Their persistence mechanism is politically explicit: in \"those societies that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7), and this \"path of institutional development may"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.1",
+            "North_1989 p.1"
+          ],
+          "quote": "rules, enforcement characteristics of rules, and norms of behavior that structure repeated human interaction",
+          "context": "the performance of economies\" (North_1989: p.1)—and institutions, understood as \"rules, enforcement characteristics of rules, and norms of behavior that structure repeated human interaction\" (North_1989: p.1), determine whether those costs choke exchange or permit it to"
+        },
+        {
+          "doc_id": "North_1989",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.1"
+          ],
+          "quote": "one of the most evident lessons from history is that political systems have an inherent tendency to produce inefficient property rights which result in stagnation or decline",
+          "context": "flourish. Crucially, North insisted that good institutions are not guaranteed: \"one of the most evident lessons from history is that political systems have an inherent tendency to produce inefficient property rights which result in stagnation or decline\" (North_1989: p.1).  The paradigmatic historical demonstration is North and Wein"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 4,
+          "found_on_pages": [
+            23
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.4",
+            "North&Weingast_1989 p.2"
+          ],
+          "quote": "a clear and dramatic credible commitment that the government would honor its promises",
+          "context": "an an order of magnitude\" (North&Weingast_1989: p.4), a shift they attribute to \"a clear and dramatic credible commitment that the government would honor its promises\" (North&Weingast_1989: p.2).  This institutionalist logic received its most infl"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 5,
+      "word_count": 1126,
+      "elapsed_s": 204.0,
+      "refusal": false,
+      "n_citations": 20,
+      "n_canonical_citations": 20,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 2,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 35,
+      "quotes_verified": 33,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 2,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.2",
+            "Sokoloff&Engerman_2000 p.2"
+          ],
+          "quote": "factor endowments broadly conceived,",
+          "context": "push the causal chain one step back: institutions are themselves the product of \"factor endowments broadly conceived,\" which \"could have had profound and enduring impacts on long-run paths of instit"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 2,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.2",
+            "Sokoloff&Engerman_2000 p.2"
+          ],
+          "quote": "could have had profound and enduring impacts on long-run paths of institutional and economic development.",
+          "context": "ions are themselves the product of \"factor endowments broadly conceived,\" which \"could have had profound and enduring impacts on long-run paths of institutional and economic development.\" Endowments suited to plantation agriculture and mineral extraction generated \"e"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 6,
+      "word_count": 1112,
+      "elapsed_s": 553.0,
+      "refusal": false,
+      "n_citations": 26,
+      "n_canonical_citations": 26,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 18,
+      "quotes_verified": 18,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 7,
+      "word_count": 1136,
+      "elapsed_s": 251.0,
+      "refusal": false,
+      "n_citations": 21,
+      "n_canonical_citations": 21,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 3,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 9,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "Nunn&Wantchekon_2011",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 7,
+      "quotes_checked": 36,
+      "quotes_verified": 27,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Nunn_2008: p.1, p.2)",
+          "context": "pse and ethnic fractionalization\" and \"the corruption of judicial institutions\" (Nunn_2008: p.1, p.2). Nunn and Wantchekon identify a cultural channel, showing that \"current differe"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Ogilvie_2007: p.1, p.4)",
+          "context": "erfdom and guilds, and cautioning against the view that \"whatever is, is right\" (Ogilvie_2007: p.1, p.4). Most fundamentally, McCloskey denies that institutions were the prime mover at"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(McCloskey_2015: p.1, p.3)",
+          "context": "ted a change in the \"conditions of talk\" that dignified experiment and commerce (McCloskey_2015: p.1, p.3).  The corpus thus supports the institutionalist thesis richly while refusing to"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 18,
+          "found_on_pages": [
+            20
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.18",
+            "North&Weingast_1989 p.19",
+            "North&Weingast_1989 p.21"
+          ],
+          "quote": "the institutional foundations of modern capital markets",
+          "context": "to repay principal (North&Weingast_1989: p.18)—the post-Revolution regime built \"the institutional foundations of modern capital markets\" (North&Weingast_1989: p.19), and government debt rose from roughly £1 million o"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "protection for private property, nor did they provide checks and balances against government expropriation,",
+          "context": "tAl_2001: p.1). Extractive states, exemplified by the Belgian Congo, offered no \"protection for private property, nor did they provide checks and balances against government expropriation,\" whereas settler \"Neo-Europes\" such as Canada and the United States replicated E"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "cited_page": 6,
+          "found_on_pages": [
+            1,
+            4,
+            28
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2002 p.6"
+          ],
+          "quote": "the late eighteenth and early nineteenth centuries",
+          "context": "ge investment\" (AcemogluEtAl_2002: p.5). Crucially, they date the divergence to \"the late eighteenth and early nineteenth centuries\" and link it to industrialization, arguing that institutional differences \"matte"
+        },
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1",
+            "Nunn_2008 p.2"
+          ],
+          "quote": "state collapse and ethnic fractionalization",
+          "context": "lave trades \"had an adverse effect on economic development\" partly by producing \"state collapse and ethnic fractionalization\" and \"the corruption of judicial institutions\" (Nunn_2008: p.1, p.2). Nunn and W"
+        },
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1",
+            "Nunn_2008 p.2"
+          ],
+          "quote": "the corruption of judicial institutions",
+          "context": "elopment\" partly by producing \"state collapse and ethnic fractionalization\" and \"the corruption of judicial institutions\" (Nunn_2008: p.1, p.2). Nunn and Wantchekon identify a cultural channel, showing"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 6,
+          "found_on_pages": [
+            1,
+            3,
+            24
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.6"
+          ],
+          "quote": "the compression of history,",
+          "context": "corpus also contains pointed dissent. Austin warns that the AJR design commits \"the compression of history,\" comparing \"two moments, nearly half a millennium apart\" such that \"the content"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 6,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.6"
+          ],
+          "quote": "two moments, nearly half a millennium apart",
+          "context": "ustin warns that the AJR design commits \"the compression of history,\" comparing \"two moments, nearly half a millennium apart\" such that \"the content of 'colonial rule' and 'property rights'\" is \"far from s"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 6,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.6"
+          ],
+          "quote": "the content of 'colonial rule' and 'property rights'",
+          "context": "of history,\" comparing \"two moments, nearly half a millennium apart\" such that \"the content of 'colonial rule' and 'property rights'\" is \"far from stable across the era(s),\" while collapsing five continents into a"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 6,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.6"
+          ],
+          "quote": "far from stable across the era(s),",
+          "context": "nium apart\" such that \"the content of 'colonial rule' and 'property rights'\" is \"far from stable across the era(s),\" while collapsing five continents into a crude settler/non-settler binary (Austi"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 8,
+      "word_count": 1117,
+      "elapsed_s": 478.0,
+      "refusal": false,
+      "n_citations": 19,
+      "n_canonical_citations": 19,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 16,
+      "quotes_verified": 15,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 18,
+          "found_on_pages": [
+            17
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.18",
+            "AcemogluEtAl_2001 p.3"
+          ],
+          "quote": "the impact of institutions on income per capita is 0.94",
+          "context": "protection against expropriation risk, their instrumental-variables estimate of \"the impact of institutions on income per capita is 0.94\" (AcemogluEtAl_2001: p.18), implying effects so large that raising a poor countr"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 9,
+      "word_count": 1210,
+      "elapsed_s": 561.0,
+      "refusal": false,
+      "n_citations": 22,
+      "n_canonical_citations": 22,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 29,
+      "quotes_verified": 28,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 4,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.4",
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "elites were better able to establish a legal framework that insured them disproportionate shares of political power",
+          "context": "y in wealth, human capital, and political power\" (Sokoloff&Engerman_2000: p.4), \"elites were better able to establish a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7)—institutions once again transmitting initial cond"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 10,
+      "word_count": 1158,
+      "elapsed_s": 353.0,
+      "refusal": false,
+      "n_citations": 13,
+      "n_canonical_citations": 13,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 12,
+      "quotes_verified": 12,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 11,
+      "word_count": 1213,
+      "elapsed_s": 304.0,
+      "refusal": false,
+      "n_citations": 24,
+      "n_canonical_citations": 24,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 12,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 34,
+      "quotes_verified": 22,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.2"
+          ],
+          "quote": "the number of children people have and the rate of saving,",
+          "context": "oase: the neoclassical growth model, in which the pace of enrichment reduces to \"the number of children people have and the rate of saving,\" holds only under the assumption of zero transaction costs, but once transaction"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "cited_page": 4,
+          "found_on_pages": [
+            1,
+            5,
+            7,
+            33,
+            34,
+            36,
+            38,
+            39,
+            49
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2002 p.4"
+          ],
+          "quote": "institutional reversal",
+          "context": "om European colonialism\" (AcemogluEtAl_2002: p.1). The proposed mechanism is an \"institutional reversal\": relatively poor, sparsely populated regions induced Europeans to settle and bu"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "cited_page": 4,
+          "found_on_pages": [
+            5
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2002 p.4"
+          ],
+          "quote": "a large population and relative prosperity made extractive institutions more profitable for the colonizers,",
+          "context": "s induced Europeans to settle and build institutions of private property, while \"a large population and relative prosperity made extractive institutions more profitable for the colonizers,\" who could tax dense populations or force them into mines and plantations (Acemo"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.1"
+          ],
+          "quote": "most often focused on institutions",
+          "context": "ments variant of Sokoloff and Engerman. They observe that colonial explanations \"most often focused on institutions\" and the \"security of property rights,\" but that this \"raises the challenge of e"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.1"
+          ],
+          "quote": "security of property rights,",
+          "context": "observe that colonial explanations \"most often focused on institutions\" and the \"security of property rights,\" but that this \"raises the challenge of explaining where the differences in inst"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.1"
+          ],
+          "quote": "raises the challenge of explaining where the differences in institutions come from",
+          "context": "n focused on institutions\" and the \"security of property rights,\" but that this \"raises the challenge of explaining where the differences in institutions come from\" (Sokoloff&Engerman_2000: p.1). Their answer is that initial factor endowments g"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 2,
+          "found_on_pages": [
+            4,
+            7,
+            11
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.2"
+          ],
+          "quote": "degrees of inequality,",
+          "context": ": p.1). Their answer is that initial factor endowments generated very different \"degrees of inequality,\" which \"persisted over time and affected the course of development through their"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 2,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.2"
+          ],
+          "quote": "persisted over time and affected the course of development through their impact on the institutions that evolved",
+          "context": "itial factor endowments generated very different \"degrees of inequality,\" which \"persisted over time and affected the course of development through their impact on the institutions that evolved\" (Sokoloff&Engerman_2000: p.2). Their evidence unsettles simple heritage stories"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.1"
+          ],
+          "quote": "virtual parity in per capita income between Mexico and the British colonies,",
+          "context": ": p.2). Their evidence unsettles simple heritage stories: around 1700 there was \"virtual parity in per capita income between Mexico and the British colonies,\" and the Caribbean, not the mainland, held the richest New World economies (Soko"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 25,
+          "found_on_pages": [
+            1,
+            3,
+            24
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.25"
+          ],
+          "quote": "the compression of history,",
+          "context": "gisters serious dissent. Austin charges the reversal-of-fortune literature with \"the compression of history,\" treating \"the last 400 or so years of the pre-colonial era as if it was part of"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 25,
+          "found_on_pages": [
+            24
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.25"
+          ],
+          "quote": "the last 400 or so years of the pre-colonial era as if it was part of the half-century or so of genuine colonial rule,",
+          "context": "the reversal-of-fortune literature with \"the compression of history,\" treating \"the last 400 or so years of the pre-colonial era as if it was part of the half-century or so of genuine colonial rule,\" and insisting that \"the assumption that Europeans could simply impose instituti"
+        },
+        {
+          "doc_id": "McCloskey_2015",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "McCloskey_2015 p.1"
+          ],
+          "quote": "interests and institutions... did not change radically from 1600 to 1789,",
+          "context": "erests or institutions, which changed in Northwestern Europe,\" and that because \"interests and institutions... did not change radically from 1600 to 1789,\" \"the interest-only theories of Steven Cheung and Douglass North don't work\" (Mc"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 12,
+      "word_count": 1251,
+      "elapsed_s": 686.0,
+      "refusal": false,
+      "n_citations": 26,
+      "n_canonical_citations": 26,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 24,
+      "quotes_verified": 23,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Mokyr_2005",
+          "cited_page": 2,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Mokyr_2005 p.2",
+            "Mokyr_2005 p.60"
+          ],
+          "quote": "the growth of useful knowledge is the mainspring of economic growth",
+          "context": "sustained economic growth\" of the nineteenth century (Mokyr_2005: p.2) and that \"the growth of useful knowledge is the mainspring of economic growth\" (Mokyr_2005: p.60). Allen's wage evidence points to factor prices, showing that"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 13,
+      "word_count": 1108,
+      "elapsed_s": 425.0,
+      "refusal": false,
+      "n_citations": 25,
+      "n_canonical_citations": 25,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 16,
+      "quotes_verified": 16,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 14,
+      "word_count": 1038,
+      "elapsed_s": 471.0,
+      "refusal": false,
+      "n_citations": 32,
+      "n_canonical_citations": 32,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 2,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000",
+        "Whatley_2018"
+      ],
+      "n_docs_cited": 13,
+      "quotes_checked": 17,
+      "quotes_verified": 14,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 5,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.5"
+          ],
+          "quote": "evolution of institutions that protected the privileges of the elites and restricted",
+          "context": "eme inequality bred institutions that entrenched elite advantage; the resulting \"evolution of institutions that protected the privileges of the elites and restricted\" opportunity for the majority (Sokoloff&Engerman_2000: p.5) locked in divergent"
+        },
+        {
+          "doc_id": "Whatley_2018",
+          "cited_page": 2,
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "Whatley_2018 p.2"
+          ],
+          "quote": "institutions are fundamental",
+          "context": "rule.  Yet the corpus also contains vigorous dissent that qualifies the strong \"institutions are fundamental\" claim. The most pointed methodological critique is Austin's, who charges that t"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "cited_page": 5,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2002 p.5"
+          ],
+          "quote": "occurred during the late eighteenth and early nineteenth centuries",
+          "context": "2: p.5). Crucially, the reversal was not timeless but historically specific: it \"occurred during the late eighteenth and early nineteenth centuries\" (AcemogluEtAl_2002: p.5), coinciding with the industrial opportunity that only"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 15,
+      "word_count": 1209,
+      "elapsed_s": 278.0,
+      "refusal": false,
+      "n_citations": 23,
+      "n_canonical_citations": 23,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 3,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 34,
+      "quotes_verified": 30,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 10,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.10"
+          ],
+          "quote": "the decline of the Spanish economy and economic stagnation",
+          "context": "ugh the seizure of properties and financial assets,\" with the consequence being \"the decline of the Spanish economy and economic stagnation\" (North_1989: p.10).  The institutionalist program extends persuasively into the"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "did not introduce much protection for private property, nor did they provide checks and balances against government expropriation,",
+          "context": "Where Europeans faced high mortality they \"set up extractive institutions\" that \"did not introduce much protection for private property, nor did they provide checks and balances against government expropriation,\" whereas in the \"Neo-Europes\" settlers \"tried to replicate European institutions"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "tried to replicate European institutions, with strong emphasis on private property and checks against government power",
+          "context": "lances against government expropriation,\" whereas in the \"Neo-Europes\" settlers \"tried to replicate European institutions, with strong emphasis on private property and checks against government power\" (AcemogluEtAl_2001: p.1). Because \"the colonial state and institutions persiste"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "the colonial state and institutions persisted even after independence",
+          "context": "property and checks against government power\" (AcemogluEtAl_2001: p.1). Because \"the colonial state and institutions persisted even after independence\" (AcemogluEtAl_2001: p.1), the pattern of early institutional choice is argued t"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 16,
+      "word_count": 1487,
+      "elapsed_s": 552.0,
+      "refusal": false,
+      "n_citations": 30,
+      "n_canonical_citations": 30,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 3,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 30,
+      "quotes_verified": 26,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7",
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "factor endowments... predisposed them toward paths of development associated with different degrees of inequality in wealth, human capital, and political power",
+          "context": "ies that trace persistence mechanisms. Sokoloff and Engerman show how New World \"factor endowments... predisposed them toward paths of development associated with different degrees of inequality in wealth, human capital, and political power\" (Sokoloff&Engerman_2000: p.7), inequality then entrenched because \"elites were"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7",
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "elites were better able to establish a legal framework that insured them disproportionate shares of political power",
+          "context": "itical power\" (Sokoloff&Engerman_2000: p.7), inequality then entrenched because \"elites were better able to establish a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7). Nunn's work on Africa's slave trades similarly l"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15"
+          ],
+          "quote": "were widespread not because they were good for everyone, but because they benefited well-organized interest groups. They made the pie smaller, but dished out large slices to established male masters, with fiscal and regulatory side-benefits",
+          "context": "tutions of pre-industrial Europe\" (Ogilvie_2007: p.1). Guilds, in her analysis, \"were widespread not because they were good for everyone, but because they benefited well-organized interest groups. They made the pie smaller, but dished out large slices to established male masters, with fiscal and regulatory side-benefits to town governments and princes\" (Ogilvie_2007: p.15). This is not merely an empirical quibble; it exposes a the"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Nunn&Wantchekon_2011",
+          "cited_page": 6,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn&Wantchekon_2011 p.6"
+          ],
+          "quote": "the slave trade resulted in a long-term deterioration of legal and political institutions",
+          "context": ": p.4). With Wantchekon, he extends the argument to culture, hypothesising that \"the slave trade resulted in a long-term deterioration of legal and political institutions\" that helped produce \"a self-enforcing outcome by which low levels of trust and"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 17,
+      "word_count": 1228,
+      "elapsed_s": 188.0,
+      "refusal": false,
+      "n_citations": 28,
+      "n_canonical_citations": 28,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 2,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 4,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 7,
+      "quotes_checked": 32,
+      "quotes_verified": 26,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "page_range_citation",
+          "raw": "(North_1989: p.34–35)",
+          "context": "ate bureaucracy,\" centralized enforcement, and, ultimately, economic stagnation (North_1989: p.34–35).  The most influential attempt to establish institutions as a *fundamental*—not"
+        },
+        {
+          "reason": "page_range_citation",
+          "raw": "(AcemogluEtAl_2001: p.1–2)",
+          "context": "rty, nor did they provide checks and balances against government expropriation\" (AcemogluEtAl_2001: p.1–2). Because \"the colonial state and institutions persisted even after independence"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 5,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.5"
+          ],
+          "quote": "institutions that protected the privileges of the elites and restricted opportunities for the broad mass of the population",
+          "context": "ns, extreme inequality in \"wealth, human capital, and political power\" fostered \"institutions that protected the privileges of the elites and restricted opportunities for the broad mass of the population\" (Sokoloff&Engerman_2000: p.5). Here institutions remain proximate to growth but"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 2,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.2"
+          ],
+          "quote": "to the level of Chile could, in the long run, lead to as much as a 7-fold increase in Nigeria's income",
+          "context": "y institutions. The estimated effect is large: improving Nigeria's institutions \"to the level of Chile could, in the long run, lead to as much as a 7-fold increase in Nigeria's income\" (AcemogluEtAl_2001: p.2).  The companion \"Reversal of Fortune\" paper sharpens t"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 3,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.3"
+          ],
+          "quote": "the institutions that evolved",
+          "context": "societies of very different degrees of inequality, and these differences shaped \"the institutions that evolved\" (Sokoloff&Engerman_2000: p.3). Where soils and climates suited sugar and slave"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 5,
+          "found_on_pages": [
+            4,
+            6,
+            12
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.5"
+          ],
+          "quote": "wealth, human capital, and political power",
+          "context": "re soils and climates suited sugar and slave plantations, extreme inequality in \"wealth, human capital, and political power\" fostered \"institutions that protected the privileges of the elites and restrict"
+        },
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 2,
+          "found_on_pages": [
+            4,
+            5,
+            6,
+            27
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.2",
+            "Nunn_2008 p.3"
+          ],
+          "quote": "political instability",
+          "context": "state collapse and ethnic fractionalization\" (Nunn_2008: p.2), contributing to \"political instability\" and \"weak states\" (Nunn_2008: p.3). Extraction, in other words, corroded the ve"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 18,
+      "word_count": 1257,
+      "elapsed_s": 554.0,
+      "refusal": false,
+      "n_citations": 21,
+      "n_canonical_citations": 21,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 3,
+      "e5": 3,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 25,
+      "quotes_verified": 19,
+      "e1_details": [],
+      "e1_loose_advisory": [
+        {
+          "doc_id": null,
+          "label": "AJR",
+          "year": "2001",
+          "page": null,
+          "raw": "AJR 2001",
+          "context": "I have a well-anchored evidence base spanning the core institutionalist claim (AJR 2001/2002, North, North & Weingast, Sokoloff & Engerman, Nunn) and its critiques (Og",
+          "surface": "display_loose",
+          "reason": "bare_author_year_ambiguous_with_prose"
+        }
+      ],
+      "e1_loose_advisory_count": 1,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15"
+          ],
+          "quote": "not because they were good for everyone, but because they benefited well-organized interest groups. They made the pie smaller, but dished out large slices to established male masters",
+          "context": "tutions must be efficient. Guilds, communes, and serfdom persisted, she argues, \"not because they were good for everyone, but because they benefited well-organized interest groups. They made the pie smaller, but dished out large slices to established male masters\" (Ogilvie_2007: p.15). If institutions are frequently the product of distributio"
+        },
+        {
+          "doc_id": "Mokyr_2005",
+          "cited_page": 2,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Mokyr_2005 p.2"
+          ],
+          "quote": "the rate and nature of economic growth in the West must be explained by developments in the intellectual realm concerning this 'useful knowledge'",
+          "context": "yr locates the origins of modern growth in the intellectual realm, arguing that \"the rate and nature of economic growth in the West must be explained by developments in the intellectual realm concerning this 'useful knowledge'\" and that \"without the Enlightenment... an Industrial Revolution could not have"
+        },
+        {
+          "doc_id": "Mokyr_2005",
+          "cited_page": 8,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Mokyr_2005 p.8"
+          ],
+          "quote": "created the attitudes, the institutions, and the mechanisms",
+          "context": "2). Crucially, he reverses the causal arrow, holding that Enlightenment culture \"created the attitudes, the institutions, and the mechanisms\" of growth (Mokyr_2005: p.8)—making institutions a downstream consequence of ide"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 7,
+          "found_on_pages": [
+            5
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.7"
+          ],
+          "quote": "rules that foster long-term growth",
+          "context": "nstrained the sovereign, on this account, determined whether the state produced \"rules that foster long-term growth\" rather than merely enriching an elite, so that \"the ability of a government to"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 19,
+          "found_on_pages": [
+            18
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.19"
+          ],
+          "quote": "especially sensitive to the security of property rights",
+          "context": "_1989: p.7). The evidence they marshal is drawn from capital markets, which are \"especially sensitive to the security of property rights\" (North&Weingast_1989: p.19): government borrowing expanded by more than an orde"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 4,
+          "found_on_pages": [
+            19
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.4"
+          ],
+          "quote": "not due to cultural or geographic factors, but mostly accounted for by the existence of worse institutions in Africa",
+          "context": "present-day institutions, yielding the striking finding that African poverty is \"not due to cultural or geographic factors, but mostly accounted for by the existence of worse institutions in Africa\" (AcemogluEtAl_2001: p.4). Their companion \"reversal of fortune\" paper reinforce"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 19,
+      "word_count": 1130,
+      "elapsed_s": 461.0,
+      "refusal": false,
+      "n_citations": 18,
+      "n_canonical_citations": 18,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 2,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 17,
+      "quotes_verified": 15,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 6,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.6"
+          ],
+          "quote": "the slave trades were an important factor affecting political underdevelopment",
+          "context": "that historical shocks operate through institutional destruction. He finds that \"the slave trades were an important factor affecting political underdevelopment\" and \"may be a central reason behind Africa's weak states today\" (Nunn_2008: p.6"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15",
+            "Ogilvie_2007 p.19"
+          ],
+          "quote": "affect the distribution of coercive power",
+          "context": "nterest groups (Ogilvie_2007: p.15), and such arrangements persist because they \"affect the distribution of coercive power\" rather than because they promote aggregate welfare (Ogilvie_2007: p.19). If ins"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 20,
+      "word_count": 1181,
+      "elapsed_s": 406.0,
+      "refusal": false,
+      "n_citations": 17,
+      "n_canonical_citations": 17,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 16,
+      "quotes_verified": 15,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.7"
+          ],
+          "quote": "Absolutist states which faced no such constraint, such as early modern Spain, created economic conditions that retarded long-run economic growth",
+          "context": "nd the development of capital markets. The contrast is with absolutist regimes: \"Absolutist states which faced no such constraint, such as early modern Spain, created economic conditions that retarded long-run economic growth\" (North&Weingast_1989: p.7). What matters is whether the state \"produces rules a"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 21,
+      "word_count": 1288,
+      "elapsed_s": 464.0,
+      "refusal": false,
+      "n_citations": 26,
+      "n_canonical_citations": 26,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 3,
+      "e5": 2,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 23,
+      "quotes_verified": 18,
+      "e1_details": [],
+      "e1_loose_advisory": [
+        {
+          "doc_id": null,
+          "label": "AJR",
+          "year": "2002",
+          "page": null,
+          "raw": "AJR 2002",
+          "context": "All quotes verified. AJR 2002 industrialization quote → p.6; North & Weingast \"essential condition for growth",
+          "surface": "display_loose",
+          "reason": "bare_author_year_ambiguous_with_prose"
+        }
+      ],
+      "e1_loose_advisory_count": 1,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.7"
+          ],
+          "quote": "faced no such constraint, such as early modern Spain, created economic conditions that retarded long-run economic growth",
+          "context": "existing pattern of rights\" (North&Weingast_1989: p.23). Absolutist states that \"faced no such constraint, such as early modern Spain, created economic conditions that retarded long-run economic growth\" (North&Weingast_1989: p.7). Institutions, on this account, are not a by-product"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1",
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes",
+          "context": "\"estimate large effects of institutions on income per capita\" and report that, \"once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes\" (AcemogluEtAl_2001: p.1) — a direct challenge to purely geographic explanations"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 14,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.14"
+          ],
+          "quote": "at the cost of society not realizing the full economic potential of disadvantaged groups",
+          "context": "0: p.7). The result was that societies with extractive institutions grew slowly \"at the cost of society not realizing the full economic potential of disadvantaged groups\" (Sokoloff&Engerman_2000: p.14). Their argument is a subtle amendment to the pur"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.1",
+            "North&Weingast_1989 p.23"
+          ],
+          "quote": "allowed the government to commit credibly to upholding property rights",
+          "context": "he constitutional settlement of 1688, by subordinating the Crown to Parliament, \"allowed the government to commit credibly to upholding property rights\" (North&Weingast_1989: p.1), and the authors read the subsequent explosion of pu"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2,
+            10,
+            18,
+            29
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1",
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "risk of expropriation",
+          "context": "ent\" and today depress income. Using settler mortality as an instrument for the \"risk of expropriation\" (AcemogluEtAl_2001: p.1), they \"estimate large effects of institutions on incom"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 22,
+      "word_count": 1042,
+      "elapsed_s": 495.0,
+      "refusal": false,
+      "n_citations": 14,
+      "n_canonical_citations": 14,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 9,
+      "quotes_verified": 9,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 23,
+      "word_count": 1162,
+      "elapsed_s": 545.0,
+      "refusal": false,
+      "n_citations": 28,
+      "n_canonical_citations": 28,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 12,
+      "quotes_checked": 27,
+      "quotes_verified": 26,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 8,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.8"
+          ],
+          "quote": "how institutions may have fostered persistence in the extent of inequality in New World economies over time",
+          "context": "duced that inequality across generations: land policy in particular illustrates \"how institutions may have fostered persistence in the extent of inequality in New World economies over time\" (Sokoloff&Engerman_2000: p.8). Here institutions are the transmission belt thro"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 24,
+      "word_count": 1184,
+      "elapsed_s": 208.0,
+      "refusal": false,
+      "n_citations": 25,
+      "n_canonical_citations": 25,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 1,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 4,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 7,
+      "quotes_checked": 13,
+      "quotes_verified": 9,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Ogilvie_2007: p.1, p.3)",
+          "context": "y are economically efficient,\" a view she regards as an intellectual \"dead end\" (Ogilvie_2007: p.1, p.3). Institutions such as serfdom and the craft and merchant guilds may persist for"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 8,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.8"
+          ],
+          "quote": "well-specified and well-enforced property rights",
+          "context": "). Western societies grew rich, on this account, precisely because they devised \"well-specified and well-enforced property rights\" supported by formal contracts, monitoring systems, and enforcement mechanisms t"
+        },
+        {
+          "doc_id": "North_1989",
+          "cited_page": 8,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.8"
+          ],
+          "quote": "productivity gains from modern technology",
+          "context": "ent mechanisms that allowed increasing division of labor and the realization of \"productivity gains from modern technology\" (North_1989: p.8). Institutions, in short, are not a byproduct of growth but it"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 2,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.2"
+          ],
+          "quote": "set up extractive institutions",
+          "context": "trument. Where Europeans faced high mortality they could not settle and instead \"set up extractive institutions\" that offered little protection for private property and no checks against gover"
+        },
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1",
+            "Nunn_2008 p.1"
+          ],
+          "quote": "the evolution of institutions that were not conducive",
+          "context": "historical slave exports and current income (Nunn_2008: p.1), operating through \"the evolution of institutions that were not conducive\" to development—state collapse, ethnic fragmentation, and the corruption of judi"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 25,
+      "word_count": 1278,
+      "elapsed_s": 441.0,
+      "refusal": false,
+      "n_citations": 18,
+      "n_canonical_citations": 18,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 2,
+      "e3_soft": 0,
+      "e4": 2,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 29,
+      "quotes_verified": 26,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(McCloskey_2015: p.1, p.3)",
+          "context": "on't work,\" maintaining that in northwestern Europe \"what changed was ideology\" (McCloskey_2015: p.1, p.3). Mokyr similarly insists that what has been missing is \"an appreciation of the"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Mokyr_2005: p.4, p.2)",
+          "context": "ransformed itself into the sustained economic growth\" of the nineteenth century (Mokyr_2005: p.4, p.2). Allen supplies a factor-price alternative, documenting that \"between 1500 and"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 21,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.21"
+          ],
+          "quote": "the parts of Africa that were the most prosperous in 1400, measured by population density, tend also to be the areas that were most impacted by the slave trades",
+          "context": "ortune, he shows the harm fell hardest where prosperity had once been greatest: \"the parts of Africa that were the most prosperous in 1400, measured by population density, tend also to be the areas that were most impacted by the slave trades\" (Nunn_2008: p.21). Nunn and Wantchekon trace the channel through culture, askin"
+        },
+        {
+          "doc_id": "Mokyr_2005",
+          "cited_page": 4,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Mokyr_2005 p.4",
+            "Mokyr_2005 p.2"
+          ],
+          "quote": "an appreciation of the importance of useful knowledge,",
+          "context": "cCloskey_2015: p.1, p.3). Mokyr similarly insists that what has been missing is \"an appreciation of the importance of useful knowledge,\" and that \"without the Enlightenment, therefore, an Industrial Revolution could"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1"
+          ],
+          "quote": "a robust negative relationship between the number of slaves exported from each country and subsequent economic performance,",
+          "context": "em—receives its most striking corroboration in the African evidence. Nunn finds \"a robust negative relationship between the number of slaves exported from each country and subsequent economic performance,\" concluding that \"the slave trades had an adverse effect on economic development"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 26,
+      "word_count": 1200,
+      "elapsed_s": 336.0,
+      "refusal": false,
+      "n_citations": 22,
+      "n_canonical_citations": 22,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 5,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000",
+        "Whatley_2018"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 22,
+      "quotes_verified": 17,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 4,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.4"
+          ],
+          "quote": "the costs of transacting are the key to the performance of economies",
+          "context": "tutions matter\" (North_1989: p.1). Once the frictions of exchange are admitted, \"the costs of transacting are the key to the performance of economies\" (North_1989: p.4), and the institutions that structure \"repeated human interact"
+        },
+        {
+          "doc_id": "North_1989",
+          "cited_page": 4,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.4"
+          ],
+          "quote": "repeated human interaction",
+          "context": "erformance of economies\" (North_1989: p.4), and the institutions that structure \"repeated human interaction\" become the decisive variable governing whether an economy realizes the gains fr"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.1"
+          ],
+          "quote": "the more likely it is that the sovereign will alter property rights for his or her own benefit, the lower the expected returns from investment and the lower in turn the incentive to invest",
+          "context": "venteenth-century England. Their argument turns on credible commitment: because \"the more likely it is that the sovereign will alter property rights for his or her own benefit, the lower the expected returns from investment and the lower in turn the incentive to invest\" (North&Weingast_1989: p.1), sustained growth requires institutions that bind th"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.1"
+          ],
+          "quote": "the new institutions allowed the government to commit credibly to upholding property rights. Their success was remarkable, as the evidence from capital markets shows",
+          "context": "Glorious Revolution of 1688 supplied exactly this, and the authors contend that \"the new institutions allowed the government to commit credibly to upholding property rights. Their success was remarkable, as the evidence from capital markets shows\" (North&Weingast_1989: p.1). Here the causal claim is precise: political institu"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 3,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.3",
+            "Austin_2008 p.3"
+          ],
+          "quote": "lies not in the Northian conclusion that institutions are 'the fundamental cause of long-term growth'",
+          "context": "cient. Austin, engaging the reversal thesis directly, concedes that its novelty \"lies not in the Northian conclusion that institutions are 'the fundamental cause of long-term growth'\" but in its quantitative ambition (Austin_2008: p.3), while raising the deeper p"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 27,
+      "word_count": 1203,
+      "elapsed_s": 429.0,
+      "refusal": false,
+      "n_citations": 24,
+      "n_canonical_citations": 24,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 1,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 28,
+      "quotes_verified": 26,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "group_page_only",
+          "raw": "p.16",
+          "context": "t-seeking agreement between political authorities and economic\" interest groups (Ogilvie_2007: p.15; p.16). The institutions we actually observe are \"those that result from rent-seeking"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "contributing to persistence over time of the high degree of inequality",
+          "context": "tions—land policy, suffrage, schooling—subsequently reproduced that inequality, \"contributing to persistence over time of the high degree of inequality\" (Sokoloff&Engerman_2000: p.7). Institutions here are the transmission belt thro"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1",
+            "Nunn_2008 p.2",
+            "Nunn_2008 p.31"
+          ],
+          "quote": "procurement of slaves through internal warfare, raiding, and kidnapping resulted in subsequent state collapse and ethnic fractionalization",
+          "context": "2008: p.1), operating through channels that are recognizably institutional: the \"procurement of slaves through internal warfare, raiding, and kidnapping resulted in subsequent state collapse and ethnic fractionalization\" (Nunn_2008: p.2), so that the trades produced \"a weakening and underdevelopment"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 28,
+      "word_count": 1191,
+      "elapsed_s": 421.0,
+      "refusal": false,
+      "n_citations": 24,
+      "n_canonical_citations": 24,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 8,
+      "quotes_checked": 22,
+      "quotes_verified": 21,
+      "e1_details": [],
+      "e1_loose_advisory": [
+        {
+          "doc_id": null,
+          "label": "AJR",
+          "year": "2001",
+          "page": null,
+          "raw": "AJR 2001",
+          "context": "I have a fully verified evidence base spanning the core institutionalist claim (AJR 2001, AJR 2002, North 1989, North & Weingast 1989, Sokoloff & Engerman 2000), a pers",
+          "surface": "display_loose",
+          "reason": "bare_author_year_ambiguous_with_prose"
+        },
+        {
+          "doc_id": null,
+          "label": "AJR",
+          "year": "2002",
+          "page": null,
+          "raw": "AJR 2002",
+          "context": "ully verified evidence base spanning the core institutionalist claim (AJR 2001, AJR 2002, North 1989, North & Weingast 1989, Sokoloff & Engerman 2000), a persistence ex",
+          "surface": "display_loose",
+          "reason": "bare_author_year_ambiguous_with_prose"
+        }
+      ],
+      "e1_loose_advisory_count": 2,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "North_1989 p.1",
+            "North_1989 p.1"
+          ],
+          "quote": "the rich countries of the Western world and the poor countries of the Third World",
+          "context": "e of economies\" (North_1989: p.1). On this account, the persistent gulf between \"the rich countries of the Western world and the poor countries of the Third World\" is not explained by transport costs or factor supplies but by the rules that st"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 29,
+      "word_count": 1184,
+      "elapsed_s": 424.0,
+      "refusal": false,
+      "n_citations": 24,
+      "n_canonical_citations": 24,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 28,
+      "quotes_verified": 28,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 30,
+      "word_count": 1074,
+      "elapsed_s": 366.0,
+      "refusal": false,
+      "n_citations": 19,
+      "n_canonical_citations": 19,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 12,
+      "quotes_verified": 11,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15"
+          ],
+          "quote": "distributional conflicts provide a better explanation than efficiency",
+          "context": "ointed. Ogilvie mounts the most fundamental theoretical objection, arguing that \"distributional conflicts provide a better explanation than efficiency\" for why institutions arise and endure. Her study of guilds insists that they \"w"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 31,
+      "word_count": 1180,
+      "elapsed_s": 203.0,
+      "refusal": false,
+      "n_citations": 19,
+      "n_canonical_citations": 19,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 5,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 3,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 31,
+      "quotes_verified": 24,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(North&Weingast_1989: p.20, p.21)",
+          "context": "dramatically, laying \"the institutional foundations of modern capital markets\" (North&Weingast_1989: p.20, p.21). The contrast with Spain sharpens the point. Where England's dispersed interest"
+        },
+        {
+          "reason": "page_range_citation",
+          "raw": "(North_1989: p.19–20)",
+          "context": "ng the towns unable to pose \"a credible challenge\" to arbitrary royal exactions (North_1989: p.19–20). Institutional divergence, in this account, produced economic divergence.  Acem"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(AcemogluEtAl_2001: p.1, p.2)",
+          "context": ", with strong emphasis on private property and checks against government power\" (AcemogluEtAl_2001: p.1, p.2). Because colonization strategy depended on settler mortality, they use those mo"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(AcemogluEtAl_2002: p.1, p.14)",
+          "context": "es with good institutions\" took \"advantage of the opportunity to industrialize\" (AcemogluEtAl_2002: p.1, p.14).  The New World supplies a complementary account in which institutions themselv"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Ogilvie_2007: p.1, p.19)",
+          "context": ", but because they efficiently distributed resources to a powerful urban elite\" (Ogilvie_2007: p.1, p.19). Whether an institution is \"good\" for growth thus depends on distributional con"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "cited_page": 1,
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "AcemogluEtAl_2002 p.1",
+            "AcemogluEtAl_2002 p.14"
+          ],
+          "quote": "factor endowments broadly conceived, could have had profound and enduring impacts on long-run paths of institutional and economic development.",
+          "context": "emselves are endogenous to initial conditions. Sokoloff and Engerman argue that \"factor endowments broadly conceived, could have had profound and enduring impacts on long-run paths of institutional and economic development.\" Where soils and climates favored sugar and slave plantations, colonies became \""
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 3,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.3"
+          ],
+          "quote": "the Northian conclusion that institutions are 'the fundamental cause of long-term growth'",
+          "context": ".1).  Yet the thesis faces serious historiographical resistance. Austin accepts \"the Northian conclusion that institutions are 'the fundamental cause of long-term growth'\" but attacks the reversal design for \"the compression of history\"—the problem th"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 3,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.3"
+          ],
+          "quote": "there was no reversal of fortune… but rather a deepening of relative poverty",
+          "context": "ble across the era(s)\" (Austin_2008: p.3). He notes that for Sub-Saharan Africa \"there was no reversal of fortune… but rather a deepening of relative poverty\" (Austin_2008: p.3). Ogilvie mounts a deeper conceptual objection to the functio"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 1,
+          "found_on_pages": [
+            16
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.1",
+            "Ogilvie_2007 p.19"
+          ],
+          "quote": "not because they efficiently solved economic problems, making everyone better off, but because they efficiently distributed resources to a powerful urban elite",
+          "context": "owing that pre-industrial European institutions such as merchant guilds endured \"not because they efficiently solved economic problems, making everyone better off, but because they efficiently distributed resources to a powerful urban elite\" (Ogilvie_2007: p.1, p.19). Whether an institution is \"good\" for growth thus dep"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 32,
+      "word_count": 1185,
+      "elapsed_s": 510.0,
+      "refusal": false,
+      "n_citations": 24,
+      "n_canonical_citations": 24,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 2,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 25,
+      "quotes_verified": 22,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 2,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.2"
+          ],
+          "quote": "when industrialization got under way in North America over the nineteenth century",
+          "context": "ating because elites could entrench legal frameworks favouring themselves. Only \"when industrialization got under way in North America over the nineteenth century\" did \"the major divergence between the United States and Canada and the rest of"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 2,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.2"
+          ],
+          "quote": "characterized virtually from the outset by extreme inequality in wealth, human capital, and political power",
+          "context": "ff and Engerman argued that New World economies suited to sugar and mining were \"characterized virtually from the outset by extreme inequality in wealth, human capital, and political power\" (Sokoloff&Engerman_2000: p.2), and that such inequality became self-perpetuatin"
+        },
+        {
+          "doc_id": "Nunn&Wantchekon_2011",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn&Wantchekon_2011 p.1",
+            "Nunn&Wantchekon_2011 p.1"
+          ],
+          "quote": "may be less trusting today because",
+          "context": "st to develop within Africa\" (Nunn&Wantchekon_2011: p.1), such that individuals \"may be less trusting today because\" their ancestors were heavily raided (Nunn&Wantchekon_2011: p.1)—persistence ope"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 33,
+      "word_count": 1133,
+      "elapsed_s": 359.0,
+      "refusal": false,
+      "n_citations": 27,
+      "n_canonical_citations": 27,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 2,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 27,
+      "quotes_verified": 25,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 4,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.4",
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "were better able to establish a legal framework that insured them disproportionate shares of political power",
+          "context": "ly from the outset by extreme inequality\" (Sokoloff&Engerman_2000: p.4), elites \"were better able to establish a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7), so that unequal endowments bred unequal institut"
+        },
+        {
+          "doc_id": "Mokyr_2005",
+          "cited_page": 4,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Mokyr_2005 p.4"
+          ],
+          "quote": "is that collectively, these societies 'know' more",
+          "context": "lanatory weight toward knowledge, contending that the reason the West is richer \"is that collectively, these societies 'know' more\" (Mokyr_2005: p.4). Most directly, McCloskey attacks the institutionalist progra"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 34,
+      "word_count": 1378,
+      "elapsed_s": 339.0,
+      "refusal": false,
+      "n_citations": 25,
+      "n_canonical_citations": 25,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 3,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 2,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 35,
+      "quotes_verified": 32,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(AcemogluEtAl_2002: p.5, p.4)",
+          "context": "advantage of the opportunity to industrialize\" while extractive ones could not (AcemogluEtAl_2002: p.5, p.4).  This modern econometric literature draws its conceptual foundations from earl"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Austin_2008: p.1, p.4)",
+          "context": "rent and economic growth have often been joint products\" rather than opposites (Austin_2008: p.1, p.4).  Taken together, the corpus supports a qualified verdict. There is a coherent"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Sokoloff&Engerman_2000: p.4, p.7)",
+          "context": "ving category: institutions are shaped by factor endowments and elite interests (Sokoloff&Engerman_2000: p.4, p.7), frequently serve distributional rather than efficiency ends (Ogilvie_2007: p.1"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power, and to use that greater influence to establish rules, laws, and other government polici",
+          "context": "_2000: p.4). Their account of persistence is explicitly political: in societies \"that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power, and to use that greater influence to establish rules, laws, and other government policies that advantaged members of the elite\" (Sokoloff&Engerman_2000: p.7). Nunn extends this logic of historically rooted i"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "cited_page": 5,
+          "found_on_pages": [
+            6
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2002 p.5",
+            "AcemogluEtAl_2002 p.4"
+          ],
+          "quote": "matter more when new technologies that require investments from a broad cross section of the society become available,",
+          "context": "e essential for investment incentives,\" and that such institutional differences \"matter more when new technologies that require investments from a broad cross section of the society become available,\" so that \"societies with good institutions\" could \"take advantage of the opportu"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "cited_page": 5,
+          "found_on_pages": [
+            6
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2002 p.5",
+            "AcemogluEtAl_2002 p.4"
+          ],
+          "quote": "take advantage of the opportunity to industrialize",
+          "context": "the society become available,\" so that \"societies with good institutions\" could \"take advantage of the opportunity to industrialize\" while extractive ones could not (AcemogluEtAl_2002: p.5, p.4).  This modern eco"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 35,
+      "word_count": 1129,
+      "elapsed_s": 348.0,
+      "refusal": false,
+      "n_citations": 25,
+      "n_canonical_citations": 25,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 17,
+      "quotes_verified": 16,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.1"
+          ],
+          "quote": "raises the challenge of explaining where the differences in institutions",
+          "context": "s. Sokoloff and Engerman acknowledge that ascribing development to institutions \"raises the challenge of explaining where the differences in institutions\" themselves come from (Sokoloff&Engerman_2000: p.1). Their answer is that \"facto"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 36,
+      "word_count": 1125,
+      "elapsed_s": 523.0,
+      "refusal": false,
+      "n_citations": 21,
+      "n_canonical_citations": 21,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 3,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 18,
+      "quotes_verified": 15,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "Nunn&Wantchekon_2011",
+          "cited_page": 3,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn&Wantchekon_2011 p.3"
+          ],
+          "quote": "are less trusting today",
+          "context": "ekon extend the argument into culture—showing descendants of the heavily raided \"are less trusting today\" (Nunn&Wantchekon_2011: p.3)—the boundary between institutional and cultural cau"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "found_on_pages": [
+            3,
+            4,
+            8,
+            32,
+            33
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15"
+          ],
+          "quote": "that whatever is, is right,",
+          "context": "sharp revisionist challenge. Ogilvie warns against the functionalist assumption \"that whatever is, is right,\" arguing that \"distributional conflicts provide a better explanation than effici"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15"
+          ],
+          "quote": "distributional conflicts provide a better explanation than efficiency",
+          "context": "against the functionalist assumption \"that whatever is, is right,\" arguing that \"distributional conflicts provide a better explanation than efficiency\" for durable institutions; serfdom, though disastrous for aggregate output, \"was"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 37,
+      "word_count": 1159,
+      "elapsed_s": 461.0,
+      "refusal": false,
+      "n_citations": 19,
+      "n_canonical_citations": 19,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 14,
+      "quotes_verified": 13,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.7"
+          ],
+          "quote": "Absolutist states which faced no such constraint, such as early modern Spain, created economic conditions that retarded long-run economic growth",
+          "context": "t_1989: p.7). The comparative force of the argument lies in its counterexample: \"Absolutist states which faced no such constraint, such as early modern Spain, created economic conditions that retarded long-run economic growth\" (North&Weingast_1989: p.7). Here institutions are fundamental in a precise sens"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 38,
+      "word_count": 1213,
+      "elapsed_s": 176.0,
+      "refusal": false,
+      "n_citations": 27,
+      "n_canonical_citations": 27,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 2,
+      "e5": 3,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 8,
+      "quotes_checked": 18,
+      "quotes_verified": 13,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 11,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.11"
+          ],
+          "quote": "was the decline of the Spanish economy and economic stagnation",
+          "context": "tax \"from 1.2% to 10% and repeatedly went into bankruptcy,\" and the consequence \"was the decline of the Spanish economy and economic stagnation\" (North_1989: p.11). The English settlement, by contrast, produced after 1689 \"a"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 1,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.1",
+            "Ogilvie_2007 p.5"
+          ],
+          "quote": "to explain institutions as an efficient and beneficial solution",
+          "context": "persistence equally well (Ogilvie_2007: p.1). Her critique targets the tendency \"to explain institutions as an efficient and beneficial solution\" (Ogilvie_2007: p.1), noting that serfdom was long rationalized as \"an efficient"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 11,
+          "found_on_pages": [
+            10
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.11"
+          ],
+          "quote": "from 1.2% to 10% and repeatedly went into bankruptcy,",
+          "context": "revenue while Castile's Cortes decayed, the Crown raised the internal sales tax \"from 1.2% to 10% and repeatedly went into bankruptcy,\" and the consequence \"was the decline of the Spanish economy and economic stagna"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.2"
+          ],
+          "quote": "arbitrary and confiscatory power by the Crown",
+          "context": "rliament with a central role and an independent judiciary—solved the problem of \"arbitrary and confiscatory power by the Crown\" (North&Weingast_1989: p.2). The authors marshal capital-market evidence for the"
+        },
+        {
+          "doc_id": "North_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.2"
+          ],
+          "quote": "politically advantaged",
+          "context": "warning that political systems tend to generate inefficient rights serving the \"politically advantaged\" (North_1989: p.2). Taken together, the corpus makes a strong case that institut"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 39,
+      "word_count": 1268,
+      "elapsed_s": 229.0,
+      "refusal": false,
+      "n_citations": 15,
+      "n_canonical_citations": 15,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 6,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 3,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 7,
+      "quotes_checked": 29,
+      "quotes_verified": 25,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(North&Weingast_1989: p.21, p.20)",
+          "context": "d-century, financed through earmarked taxes and, from 1694, the Bank of England (North&Weingast_1989: p.21, p.20). The commitment that made the state creditworthy, they argue, simultaneously la"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Sokoloff&Engerman_2000: p.5, p.6)",
+          "context": "f the elites and restricted opportunities for the broad mass of the population\" (Sokoloff&Engerman_2000: p.5, p.6). Notably, national heritage predicted little: Barbados, Cuba, and Haiti—the las"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Sokoloff&Engerman_2000: p.1, p.3)",
+          "context": "olonies, so British institutions were \"far from a guarantee of economic growth\" (Sokoloff&Engerman_2000: p.1, p.3). This endogeneity of institutions to prior conditions is precisely what the ins"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Ogilvie_2007: p.1, p.4)",
+          "context": "right\"—the presumption that any institution persisting stably must be efficient (Ogilvie_2007: p.1, p.4). Institutions, on this reading, may durably serve the powerful while retarding"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Nunn_2008: p.1, p.3)",
+          "context": "mechanism through slaving-induced \"state collapse and ethnic fractionalization\" (Nunn_2008: p.1, p.3). Nunn and Wantchekon identify a cultural channel, showing that descendants of h"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Austin_2008: p.3, p.4)",
+          "context": "reats economic growth and economic rents \"as if they are necessarily opposites\" (Austin_2008: p.3, p.4). He contends the slave trades \"aggravated but did not cause\" Africa's original"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 5,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.5",
+            "Sokoloff&Engerman_2000 p.6"
+          ],
+          "quote": "institutions that protected the privileges of the elites and restricted opportunities for the broad mass of the population",
+          "context": "h, human capital, and political power\" emerged from the outset and gave rise to \"institutions that protected the privileges of the elites and restricted opportunities for the broad mass of the population\" (Sokoloff&Engerman_2000: p.5, p.6). Notably, national heritage predicted little"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 3,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.3"
+          ],
+          "quote": "factor endowments broadly conceived",
+          "context": "shaped New World divergence but push the causal chain back a step, arguing that \"factor endowments broadly conceived\" generated the inequality from which institutions grew (Sokoloff&Engerman_2000:"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 5,
+          "found_on_pages": [
+            4,
+            12
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.5",
+            "Sokoloff&Engerman_2000 p.6"
+          ],
+          "quote": "in wealth, human capital, and political power",
+          "context": "here mineral wealth coincided with dense native populations, extreme inequality \"in wealth, human capital, and political power\" emerged from the outset and gave rise to \"institutions that protected the privi"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.1",
+            "Sokoloff&Engerman_2000 p.3"
+          ],
+          "quote": "likely the richest society in the world on a per capita basis in 1790",
+          "context": "Notably, national heritage predicted little: Barbados, Cuba, and Haiti—the last \"likely the richest society in the world on a per capita basis in 1790\"—were among the wealthiest colonies, so British institutions were \"far from a gu"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 40,
+      "word_count": 1170,
+      "elapsed_s": 286.0,
+      "refusal": false,
+      "n_citations": 23,
+      "n_canonical_citations": 23,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 4,
+      "e3_soft": 0,
+      "e4": 3,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 26,
+      "quotes_verified": 23,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "group_page_only",
+          "raw": "p.3",
+          "context": "nducive to economic growth\" through state collapse and ethnic fractionalization (Nunn_2008: p.1; p.3). Nunn and Wantchekon locate one persistence channel in culture, showing that \"c"
+        },
+        {
+          "reason": "group_page_only",
+          "raw": "p.3",
+          "context": "scures \"dysfunctional institutions and the misery and inequality they engender\" (Ogilvie_2007: p.1; p.3). Since serfdom, guilds, and other durable institutions had powerful \"distributi"
+        },
+        {
+          "reason": "group_page_only",
+          "raw": "p.3",
+          "context": "tions \"did not change radically from 1600 to 1789\" while incomes later exploded (McCloskey_2015: p.1; p.3). Austin, writing from African historiography, accepts the \"Northian conclusion"
+        },
+        {
+          "reason": "group_page_only",
+          "raw": "p.4",
+          "context": "sites,\" a dichotomy \"belied by much of the history of both Africa and the West\" (Austin_2008: p.3; p.4).  Taken together, these documents show a research programme of considerable coh"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 5,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.5"
+          ],
+          "quote": "between modern Western and Third World countries",
+          "context": "ract enforcement\" both across five centuries of Western history and, currently, \"between modern Western and Third World countries\" (North_1989: p.5). The evolution of government away from its \"medieval Mafia-li"
+        },
+        {
+          "doc_id": "North_1989",
+          "cited_page": 5,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.5"
+          ],
+          "quote": "modern legal institutions",
+          "context": "he evolution of government away from its \"medieval Mafia-like character\" toward \"modern legal institutions\" was, in this account, the substance of economic development rather than a by-pr"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 3,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.3",
+            "Austin_2008 p.4"
+          ],
+          "quote": "economic growth and economic rents as if they are necessarily opposites,",
+          "context": "\"two moments, nearly half a millennium apart (1500 and 1995)\"—and for treating \"economic growth and economic rents as if they are necessarily opposites,\" a dichotomy \"belied by much of the history of both Africa and the West\" (Austin"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 41,
+      "word_count": 1064,
+      "elapsed_s": 445.0,
+      "refusal": false,
+      "n_citations": 18,
+      "n_canonical_citations": 18,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 10,
+      "quotes_checked": 29,
+      "quotes_verified": 29,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 42,
+      "word_count": 1143,
+      "elapsed_s": 663.0,
+      "refusal": false,
+      "n_citations": 23,
+      "n_canonical_citations": 23,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 12,
+      "quotes_checked": 24,
+      "quotes_verified": 22,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "establish[ed] a legal framework that insured them disproportionate shares of political power",
+          "context": "red slave-based plantation agriculture, extreme inequality followed, and elites \"establish[ed] a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7), reproducing that inequality through restrictive"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1"
+          ],
+          "quote": "the African countries that are the poorest today are the ones from which the most slaves were taken",
+          "context": "African historiography extends and complicates the thesis. Nunn documents that \"the African countries that are the poorest today are the ones from which the most slaves were taken\" (Nunn_2008: p.1), and identifies institutional channels—state collapse, judicia"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 43,
+      "word_count": 1156,
+      "elapsed_s": 322.0,
+      "refusal": false,
+      "n_citations": 25,
+      "n_canonical_citations": 25,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 1,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "Domar_1970",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 17,
+      "quotes_verified": 17,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "page_only",
+          "raw": "(p.1)",
+          "context": "e slave trades had an adverse effect on economic development\" spans lines 11-12 (p.1); Nunn&Wantchekon \"the slave trade caused a culture of mistrust to develop withi"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 44,
+      "word_count": 1334,
+      "elapsed_s": 504.0,
+      "refusal": false,
+      "n_citations": 20,
+      "n_canonical_citations": 20,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 2,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 19,
+      "quotes_verified": 17,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 3,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.3"
+          ],
+          "quote": "but that with positive transaction costs, institutions matter",
+          "context": ", the standard model holds only under the assumption of zero transaction costs, \"but that with positive transaction costs, institutions matter\" (North_1989: p.3). Once transacting is costly, the rules that reduce or magnify"
+        },
+        {
+          "doc_id": "Nunn&Wantchekon_2011",
+          "cited_page": 1,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn&Wantchekon_2011 p.1"
+          ],
+          "quote": "the slave trade resulted in a long-term deterioration of legal and political institutions, the residents of heavily affected regions may now be able to cheat others more easily",
+          "context": "ure, arguing that heavy raiding bred an enduring \"culture of mistrust\"; because \"the slave trade resulted in a long-term deterioration of legal and political institutions, the residents of heavily affected regions may now be able to cheat others more easily\" (Nunn&Wantchekon_2011: p.1). Trust and formal institutions here appear as compl"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 45,
+      "word_count": 1308,
+      "elapsed_s": 424.0,
+      "refusal": false,
+      "n_citations": 31,
+      "n_canonical_citations": 31,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 2,
+      "e5": 2,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000",
+        "Whatley_2018"
+      ],
+      "n_docs_cited": 12,
+      "quotes_checked": 35,
+      "quotes_verified": 31,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 4,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.4",
+            "Sokoloff&Engerman_2000 p.4",
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "disproportionate shares of political power",
+          "context": "p.4) generated institutions that reproduced that inequality, as elites secured \"disproportionate shares of political power\" and wrote rules to entrench it (Sokoloff&Engerman_2000: p.7). Nunn extends the"
+        },
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 4,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.4"
+          ],
+          "quote": "the treatment of economic growth and economic rents as if they are necessarily opposites; which is belied by much of the history",
+          "context": "tions the binary at the heart of the extractive/inclusive taxonomy, criticising \"the treatment of economic growth and economic rents as if they are necessarily opposites; which is belied by much of the history\" (Austin_2008: p.4).  Taken together, the corpus does not settle the question so"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "Nunn_2008",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Nunn_2008 p.1"
+          ],
+          "quote": "the African countries that are the poorest today are the ones from which the most slaves were taken",
+          "context": "er of slaves exported from a country and current economic performance,\" so that \"the African countries that are the poorest today are the ones from which the most slaves were taken\" (Nunn_2008: p.1). Nunn and Wantchekon push the channel from formal institutions"
+        },
+        {
+          "doc_id": "Whatley_2018",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Whatley_2018 p.1"
+          ],
+          "quote": "encouraged the war-like proclivities of centralized government",
+          "context": "n&Wantchekon_2011: p.2). Whatley similarly emphasises how external slave demand \"encouraged the war-like proclivities of centralized government\" (Whatley_2018: p.1), reshaping African political structures in ways that outlas"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 46,
+      "word_count": 1120,
+      "elapsed_s": 346.0,
+      "refusal": false,
+      "n_citations": 21,
+      "n_canonical_citations": 21,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 5,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 8,
+      "quotes_checked": 3,
+      "quotes_verified": 2,
+      "e1_details": [],
+      "e1_loose_advisory": [
+        {
+          "doc_id": null,
+          "label": "The",
+          "year": "1688",
+          "page": null,
+          "raw": "The 1688",
+          "context": "oans that were never repaid exemplified the problem (North&Weingast_1989: p.9). The 1688 settlement changed the structure of the game: it established parliamentary supr",
+          "surface": "display_loose",
+          "reason": "bare_author_year_ambiguous_with_prose"
+        }
+      ],
+      "e1_loose_advisory_count": 1,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(North_1989: p.3, p.5)",
+          "context": "arty, government, capable of specifying property rights and enforcing contracts (North_1989: p.3, p.5). The tangible correlate of this argument is the swelling of what North calls th"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(North&Weingast_1989: p.15, p.16)",
+          "context": "ed parliamentary supremacy and the independence of the judiciary from the Crown (North&Weingast_1989: p.15, p.16). By requiring Parliament's assent to changes in taxes and loan terms, wealth-ho"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Sokoloff&Engerman_2000: p.5, p.13)",
+          "context": "ch of Latin America without high literacy until well into the twentieth century (Sokoloff&Engerman_2000: p.5, p.13).  This literature does not speak with one voice, however, and the corpus contai"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Nunn_2008: p.5, p.6)",
+          "context": "ough the corruption of legal structures and the collapse of pre-existing states (Nunn_2008: p.5, p.6). But Nunn and Wantchekon find that the persistent effect runs substantially thr"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Nunn&Wantchekon_2011: p.2, p.4)",
+          "context": "the internal channel at least twice as large as the external, institutional one (Nunn&Wantchekon_2011: p.2, p.4). If cultural norms, not rules, carry much of the long-run effect, the claim tha"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "Austin_2008",
+          "cited_page": 2,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Austin_2008 p.2",
+            "Austin_2008 p.2"
+          ],
+          "quote": "no reversal of fortune... but rather a deepening of relative poverty",
+          "context": "olonial rule (Austin_2008: p.1). For Sub-Saharan Africa, he contends, there was \"no reversal of fortune... but rather a deepening of relative poverty\" (Austin_2008: p.2), and colonial administrations often encouraged rather than r"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 47,
+      "word_count": 1125,
+      "elapsed_s": 491.0,
+      "refusal": false,
+      "n_citations": 36,
+      "n_canonical_citations": 36,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 1,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Allen_2001",
+        "Austin_2008",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 21,
+      "quotes_verified": 20,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.7"
+          ],
+          "quote": "Absolutist states which faced no such constraint, such as early modern Spain",
+          "context": "curity of property\" rights (North&Weingast_1989: p.18). Contrast is supplied by \"Absolutist states which faced no such constraint, such as early modern Spain\" (North&Weingast_1989: p.7). Institutions, on this account, are causally prior t"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    },
+    {
+      "run": 48,
+      "word_count": 1109,
+      "elapsed_s": 411.0,
+      "refusal": false,
+      "n_citations": 18,
+      "n_canonical_citations": 18,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 1,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 12,
+      "quotes_verified": 11,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "nearest_sentence_fallback",
+          "candidate_cites": [
+            "North&Weingast_1989 p.2"
+          ],
+          "quote": "fundamental redesign of the fiscal",
+          "context": "rious Revolution of 1688 is read as the pivotal institutional settlement, whose \"fundamental redesign of the fiscal\" and constitutional order established a Parliament and independent judiciary cap"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 49,
+      "word_count": 1194,
+      "elapsed_s": 333.0,
+      "refusal": false,
+      "n_citations": 24,
+      "n_canonical_citations": 24,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 3,
+      "e5": 5,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "McCloskey_2015",
+        "Mokyr_2005",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 11,
+      "quotes_checked": 24,
+      "quotes_verified": 16,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "Once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes",
+          "context": "sisted to the present\" (AcemogluEtAl_2001: p.2). Their striking finding is that \"Once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes\" (AcemogluEtAl_2001: p.1) — a direct challenge to geographic determinism. The co"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 7,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.7"
+          ],
+          "quote": "In those societies that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power",
+          "context": "ed to slave plantations or mineral extraction generated extreme inequality, and \"In those societies that began with extreme inequality, elites were better able to establish a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7) — institutions that then reproduced that inequali"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15"
+          ],
+          "quote": "made the pie smaller, but dished out large slices to established male masters",
+          "context": "larged output but because they benefited well-organized interest groups; guilds \"made the pie smaller, but dished out large slices to established male masters\" (Ogilvie_2007: p.15). If institutions frequently entrench rent-seeking rather t"
+        }
+      ],
+      "e5_details": [
+        {
+          "doc_id": "North_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North_1989 p.2"
+          ],
+          "quote": "The costs of transacting are the key to the performance of economies",
+          "context": "not.  Douglass North supplies the analytical foundations. His argument is that \"The costs of transacting are the key to the performance of economies\" (North_1989: p.2), and that only well-specified, well-enforced property rights"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 3,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.3"
+          ],
+          "quote": "allowed the government to commit credibly to upholding property rights,",
+          "context": "itment to them\" (North&Weingast_1989: p.2). The new institutions, they contend, \"allowed the government to commit credibly to upholding property rights,\" a success visible in the capital markets, where in the nine years after 1688 go"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 3,
+          "found_on_pages": [
+            4
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.3"
+          ],
+          "quote": "increased by more than an order of magnitude",
+          "context": "in the capital markets, where in the nine years after 1688 government borrowing \"increased by more than an order of magnitude\" (North&Weingast_1989: p.3). The general principle is that \"Successful long-run"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 2,
+          "found_on_pages": [
+            1
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.2"
+          ],
+          "quote": "In places where Europeans faced high mortality rates, they could not settle and were more likely to set up extractive institutions,",
+          "context": "tions from confounding geography. Acemoglu and colleagues exploit the fact that \"In places where Europeans faced high mortality rates, they could not settle and were more likely to set up extractive institutions,\" institutions that then \"persisted to the present\" (AcemogluEtAl_2001: p.2). The"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 2,
+          "found_on_pages": [
+            1,
+            27
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.2"
+          ],
+          "quote": "persisted to the present",
+          "context": "and were more likely to set up extractive institutions,\" institutions that then \"persisted to the present\" (AcemogluEtAl_2001: p.2). Their striking finding is that \"Once the effect of in"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 50,
+      "word_count": 1182,
+      "elapsed_s": 173.0,
+      "refusal": false,
+      "n_citations": 15,
+      "n_canonical_citations": 15,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 7,
+      "e3_soft": 0,
+      "e4": 0,
+      "e5": 6,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 8,
+      "quotes_checked": 36,
+      "quotes_verified": 30,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [
+        {
+          "reason": "multi_page_citation",
+          "raw": "(North&Weingast_1989: p.2, p.29)",
+          "context": "dations of modern capital markets\" and drove the long decline in interest rates (North&Weingast_1989: p.2, p.29). North develops the comparative dimension elsewhere, contrasting England's disp"
+        },
+        {
+          "reason": "multi_page_citation",
+          "raw": "(Sokoloff&Engerman_2000: p.2, p.3)",
+          "context": "between Mexico and the British colonies that were to become the United States\" (Sokoloff&Engerman_2000: p.2, p.3). Their resolution is that \"factor endowments broadly conceived, could have had"
+        },
+        {
+          "reason": "doc_without_page",
+          "raw": "(North&Weingast_1989; North_1989)",
+          "context": "but not uncontested—case. The property-rights and credible-commitment tradition (North&Weingast_1989; North_1989), reinforced by the colonial-origins and reversal-of-fortune econometrics (Acemo"
+        },
+        {
+          "reason": "doc_without_page",
+          "raw": "(AcemogluEtAl_2001; AcemogluEtAl_2002)",
+          "context": "_1989), reinforced by the colonial-origins and reversal-of-fortune econometrics (AcemogluEtAl_2001; AcemogluEtAl_2002) and the persistence findings on slavery and endowments (Sokoloff&Engerman_2000;"
+        },
+        {
+          "reason": "doc_without_page",
+          "raw": "(Sokoloff&Engerman_2000; Nunn_2008)",
+          "context": "2001; AcemogluEtAl_2002) and the persistence findings on slavery and endowments (Sokoloff&Engerman_2000; Nunn_2008), makes institutions the pivot of long-run divergence. The dissenting voices do"
+        },
+        {
+          "reason": "doc_without_page",
+          "raw": "(Ogilvie_2007)",
+          "context": "institutions matter as insist on what lies behind them: distributional conflict (Ogilvie_2007) and the ideological climate that legitimated innovation (McCloskey_2015). The u"
+        },
+        {
+          "reason": "doc_without_page",
+          "raw": "(McCloskey_2015)",
+          "context": "conflict (Ogilvie_2007) and the ideological climate that legitimated innovation (McCloskey_2015). The unresolved question the corpus leaves is therefore not whether institution"
+        }
+      ],
+      "e3_soft_details": [],
+      "e4_details": [],
+      "e5_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "protection for private property",
+          "context": "e that high-mortality environments produced \"extractive states\" offering little \"protection for private property\" nor \"checks and balances against government expropriation,\" whereas settler col"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "checks and balances against government expropriation,",
+          "context": "duced \"extractive states\" offering little \"protection for private property\" nor \"checks and balances against government expropriation,\" whereas settler colonies \"tried to replicate European institutions, with strong"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "tried to replicate European institutions, with strong emphasis on private property and checks against government power,",
+          "context": "checks and balances against government expropriation,\" whereas settler colonies \"tried to replicate European institutions, with strong emphasis on private property and checks against government power,\" and that \"the colonial state and institutions persisted even after independence"
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "found_on_pages": [
+            2
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "the colonial state and institutions persisted even after independence",
+          "context": "ong emphasis on private property and checks against government power,\" and that \"the colonial state and institutions persisted even after independence\" (AcemogluEtAl_2001: p.1). The empirical payoff is large: once \"the effect of in"
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "cited_page": 2,
+          "found_on_pages": [
+            20
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "North&Weingast_1989 p.2",
+            "North&Weingast_1989 p.29"
+          ],
+          "quote": "the institutional foundations of modern capital markets",
+          "context": "read the consequence in the capital markets, where the resulting security laid \"the institutional foundations of modern capital markets\" and drove the long decline in interest rates (North&Weingast_1989: p.2, p.29)."
+        },
+        {
+          "doc_id": "McCloskey_2015",
+          "cited_page": 4,
+          "found_on_pages": [
+            3
+          ],
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "McCloskey_2015 p.4"
+          ],
+          "quote": "did not change radically from 1600 to 1789",
+          "context": "uch as property law\" (McCloskey_2015: p.1). On her account English institutions \"did not change radically from 1600 to 1789\"; what changed was the rhetoric that dignified bourgeois activity (McCloskey_201"
+        }
+      ],
+      "emission_failure": false
+    },
+    {
+      "run": 51,
+      "word_count": 1181,
+      "elapsed_s": 393.0,
+      "refusal": false,
+      "n_citations": 27,
+      "n_canonical_citations": 27,
+      "n_display_citations": 0,
+      "e1": 0,
+      "e2": 0,
+      "e3": 0,
+      "e3_soft": 0,
+      "e4": 3,
+      "e5": 0,
+      "docs_cited": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "McCloskey_2015",
+        "North&Weingast_1989",
+        "North_1989",
+        "Nunn&Wantchekon_2011",
+        "Nunn_2008",
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "n_docs_cited": 9,
+      "quotes_checked": 29,
+      "quotes_verified": 26,
+      "e1_details": [],
+      "e1_loose_advisory": [],
+      "e1_loose_advisory_count": 0,
+      "e2_details": [],
+      "e3_details": [],
+      "e3_soft_details": [],
+      "e4_details": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "cited_page": 1,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "AcemogluEtAl_2001 p.1"
+          ],
+          "quote": "once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes",
+          "context": "ould produce a several-fold rise in income (AcemogluEtAl_2001: p.3). Crucially, \"once the effect of institutions is controlled for, countries in Africa or those closer to the equator do not have lower incomes\" (AcemogluEtAl_2001: p.1)—a direct challenge to geographic determinism.  That ch"
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "cited_page": 4,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Sokoloff&Engerman_2000 p.4",
+            "Sokoloff&Engerman_2000 p.7",
+            "Sokoloff&Engerman_2000 p.14"
+          ],
+          "quote": "establish[ed] a legal framework that insured them disproportionate shares of political power",
+          "context": "power\" (Sokoloff&Engerman_2000: p.4), and where inequality was extreme, elites \"establish[ed] a legal framework that insured them disproportionate shares of political power\" (Sokoloff&Engerman_2000: p.7), extending their advantage through policies on la"
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "cited_page": 15,
+          "candidate_scope": "same_sentence",
+          "candidate_cites": [
+            "Ogilvie_2007 p.15"
+          ],
+          "quote": "were widespread not because they were good for everyone, but because they benefited well-organized interest groups. They made the pie smaller, but dished out large slices to established male masters",
+          "context": "t because they enlarged output but because they redistributed it upward. Guilds \"were widespread not because they were good for everyone, but because they benefited well-organized interest groups. They made the pie smaller, but dished out large slices to established male masters\" (Ogilvie_2007: p.15). This is a reminder that \"institutions\" is not a synonym f"
+        }
+      ],
+      "e5_details": [],
+      "emission_failure": false
+    }
+  ]
+}

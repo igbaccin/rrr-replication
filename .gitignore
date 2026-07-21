@@ -1,0 +1,36 @@
+# Copyrighted or locally obtained corpus material
+/corpus/
+/Corpus/
+
+# Derived corpus artifacts
+/data/
+/indices/
+/metadata.csv
+/metadata.pending.csv
+/ingest_report.json
+
+# Generated model outputs and extracted replay workspace
+/runs/
+/arm_outputs/
+/replay_inputs/
+/reproduced_artifacts/
+
+# Runtime caches and model storage
+/cache/
+/logs/
+/tmp/
+/ollama_models/
+
+# Python environments and build products
+/.venv/
+*.egg-info/
+**/__pycache__/
+**/*.pyc
+
+# Credentials and editor state
+.env
+.env.*
+/.idea/
+/.vscode/
+.DS_Store
+*.log

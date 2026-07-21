@@ -1,0 +1,21 @@
+\begin{table*}[ht]
+\centering
+\caption{Body-only word counts under the explicit heading rule}
+\begin{threeparttable}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Condition & Raw reviews & Headings removed & Archived mean & Archived SD & Body mean & Body SD \\
+\midrule
+Full RRR & 100 & 100 & 2278.7 & 291.7 & 1919.47 & 261.43 \\
+Selected-check ablation & 100 & 100 & 2438.04 & 426.01 & 2042.93 & 364.59 \\
+Single-pass retrieval & 100 & 0 & 703.66 & 81.69 & 703.66 & 81.69 \\
+Unrestricted generation & 100 & 4 & 856.21 & 112.74 & 847.68 & 112.98 \\
+Corpus instruction & 100 & 0 & 944.29 & 174.98 & 944.29 & 174.98 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\scriptsize
+\item Notes: Body counts remove a standalone References or Bibliography heading, with optional Markdown hashes, and all following text. The counter is \texttt{\textbackslash b\textbackslash w+\textbackslash b}; SD is the sample standard deviation. The CSV retains minima, maxima, raw-file counts, and metric-basis labels.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

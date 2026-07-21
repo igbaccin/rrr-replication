@@ -1,0 +1,2 @@
+runs,review_hashes_changed,identical_document_sets,mean_paired_document_jaccard,identical_citation_pair_sets,mean_paired_citation_pair_jaccard,old_parsed_citations,old_emitted_body_words,old_scored_reviews,old_clean_reviews,old_reviews_with_error,old_writer_refusals,new_parsed_citations,new_emitted_body_words,new_scored_reviews,new_clean_reviews,new_reviews_with_error,new_writer_refusals,parsed_citation_change_pct,emitted_body_word_change_pct
+941,941,604,0.93,2,0.512,34819,1636518,941,829,112,0,29361,1478504,940,846,94,1,-15.7,-9.7

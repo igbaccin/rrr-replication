@@ -1,0 +1,18 @@
+\begin{table}[ht]
+\centering
+\caption{Refusal calibration with separated run states}
+\scriptsize
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+Topic condition & N & Invalid input \% & Substantive refusal \% & Structured failure \% & Admission share & Probe coverage & Represented share & Mean evidence score & Warning rate \% & Top refusal reasons \\
+\midrule
+Flagship (well-supported) & 100 & 0.0 & 0.0 & 0.0 & 1.0 & 1.0 & 0.48 & 78.2 & 0.0 & -- \\
+Gibberish topic (D0, deterministic gate) & 10 & 100.0 & 0.0 & 0.0 & n/a & n/a & n/a & n/a & n/a & gibberish\_topic\_gate (10) \\
+High threshold (D1) & 100 & 0.0 & 0.0 & 0.0 & 0.66 & 1.0 & 0.48 & 78.3 & 0.0 & -- \\
+Narrow prompt (D2) & 100 & 0.0 & 100.0 & 0.0 & 1.0 & 1.0 & 0.0 & 56.9 & 0.0 & corpus\_off\_topic (100) \\
+Marginal fit (D3) & 100 & 0.0 & 100.0 & 0.0 & 1.0 & 0.88 & 0.0 & 53.7 & 0.0 & corpus\_off\_topic (100) \\
+Nuanced topic: gender (T1) & 30 & 0.0 & 0.0 & 0.0 & 1.0 & 1.0 & 0.48 & 84.8 & 0.0 & -- \\
+Nuanced topic: colonial (T2) & 30 & 0.0 & 0.0 & 0.0 & 1.0 & 1.0 & 0.48 & 70.8 & 0.0 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}

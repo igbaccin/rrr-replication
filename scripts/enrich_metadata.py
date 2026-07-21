@@ -67,13 +67,21 @@ def load_bib(bib_path):
                 ),
             }
 
-            # Store with spaces (for compound surnames like "de Vries")
+            # v16.11: store a LIST per (first_author, year) key. Two distinct
+            # papers can share that key — North_1989 "Institutions..." vs
+            # North&Weingast_1989 "Constitutions...", Frankema_2012 vs
+            # Frankema&vanWaijenburg_2012. The old dict ASSIGNMENT overwrote on
+            # collision, so both PDFs matched the surviving entry and one
+            # paper's metadata was cloned onto the other. match_bib_entry()
+            # now disambiguates the list by full-author-set overlap.
             lookup_key_spaced = (first_author.lower(), str(year))
-            bib_by_author_year[lookup_key_spaced] = bib_entry_data
+            bib_by_author_year.setdefault(lookup_key_spaced, []).append(bib_entry_data)
 
-            # Also store without spaces (for filenames like "deVries_1994")
+            # Also index without spaces (for filenames like "deVries_1994"),
+            # unless identical to the spaced key (avoid double-listing).
             lookup_key_nospace = (first_author.lower().replace(" ", ""), str(year))
-            bib_by_author_year[lookup_key_nospace] = bib_entry_data
+            if lookup_key_nospace != lookup_key_spaced:
+                bib_by_author_year.setdefault(lookup_key_nospace, []).append(bib_entry_data)
 
     return bib_by_author_year, have_deps
 
@@ -115,6 +123,35 @@ def parse_filename_to_author_year(filename):
     return first_author, year, authors
 
 
+def _surname_matches(fa, bib_surnames, have_deps):
+    """True if filename surname `fa` corresponds to some bib surname."""
+    if have_deps:
+        from rapidfuzz import fuzz
+        return any(fuzz.partial_ratio(fa, bs) > 80 for bs in bib_surnames)
+    return any(fa == bs or fa in bs or bs in fa for bs in bib_surnames)
+
+
+def _authors_overlap(entry, filename_authors, have_deps):
+    """v14 rule: at least half the filename's authors appear in the entry."""
+    bib_surnames = [s.lower() for s in entry["all_surnames"]]
+    fn = [a.lower() for a in filename_authors]
+    matches = sum(1 for fa in fn if _surname_matches(fa, bib_surnames, have_deps))
+    return matches >= len(fn) * 0.5
+
+
+def _author_match_score(entry, filename_authors, have_deps):
+    """Rank a candidate entry against the filename's authors when several
+    share a (first_author, year) key. Compared as a tuple, higher wins:
+    (all filename authors present, author-count equal, number matched).
+    The author-count term is the tiebreaker that sends North_1989 (1 author)
+    to the 1-author entry and North&Weingast_1989 (2 authors) to the 2-author
+    entry."""
+    bib_surnames = [s.lower() for s in entry["all_surnames"]]
+    fn = [a.lower() for a in filename_authors]
+    matched = sum(1 for fa in fn if _surname_matches(fa, bib_surnames, have_deps))
+    return (matched == len(fn), len(bib_surnames) == len(fn), matched)
+
+
 def match_bib_entry(first_author, year, filename_authors, bib_lookup, have_deps):
     """Try to find a matching BibTeX entry for the given author/year."""
     if not bib_lookup:
@@ -122,28 +159,22 @@ def match_bib_entry(first_author, year, filename_authors, bib_lookup, have_deps)
 
     # Try lookup with spaces removed for compound surnames
     lookup_key = (first_author.lower().replace(" ", ""), str(year))
-    entry = bib_lookup.get(lookup_key)
-
-    if not entry:
+    candidates = bib_lookup.get(lookup_key)
+    if not candidates:
         return None
 
-    # For multi-author filenames, verify surname overlap
-    if len(filename_authors) > 1:
-        bib_surnames = [s.lower() for s in entry["all_surnames"]]
-        filename_surnames_lower = [a.lower() for a in filename_authors]
-        if have_deps:
-            from rapidfuzz import fuzz
-            matches = sum(
-                1 for fa in filename_surnames_lower
-                if any(fuzz.partial_ratio(fa, bs) > 80 for bs in bib_surnames)
-            )
-        else:
-            matches = sum(1 for fa in filename_surnames_lower if fa in bib_surnames)
-
-        if matches < len(filename_authors) * 0.5:
+    # v16.11: `candidates` is a list. Usually one entry — keep the v14
+    # behaviour (accept, but reject a multi-author filename with no overlap).
+    # Several entries means a shared (first_author, year) key: pick the one
+    # whose full author set best matches the filename, so the collision
+    # resolves to the RIGHT paper instead of cloning whichever was last.
+    if len(candidates) == 1:
+        entry = candidates[0]
+        if len(filename_authors) > 1 and not _authors_overlap(entry, filename_authors, have_deps):
             return None
+        return entry
 
-    return entry
+    return max(candidates, key=lambda e: _author_match_score(e, filename_authors, have_deps))
 
 
 # ---------------------------------------------------------------------------
@@ -175,10 +206,11 @@ def main():
     if args.bib:
         bib_path = os.path.abspath(args.bib)
     else:
-        # Try bibliography.bib in the corpus folder, then in the working directory
+        # Try bibliography.bib in the corpus folder, then in the working
+        # directory. (v16.11: dropped the legacy corpus-side "data_bib.bib"
+        # name — bibliography.bib is the single source of truth.)
         for candidate in [
             os.path.join(corpus_dir, "bibliography.bib"),
-            os.path.join(corpus_dir, "data_bib.bib"),
             "bibliography.bib",
         ]:
             if os.path.exists(candidate):

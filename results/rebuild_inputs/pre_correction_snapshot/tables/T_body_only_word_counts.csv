@@ -1,0 +1,6 @@
+Condition,Attempts,Raw files,Raw reviews,Empty files ignored,Reference headings removed,Archived mean,Archived SD,Body-only mean,Body-only SD,Body min,Body max,Metric basis
+Full RRR,100,100,100,0,100,2278.7,291.7,1919.47,261.43,1352,2995,body_only_raw_markdown
+Selected-check ablation,100,100,100,0,100,2438.04,426.01,2042.93,364.59,1526,3268,body_only_raw_markdown
+Single-pass retrieval,100,100,100,0,0,703.66,81.69,703.66,81.69,510,920,body_only_raw_markdown
+Unrestricted generation,100,100,100,0,4,856.21,112.74,847.68,112.98,650,1206,body_only_raw_markdown
+Corpus instruction,100,100,100,0,0,944.29,174.98,944.29,174.98,639,1473,body_only_raw_markdown

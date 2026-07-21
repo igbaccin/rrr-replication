@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-07-21T10:31:06.962214+00:00",
+  "checks": [
+    {
+      "check": "replay item count",
+      "passed": true,
+      "detail": 941
+    },
+    {
+      "check": "pre-writer terminal count",
+      "passed": true,
+      "detail": 1184
+    },
+    {
+      "check": "independent baseline count",
+      "passed": true,
+      "detail": 300
+    },
+    {
+      "check": "classified source population",
+      "passed": true,
+      "detail": 2425
+    },
+    {
+      "check": "all corrected reviews changed",
+      "passed": true,
+      "detail": 941
+    },
+    {
+      "check": "overall paired writer totals",
+      "passed": true,
+      "detail": {
+        "runs": 941,
+        "review_hashes_changed": 941,
+        "identical_document_sets": 604,
+        "mean_paired_document_jaccard": 0.93,
+        "identical_citation_pair_sets": 2,
+        "mean_paired_citation_pair_jaccard": 0.512,
+        "old_parsed_citations": 34819,
+        "old_emitted_body_words": 1636518,
+        "old_scored_reviews": 941,
+        "old_clean_reviews": 829,
+        "old_reviews_with_error": 112,
+        "old_writer_refusals": 0,
+        "new_parsed_citations": 29361,
+        "new_emitted_body_words": 1478504,
+        "new_scored_reviews": 940,
+        "new_clean_reviews": 846,
+        "new_reviews_with_error": 94,
+        "new_writer_refusals": 1,
+        "parsed_citation_change_pct": -15.7,
+        "emitted_body_word_change_pct": -9.7
+      }
+    },
+    {
+      "check": "accepted corrected commit counts",
+      "passed": true,
+      "detail": {
+        "85626d04c25d300a0c6bf87528025c5640bcd955": 563,
+        "91bb26e0971e0a1b8a2a2768d814d4dabb160d33": 376,
+        "f662af148ee496205cbb614ed05cb8f590322ee6": 2
+      }
+    },
+    {
+      "check": "terminal outcome classes",
+      "passed": true,
+      "detail": {
+        "substantive_refusal": 902,
+        "structured_failure": 252,
+        "deterministic_input_gate": 30
+      }
+    },
+    {
+      "check": "Phase A old clean count",
+      "passed": true,
+      "detail": 98
+    },
+    {
+      "check": "Phase A corrected clean count",
+      "passed": true,
+      "detail": 100
+    },
+    {
+      "check": "Phase A old body-word mean",
+      "passed": true,
+      "detail": 1919.47
+    },
+    {
+      "check": "Phase A old stability mean",
+      "passed": true,
+      "detail": 0.727
+    },
+    {
+      "check": "Phase A old guardrail events",
+      "passed": true,
+      "detail": [
+        20,
+        2,
+        119,
+        79,
+        58,
+        399,
+        15,
+        78,
+        55,
+        793,
+        868,
+        802
+      ]
+    },
+    {
+      "check": "frozen artifact bundle present",
+      "passed": true,
+      "detail": "results/rebuild_inputs/pre_correction_snapshot/tables/T1_main_integrity.csv"
+    },
+    {
+      "check": "frozen model outcome counts reproduced",
+      "passed": true,
+      "detail": 60
+    },
+    {
+      "check": "corrected empty-output classification",
+      "passed": true,
+      "detail": {
+        "new_clean_reviews": 14,
+        "new_reviews_with_error": 4,
+        "new_substantive_refusals": 0,
+        "new_structured_failures": 1,
+        "new_postcomposition_failures": 1
+      }
+    },
+    {
+      "check": "writer evidence exposure totals",
+      "passed": true,
+      "detail": {
+        "old": {
+          "condition": "__all_replayed_writer_runs__",
+          "generation": "old",
+          "runs": 941,
+          "citation_manifest_surfaces": 28812,
+          "corpus_bound_surfaces": 28801,
+          "unbound_or_e1_surfaces": 11,
+          "outside_first_two_passage_surfaces": 6830,
+          "outside_share_pct_of_bound": 23.714,
+          "runs_with_outside_surface": 797,
+          "affected_runs_pct": 84.7,
+          "selected_first_two_passages": 44468,
+          "selected_passages_gt_260_chars": 42038,
+          "selected_passages_gt_260_chars_pct": 94.535
+        },
+        "new": {
+          "condition": "__all_replayed_writer_runs__",
+          "generation": "new",
+          "runs": 941,
+          "citation_manifest_surfaces": 29362,
+          "corpus_bound_surfaces": 29354,
+          "unbound_or_e1_surfaces": 8,
+          "outside_first_two_passage_surfaces": 0,
+          "outside_share_pct_of_bound": 0.0,
+          "runs_with_outside_surface": 0,
+          "affected_runs_pct": 0.0,
+          "selected_first_two_passages": 44468,
+          "selected_passages_gt_260_chars": 42038,
+          "selected_passages_gt_260_chars_pct": 94.535
+        }
+      }
+    },
+    {
+      "check": "Phase A halt diagnostic reproduced",
+      "passed": true,
+      "detail": {
+        "old": {
+          "condition": "phase_a_main",
+          "generation": "old",
+          "runs": 100,
+          "citation_manifest_surfaces": 3276,
+          "corpus_bound_surfaces": 3276,
+          "unbound_or_e1_surfaces": 0,
+          "outside_first_two_passage_surfaces": 925,
+          "outside_share_pct_of_bound": 28.236,
+          "runs_with_outside_surface": 100,
+          "affected_runs_pct": 100.0,
+          "selected_first_two_passages": 4800,
+          "selected_passages_gt_260_chars": 4700,
+          "selected_passages_gt_260_chars_pct": 97.917
+        },
+        "new": {
+          "condition": "phase_a_main",
+          "generation": "new",
+          "runs": 100,
+          "citation_manifest_surfaces": 3184,
+          "corpus_bound_surfaces": 3184,
+          "unbound_or_e1_surfaces": 0,
+          "outside_first_two_passage_surfaces": 0,
+          "outside_share_pct_of_bound": 0.0,
+          "runs_with_outside_surface": 0,
+          "affected_runs_pct": 0.0,
+          "selected_first_two_passages": 4800,
+          "selected_passages_gt_260_chars": 4700,
+          "selected_passages_gt_260_chars_pct": 97.917
+        }
+      }
+    },
+    {
+      "check": "selected-passage clipping scope",
+      "passed": true,
+      "detail": {
+        "selected": 44468,
+        "over_260": 42038
+      }
+    }
+  ],
+  "all_passed": true
+}

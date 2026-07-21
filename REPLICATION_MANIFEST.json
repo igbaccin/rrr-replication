@@ -1,0 +1,83 @@
+{
+  "schema_version": "rrr-replication-v1",
+  "package_status": "corrected_results_synchronized_notebooklm_pending",
+  "prepared_at_utc": "2026-07-21T16:10:43Z",
+  "paper": {
+    "title": "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History",
+    "author": "Igor Martins"
+  },
+  "source": {
+    "archival_repository": "igbaccin/rrr-poc-history",
+    "archival_base_commit": "f662af148ee496205cbb614ed05cb8f590322ee6",
+    "production_repository": "igbaccin/rrr-poc",
+    "production_commit": null,
+    "production_commit_status": "to be recorded after the cleaned public history is established"
+  },
+  "population": {
+    "classified_attempts": 2425,
+    "corrected_writer_replays": 941,
+    "preserved_independent_baselines": 300,
+    "preserved_pre_writer_terminals": 1184,
+    "main_rrr_attempts": 100,
+    "main_rrr_scored_reviews": 100
+  },
+  "accepted_results": {
+    "path": "results/corrected",
+    "manifest": {
+      "path": "results/corrected/manifest.json",
+      "bytes": 20479,
+      "sha256": "5fb27259b3a39f5af1ff00bf5cac7bd7f26e59d1ade179319e155198b4057cf3"
+    },
+    "analysis_manifest": {
+      "path": "results/corrected/analysis_source/manifest.json",
+      "bytes": 6279,
+      "sha256": "8834cf4bde4f7ce01f19782a657db91d3a2b951595db937df0a95af01d71c1a2"
+    },
+    "validation": {
+      "path": "results/corrected/analysis_source/validation.json",
+      "bytes": 5993,
+      "sha256": "61ebb6fdce997674442c99a8fed052aeda1610e1c306e1a7f5e17f1938592a6a"
+    }
+  },
+  "replay_archive": {
+    "path": "results/replay_inputs/writer_correction_260720.tar.gz",
+    "archive_root": "corrected_writer_v17",
+    "items": 941,
+    "bytes": 61348096,
+    "sha256": "cb6215506ae5a72b6bba40b2c964a549ba65cec7d499eb4c7d2e2a2470e98305"
+  },
+  "external_comparisons": [
+    {
+      "workflow": "Claude Code, Haiku 4.5",
+      "path": "results/external_comparisons/claude_code/phase_h_haiku_results.json",
+      "attempts": 50,
+      "scored_reviews": 49,
+      "bytes": 253169,
+      "sha256": "65a37b541efecd39a425df44ac764a2dbea3e1246fea77122259c8825969be30"
+    },
+    {
+      "workflow": "Claude Code, Sonnet 4.5",
+      "path": "results/external_comparisons/claude_code/phase_h_sonnet_results.json",
+      "attempts": 50,
+      "scored_reviews": 50,
+      "bytes": 330528,
+      "sha256": "08842d22a374f13b61f2fe5491de6a6696ff1cb185c00c0e5439f5e122c51baf"
+    },
+    {
+      "workflow": "Claude Code, Opus 4.8",
+      "path": "results/external_comparisons/claude_code/phase_h_opus_results.json",
+      "attempts": 51,
+      "scored_reviews": 51,
+      "bytes": 163031,
+      "sha256": "dc653e64601bbc21e6af34fc5e0058d14879403f877444bbf30916aeeacb3fb2"
+    }
+  ],
+  "pending": {
+    "notebooklm": "A one-run pilot is deposited as provisional. The final human-run protocol is pending."
+  },
+  "excluded": {
+    "rrr_skill_h3": "Stored runs used the superseded writer.",
+    "cost_latency_figure": "Corrected replay timings are not comparable with original full-pipeline timings.",
+    "corpus_pdfs": "Most source documents are copyrighted and must be obtained by the replicator."
+  }
+}

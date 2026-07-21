@@ -1,0 +1,6 @@
+runs_pooled,mean_distinct_works,p05_distinct_works,p95_distinct_works,mean_core_recovery_pct,p05_core_recovery_pct,p95_core_recovery_pct
+1,13.3,12,17,95.86,80,100
+2,15.7,13,20,99.76,100,100
+3,16.8,14,22,99.96,100,100
+5,17.9,15,23,100.0,100,100
+10,19.7,17,24,100.0,100,100

@@ -11,7 +11,8 @@
 # Prerequisites:
 #   - Step 1 completed (metadata.csv, data/page_text/, indices/ all present)
 #   - Ollama installed and running (ollama serve)
-#   - Mistral 7B model pulled (ollama pull mistral)
+#   - Default model pulled (ollama pull mistral-small:24b; the preflight below
+#     pulls it automatically). Non-Latin topics also need qwen3:14b.
 # =============================================================================
 set -euo pipefail
 
@@ -93,12 +94,16 @@ if ! curl -fsS "$OLLAMA_URL/api/version" &>/dev/null; then
 fi
 echo "       Ollama is running at $OLLAMA_URL"
 
-# Check for Mistral model
-if ! ollama list 2>/dev/null | grep -q "^mistral"; then
-    echo "       Mistral model not found. Pulling now (this may take a few minutes)..."
-    ollama pull mistral
+# Check for the default Latin-tier model (the English battery topics route to
+# it via language.py). v15.15: the default is mistral-small:24b, not mistral 7B.
+# To benchmark another model (Mistral 7B, a Gemma tier, etc.) set
+# RRR_MODEL_LATIN before running — the preflight and the pipeline both honour it.
+LATIN_MODEL="${RRR_MODEL_LATIN:-mistral-small:24b}"
+if ! ollama list 2>/dev/null | grep -q "^${LATIN_MODEL%%:*}"; then
+    echo "       ${LATIN_MODEL} not found. Pulling now (this may take a while)..."
+    ollama pull "$LATIN_MODEL"
 fi
-echo "       Mistral model: available"
+echo "       Latin-tier model: ${LATIN_MODEL} available"
 echo ""
 
 # ---------------------------------------------------------------------------
@@ -134,17 +139,19 @@ export RRR_GLOBAL_MIN_DOCS=8
 export RRR_MIN_SENT_SCORE=40
 
 # Model and concurrency
-export RRR_MODEL=mistral
+# v15.15: no RRR_MODEL pin. The language router (language.py) selects the model
+# per topic — mistral-small:24b for Latin scripts, qwen3:14b for non-Latin —
+# and would override an RRR_MODEL pin anyway. To benchmark a specific model,
+# export RRR_MODEL_LATIN / RRR_MODEL_NONLATIN before running this script.
 export RRR_CONCURRENCY=2
 export OLLAMA_NUM_PARALLEL=2
 export OLLAMA_MAX_LOADED_MODELS=1
 
-# Writer settings
-export RRR_WRITE_REVIEW=1
-export RRR_WRITER_CTX=65536
-export RRR_WRITER_PRED=8000
-export RRR_WRITER_TOPM_MECH=8
-export RRR_WRITER_TOPL_PER_MECH=8
+# v15.16: the "Writer settings" block that used to live here exported five
+# knobs retired in v13 (RRR_WRITE_REVIEW, RRR_WRITER_CTX, RRR_WRITER_PRED,
+# RRR_WRITER_TOPM_MECH, RRR_WRITER_TOPL_PER_MECH) — no-ops that the run
+# manifest then recorded as if they configured the run. Writer tuning is
+# frozen in src/rrr/writer.py; see README Appendix B.
 
 # Paths
 export PYTHONPATH="$PACKAGE_DIR/src"
@@ -154,32 +161,26 @@ echo "       RRR_MAX_SENTS_PAGE     = $RRR_MAX_SENTS_PAGE"
 echo "       RRR_MIN_DOC_SNIPS      = $RRR_MIN_DOC_SNIPS"
 echo "       RRR_GLOBAL_MIN_DOCS    = $RRR_GLOBAL_MIN_DOCS"
 echo "       RRR_MIN_SENT_SCORE     = $RRR_MIN_SENT_SCORE"
-echo "       RRR_MODEL              = $RRR_MODEL"
+echo "       Model (Latin/non-Latin)= ${RRR_MODEL_LATIN:-mistral-small:24b} / ${RRR_MODEL_NONLATIN:-qwen3:14b} (language-routed)"
 echo "       RRR_CONCURRENCY        = $RRR_CONCURRENCY"
-echo "       RRR_WRITER_CTX         = $RRR_WRITER_CTX"
-echo "       RRR_WRITER_PRED        = $RRR_WRITER_PRED"
-echo "       RRR_WRITER_TOPM_MECH   = $RRR_WRITER_TOPM_MECH"
-echo "       RRR_WRITER_TOPL_PER_MECH = $RRR_WRITER_TOPL_PER_MECH"
+echo "       Stage caches           = cold per run (battery default RRR_STAGE_CACHE=0)"
 echo ""
 
 # ---------------------------------------------------------------------------
-# 5. Apply bypass patch and run battery
+# 5. Run battery
 # ---------------------------------------------------------------------------
 echo "[5/6] Preparing and running the comprehensive battery..."
 echo ""
-echo "       This will execute six phases (A through F) with a total of"
-echo "       200+ independent pipeline runs. Expect this to take:"
-echo ""
-echo "         - 45-90 minutes on a consumer GPU (RTX 3090/4090)"
-echo "         - 30-60 minutes on a cloud GPU (A100/H100)"
-echo "         - 4-8 hours on CPU only"
+echo "       This core block executes 1,010 attempts across A, B, B2,"
+echo "       C, C2, D, and F. Phase E is derived from completed outputs."
+echo "       Runtime depends on model tier, hardware, and provider limits."
+echo "       Use reduced N_* values for a smoke run before the full block."
 echo ""
 echo "       Progress will be printed below."
 echo "       -----------------------------------------------"
 echo ""
 
-# Apply the bypass patch (configures Phase B baseline)
-python scripts/apply_bypass_patch.py
+# Phase B uses RRR_BYPASS_VALIDATION=1 at runtime. No source patching is needed.
 
 # Make the inner battery script executable
 chmod +x scripts/run_comprehensive_battery.sh
@@ -222,51 +223,19 @@ fi
 echo "       Results saved to: $RESULTS_FILE"
 echo ""
 
-# Print a brief comparison against reference results
+# Print the output and deposited-reference locations.
 echo "=============================================="
 echo "  Quick comparison with reference results"
 echo "=============================================="
 echo ""
 
 python -c "
-import json, os
-
-# Load new results
-with open('$RESULTS_FILE') as f:
-    new = json.load(f)
-
-# Try to load reference results
-ref_path = 'runs/comprehensive_results.json'
-has_ref = os.path.exists(ref_path)
-if has_ref:
-    with open(ref_path) as f:
-        ref = json.load(f)
-
-# Extract Phase A metrics from new results
-phases = new if isinstance(new, dict) else {}
-
-def get_phase_a(data):
-    \"\"\"Try to extract Phase A summary metrics.\"\"\"
-    # The structure varies; try common patterns
-    for key in ['phase_a', 'phaseA', 'A', 'main_battery']:
-        if key in data:
-            return data[key]
-    # If the top level has the right keys, use it
-    if 'e1_mean' in data or 'fabricated_mean' in data:
-        return data
-    return None
-
-print('  Metric                          Your run     Paper reports')
-print('  -------------------------------- ------------ -------------')
-
-# We print what we can find; the exact JSON keys depend on
-# the aggregation script's output format.
-print()
+import os
 print('  See the full results in:')
 print(f'    {os.path.abspath(\"$RESULTS_FILE\")}')
 print()
-print('  Compare against Table 4 (main battery) and Tables 5-8')
-print('  (ablation, refusal, E2 anatomy, adversarial) in the paper.')
+print('  Compare against the deposited tables under:')
+print(f'    {os.path.abspath(\"results/corrected/tables\")}')
 "
 
 echo ""
@@ -275,7 +244,7 @@ echo "  Replication complete."
 echo "=============================================="
 echo ""
 echo "  Your results are in: $RESULTS_FILE"
-echo "  Reference results:   runs/comprehensive_results.json"
+echo "  Reference results:   results/corrected/analysis_source/conditions/"
 echo ""
 echo "  To inspect individual run artifacts, look inside:"
 echo "    $RESULTS_DIR/"
