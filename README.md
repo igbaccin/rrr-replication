@@ -30,6 +30,7 @@ The script validates the expected populations and writes the regenerated exhibit
 | Path | Contents |
 | --- | --- |
 | `src/rrr/` | RRR pipeline source used by the corrected writer replay |
+| `skills/rrr/SKILL.md` | Claude Code skill that exposes the RRR workflow as `/rrr` |
 | `scripts/` | Corpus preparation, batteries, scoring, replay, and exhibit builders |
 | `tests/unit/` | Regression tests, including the corrected writer evidence contract |
 | `results/corrected/analysis_source/` | Run-level analytical records used to construct the paper exhibits |
@@ -40,6 +41,15 @@ The script validates the expected populations and writes the regenerated exhibit
 | `results/rebuild_inputs/` | Clearly labelled frozen table inputs required by the corrected exhibit builder |
 | `docs/` | Replay, RunPod, and external-comparison instructions |
 | `REPLICATION_MANIFEST.json` | Package status, population accounting, exclusions, and integrity hashes |
+
+## Using RRR as a Claude skill
+
+The reviewer package includes the same `rrr` skill used for the skill
+condition. Copy `skills/rrr/` to `.claude/skills/rrr/` within a
+Claude Code workspace. The skill then exposes RRR as `/rrr` and can also
+be selected automatically for a corpus-bounded literature review. It runs the
+RRR implementation contained in this package and preserves the pipeline's
+validation and audit artifacts.
 
 ## Result population
 
