@@ -2,9 +2,9 @@
 
 This repository accompanies the paper, "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History."
 
-The package is synchronized with the corrected writer contract and the accepted results bundle dated 21 July 2026. It contains the current RRR implementation, the evaluation programs, run-level analytical summaries, generated exhibits, and the frozen input archive for the 941 corrected writer replays.
+The package is synchronized with the corrected writer contract and the accepted results bundle dated 22 July 2026. It contains the current RRR implementation, the evaluation programs, run-level analytical summaries, generated exhibits, and the frozen input archive for the 941 corrected writer replays.
 
-The NotebookLM comparison remains a documented pilot pending the final human-run protocol. The former RRR skill comparison is excluded because its recorded runs used the superseded writer.
+The corrected RRR skill comparison is included in the accepted tables. Its ten completed runs were all free of E1 through E5 under the common checker. The NotebookLM comparison remains a documented pilot pending the final human-run protocol.
 
 ## Fast verification
 
@@ -36,6 +36,7 @@ The script validates the expected populations and writes the regenerated exhibit
 | `results/corrected/analysis_source/` | Run-level analytical records used to construct the paper exhibits |
 | `results/corrected/tables/` | Corrected tables in CSV and TeX formats |
 | `results/corrected/figures/` | Corrected figures in PDF and PNG formats |
+| `results/corrected/external_comparisons/rrr_skill/` | Accepted corrected H3 result record |
 | `results/replay_inputs/` | Compressed frozen ledgers for the 941 writer replays |
 | `results/external_comparisons/` | Completed Claude Code summaries and the provisional NotebookLM pilot record |
 | `results/rebuild_inputs/` | Clearly labelled frozen table inputs required by the corrected exhibit builder |
@@ -50,6 +51,12 @@ Claude Code workspace. The skill then exposes RRR as `/rrr` and can also
 be selected automatically for a corpus-bounded literature review. It runs the
 RRR implementation contained in this package and preserves the pipeline's
 validation and audit artifacts.
+
+After obtaining the corpus PDFs and installing Claude Code, the corrected skill
+condition can be repeated with `scripts/run_claude_skill_arm.sh`. The runner
+installs the package, copies `skills/rrr/SKILL.md` into the temporary Claude
+workspace, invokes `/rrr`, and scores each released review with the deposited
+checker.
 
 ## Result population
 
@@ -117,7 +124,7 @@ Together these blocks reproduce the 2,425-attempt design. Model generation is st
 
 ## External comparison arms
 
-The paper reports completed off-the-shelf Claude Code comparisons for Haiku 4.5, Sonnet 4.5, and Opus 4.8. Their run-level result summaries are under `results/external_comparisons/claude_code/`, and `docs/external_comparisons.md` records the execution procedure.
+The paper reports completed off-the-shelf Claude Code comparisons for Haiku 4.5, Sonnet 4.5, and Opus 4.8. Their run-level result summaries are under `results/external_comparisons/claude_code/`. The corrected `/rrr` skill condition is deposited under `results/corrected/external_comparisons/rrr_skill/`. Its ten runs produced ten clean reviews across 642 parsed citations. `docs/external_comparisons.md` records both execution procedures.
 
 The NotebookLM directory currently preserves one pilot response, its runbook, and its scoring sheet. It is marked provisional throughout the package. The final NotebookLM exercise will be added after the human-run protocol is completed.
 
@@ -127,7 +134,7 @@ The NotebookLM directory currently preserves one pilot response, its runbook, an
 - Local model tags identify the tested model tiers. Availability and upstream model packaging can change over time.
 - Language-model outputs are stochastic.
 - Corrected writer timings are excluded because replay timings are not comparable with the original full-pipeline timings.
-- The RRR skill arm is excluded from the accepted results because it used the superseded writer.
+- The historical RRR skill arm is excluded because it used the superseded writer. The corrected replacement has a separate accepted run record.
 - Original commit hashes embedded in replay records refer to the private archival history. They remain historical provenance identifiers.
 
 ## Citation and licence

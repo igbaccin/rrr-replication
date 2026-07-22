@@ -42,9 +42,24 @@ Model identifiers should be checked against current provider availability before
 
 Each attempt is scored with `scripts/check_citations.py`, the same checker used for the RRR conditions. The scored dimensions are E1, out-of-corpus citations; E2, invalid pages; E3, citation-format violations; E4, unverified quotations; and E5, misattributed quotations.
 
-## Excluded RRR skill arm
+## Corrected RRR skill arm
 
-The earlier RRR skill comparison is excluded from the accepted analytical bundle because its stored runs used the superseded writer. Its results do not enter the paper tables deposited here.
+The corrected skill condition installs RRR as `/rrr` inside Claude Code. Claude
+Code invokes the RRR pipeline, whose internal model calls are routed to Opus
+4.8 through the API. All ten attempts completed and were scored. The 642 parsed
+citations contained no E1 through E5 event, giving ten clean reviews. The two
+eligible direct quotations both verified. The accepted summary is deposited at
+`results/corrected/external_comparisons/rrr_skill/phase_h3_results.json` and
+enters both corrected comparison tables.
+
+Run the condition after obtaining the corpus PDFs and preprocessing them:
+
+```bash
+N_ARM=10 ARM_MODEL=claude-opus-4-8 ./scripts/run_claude_skill_arm.sh
+```
+
+The earlier skill runs remain historical because they used the superseded
+writer. They do not enter the accepted analytical bundle.
 
 ## NotebookLM status
 

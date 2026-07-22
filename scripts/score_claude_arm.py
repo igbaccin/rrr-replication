@@ -149,7 +149,7 @@ def main():
         "docs_cited": stat("n_docs_cited"),
         "words": stat("word_count"),
         "zero_err_pct": round(100 * zero_err / (len(scored) or 1), 1),
-        "note": ("RRR-as-skill inside Claude Code; full audit trail per run"
+        "note": ("RRR-as-skill inside Claude Code; RRR audit artifacts and agent transcript preserved per run"
                  if args.label == "phase_h3" else
                  "Claude Code + contract-as-prompt; scored by scripts/check_citations.py"),
     }

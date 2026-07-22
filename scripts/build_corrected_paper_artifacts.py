@@ -14,6 +14,7 @@ import csv
 import hashlib
 import json
 import math
+import re
 import shutil
 import statistics
 from datetime import datetime, timezone
@@ -48,6 +49,11 @@ PROBE_LABELS = {
     "mid": "Literary modernism",
     "near": "Soviet-planning near miss",
 }
+REFERENCE_HEADING_RE = re.compile(
+    r"^[ \t]*(?:#{1,6}[ \t]+)?(?:references|bibliography)[ \t]*#*[ \t]*$",
+    re.IGNORECASE | re.MULTILINE,
+)
+WORD_RE = re.compile(r"\b\w+\b")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -146,6 +152,159 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def numeric_stats(values, digits=2):
+    values = list(values)
+    if not values:
+        raise ValueError("cannot summarize an empty value list")
+    return {
+        "mean": round(statistics.mean(values), digits),
+        "sd": round(statistics.stdev(values), digits) if len(values) > 1 else 0.0,
+        "min": min(values),
+        "max": max(values),
+    }
+
+
+def body_word_count(path: Path) -> tuple[int, bool]:
+    text = path.read_text(encoding="utf-8")
+    match = REFERENCE_HEADING_RE.search(text)
+    body = text[:match.start()] if match else text
+    return len(WORD_RE.findall(body)), bool(match)
+
+
+def prepare_h3_payload(source: Path, deposited: Path, orchestrator_model: str) -> dict:
+    if not source.is_file():
+        raise FileNotFoundError(source)
+    payload = json.loads(source.read_text(encoding="utf-8"))
+    summary = payload.get("summary") or {}
+    per_run = payload.get("per_run") or []
+    if summary.get("phase") != "phase_h3" or len(per_run) != 10:
+        raise ValueError("the corrected H3 source must contain ten phase_h3 runs")
+    if summary.get("n_completed") != 10 or summary.get("n_scored") != 10:
+        raise ValueError("the corrected H3 source is incomplete")
+    if summary.get("n_refused") or summary.get("n_emission_failed") or summary.get("n_checker_failed"):
+        raise ValueError("the corrected H3 source contains a terminal or checker failure")
+    summary["note"] = (
+        "RRR-as-skill inside Claude Code; RRR audit artifacts and agent transcript "
+        "preserved per run"
+    )
+    for row in per_run:
+        if any(row.get(key) != 0 for key in ("e1", "e2", "e3", "e4", "e5")):
+            raise ValueError(f"corrected H3 run {row.get('run')} contains an integrity event")
+
+    runs_dir = source.parent / "runs"
+    if runs_dir.is_dir():
+        run_dirs = sorted(path for path in runs_dir.iterdir() if path.is_dir())
+        if len(run_dirs) != 10:
+            raise ValueError("the corrected H3 source does not have ten run directories")
+        body_words = []
+        reference_headings = 0
+        manifests = []
+        for run_dir in run_dirs:
+            count, removed = body_word_count(run_dir / "review_composed.md")
+            body_words.append(count)
+            reference_headings += int(removed)
+            manifests.append(json.loads((run_dir / "run_manifest.json").read_text(encoding="utf-8")))
+        runtimes = sorted({item.get("env", {}).get("RRR_RUNTIME") for item in manifests})
+        models = sorted({item.get("model") for item in manifests})
+        commits = sorted({item.get("git", {}).get("commit") for item in manifests})
+        if runtimes != ["api"] or models != ["claude-opus-4-8"]:
+            raise ValueError(f"unexpected corrected H3 runtime/model: {runtimes}, {models}")
+        dirty_paths = sorted({
+            Path(status[3:].strip()).name
+            for item in manifests
+            for status in item.get("git", {}).get("status_short", [])
+            if status[3:].strip()
+        })
+        payload["paper_metrics"] = {
+            "body_words": numeric_stats(body_words),
+            "reference_headings_removed": reference_headings,
+            "body_word_counts": body_words,
+            "word_metric_basis": "body_only_raw_markdown",
+        }
+        payload["deposition"] = {
+            "inner_runtime": runtimes[0],
+            "inner_model": models[0],
+            "source_commits": commits,
+            "run_manifests_checked": len(manifests),
+            "dirty_run_manifests": sum(bool(item.get("git", {}).get("dirty")) for item in manifests),
+            "dirty_paths": dirty_paths,
+            "orchestrator_model_selected": orchestrator_model or summary.get("arm_model") or "unrecorded",
+            "source_result_sha256": sha256(source),
+        }
+        if orchestrator_model and not summary.get("arm_model"):
+            summary["arm_model"] = orchestrator_model
+
+    paper_metrics = payload.get("paper_metrics") or {}
+    if not isinstance(paper_metrics.get("body_words", {}).get("mean"), (int, float)):
+        raise ValueError("corrected H3 paper metrics are missing")
+    deposited.parent.mkdir(parents=True, exist_ok=True)
+    deposited.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    return payload
+
+
+def h3_t2_row(template: dict, payload: dict) -> dict:
+    summary = payload["summary"]
+    body = payload["paper_metrics"]["body_words"]
+    row = dict(template)
+    row.update({
+        "Condition": "RRR as a Claude skill (H3)",
+        "N (scored/run)": "10/10",
+        "Refusal %": "0.0",
+        "No-output %": "0.0",
+        "Citations": f"{fmt(summary['n_citations']['mean'])} +/- {fmt(summary['n_citations']['sd'])}",
+        "E1 (out-of-corpus)": "0 +/- 0",
+        "E2 (invalid page)": "0 +/- 0",
+        "E3 (format)": "0 +/- 0",
+        "E4 (unverified quotation)": "0 +/- 0",
+        "E5 (misattr. quote)": "0 +/- 0",
+        "Docs cited": f"{fmt(summary['docs_cited']['mean'])} +/- {fmt(summary['docs_cited']['sd'])}",
+        "Body words": f"{fmt(body['mean'])} +/- {fmt(body['sd'])}",
+        "Word metric": payload["paper_metrics"]["word_metric_basis"],
+        "Zero-error runs %": "100.0",
+    })
+    return row
+
+
+def h3_workflow_row(template: dict, payload: dict) -> dict:
+    summary = payload["summary"]
+    body = payload["paper_metrics"]["body_words"]
+    quotes_verified = sum(int(row.get("quotes_verified") or 0) for row in payload["per_run"])
+    quotes_eligible = sum(int(row.get("quotes_checked") or 0) for row in payload["per_run"])
+    row = dict(template)
+    row.update({
+        "workflow": "Claude Code with the /rrr skill",
+        "attempts": 10,
+        "reviews": 10,
+        "scored": 10,
+        "failures": 0,
+        "clean_pct": 100.0,
+        "mean_e1": 0,
+        "mean_e2": 0,
+        "mean_e3": 0,
+        "mean_e4": 0,
+        "mean_e5": 0,
+        "quotes_verified": quotes_verified,
+        "quotes_eligible": quotes_eligible,
+        "quote_verification_pct": round(100 * quotes_verified / quotes_eligible, 1) if quotes_eligible else "",
+        "mean_words": body["mean"],
+        "sd_words": body["sd"],
+        "archived_mean_words": summary["words"]["mean"],
+        "word_metric_basis": payload["paper_metrics"]["word_metric_basis"],
+        "raw_reviews_for_words": 10,
+        "reference_headings_removed": payload["paper_metrics"]["reference_headings_removed"],
+        "mean_documents": summary["docs_cited"]["mean"],
+        "written_source_page_pairs": "",
+        "source_access": "RRR evidence admission, evidence binding, citation rendering, and release checks",
+        "preserved_record": "Review, ledger, manifests, metrics, checker output, and agent transcript",
+        "provisional": False,
+    })
+    return row
 
 
 def copy_independent_table(frozen_tables: Path, tables: Path, stem: str) -> None:
@@ -248,7 +407,7 @@ def update_t2_row(row, condition):
     return result
 
 
-def build_t2(condition_map, current_rows):
+def build_t2(condition_map, current_rows, h3_payload):
     rows = []
     for row in current_rows:
         label = row["Condition"]
@@ -257,7 +416,7 @@ def build_t2(condition_map, current_rows):
         elif label.startswith("Validation-gate ablation"):
             rows.append(update_t2_row(row, condition_map["phase_b_validation_off"]))
         elif label.startswith("RRR as a Claude skill"):
-            continue
+            rows.append(h3_t2_row(row, h3_payload))
         elif "frontier model" in label or "unpinned" in label:
             continue
         else:
@@ -638,6 +797,16 @@ def main():
         default=ROOT / "results" / "corrected",
         type=Path,
     )
+    parser.add_argument(
+        "--h3-source",
+        type=Path,
+        help="Corrected phase_h3_results.json. Required when the deposited H3 record is absent.",
+    )
+    parser.add_argument(
+        "--h3-orchestrator-model",
+        default="",
+        help="Claude Code model selected for the corrected H3 run.",
+    )
     args = parser.parse_args()
 
     analysis = args.analysis_source.resolve()
@@ -647,6 +816,17 @@ def main():
     figures = out / "figures"
     tables.mkdir(parents=True, exist_ok=True)
     figures.mkdir(parents=True, exist_ok=True)
+    deposited_h3 = out / "external_comparisons" / "rrr_skill" / "phase_h3_results.json"
+    default_h3_source = (
+        ROOT / "results" / "corrected"
+        / "external_comparisons" / "rrr_skill" / "phase_h3_results.json"
+    )
+    h3_source = args.h3_source.resolve() if args.h3_source else default_h3_source
+    h3_payload = prepare_h3_payload(
+        h3_source,
+        deposited_h3,
+        args.h3_orchestrator_model,
+    )
 
     conditions = read_csv(analysis / "condition_changes.csv")
     condition_map = {row["condition"]: row for row in conditions}
@@ -670,7 +850,7 @@ def main():
 
     t0 = build_t0(condition_map, current_t0, paired_groups)
     t1 = build_t1(condition_map, stability_changes)
-    t2 = build_t2(condition_map, current_t2)
+    t2 = build_t2(condition_map, current_t2, h3_payload)
     t4 = build_t4(guardrails)
     body_words = build_body_words(condition_map, current_words, paired_groups)
     t5 = build_t5(condition_map, current_t5)
@@ -698,10 +878,12 @@ def main():
     )
     accumulation = build_accumulation(accumulation_changes)
     model_outcomes = build_model_outcomes(model_changes, current_f5, paired)
-    workflow = [
-        row for row in read_csv(frozen_tables / "T_workflow_comparison.csv")
-        if not row["workflow"].startswith("RRR skill")
-    ]
+    workflow = []
+    for row in read_csv(frozen_tables / "T_workflow_comparison.csv"):
+        if row["workflow"].startswith("RRR skill"):
+            workflow.append(h3_workflow_row(row, h3_payload))
+        else:
+            workflow.append(row)
 
     generated_tables = {
         "T0_controlled_contract_staircase": (t0, "Performance under successively stronger evidence contracts"),
@@ -716,7 +898,7 @@ def main():
         "T_source_inclusion_topics": (topic_inclusion, "Corrected source inclusion across historical questions"),
         "F_document_inclusion_by_prompt": (prompt_inclusion, "Corrected document inclusion by prompt"),
         "T_source_accumulation_data": (accumulation, "Corrected source accumulation data"),
-        "T_workflow_comparison": (workflow, "Eligible writer-independent workflow comparison"),
+        "T_workflow_comparison": (workflow, "Agentic and platform workflow comparison"),
         "F5_local_model_outcomes": (model_outcomes, "Corrected local-model outcomes"),
     }
     for stem, (rows, caption) in generated_tables.items():
@@ -753,7 +935,11 @@ def main():
         "rag_baseline_unchanged": next(
             row for row in t0 if row["condition"] == "Single-pass retrieval"
         )["zero_e1_e5_pct"] == "87.0",
-        "h3_excluded": all("RRR skill" not in row["workflow"] for row in workflow),
+        "corrected_h3_included": any(
+            row["workflow"] == "Claude Code with the /rrr skill"
+            and row["clean_pct"] == 100.0
+            for row in workflow
+        ),
         "model_cells": len(model_outcomes) == expected_model_cells,
         "stability_core_count": len(core) == 10,
         "topic_inclusion_rows": len(topic_inclusion) == 35,
@@ -804,8 +990,17 @@ def main():
             "preserved_pre_writer_terminals": 1184,
         },
         "excluded": {
-            "rrr_skill_h3": "Used the original writer outside the accepted replay population",
+            "historical_rrr_skill_h3": "Used the original writer and was replaced by the corrected H3 condition",
             "cost_latency_figure": "Corrected writer timings are not comparable with July full-pipeline timings",
+        },
+        "external_comparisons": {
+            "corrected_h3": {
+                "path": deposited_h3.relative_to(ROOT).as_posix(),
+                "sha256": sha256(deposited_h3),
+                "attempts": 10,
+                "scored_reviews": 10,
+                "clean_reviews": 10,
+            }
         },
         "copied_writer_independent_tables": [
             "T3_citation_taxonomy",
@@ -835,8 +1030,10 @@ def main():
         "the independent C and C2 baselines. T5 preserves its upstream topic-fit "
         "values while separating deterministic input gates, substantive refusals, "
         "and structured failures.\n\n"
-        "H3 is excluded because it used the original writer. The cost and latency "
-        "figure is omitted until a comparable timing construction is defined.\n\n"
+        "The historical H3 condition is excluded because it used the original writer. "
+        "Its corrected replacement contains ten completed and scored runs, all free "
+        "of E1--E5 under the common checker. The cost and latency figure is omitted "
+        "until a comparable timing construction is defined.\n\n"
         "Rebuild from the repository root with:\n\n"
         "```bash\n"
         "python scripts/build_corrected_paper_artifacts.py\n"

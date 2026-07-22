@@ -1,6 +1,6 @@
 \begin{table}[ht]
 \centering
-\caption{Eligible writer-independent workflow comparison}
+\caption{Agentic and platform workflow comparison}
 \scriptsize
 \begin{tabular}{lrrrrrrrrrrrrrrrrrrrrrrrr}
 \toprule
@@ -9,6 +9,7 @@ workflow & attempts & reviews & scored & failures & clean\_pct & mean\_e1 & mean
 Claude Code, Haiku 4.5 & 50 & 49 & 49 & 1 & 6.1 & 2.1 & 0.14 & 1.94 & 1.31 & 2.12 & 177 & 350 & 50.6 & 1158.78 & 183.22 & 1158.78 & body\_only\_raw\_markdown & 49 & 0 & 3.78 &  & Extracted page text under a written corpus and citation instruction & Review, execution transcript, and checker output & False \\
 Claude Code, Sonnet 4.5 & 50 & 50 & 50 & 0 & 0.0 & 0 & 0.02 & 6.74 & 2.32 & 2.54 & 383 & 627 & 61.1 & 1618.12 & 277.64 & 1618.12 & body\_only\_raw\_markdown & 50 & 0 & 5.24 &  & Extracted page text under a written corpus and citation instruction & Review, execution transcript, and checker output & False \\
 Claude Code, Opus 4.8 & 51 & 51 & 51 & 0 & 11.8 & 0 & 0 & 0.78 & 0.94 & 2.08 & 1057 & 1215 & 87.0 & 1185.8 & 84.07 & 1185.8 & body\_only\_raw\_markdown & 51 & 0 & 9.8 &  & Extracted page text under a written corpus and citation instruction & Review, execution transcript, and checker output & False \\
+Claude Code with the /rrr skill & 10 & 10 & 10 & 0 & 100.0 & 0 & 0 & 0 & 0 & 0 & 2 & 2 & 100.0 & 2041.4 & 325.16 & 2631.4 & body\_only\_raw\_markdown & 10 & 10 & 21.8 &  & RRR evidence admission, evidence binding, citation rendering, and release checks & Review, ledger, manifests, metrics, checker output, and agent transcript & False \\
 NotebookLM pilot & 1 & 1 &  &  &  &  &  &  &  &  &  &  &  & 1302 & 0.0 & 1275.0 & body\_only\_raw\_markdown\_notebooklm & 1 & 0 & 11.0 & 44 & Whole-paper source chips; copied page pairs are plain text & Copied response, platform links, and runbook & True \\
 \bottomrule
 \end{tabular}

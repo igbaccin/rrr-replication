@@ -1,14 +1,14 @@
 {
   "schema_version": "rrr-replication-v1",
-  "package_status": "corrected_results_synchronized_notebooklm_pending",
-  "prepared_at_utc": "2026-07-21T16:10:43Z",
+  "package_status": "corrected_results_and_h3_synchronized_notebooklm_pending",
+  "prepared_at_utc": "2026-07-22T16:03:00Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History",
     "author": "Igor Martins"
   },
   "source": {
     "archival_repository": "igbaccin/rrr-poc-history",
-    "archival_base_commit": "f662af148ee496205cbb614ed05cb8f590322ee6",
+    "archival_base_commit": "3574e35cd988c6c1d0b0f9c3ae95ad4455fbbfea",
     "production_repository": "igbaccin/rrr-poc",
     "production_commit": null,
     "production_commit_status": "to be recorded after the cleaned public history is established"
@@ -25,8 +25,8 @@
     "path": "results/corrected",
     "manifest": {
       "path": "results/corrected/manifest.json",
-      "bytes": 20479,
-      "sha256": "5fb27259b3a39f5af1ff00bf5cac7bd7f26e59d1ade179319e155198b4057cf3"
+      "bytes": 20817,
+      "sha256": "b097550657fa9e0804b3ed29433bc1e8ad893299cac4f260ee07f848a223744c"
     },
     "analysis_manifest": {
       "path": "results/corrected/analysis_source/manifest.json",
@@ -70,13 +70,21 @@
       "scored_reviews": 51,
       "bytes": 163031,
       "sha256": "dc653e64601bbc21e6af34fc5e0058d14879403f877444bbf30916aeeacb3fb2"
+    },
+    {
+      "workflow": "Claude Code with the /rrr skill",
+      "path": "results/corrected/external_comparisons/rrr_skill/phase_h3_results.json",
+      "attempts": 10,
+      "scored_reviews": 10,
+      "bytes": 82290,
+      "sha256": "e3f5eaa7176b010c73ce83896937eb2ff4154ea3598e7f06a4428ace7153bab6"
     }
   ],
   "pending": {
     "notebooklm": "A one-run pilot is deposited as provisional. The final human-run protocol is pending."
   },
   "excluded": {
-    "rrr_skill_h3": "Stored runs used the superseded writer.",
+    "historical_rrr_skill_h3": "Stored runs used the superseded writer and were replaced by the corrected H3 condition.",
     "cost_latency_figure": "Corrected replay timings are not comparable with original full-pipeline timings.",
     "corpus_pdfs": "Most source documents are copyrighted and must be obtained by the replicator."
   }

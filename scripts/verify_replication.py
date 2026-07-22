@@ -67,7 +67,14 @@ def verify_corrected_results(package: dict) -> None:
         all(artifact_manifest.get("validation", {}).values()),
         "one or more corrected artifact validations failed",
     )
-    require("rrr_skill_h3" in artifact_manifest.get("excluded", {}), "H3 exclusion missing")
+    require(
+        artifact_manifest.get("validation", {}).get("corrected_h3_included") is True,
+        "corrected H3 inclusion is not validated",
+    )
+    corrected_h3 = artifact_manifest.get("external_comparisons", {}).get("corrected_h3", {})
+    require(corrected_h3.get("attempts") == 10, "corrected H3 attempt count mismatch")
+    require(corrected_h3.get("scored_reviews") == 10, "corrected H3 scored count mismatch")
+    require(corrected_h3.get("clean_reviews") == 10, "corrected H3 clean count mismatch")
 
     validation = load_json(ROOT / accepted["validation"]["path"])
     require(validation.get("all_passed") is True, "analysis-source validation is not complete")
@@ -150,6 +157,10 @@ def verify_external_comparisons(package: dict) -> None:
     workflow_table = ROOT / "results/corrected/tables/T_workflow_comparison.csv"
     with workflow_table.open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
+    h3 = next(row for row in rows if row["workflow"] == "Claude Code with the /rrr skill")
+    require(h3.get("attempts") == "10", "corrected H3 table attempt count mismatch")
+    require(h3.get("scored") == "10", "corrected H3 table scored count mismatch")
+    require(h3.get("clean_pct") == "100.0", "corrected H3 table clean rate mismatch")
     notebook = next(row for row in rows if row["workflow"] == "NotebookLM pilot")
     require(notebook.get("provisional") == "True", "NotebookLM pilot is not marked provisional")
 
