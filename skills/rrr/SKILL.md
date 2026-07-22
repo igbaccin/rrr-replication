@@ -40,8 +40,8 @@ Use the RRR pipeline to process the corpus and generate the review. Your role is
 
 6. Run the requested task.
 
-   - Literature review: `rrr t2 --multi --metadata <workspace>/metadata.csv --topic "<topic>"`.
    - Claim evaluation: `rrr t1 --metadata <workspace>/metadata.csv --topic "<claim>"`.
+   - Literature review: `rrr t2 --multi --metadata <workspace>/metadata.csv --topic "<topic>"`.
    - Reuse the metadata and index for later questions over an unchanged corpus.
 
 7. Report the recorded outcome.
