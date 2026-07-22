@@ -52,6 +52,10 @@ eligible direct quotations both verified. The accepted summary is deposited at
 `results/corrected/external_comparisons/rrr_skill/phase_h3_results.json` and
 enters both corrected comparison tables.
 
+The released skill can also select local Ollama or the subscription-backed
+Claude and Codex host adapters. Those routes do not change the H3 result, which
+records the API configuration used for the ten reported attempts.
+
 Run the condition after obtaining the corpus PDFs and preprocessing them:
 
 ```bash

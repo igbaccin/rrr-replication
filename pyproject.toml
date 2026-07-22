@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rrr-poc"
-version = "15.16.0"
+version = "15.17.0"
 description = "Retrieval-Restricted Reasoning, a literature-review pipeline that reasons only over retrieved, page-anchored evidence."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -12,10 +12,10 @@ license = { file = "LICENSE.txt" }
 authors = [{ name = "Igor B. Martins" }]
 keywords = ["retrieval", "rag", "literature-review", "economic-history", "llm"]
 
-# Runtime deps. The `ollama` client is required even in RRR_RUNTIME=api mode
-# (the api_backend shim patches ollama.chat), but the ollama *server* is not
-# needed there. langdetect powers multilingual routing; anthropic/openai are
-# optional extras pulled in by the `api` extra below.
+# Runtime deps. The `ollama` client is required in every runtime because the
+# central shim preserves the ollama.chat call contract. The Ollama server is
+# needed only for local inference. langdetect powers multilingual routing;
+# anthropic/openai are optional extras pulled in by the `api` extra below.
 dependencies = [
     "pymupdf>=1.28.0",
     "rank_bm25>=0.2.2",
@@ -28,12 +28,12 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# `pip install rrr-poc[api]` for the frontier-API desktop runtime.
-api = ["anthropic>=0.40.0", "openai>=1.40.0"]
+# `pip install rrr-poc[api]` for the provider API runtime.
+api = ["anthropic>=0.40.0", "openai>=2.44.0"]
 # `pip install rrr-poc[pod]` adds the RunPod remote-exec helper.
 pod = ["paramiko>=3.5.0"]
 # Everything.
-all = ["anthropic>=0.40.0", "openai>=1.40.0", "paramiko>=3.5.0"]
+all = ["anthropic>=0.40.0", "openai>=2.44.0", "paramiko>=3.5.0"]
 
 [project.scripts]
 # One-command CLI: `rrr t2 --metadata metadata.csv --topic "..."`

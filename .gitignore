@@ -17,6 +17,7 @@
 
 # Runtime caches and model storage
 /cache/
+/claim_cache/
 /logs/
 /tmp/
 /ollama_models/

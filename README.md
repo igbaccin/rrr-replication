@@ -30,9 +30,13 @@ The script validates the expected populations and writes the regenerated exhibit
 | Path | Contents |
 | --- | --- |
 | `src/rrr/` | RRR pipeline source used by the corrected writer replay |
-| `skills/rrr/SKILL.md` | Claude Code skill that exposes the RRR workflow as `/rrr` |
+| `.agents/skills/rrr/` | Repository-scoped Codex skill, invoked explicitly as `$rrr` |
+| `.agents/plugins/marketplace.json` | Local marketplace entry for the installable Codex plugin |
+| `plugins/rrr/` | Codex plugin that distributes the `$rrr` skill |
+| `skills/rrr/` | Portable skill source for Codex and Claude Code |
+| `dist/` | Standalone universal wheel and SHA-256 checksum |
 | `scripts/` | Corpus preparation, batteries, scoring, replay, and exhibit builders |
-| `tests/unit/` | Regression tests, including the corrected writer evidence contract |
+| `tests/unit/` | Regression tests for the evidence contract and all three model runtimes |
 | `results/corrected/analysis_source/` | Run-level analytical records used to construct the paper exhibits |
 | `results/corrected/tables/` | Corrected tables in CSV and TeX formats |
 | `results/corrected/figures/` | Corrected figures in PDF and PNG formats |
@@ -43,20 +47,99 @@ The script validates the expected populations and writes the regenerated exhibit
 | `docs/` | Replay, RunPod, and external-comparison instructions |
 | `REPLICATION_MANIFEST.json` | Package status, population accounting, exclusions, and integrity hashes |
 
-## Using RRR as a Claude skill
+## Using RRR from Codex or Claude Code
 
-The reviewer package includes the same `rrr` skill used for the skill
-condition. Copy `skills/rrr/` to `.claude/skills/rrr/` within a
-Claude Code workspace. The skill then exposes RRR as `/rrr` and can also
-be selected automatically for a corpus-bounded literature review. It runs the
-RRR implementation contained in this package and preserves the pipeline's
-validation and audit artifacts.
+The casual workflow begins by installing the RRR plugin and opening a folder
+containing PDFs. The folder can have any name. The user then types `$rrr t2`
+followed by a topic. If RRR cannot identify one PDF collection, Codex asks the
+user to select it. The plugin installs its verified bundled wheel in a private
+RRR runtime on first use.
 
-After obtaining the corpus PDFs and installing Claude Code, the corrected skill
+The skill defaults to the product in which it is invoked. `$rrr` uses Codex,
+while `/rrr` uses Claude Code. The selected runtime determines where every
+internal RRR model call is executed.
+
+| Runtime | Model execution | Account or hardware |
+| --- | --- | --- |
+| Local | Mistral or Qwen through Ollama | The user's machine or a user-controlled Ollama server |
+| Provider API | Anthropic or OpenAI API | A separate provider API account |
+| Native host | Codex or Claude Code subprocesses | The user's ChatGPT or Claude subscription allowance |
+
+When this checkout is open, the skill installs the local package if necessary.
+An installed plugin uses its bundled wheel, so the user does not need to run a
+package-installation command. Manual installations remain available for direct
+CLI use.
+
+```bash
+python -m pip install -e .
+python -m pip install -e ".[api]"
+```
+
+The same wheel can be downloaded from `dist/` for publication on the project
+website. Installation details are in `docs/product_installation.md`.
+
+Codex discovers `.agents/skills/rrr/` while this checkout is open. Use
+`$rrr t2 <topic>` for a literature review or `$rrr t1 <claim>` for a claim
+evaluation. `$rrr <topic>` defaults to T2. These are prompts, so the topic or
+claim does not need shell quotation marks. To install the skill for use outside
+this checkout, register the bundled marketplace and install the plugin.
+
+```bash
+codex plugin marketplace add igbaccin/rrr-replication --ref main
+codex plugin add rrr@rrr-replication
+```
+
+This is also the reviewer installation route. The final revision archive will
+identify a release tag that can replace `main` when an exact deposited version
+is required. Start a new Codex task after installation. Claude Code users can copy
+`skills/rrr/` to `.claude/skills/rrr/` in a workspace and use the corresponding
+`/rrr` forms. When the current project contains an existing RRR index, the skill
+uses it automatically. New collections are prepared under the user's RRR data
+directory, while the PDFs remain in their original folder.
+
+An explicit skill invocation selects the native host and needs no second
+runtime confirmation. Ask for `local` or `ollama` to use a local model. Ask for
+`api anthropic` or `api openai` to use a separate provider account. A direct
+Python or `rrr` CLI invocation with `RRR_RUNTIME` unset continues to use local
+Ollama.
+
+Provider API mode is enabled with `RRR_RUNTIME=api` and
+`RRR_API_PROVIDER=anthropic` or `openai`. The optional `RRR_API_MODEL` selects a
+different Anthropic model or a standard GPT-5.5 or GPT-5.6 model. The provider
+SDK reads `ANTHROPIC_API_KEY` or `OPENAI_API_KEY`; RRR never accepts a key as a
+command argument. OpenAI Responses use `store=false` unless `RRR_API_STORE=1`
+is set. This disables application-state response storage. Provider retention
+and abuse-monitoring policies still apply.
+
+Native host mode is enabled with `RRR_RUNTIME=host` and `RRR_HOST=codex` or
+`claude`. Run `rrr host-doctor --host codex` or
+`rrr host-doctor --host claude` before the review. This checks the executable
+and subscription authentication. Add `--smoke` to spend one subscription call
+on an end-to-end JSON check. The doctor accepts a ChatGPT product login for
+Codex and a Claude.ai Pro, Max, Team, or Enterprise login for Claude. Claude
+host mode requires Claude Code 2.1.169 or newer. Provider API authentication is
+rejected. Each internal model call starts in a fresh tool-restricted subprocess
+with a narrow environment allowlist. An already indexed T2 review usually
+requires about 35 to 40 such calls, all of which draw on the selected product
+allowance. The outer Codex or Claude task also uses its normal subscription
+allowance while it coordinates the command.
+
+The skill sets native host mode automatically. `$rrr` selects Codex and
+`/rrr` selects Claude Code. An explicit runtime request overrides this default.
+
+In provider API and native host modes, RRR sends the instructions and admitted
+evidence passages required for each model call. The PDFs and local retrieval
+index remain in the corpus workspace. Local mode keeps the model calls there as
+well. During corpus ingestion, add `--no-llm` in API or host mode unless the
+optional metadata-extraction calls have been approved. Host requests and
+responses are recorded locally by default. If an enabled audit cannot be
+written, RRR does not deliver the model output.
+
+After obtaining the corpus PDFs and installing Claude Code, the corrected H3
 condition can be repeated with `scripts/run_claude_skill_arm.sh`. The runner
-installs the package, copies `skills/rrr/SKILL.md` into the temporary Claude
-workspace, invokes `/rrr`, and scores each released review with the deposited
-checker.
+installs the package, invokes `/rrr`, and scores each released review with the
+deposited checker. That experiment used the Anthropic API runtime. The native
+host adapter is a new delivery route and is not part of the H3 evidence.
 
 ## Result population
 
@@ -99,6 +182,11 @@ The full replay can be divided across workers with `--shard-count` and `--shard-
 ## Re-executing the full pipeline
 
 The 50 source PDFs are excluded because most are copyrighted. `bibliography.bib` and `metadata_reference.csv` identify the required documents and expected metadata. Place legally obtained copies under `corpus/` using the filenames recorded in `metadata_reference.csv`.
+
+The commands in this section reproduce the paper's local-model evaluation and
+therefore require Ollama and the recorded Mistral or Qwen model tags. The API
+and native host runtimes can run the interactive RRR pipeline without an
+Ollama server.
 
 Preprocess the corpus:
 
