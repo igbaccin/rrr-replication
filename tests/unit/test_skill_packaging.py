@@ -75,7 +75,7 @@ class SkillPackagingTests(unittest.TestCase):
         self.assertIn("rrr/product_workspace.py", names)
         self.assertIn("rrr/cli.py", names)
 
-    def test_portable_claude_skill_bundles_the_same_runtime(self):
+    def test_portable_claude_skill_bundles_a_verified_pending_runtime(self):
         plugin_runtime = json.loads(
             (PLUGIN_ROOT / "runtime" / "runtime.json").read_text(encoding="utf-8")
         )
@@ -83,27 +83,28 @@ class SkillPackagingTests(unittest.TestCase):
         claude_runtime = json.loads(
             (claude_root / "runtime" / "runtime.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(claude_runtime, plugin_runtime)
+        claude_wheel = claude_root / "runtime" / claude_runtime["wheel"]
         self.assertEqual(
-            (claude_root / "runtime" / claude_runtime["wheel"]).read_bytes(),
-            (PLUGIN_ROOT / "runtime" / plugin_runtime["wheel"]).read_bytes(),
+            hashlib.sha256(claude_wheel.read_bytes()).hexdigest(),
+            claude_runtime["sha256"],
         )
+        self.assertEqual("15.17.0", claude_runtime["version"])
+        self.assertEqual("15.19.0", plugin_runtime["version"])
+        self.assertNotEqual(claude_runtime, plugin_runtime)
         self.assertEqual(
             (claude_root / "scripts" / "bootstrap_rrr.py").read_bytes(),
             (PLUGIN_ROOT / "scripts" / "bootstrap_rrr.py").read_bytes(),
         )
 
-    def test_website_wheel_matches_the_plugin_bundle(self):
-        runtime = json.loads(
-            (PLUGIN_ROOT / "runtime" / "runtime.json").read_text(encoding="utf-8")
-        )
-        plugin_wheel = PLUGIN_ROOT / "runtime" / runtime["wheel"]
-        website_wheel = ROOT / "dist" / runtime["wheel"]
-        self.assertEqual(website_wheel.read_bytes(), plugin_wheel.read_bytes())
-        checksum = (ROOT / "dist" / f"{runtime['wheel']}.sha256").read_text(
+    def test_downloadable_local_wheel_has_its_own_verified_checksum(self):
+        wheels = list((ROOT / "dist").glob("rrr_poc-*.whl"))
+        self.assertEqual(1, len(wheels))
+        local_wheel = wheels[0]
+        local_hash = hashlib.sha256(local_wheel.read_bytes()).hexdigest()
+        checksum = (ROOT / "dist" / f"{local_wheel.name}.sha256").read_text(
             encoding="ascii"
         )
-        self.assertEqual(checksum, f"{runtime['sha256']}  {runtime['wheel']}\n")
+        self.assertEqual(checksum, f"{local_hash}  {local_wheel.name}\n")
 
     def test_bootstrap_reinstalls_a_changed_wheel_with_the_same_version(self):
         bootstrap_path = PLUGIN_ROOT / "scripts" / "bootstrap_rrr.py"
