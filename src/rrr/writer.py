@@ -4,7 +4,7 @@ import re
 import time
 import hashlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from collections import defaultdict
+from collections import Counter, defaultdict
 from rrr.utils import ensure_dir, env_int
 from rrr.paths import runs_path
 from rrr.render import (
@@ -13,7 +13,6 @@ from rrr.render import (
     DISPLAY_PAREN_CITE_RE,
     parse_citations,
     render_citation,
-    render_citation_canonical,
     _build_author_year_lookup,
     _build_display_lookup,
     _collect_cited_docs as _shared_collect_cited_docs,
@@ -194,18 +193,87 @@ _OPTIONS_STYLE_REWRITE = {"temperature": 0.1, "num_ctx": 4096, "num_predict": 15
 # system prompt forbids but the model keeps producing. Used to flag, then
 # optionally rewrite, sections that violate.
 _AUTHOR_VERB_RE = re.compile(
-    r"\b((?:[A-Z][A-Za-z&.\-]+|(?:van|von|de|del|der)\s*[A-Z][A-Za-z&.\-]+)(?:\s+et\s+al\.?)?(?:\s*\(?[A-Za-z_]*\d{4}[A-Za-z_]*\)?)?)\s+"
+    r"\b((?:[A-Z][A-Za-z&.\-]+|(?:van|von|de|del|der)\s*[A-Z][A-Za-z&.\-]+)(?:\s+et\s+al\.?)?(?:\s*\(?[A-Za-z_]*\d{4}[A-Za-z_]*(?:,\s*p\.\d+)?\)?)?)\s+"
     r"(argues|emphasizes|emphasises|demonstrates|highlights|posits|suggests|"
     r"claims|notes|observes|maintains|asserts|contends|shows|writes|states|"
-    r"finds|points out|underscores|argues that|notes that)\b",
+    r"finds|associates|associate|situates|situate|extends|extend|points out|"
+    r"underscores|argues that|notes that)\b",
     re.IGNORECASE,
 )
 # v15.14: env_int — a malformed value here used to kill the module IMPORT.
 _MIN_SECTION_CITED_DOCS = env_int("RRR_WRITER_MIN_SECTION_CITED_DOCS", 2)
+# A closing shorter than this has lost too much of its generated synthesis to
+# serve as the review's conclusion. The generation prompt asks for 140-180
+# words; 120 leaves room for tokenization variation while still rejecting the
+# 10-40 word stubs observed in the v15.17 battery.
+_MIN_CLOSING_WORDS = env_int("RRR_WRITER_MIN_CLOSING_WORDS", 120)
+# The prompt identifies 140-180 words as the target and states the complete
+# 120-200 hard range. This tolerance limits needless retries while rejecting
+# the citation-heavy 220+ word closings found in the first v19 smoke pair.
+_MAX_CLOSING_WORDS = 200
+# A closing should cite each selected document-page identity once. This keeps
+# the synthesis compact and prevents every sentence from repeating the full
+# source packet.
+_MAX_CLOSING_IDENTITY_REPETITIONS = 1
+# v19: one initial closing call plus, when a deterministic gate fails, one
+# fault-routed clean-room retry. Keeping the cap explicit makes call
+# amplification observable and prevents a rejected closing from turning into
+# an open-ended generation loop.
+_MAX_CLOSING_MODEL_CALLS = 2
+# A closing needs enough source range to synthesize across streams while
+# keeping its call packet materially smaller than an ordinary section packet.
+_MAX_CLOSING_DOCS = 4
+# This marker travels through final assembly with the generated closing. It is
+# removed before the review is written. Keeping an explicit identity prevents
+# a surviving stream tail from being mistaken for the closing when cleanup
+# removes closing material.
+_CLOSING_START_MARKER = "[[RRR-CLOSING-START]]."
 # v13: RRR_WRITER_ENFORCE_COVERAGE retired (always on). Section-level coverage
 # enforcement is part of the corpus-grounding contract; disabling it is no
 # longer a supported configuration.
 _ENFORCE_COVERAGE = True
+
+# v19 records the scholarly output contract separately from the execution
+# profile. Host and local runs share the same acceptance rules. The local
+# profile retains compact continuity context and structured Qwen transport;
+# the host profile sends the claims-first brief without the raw prior tail.
+# Accepted sections are rendered and validated before final assembly, where
+# semantic mutation is prohibited.
+_WRITER_ARTIFACT_CONTRACT = "rrr-writer-v19"
+_WRITER_LOCAL_EXECUTION_PROFILE = "local-assisted-v19"
+_WRITER_HOST_EXECUTION_PROFILE = "host-lean-v19"
+_WRITER_API_EXECUTION_PROFILE = "api-bounded-v19"
+_CITATION_REPRESENTATION_VERSION = "evidence-id-display-v19"
+_POST_ACCEPTANCE_MUTATION_POLICY = "frozen-sections-v1"
+
+
+def _writer_execution_profile() -> str:
+    """Return the auditable execution profile selected by the runtime."""
+    explicit = os.environ.get("RRR_WRITER_EXECUTION_PROFILE", "").strip()
+    if explicit:
+        supported = {
+            _WRITER_LOCAL_EXECUTION_PROFILE,
+            _WRITER_HOST_EXECUTION_PROFILE,
+            _WRITER_API_EXECUTION_PROFILE,
+        }
+        if explicit not in supported:
+            raise ValueError(
+                "RRR_WRITER_EXECUTION_PROFILE must be one of "
+                + ", ".join(sorted(supported))
+            )
+        return explicit
+
+    runtime = os.environ.get("RRR_RUNTIME", "").strip().lower()
+    if runtime == "host":
+        return _WRITER_HOST_EXECUTION_PROFILE
+    if runtime == "api":
+        return _WRITER_API_EXECUTION_PROFILE
+    return _WRITER_LOCAL_EXECUTION_PROFILE
+
+
+def _writer_uses_raw_previous_tail() -> bool:
+    """Keep raw continuity prose within the assisted local profile only."""
+    return _writer_execution_profile() == _WRITER_LOCAL_EXECUTION_PROFILE
 
 
 def _writer_system_prompt() -> str:
@@ -262,22 +330,69 @@ _SYSTEM_CITATION_INSTRUCTION = (
     # whole class of citation-format bugs the older pipeline patched
     # (placeholder leaks, orphan parens, redundant inline+trailing,
     # nested parens, etc.).
-    "CITE only via evidence IDs: every citation is one [E####] marker. "
-    "Examples: 'North and Weingast [E0001] argue that...' OR 'credible "
-    "commitment underpins growth [E0001].' Multi-source: 'shared finding "
-    "[E0001] [E0007] [E0014].' DO NOT write '(Author Year, p.N)', "
+    "CITE only via evidence IDs: every citation is one [E####] marker copied "
+    "from the ALLOWED CITATIONS list. Prefer claim-led prose followed by its "
+    "allowed marker. When an author is named in prose, put that paper's "
+    "allowed marker immediately after the author name and before the verb. "
+    "For a multi-source claim, place the allowed markers next to one another "
+    "with spaces only. DO NOT write '(Author Year, p.N)', "
     "'Author (Year, p.N)', '(p.5)' or any other citation surface — the "
     "renderer converts every [E####] to the right surface for you.\n\n"
     "BOUNDARY RULES:\n"
     "1. Use only [E####] IDs from the ALLOWED CITATIONS list.\n"
+    "   Put each marker before the sentence's terminal punctuation. Never "
+    "place a marker after a completed sentence or at a paragraph opening.\n"
     "2. If a claim is not supported by allowed evidence, state it WITHOUT "
     "a citation. Do not invent evidence IDs.\n"
     "3. QUOTED TEXT: paraphrase by default. Reserve quotation marks (\" \") "
     "for SHORT phrases (≤12 words) you copy-paste verbatim from the "
     "Evidence section. Multi-sentence quotes, ellipsis-truncated quotes, "
     "and paraphrased-but-quoted material are fabrications and get "
-    "stripped.\n"
+    "rejected with the section.\n"
+    "4. Finish every paragraph and every section with a complete, "
+    "standalone sentence. Section transitions are thematic. Never leave a "
+    "clause or sentence for the next section to complete.\n"
+    "5. Return only the requested review prose. Begin with its first "
+    "sentence. Do not include planning, analysis, a checklist, headings, "
+    "notes, a word count, draft labels, or commentary.\n"
 )
+
+_OUTPUT_ONLY_DIRECTIVE = (
+    "Return only the requested review prose. Begin immediately with its "
+    "first sentence. Do not include planning, analysis, a checklist, "
+    "headings, notes, a word count, draft labels, or commentary."
+)
+
+_QWEN_PROSE_SCHEMA = {
+    "type": "object",
+    "properties": {"prose": {"type": "string"}},
+    "required": ["prose"],
+    "additionalProperties": False,
+}
+_QWEN_PROSE_TRANSPORT_INSTRUCTION = (
+    "For transport, return exactly one JSON object with one key named "
+    "prose. Put only the requested review prose in that string."
+)
+
+
+def _uses_qwen_prose_transport(model: str) -> bool:
+    runtime = os.environ.get("RRR_RUNTIME", "").strip().lower()
+    return "qwen3" in str(model or "").lower() and runtime in {
+        "", "local", "ollama",
+    }
+
+
+def _decode_qwen_prose_transport(raw: str) -> str:
+    try:
+        payload = json.loads(raw or "")
+    except (TypeError, json.JSONDecodeError) as exc:
+        raise ValueError("Qwen prose transport returned invalid JSON") from exc
+    if not isinstance(payload, dict) or set(payload) != {"prose"}:
+        raise ValueError("Qwen prose transport must contain only 'prose'")
+    prose = payload.get("prose")
+    if not isinstance(prose, str) or not prose.strip():
+        raise ValueError("Qwen prose transport returned empty prose")
+    return prose.strip()
 
 
 def _score_doc(d) -> float:
@@ -402,6 +517,133 @@ def _build_evidence_id_map(docs):
     return evidence
 
 
+def _repair_allowed_author_year_mentions(
+    text: str,
+    docs,
+    *,
+    stage: str = "",
+) -> tuple:
+    """Prepare a provenance-recorded rescue for exact call-packet mentions.
+
+    The function only markerizes literal author-year surfaces that identify a
+    unique document in the current writer call. Each repair binds the first
+    selected passage for that document, matching the call-packet order shown to
+    the model. The caller must render, re-audit, and accept the candidate as one
+    transaction.
+    """
+    source = text or ""
+    evidence_map = _build_evidence_id_map(docs)
+    surface_entries = defaultdict(list)
+
+    for doc in docs or []:
+        doc_id = str(doc.get("doc_id", "") or "").strip()
+        label = _doc_id_to_author_label(doc_id)
+        label_match = re.fullmatch(r"(.+?)\s*\((\d{4}[a-z]?)\)", label or "")
+        if not doc_id or not label_match:
+            continue
+        selected = None
+        for quote in doc.get("quotes", []) or []:
+            eid = str(quote.get("evidence_id", "") or "").strip()
+            quote_doc = str(quote.get("doc_id", "") or "").strip()
+            page = int(quote.get("page", 0) or 0)
+            mapped = evidence_map.get(eid)
+            if (
+                eid and quote_doc == doc_id and page > 0 and mapped
+                and mapped.get("doc_id") == doc_id
+                and int(mapped.get("page", 0) or 0) == page
+            ):
+                selected = {"evidence_id": eid, "page": page}
+                break
+        if not selected:
+            continue
+        author = label_match.group(1).strip()
+        year = label_match.group(2)
+        common = {
+            "doc_id": doc_id,
+            "evidence_id": selected["evidence_id"],
+            "page": selected["page"],
+        }
+        surface_entries[("narrative", label)].append(common)
+        surface_entries[("parenthetical", f"({author} {year})")].append(common)
+
+    unique_surfaces = {
+        key: entries[0]
+        for key, entries in surface_entries.items()
+        if len({entry["doc_id"] for entry in entries}) == 1
+    }
+    collision_skips = sum(
+        1
+        for entries in surface_entries.values()
+        if len({entry["doc_id"] for entry in entries}) > 1
+    )
+
+    quoted_spans = [
+        match.span()
+        for pattern in (
+            r'"[^"\n]*"',
+            r"\u201c[^\u201d\n]*\u201d",
+            r"'[^'\n]*'",
+            r"\u2018[^\u2019\n]*\u2019",
+            r"(?m)^\s*>[^\n]*$",
+        )
+        for match in re.finditer(pattern, source)
+    ]
+
+    def is_quoted(start: int, end: int) -> bool:
+        return any(start < quote_end and quote_start < end
+                   for quote_start, quote_end in quoted_spans)
+
+    proposed = []
+    occupied = []
+    for (surface_kind, surface), entry in sorted(
+        unique_surfaces.items(), key=lambda item: len(item[0][1]), reverse=True,
+    ):
+        pattern = re.compile(
+            rf"(?<!\w){re.escape(surface)}(?!\w)"
+            r"(?![\s,;:]*\[[Ee]\d{1,5}\])"
+        )
+        for match in pattern.finditer(source):
+            if is_quoted(match.start(), match.end()):
+                continue
+            if any(match.start() < end and start < match.end()
+                   for start, end in occupied):
+                continue
+            replacement = (
+                f"{surface.rsplit('(', 1)[0].rstrip()} "
+                f"[{entry['evidence_id']}]"
+                if surface_kind == "narrative"
+                else f"[{entry['evidence_id']}]"
+            )
+            proposed.append({
+                "start": match.start(),
+                "end": match.end(),
+                "replacement": replacement,
+                "stage": stage,
+                "phase": "after_retry",
+                "surface_kind": surface_kind,
+                "matched_text": match.group(0),
+                "doc_id": entry["doc_id"],
+                "evidence_id": entry["evidence_id"],
+                "page": entry["page"],
+                "selection_policy": "first_call_packet_passage",
+            })
+            occupied.append(match.span())
+
+    repaired = source
+    for record in sorted(proposed, key=lambda item: item["start"], reverse=True):
+        repaired = (
+            repaired[:record["start"]]
+            + record["replacement"]
+            + repaired[record["end"]:]
+        )
+    public_records = [
+        {key: value for key, value in record.items()
+         if key not in {"start", "end", "replacement"}}
+        for record in sorted(proposed, key=lambda item: item["start"])
+    ]
+    return repaired, public_records, collision_skips
+
+
 def _group_evidence_ids_by_doc(docs):
     """Group only the evidence IDs present in one bounded call packet."""
     grouped = defaultdict(list)
@@ -417,11 +659,15 @@ def _group_evidence_ids_by_doc(docs):
 
 def _build_call_contract(stage: str, docs, allowed_list: str, prompt: str) -> dict:
     """Describe and verify the evidence interface for one generation call."""
+    system_prompt = _writer_system_prompt()
     evidence_map = _build_evidence_id_map(docs)
     allowed_pairs, allowed_docs, _ = _build_allowed_citations(docs)
     displayed_ids = set(evidence_map)
     listed_ids = set(re.findall(r"\[(E\d{4})\]", allowed_list or ""))
     prompt_ids = set(re.findall(r"\[(E\d{4})\]", prompt or ""))
+    system_prompt_ids = set(
+        re.findall(r"\[(E\d{4})\]", system_prompt or "")
+    )
 
     if displayed_ids != listed_ids:
         raise AssertionError(
@@ -431,6 +677,12 @@ def _build_call_contract(stage: str, docs, allowed_list: str, prompt: str) -> di
         extra = sorted(prompt_ids - displayed_ids)
         raise AssertionError(
             f"{stage}: prompt contains evidence IDs outside the call packet: {extra}"
+        )
+    if not system_prompt_ids.issubset(displayed_ids):
+        extra = sorted(system_prompt_ids - displayed_ids)
+        raise AssertionError(
+            f"{stage}: system prompt contains evidence IDs outside the call "
+            f"packet: {extra}"
         )
 
     passages = []
@@ -465,6 +717,10 @@ def _build_call_contract(stage: str, docs, allowed_list: str, prompt: str) -> di
 
     return {
         "stage": stage,
+        "artifact_contract": _WRITER_ARTIFACT_CONTRACT,
+        "execution_profile": _writer_execution_profile(),
+        "citation_representation": _CITATION_REPRESENTATION_VERSION,
+        "post_acceptance_mutation_policy": _POST_ACCEPTANCE_MUTATION_POLICY,
         "document_ids": sorted(allowed_docs),
         "evidence_ids": sorted(displayed_ids),
         "allowed_doc_page_pairs": [
@@ -473,11 +729,21 @@ def _build_call_contract(stage: str, docs, allowed_list: str, prompt: str) -> di
         ],
         "prompt_sha256": hashlib.sha256((prompt or "").encode("utf-8")).hexdigest(),
         "prompt_chars": len(prompt or ""),
+        "system_prompt_sha256": hashlib.sha256(
+            system_prompt.encode("utf-8")
+        ).hexdigest(),
+        "system_prompt_chars": len(system_prompt),
+        "full_request_sha256": hashlib.sha256(
+            (system_prompt + "\n\n" + (prompt or "")).encode("utf-8")
+        ).hexdigest(),
         "passages": passages,
         "invariants": {
             "displayed_ids_equal_listed_ids": displayed_ids == listed_ids,
             "displayed_passage_texts_present": displayed_texts_present,
             "prompt_ids_within_call_packet": prompt_ids.issubset(displayed_ids),
+            "system_prompt_ids_within_call_packet": (
+                system_prompt_ids.issubset(displayed_ids)
+            ),
             "renderer_ids_equal_displayed_ids": set(evidence_map) == displayed_ids,
             "validator_pairs_equal_displayed_pairs": set(allowed_pairs) == {
                 (v["doc_id"], int(v["page"])) for v in evidence_map.values()
@@ -673,6 +939,7 @@ def _render_evidence_id_citations(text: str, evidence_map: dict) -> tuple:
 # wrapped in square brackets, no pages. _render_evidence_id_citations only
 # matches the 4-digit [E####] shape, so this form slipped through.
 _BRACKETED_DOC_ID_RE = re.compile(r"\[([A-Za-z][A-Za-z0-9&.\-]*_\d{4}[a-z]?)\]")
+_EVIDENCE_ID_LIKE_RE = re.compile(r"\[[Ee][^\]\r\n]{0,8}\]")
 
 
 def _render_bracketed_doc_ids(text: str, allowed_docs, doc_to_eids) -> tuple:
@@ -705,6 +972,15 @@ def _render_bracketed_doc_ids(text: str, allowed_docs, doc_to_eids) -> tuple:
 
 def _strip_wrapping(text: str) -> str:
     t = (text or "").strip()
+    # Certain qwen3 builds leak the reasoning channel into content and leave a
+    # closing tag immediately before the usable answer. Preserve only the text
+    # after the final boundary. If no final answer exists, the normal empty or
+    # structural gate fails closed.
+    leaked_think_boundaries = list(
+        re.finditer(r"</think\s*>", t, flags=re.IGNORECASE)
+    )
+    if leaked_think_boundaries:
+        t = t[leaked_think_boundaries[-1].end():].strip()
     if t.startswith("```"):
         t = re.sub(r"^```[a-zA-Z0-9_-]*\s*", "", t)
         t = re.sub(r"\s*```$", "", t).strip()
@@ -808,7 +1084,69 @@ def _pdf_page_url(pdf_path: str, page: int) -> str:
     return f"{url}#page={int(page)}"
 
 
-def _merge_adjacent_paren_cites(text: str) -> tuple:
+def _citation_identity(citation: dict) -> tuple:
+    doc_id = str(citation.get("doc_id") or "").strip().lower()
+    if doc_id:
+        return ("doc", doc_id, int(citation.get("page") or 0))
+    return (
+        "display",
+        str(citation.get("label") or "").strip().lower(),
+        str(citation.get("year") or ""),
+        int(citation.get("page") or 0),
+    )
+
+
+def _dedupe_grouped_citation_identities(text: str, display_lookup=None) -> tuple:
+    """Remove repeated citation identities within semicolon groups."""
+    source = text or ""
+    group_re = re.compile(r"\((?P<body>[^()\n;]+(?:;[^()\n;]+)+)\)")
+    citations = list(parse_citations(source, display_lookup=display_lookup))
+    replacements = []
+    removed = 0
+
+    for group in group_re.finditer(source):
+        body = group.group("body")
+        body_start = group.start("body")
+        pieces = body.split(";")
+        piece_records = []
+        cursor = 0
+        valid_group = True
+        for piece in pieces:
+            start = body_start + cursor
+            end = start + len(piece)
+            hits = [
+                citation for citation in citations
+                if citation["start"] >= start and citation["end"] <= end
+            ]
+            if len(hits) != 1:
+                valid_group = False
+                break
+            piece_records.append((piece.strip(), _citation_identity(hits[0])))
+            cursor += len(piece) + 1
+        if not valid_group:
+            continue
+
+        seen = set()
+        unique_pieces = []
+        for piece, identity in piece_records:
+            if identity in seen:
+                removed += 1
+                continue
+            seen.add(identity)
+            unique_pieces.append(piece)
+        if len(unique_pieces) != len(piece_records):
+            replacements.append((
+                group.start(), group.end(),
+                "(" + "; ".join(unique_pieces) + ")",
+            ))
+
+    for start, end, replacement in reversed(replacements):
+        source = source[:start] + replacement + source[end:]
+    return source, removed
+
+
+def _merge_adjacent_paren_cites(text: str, display_lookup=None,
+                                stats: dict = None) -> tuple:
     """v15.7.2: merge whitespace-adjacent DISPLAY_PAREN cites into one
     semicolon-joined parenthetical.
         '(Ogilvie 2007, p.9) (North 1989, p.6)' →
@@ -823,16 +1161,16 @@ def _merge_adjacent_paren_cites(text: str) -> tuple:
     Returns (text, count) where count is the number of pairs merged.
     """
     if not text:
+        if stats is not None:
+            stats["duplicate_identities_removed"] = 0
         return text or "", 0
     matches = list(DISPLAY_PAREN_CITE_RE.finditer(text))
-    if len(matches) < 2:
-        return text, 0
     groups: list = []
-    current: list = [matches[0]]
-    ws_re = re.compile(r"\A\s+\Z")
+    current: list = [matches[0]] if matches else []
+    horizontal_ws_re = re.compile(r"\A[ \t]+\Z")
     for m in matches[1:]:
         between = text[current[-1].end():m.start()]
-        if ws_re.match(between):
+        if horizontal_ws_re.match(between):
             current.append(m)
         else:
             if len(current) > 1:
@@ -840,8 +1178,6 @@ def _merge_adjacent_paren_cites(text: str) -> tuple:
             current = [m]
     if len(current) > 1:
         groups.append(current)
-    if not groups:
-        return text, 0
     out: list = []
     cursor = 0
     merged_pairs = 0
@@ -853,7 +1189,288 @@ def _merge_adjacent_paren_cites(text: str) -> tuple:
         cursor = grp[-1].end()
         merged_pairs += len(grp) - 1
     out.append(text[cursor:])
-    return "".join(out), merged_pairs
+    merged = "".join(out) if groups else text
+    deduped, duplicate_count = _dedupe_grouped_citation_identities(
+        merged, display_lookup=display_lookup,
+    )
+    if stats is not None:
+        stats["duplicate_identities_removed"] = duplicate_count
+    return deduped, merged_pairs
+
+
+def _parenthetical_citation_containers(text: str) -> list:
+    """Return spans whose parenthetical content consists only of citations."""
+    source = text or ""
+    citations = list(parse_citations(source))
+    containers = []
+    for match in re.finditer(r"\([^()\r\n]+\)", source):
+        hits = [
+            citation
+            for citation in citations
+            if citation["start"] >= match.start()
+            and citation["end"] <= match.end()
+        ]
+        if not hits:
+            continue
+        masked = list(match.group(0))
+        for citation in hits:
+            start = citation["start"] - match.start()
+            end = citation["end"] - match.start()
+            masked[start:end] = " " * (end - start)
+        if re.fullmatch(r"[\s();,]*", "".join(masked)):
+            containers.append((match.start(), match.end()))
+    return containers
+
+
+def _audit_citation_surface_contract(text: str) -> dict:
+    """Detect citation surfaces that require a local section retry."""
+    source = text or ""
+    stats = {
+        "separated_parenthetical_groups": 0,
+        "separated_parenthetical_snippets": [],
+        "redundant_author_parentheticals": 0,
+        "redundant_author_parenthetical_snippets": [],
+        "orphan_parenthetical_groups": 0,
+        "orphan_parenthetical_snippets": [],
+    }
+    if not source:
+        return stats
+
+    paren_cites = list(DISPLAY_PAREN_CITE_RE.finditer(source))
+    for left, right in zip(paren_cites, paren_cites[1:]):
+        between = source[left.end():right.start()]
+        if re.fullmatch(r"[ \t]*;[ \t]*", between):
+            stats["separated_parenthetical_groups"] += 1
+            if len(stats["separated_parenthetical_snippets"]) < 10:
+                lo = max(0, left.start() - 60)
+                hi = min(len(source), right.end() + 60)
+                stats["separated_parenthetical_snippets"].append(
+                    source[lo:hi].replace("\n", " ")
+                )
+
+    for citation in paren_cites:
+        label = citation.group(1).strip()
+        prefix = source[:citation.start()]
+        # A prior citation to the same paper is not a narrative author
+        # mention, so hide parenthetical material before inspecting prose.
+        visible_prefix = re.sub(
+            r"\([^()\r\n]*\)",
+            lambda match: " " * len(match.group(0)),
+            prefix,
+        )
+        boundary = 0
+        for match in re.finditer(
+            r"[.!?][\"')\]]*(?:[ \t]+(?=[A-Z])|\r?\n+)",
+            visible_prefix,
+        ):
+            boundary = match.end()
+        sentence_prefix = visible_prefix[boundary:]
+
+        label_variants = [label]
+        if re.search(r"\s+et\s+al\.?$", label, re.IGNORECASE):
+            label_variants.append(
+                re.sub(r"\s+et\s+al\.?$", "", label, flags=re.IGNORECASE)
+            )
+        if re.search(r"\s+and\s+", label, re.IGNORECASE):
+            label_variants.append(
+                re.split(
+                    r"\s+and\s+", label, maxsplit=1, flags=re.IGNORECASE,
+                )[0]
+            )
+
+        named_in_sentence = False
+        for variant in dict.fromkeys(v for v in label_variants if v):
+            author_re = re.compile(
+                rf"(?<![A-Za-z'\u2019\-]){re.escape(variant)}"
+                rf"(?=$|[^A-Za-z'\u2019\-])",
+                re.IGNORECASE,
+            )
+            if author_re.search(sentence_prefix):
+                named_in_sentence = True
+                break
+        if not named_in_sentence:
+            continue
+
+        stats["redundant_author_parentheticals"] += 1
+        if len(stats["redundant_author_parenthetical_snippets"]) < 10:
+            lo = max(boundary, citation.start() - 120)
+            hi = min(len(source), citation.end() + 40)
+            stats["redundant_author_parenthetical_snippets"].append(
+                source[lo:hi].replace("\n", " ")
+            )
+
+    for start, end in _parenthetical_citation_containers(source):
+        paragraph_start = 0
+        for boundary in re.finditer(r"\r?\n[ \t]*\r?\n", source[:start]):
+            paragraph_start = boundary.end()
+        paragraph_prefix = source[paragraph_start:start]
+        prior = paragraph_prefix.rstrip()
+        at_paragraph_start = not prior
+        follows_completed_sentence = bool(
+            re.search(r"[.!?][\"'\u2019\u201d)]*$", prior)
+        )
+        if not (at_paragraph_start or follows_completed_sentence):
+            continue
+        stats["orphan_parenthetical_groups"] += 1
+        if len(stats["orphan_parenthetical_snippets"]) < 10:
+            lo = max(paragraph_start, start - 100)
+            hi = min(len(source), end + 80)
+            stats["orphan_parenthetical_snippets"].append(
+                source[lo:hi].replace("\n", " ")
+            )
+
+    return stats
+
+
+def _audit_raw_citation_contract(text: str, chunk_docs) -> dict:
+    """Detect model-written citation surfaces before EID rendering.
+
+    The writer contract grants the model one citation representation,
+    ``[E####]``. Any document identifier, rendered citation, or page-less
+    author-year form in the raw candidate is therefore a local evidence fault.
+    """
+    source = text or ""
+    doc_ids = [
+        str(doc.get("doc_id", "") or "").strip()
+        for doc in (chunk_docs or [])
+        if str(doc.get("doc_id", "") or "").strip()
+    ]
+    allowed_docs = set(doc_ids)
+    display_lookup = _build_display_lookup(allowed_docs)
+
+    rendered_citations = list(
+        parse_citations(source, display_lookup=display_lookup)
+    )
+    bracketed_doc_ids = list(_BRACKETED_DOC_ID_RE.finditer(source))
+    malformed_evidence_ids = [
+        match
+        for match in _EVIDENCE_ID_LIKE_RE.finditer(source)
+        if not re.fullmatch(r"\[[Ee]\d{1,5}\]", match.group(0))
+    ]
+    raw_doc_matches = []
+    pageless_author_year = []
+    hybrid_doc_eid = []
+
+    for doc_id in doc_ids:
+        doc_pattern = re.compile(
+            rf"(?<![A-Za-z0-9_&.\-]){re.escape(doc_id)}"
+            rf"(?![A-Za-z0-9_&.\-])"
+        )
+        matches = list(doc_pattern.finditer(source))
+        raw_doc_matches.extend(matches)
+        for match in matches:
+            window = source[match.end():match.end() + 40]
+            if re.search(r"\s*\[[Ee]\d{1,5}\]", window):
+                hybrid_doc_eid.append(match)
+
+        label = _doc_id_to_author_label(doc_id)
+        label_match = re.match(
+            r"^(.*?)\s*\((\d{4}[a-z]?)\)\s*$",
+            label or "",
+        )
+        if not label_match:
+            continue
+        surnames, year = label_match.groups()
+        pageless_patterns = (
+            re.compile(
+                rf"(?<!\w){re.escape(surnames)}\s*"
+                rf"\(\s*{re.escape(year)}\s*\)"
+            ),
+            re.compile(
+                rf"\(\s*{re.escape(surnames)}\s+"
+                rf"{re.escape(year)}\s*\)"
+            ),
+        )
+        for pattern in pageless_patterns:
+            pageless_author_year.extend(pattern.finditer(source))
+
+    fault_count = (
+        len(rendered_citations)
+        + len(bracketed_doc_ids)
+        + len(malformed_evidence_ids)
+        + len(raw_doc_matches)
+        + len(pageless_author_year)
+        + len(hybrid_doc_eid)
+    )
+    snippets = []
+    spans = []
+    spans.extend((item["start"], item["end"]) for item in rendered_citations)
+    spans.extend(match.span() for match in bracketed_doc_ids)
+    spans.extend(match.span() for match in malformed_evidence_ids)
+    spans.extend(match.span() for match in raw_doc_matches)
+    spans.extend(match.span() for match in pageless_author_year)
+    spans.extend(match.span() for match in hybrid_doc_eid)
+    for start, end in sorted(set(spans))[:10]:
+        lo = max(0, start - 60)
+        hi = min(len(source), end + 60)
+        snippets.append(source[lo:hi].replace("\n", " "))
+
+    return {
+        "raw_citation_faults": fault_count,
+        "raw_rendered_citations": len(rendered_citations),
+        "raw_bracketed_doc_ids": len(bracketed_doc_ids),
+        "raw_malformed_evidence_ids": len(malformed_evidence_ids),
+        "raw_document_ids": len(raw_doc_matches),
+        "raw_pageless_author_year": len(pageless_author_year),
+        "raw_hybrid_doc_eids": len(hybrid_doc_eid),
+        "raw_citation_fault_snippets": snippets,
+    }
+
+
+def _audit_quote_contract(text: str, allowed_docs, display_lookup=None) -> dict:
+    """Verify long quoted spans without mutating the candidate."""
+    _discarded_mutation, stats = _strip_fabricated_quotes(
+        text or "",
+        allowed_docs,
+        metrics=None,
+        display_lookup=display_lookup,
+    )
+    fault_keys = (
+        "fabricated_stripped",
+        "strand_guard_kept",
+        "fabricated_kept_no_citation",
+        "fabricated_kept_doc_not_in_corpus",
+        "fabricated_kept_page_not_readable",
+    )
+    result = dict(stats)
+    result["quote_faults"] = sum(
+        int(result.get(key, 0) or 0) for key in fault_keys
+    )
+    result["candidate_unchanged"] = True
+    return result
+
+
+_POST_SENTENCE_EID_GROUP_RE = re.compile(
+    r"(?P<terminal>[.!?](?:[\"'\u2019\u201d)]*))"
+    r"[ \t]+"
+    r"(?P<markers>\[[Ee]\d{1,5}\]"
+    r"(?:[ \t]+\[[Ee]\d{1,5}\])*)"
+    r"[ \t]*(?=$|\r?\n|[A-Z])"
+)
+
+
+def _reattach_post_sentence_evidence_markers(text: str) -> tuple:
+    """Move a detached EID group inside the preceding sentence boundary."""
+    source = text or ""
+    count = 0
+
+    def repl(match):
+        nonlocal count
+        count += 1
+        next_char = (
+            source[match.end()]
+            if match.end() < len(source)
+            else ""
+        )
+        separator = " " if next_char and next_char not in "\r\n" else ""
+        return (
+            " "
+            + match.group("markers")
+            + match.group("terminal")
+            + separator
+        )
+
+    return _POST_SENTENCE_EID_GROUP_RE.sub(repl, source), count
 
 
 def _collapse_double_parens(text: str) -> tuple:
@@ -919,6 +1536,20 @@ def _count_author_led_openings(text: str) -> int:
             continue
         head = re.sub(r"^[\(\[\"\'\s]+", "", s)[:120]
         if _AUTHOR_VERB_RE.search(head):
+            count += 1
+    return count
+
+
+def _count_source_parade_paragraphs(text: str) -> int:
+    """Count paragraphs containing three or more author-led sentences."""
+    count = 0
+    for paragraph in _prose_paragraphs(text):
+        author_led = 0
+        for sentence in _split_sentences_for_cleanup(paragraph):
+            head = re.sub(r"^[\(\[\"\'\s]+", "", sentence.strip())[:120]
+            if head and _AUTHOR_VERB_RE.search(head):
+                author_led += 1
+        if author_led >= 3:
             count += 1
     return count
 
@@ -1047,6 +1678,29 @@ def _drop_zero_citation_paragraphs(text: str, keep_closing: bool = False) -> tup
     return cleaned, removed, kept_closing_snippet
 
 
+def _apply_zero_citation_gate(text: str, enforce_citation_integrity: bool):
+    """Apply paragraph citation removal only when validation is enabled."""
+    if not enforce_citation_integrity:
+        return text or "", [], None
+    return _drop_zero_citation_paragraphs(text, keep_closing=False)
+
+
+def _apply_residual_duplicate_gate(final_structure: dict,
+                                   residual_duplicates: int,
+                                   enforce_citation_integrity: bool) -> dict:
+    """Record duplicate residue while gating it only in validation mode."""
+    result = dict(final_structure)
+    result["residual_duplicate_citation_identities"] = residual_duplicates
+    result["ok"] = bool(
+        result.get("ok")
+        and (
+            not enforce_citation_integrity
+            or residual_duplicates == 0
+        )
+    )
+    return result
+
+
 def _classify_sentence_violations(sentence: str) -> list:
     reasons = []
     if _TYPOGRAPHIC_DASH_RE.search(sentence):
@@ -1060,13 +1714,182 @@ def _classify_sentence_violations(sentence: str) -> list:
     return reasons
 
 
+_PARAGRAPH_BREAK_RE = re.compile(r"\n[ \t]*\n")
+_TERMINAL_PUNCTUATION_RE = re.compile(r"[.!?](?:[\"'\u2019\u201d)\]]*)$")
+_TERMINAL_TOKEN_RE = re.compile(r"[.!?](?:[\"'\u2019\u201d)\]]*)")
+_EVIDENCE_ID_AUDIT_RE = re.compile(r"\[[Ee]\d{1,5}\]")
+_CITATION_SUFFIX_DELIMITER_RE = re.compile(r"[\s;,()\[\]]*")
+_NONTERMINAL_ABBREVIATION_RES = (
+    re.compile(r"\bet\s+al\.", re.IGNORECASE),
+    re.compile(r"\b(?:e\.g|i\.e|cf)\.", re.IGNORECASE),
+    re.compile(r"\bpp?\.(?=\s*\d)", re.IGNORECASE),
+)
+
+
+def _prose_paragraphs(text: str) -> list:
+    """Return non-empty prose paragraphs without crossing blank lines."""
+    return [
+        paragraph.strip()
+        for paragraph in _PARAGRAPH_BREAK_RE.split(text or "")
+        if paragraph.strip()
+    ]
+
+
+def _sentences_paragraph_local(text: str) -> list:
+    """Split sentences within each paragraph and retain source order.
+
+    A paragraph that lacks terminal punctuation remains one unit. It never
+    absorbs the opening sentence of the following paragraph.
+    """
+    sentences = []
+    for paragraph in _prose_paragraphs(text):
+        sentences.extend(_split_sentences_for_cleanup(paragraph))
+    return sentences
+
+
+def _ends_with_terminal_punctuation(text: str) -> bool:
+    candidate = (text or "").strip()
+
+    def mask_nonterminal_abbreviation_periods(value: str) -> str:
+        masked = list(value)
+        for pattern in _NONTERMINAL_ABBREVIATION_RES:
+            for match in pattern.finditer(value):
+                for index in range(match.start(), match.end()):
+                    if masked[index] == ".":
+                        masked[index] = " "
+        return "".join(masked)
+
+    # A final abbreviation period does not establish a complete sentence.
+    # Apply the same abbreviation mask to the direct path and the
+    # citation-suffix path so both variants fail closed.
+    if _TERMINAL_PUNCTUATION_RE.search(
+        mask_nonterminal_abbreviation_periods(candidate)
+    ):
+        return True
+
+    # Evidence markers are rendered as citations before this audit. Models
+    # sometimes place those markers after an already complete sentence, which
+    # leaves the rendered paragraph ending in a citation cluster rather than
+    # the sentence's period. Remove citation-only material for the terminal
+    # check. An unfinished clause followed by a citation still lacks terminal
+    # punctuation and therefore still fails closed.
+    citations = list(parse_citations(candidate))
+    spans = [
+        (citation["start"], citation["end"])
+        for citation in citations
+    ]
+    # In a grouped narrative citation such as
+    # ``Austin (2008, p.1; North 1989, p.2)``, the parser's first exact span
+    # begins at the year. Mask the immediately preceding parsed author label
+    # while leaving the shared parenthesis for delimiter validation.
+    for citation in citations:
+        if citation.get("surface") != "display_narrative":
+            continue
+        if not re.match(r"^\d{4}", citation.get("raw", "")):
+            continue
+        label = str(citation.get("label", "") or "").strip()
+        if not label:
+            continue
+        prefix = candidate[:citation["start"]]
+        label_match = re.search(
+            rf"(?<!\w)({re.escape(label)})\s*\($",
+            prefix,
+            flags=re.IGNORECASE,
+        )
+        if label_match:
+            spans.append(label_match.span(1))
+    spans.extend(
+        (match.start(), match.end())
+        for match in _EVIDENCE_ID_AUDIT_RE.finditer(candidate)
+    )
+    if not spans:
+        return False
+
+    masked = list(candidate)
+    for start, end in spans:
+        masked[start:end] = " " * (end - start)
+    masked_text = "".join(masked)
+
+    # Periods in common scholarly abbreviations cannot establish that the
+    # preceding prose is a complete sentence. Mask them with spaces while
+    # preserving offsets, using the same surfaces protected by the sentence
+    # splitter below.
+    masked_text = mask_nonterminal_abbreviation_periods(masked_text)
+
+    def balanced_delimiters(suffix: str) -> bool:
+        stack = []
+        pairs = {")": "(", "]": "["}
+        for char in suffix:
+            if char in "([":
+                stack.append(char)
+            elif char in ")]":
+                if not stack or stack.pop() != pairs[char]:
+                    return False
+        return not stack
+
+    for terminal in reversed(list(_TERMINAL_TOKEN_RE.finditer(masked_text))):
+        suffix = masked_text[terminal.end():]
+        if not _CITATION_SUFFIX_DELIMITER_RE.fullmatch(suffix):
+            continue
+        if not balanced_delimiters(suffix):
+            continue
+        if any(start >= terminal.end() for start, _ in spans):
+            return True
+    return False
+
+
+def _audit_section_structure(text: str, section_kind: str) -> dict:
+    """Audit paragraph completeness and the closing's minimum substance."""
+    paragraphs = _prose_paragraphs(text)
+    incomplete = [
+        {
+            "paragraph_index": index,
+            "snippet": _clip(paragraph, n=180),
+        }
+        for index, paragraph in enumerate(paragraphs)
+        if not _ends_with_terminal_punctuation(paragraph)
+    ]
+    word_count = _count_words(text)
+    closing_word_floor_ok = (
+        section_kind != "closing" or word_count >= _MIN_CLOSING_WORDS
+    )
+    closing_word_ceiling_ok = (
+        section_kind != "closing" or word_count <= _MAX_CLOSING_WORDS
+    )
+    closing_paragraph_count_ok = (
+        section_kind != "closing" or len(paragraphs) == 1
+    )
+    return {
+        "paragraph_count": len(paragraphs),
+        "word_count": word_count,
+        "incomplete_paragraph_count": len(incomplete),
+        "incomplete_paragraphs": incomplete,
+        "closing_word_floor": (
+            _MIN_CLOSING_WORDS if section_kind == "closing" else 0
+        ),
+        "closing_word_floor_ok": closing_word_floor_ok,
+        "closing_word_ceiling": (
+            _MAX_CLOSING_WORDS if section_kind == "closing" else 0
+        ),
+        "closing_word_ceiling_ok": closing_word_ceiling_ok,
+        "closing_paragraph_count_ok": closing_paragraph_count_ok,
+        "ok": (
+            bool(paragraphs)
+            and not incomplete
+            and closing_word_floor_ok
+            and closing_word_ceiling_ok
+            and closing_paragraph_count_ok
+        ),
+    }
+
+
 def _collect_style_violations(text: str):
     """Return list of (sentence_index, sentence_text, [reasons]) for the
     sentences in `text` that warrant LLM rewrite. Paragraph structure is
-    preserved by walking sentences in order; the rewriter splices results back
-    by index.
+    preserved by splitting every paragraph independently. An unfinished
+    paragraph tail can therefore never fuse with the next paragraph's opener.
     """
-    sentences = _split_sentences_for_cleanup(text)
+    sentences = _sentences_paragraph_local(text)
     violations = []
     for idx, sent in enumerate(sentences):
         s = sent.strip()
@@ -1194,6 +2017,16 @@ def _rewrite_style_violations(sentences, violations, metrics=None):
         new_text = new_text.strip()
         if not new_text:
             continue
+        # One input item is one sentence from one paragraph. A rewrite that
+        # injects a line break or changes the sentence count would make the
+        # paragraph layout ambiguous, so retain the original sentence.
+        if "\n" in new_text or "\r" in new_text:
+            continue
+        if (
+            len(_split_sentences_for_cleanup(new_text)) != 1
+            or not _ends_with_terminal_punctuation(new_text)
+        ):
+            continue
         # Refuse a rewrite that REINTRODUCES the same violation (model loop).
         if _classify_sentence_violations(new_text):
             continue
@@ -1212,27 +2045,50 @@ def _rewrite_style_violations(sentences, violations, metrics=None):
     return new_sentences, rewrites_applied, "ok"
 
 
-def _splice_sentences_back(original_text: str, new_sentences) -> str:
-    """Reconstruct text from sentence array, preserving paragraph breaks.
-
-    The original splitter is sentence-level only; we use paragraph breaks from
-    the input to chunk sentences back into the same shape.
-    """
+def _splice_sentences_back_checked(original_text: str, new_sentences) -> tuple:
+    """Reconstruct paragraph-locally, returning the original on any mismatch."""
     if not original_text:
-        return ""
-    paragraphs = original_text.split("\n\n")
-    out_paragraphs = []
+        return "", "empty"
+
+    parts = re.split(r"(\n[ \t]*\n)", original_text)
+    paragraph_indices = list(range(0, len(parts), 2))
+    expected_counts = [
+        len(_split_sentences_for_cleanup(parts[index]))
+        for index in paragraph_indices
+    ]
+    if sum(expected_counts) != len(new_sentences):
+        return original_text, "sentence_count_mismatch"
+    for sentence in new_sentences:
+        if not isinstance(sentence, str) or "\n" in sentence or "\r" in sentence:
+            return original_text, "paragraph_injection"
+        if len(_split_sentences_for_cleanup(sentence.strip())) != 1:
+            return original_text, "replacement_sentence_count_mismatch"
+
+    out_parts = list(parts)
     cursor = 0
-    for para in paragraphs:
-        original_sents = _split_sentences_for_cleanup(para)
-        n = len(original_sents)
+    for part_index, n in zip(paragraph_indices, expected_counts):
+        para = parts[part_index]
+        if n == 0:
+            out_parts[part_index] = para
+            continue
         replacement = new_sentences[cursor:cursor + n]
         cursor += n
-        if replacement:
-            out_paragraphs.append(" ".join(s.strip() for s in replacement if s.strip()))
-        else:
-            out_paragraphs.append(para)
-    return "\n\n".join(out_paragraphs).strip()
+        if len(replacement) != n or any(not s.strip() for s in replacement):
+            return original_text, "empty_replacement"
+        out_parts[part_index] = " ".join(s.strip() for s in replacement)
+
+    rewritten = "".join(out_parts).strip()
+    if len(_prose_paragraphs(rewritten)) != len(_prose_paragraphs(original_text)):
+        return original_text, "paragraph_count_mismatch"
+    return rewritten, "ok"
+
+
+def _splice_sentences_back(original_text: str, new_sentences) -> str:
+    """Reconstruct text while retaining every original paragraph boundary."""
+    rewritten, _reason = _splice_sentences_back_checked(
+        original_text, new_sentences,
+    )
+    return rewritten
 
 
 def _apply_style_enforcement(text: str, metrics=None):
@@ -1257,10 +2113,14 @@ def _apply_style_enforcement(text: str, metrics=None):
         return text, {"trailing_stripped": 0, "violations": 0,
                       "rewrites_applied": 0, "fallback_reason": "empty",
                       "mechanical_dashes_replaced": 0,
+                      "paragraphs_before": 0, "paragraphs_after": 0,
+                      "paragraph_layout_preserved": True,
+                      "layout_fallback_reason": "empty",
                       "citation_fingerprint_guard":
                           _STYLE_CITATION_GUARD_VERSION}
 
     text, trailing_stripped = _strip_trailing_significance(text)
+    paragraphs_before = len(_prose_paragraphs(text))
 
     sentences, violations = _collect_style_violations(text)
     if not violations:
@@ -1271,6 +2131,12 @@ def _apply_style_enforcement(text: str, metrics=None):
         return text, {"trailing_stripped": trailing_stripped, "violations": 0,
                       "rewrites_applied": 0, "fallback_reason": "no_violations",
                       "mechanical_dashes_replaced": mechanical_replaced,
+                      "paragraphs_before": paragraphs_before,
+                      "paragraphs_after": len(_prose_paragraphs(text)),
+                      "paragraph_layout_preserved": (
+                          len(_prose_paragraphs(text)) == paragraphs_before
+                      ),
+                      "layout_fallback_reason": "no_rewrite",
                       "citation_fingerprint_guard":
                           _STYLE_CITATION_GUARD_VERSION}
 
@@ -1287,9 +2153,19 @@ def _apply_style_enforcement(text: str, metrics=None):
                       "rewrites_applied": 0,
                       "fallback_reason": reason,
                       "mechanical_dashes_replaced": mechanical_replaced,
+                      "paragraphs_before": paragraphs_before,
+                      "paragraphs_after": len(_prose_paragraphs(text)),
+                      "paragraph_layout_preserved": (
+                          len(_prose_paragraphs(text)) == paragraphs_before
+                      ),
+                      "layout_fallback_reason": "no_usable_rewrite",
                       "citation_fingerprint_guard":
                           _STYLE_CITATION_GUARD_VERSION}
-    rewritten_text = _splice_sentences_back(text, new_sentences)
+    rewritten_text, layout_reason = _splice_sentences_back_checked(
+        text, new_sentences,
+    )
+    if layout_reason != "ok":
+        applied = 0
     # v13: post-LLM-rewrite mechanical sweep. Sentences whose rewrites were
     # individually rejected (citation drift) still hold their em-dashes.
     rewritten_text, mechanical_replaced = _mechanical_dash_replace(rewritten_text)
@@ -1298,6 +2174,13 @@ def _apply_style_enforcement(text: str, metrics=None):
                             "rewrites_applied": applied,
                             "fallback_reason": reason,
                             "mechanical_dashes_replaced": mechanical_replaced,
+                            "paragraphs_before": paragraphs_before,
+                            "paragraphs_after": len(_prose_paragraphs(rewritten_text)),
+                            "paragraph_layout_preserved": (
+                                len(_prose_paragraphs(rewritten_text))
+                                == paragraphs_before
+                            ),
+                            "layout_fallback_reason": layout_reason,
                             "citation_fingerprint_guard":
                                 _STYLE_CITATION_GUARD_VERSION}
 
@@ -1448,6 +2331,29 @@ def _drop_cross_section_redundancy(text: str, min_token_overlap: int = 4,
     cleaned = "\n\n".join(new_paragraphs)
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned, removed_examples
+
+
+def _drop_body_redundancy_preserving_closing(
+        text: str, min_token_overlap: int = 4,
+        display_lookup=None, allowed_docs=None) -> tuple:
+    """Apply cross-section redundancy only before the closing marker."""
+    split = _split_marked_closing(text)
+    if not split["ok"]:
+        raise ValueError("closing identity missing before redundancy cleanup")
+    body, removed = _drop_cross_section_redundancy(
+        split["body"],
+        min_token_overlap=min_token_overlap,
+        display_lookup=display_lookup,
+        allowed_docs=allowed_docs,
+    )
+    joined = (
+        body.rstrip()
+        + "\n\n"
+        + _CLOSING_START_MARKER
+        + " "
+        + split["closing"].lstrip()
+    )
+    return joined, removed, _count_words(split["closing"])
 
 
 def _split_sentences_for_cleanup(line: str):
@@ -1733,7 +2639,7 @@ def _coverage_requirement(chunk_docs, section_kind: str) -> int:
     if n_docs <= 0:
         return 0
     if section_kind == "closing":
-        return 1
+        return min(2, n_docs)
     return min(max(1, _MIN_SECTION_CITED_DOCS), n_docs)
 
 
@@ -1746,127 +2652,608 @@ def _audit_section_coverage(text: str, chunk_docs, section_kind: str):
     cited = _strict_cited_doc_ids(
         text, allowed_pairs=chunk_pairs, display_lookup=chunk_display_lookup_local,
     )
+    valid_citation_pairs = [
+        (citation.get("doc_id"), int(citation.get("page", 0) or 0))
+        for citation in parse_citations(
+            text, display_lookup=chunk_display_lookup_local,
+        )
+        if (
+            citation.get("doc_id") in chunk_allowed_docs
+            and (
+                citation.get("doc_id"),
+                int(citation.get("page", 0) or 0),
+            ) in chunk_pairs
+        )
+    ]
+    pair_counts = Counter(valid_citation_pairs)
+    repeated_pairs = [
+        {
+            "doc_id": doc_id,
+            "page": page,
+            "occurrences": count,
+        }
+        for (doc_id, page), count in sorted(pair_counts.items())
+        if count > _MAX_CLOSING_IDENTITY_REPETITIONS
+    ]
+    closing_citation_repetition_ok = (
+        section_kind != "closing" or not repeated_pairs
+    )
     required = _coverage_requirement(chunk_docs, section_kind)
+    structure = _audit_section_structure(text, section_kind)
+    uncited_paragraphs = []
+    for index, paragraph in enumerate(_prose_paragraphs(text)):
+        paragraph_cited = _strict_cited_doc_ids(
+            paragraph,
+            allowed_pairs=chunk_pairs,
+            display_lookup=chunk_display_lookup_local,
+        )
+        if not paragraph_cited:
+            uncited_paragraphs.append(index)
+    uncited_closing_paragraphs = (
+        list(uncited_paragraphs) if section_kind == "closing" else []
+    )
+    coverage_ok = len(cited) >= required
+    paragraph_citations_ok = not uncited_paragraphs
+    closing_paragraph_citations_ok = not uncited_closing_paragraphs
     return {
         "section": section_kind,
         "required_cited_docs": required,
         "cited_doc_count": len(cited),
         "cited_docs": sorted(cited),
         "provided_doc_count": len(chunk_allowed_docs),
-        "ok": len(cited) >= required,
+        "coverage_ok": coverage_ok,
+        "paragraph_count": structure["paragraph_count"],
+        "word_count": structure["word_count"],
+        "incomplete_paragraph_count": structure["incomplete_paragraph_count"],
+        "incomplete_paragraphs": structure["incomplete_paragraphs"],
+        "closing_word_floor": structure["closing_word_floor"],
+        "closing_word_floor_ok": structure["closing_word_floor_ok"],
+        "closing_word_ceiling": structure["closing_word_ceiling"],
+        "closing_word_ceiling_ok": structure["closing_word_ceiling_ok"],
+        "closing_paragraph_count_ok": structure[
+            "closing_paragraph_count_ok"
+        ],
+        "closing_citation_occurrences": (
+            len(valid_citation_pairs) if section_kind == "closing" else 0
+        ),
+        "closing_unique_citation_pairs": (
+            len(pair_counts) if section_kind == "closing" else 0
+        ),
+        "closing_repeated_citation_pairs": (
+            repeated_pairs if section_kind == "closing" else []
+        ),
+        "closing_citation_repetition_ok": (
+            closing_citation_repetition_ok
+        ),
+        "uncited_paragraphs": uncited_paragraphs,
+        "paragraph_citations_ok": paragraph_citations_ok,
+        "uncited_closing_paragraphs": uncited_closing_paragraphs,
+        "closing_paragraph_citations_ok": closing_paragraph_citations_ok,
+        "structure_ok": structure["ok"],
+        "ok": (
+            coverage_ok
+            and structure["ok"]
+            and paragraph_citations_ok
+            and closing_paragraph_citations_ok
+            and closing_citation_repetition_ok
+        ),
     }
 
 
-# v15.7: sentinel prefix on coverage-fallback patch sentences. Final
-# assembly drops these unless removing them would push the section
-# below its coverage floor. v15.6 run 04 shipped a patch sentence
-# verbatim as the first line of the review ("A further source records
-# ... (Kuznets_1973: p.7).") — a UX failure mode this sentinel fixes.
+def _citation_surface_fault_count(render_stats: dict) -> int:
+    return (
+        int(render_stats.get("separated_parenthetical_groups", 0) or 0)
+        + int(render_stats.get("redundant_author_parentheticals", 0) or 0)
+        + int(render_stats.get("orphan_parenthetical_groups", 0) or 0)
+    )
+
+
+def _hard_candidate_fault_count(render_stats: dict) -> int:
+    """Count integrity faults that prevent a section from being frozen."""
+    return sum(
+        int(render_stats.get(key, 0) or 0)
+        for key in (
+            "unknown_eids",
+            "attribution_mismatches",
+            "raw_citation_faults",
+            "invalid_citations",
+            "quote_faults",
+        )
+    ) + _citation_surface_fault_count(render_stats)
+
+
+def _section_candidate_passes(audit: dict, render_stats: dict,
+                              section_kind: str = "closing",
+                              structural_only: bool = False) -> bool:
+    """Apply the same hard integrity contract to every candidate section."""
+    if structural_only:
+        return bool(audit.get("structure_ok"))
+    return bool(
+        audit.get("ok")
+        and _hard_candidate_fault_count(render_stats) == 0
+    )
+
+
+def _section_quality_faults(audit: dict, render_stats: dict,
+                            section_kind: str,
+                            structural_only: bool = False) -> list:
+    """Describe every detected fault for a clean-room repair prompt."""
+    faults = []
+    if int(audit.get("paragraph_count", 0) or 0) == 0:
+        faults.append("The output contained no prose paragraph.")
+    incomplete = int(audit.get("incomplete_paragraph_count", 0) or 0)
+    if incomplete:
+        faults.append(
+            f"{incomplete} paragraph(s) ended without a complete sentence."
+        )
+    if section_kind == "closing" and not audit.get(
+        "closing_paragraph_count_ok", True
+    ):
+        faults.append(
+            "The closing must contain exactly one paragraph; the output "
+            f"contained {int(audit.get('paragraph_count', 0) or 0)}."
+        )
+    if section_kind == "closing" and not audit.get(
+        "closing_word_floor_ok", True
+    ):
+        faults.append(
+            "The closing was below the minimum length: "
+            f"{int(audit.get('word_count', 0) or 0)} words supplied, "
+            f"{int(audit.get('closing_word_floor', 0) or 0)} required."
+        )
+    if section_kind == "closing" and not audit.get(
+        "closing_word_ceiling_ok", True
+    ):
+        faults.append(
+            "The closing exceeded the maximum length: "
+            f"{int(audit.get('word_count', 0) or 0)} words supplied, "
+            f"{int(audit.get('closing_word_ceiling', 0) or 0)} allowed."
+        )
+    if section_kind == "closing" and not audit.get(
+        "closing_citation_repetition_ok", True
+    ):
+        repeated = audit.get("closing_repeated_citation_pairs") or []
+        faults.append(
+            "The closing repeated "
+            f"{len(repeated)} document-page citation identity or identities. "
+            "Cite each allowed evidence marker at most once."
+        )
+    if not structural_only and not audit.get("coverage_ok", False):
+        faults.append(
+            "Citation coverage was insufficient: "
+            f"{int(audit.get('cited_doc_count', 0) or 0)} distinct papers "
+            f"cited, {int(audit.get('required_cited_docs', 0) or 0)} required."
+        )
+    uncited = (
+        [] if structural_only
+        else list(audit.get("uncited_closing_paragraphs") or [])
+    )
+    if uncited:
+        faults.append(
+            "Closing paragraph(s) without a valid citation: "
+            + ", ".join(str(index + 1) for index in uncited) + "."
+        )
+    unknown = 0 if structural_only else int(
+        render_stats.get("unknown_eids", 0) or 0
+    )
+    if unknown:
+        faults.append(
+            f"The output used {unknown} unknown or malformed evidence ID(s)."
+        )
+    mismatches = 0 if structural_only else int(
+        render_stats.get("attribution_mismatches", 0) or 0
+    )
+    if mismatches:
+        faults.append(
+            f"The output contained {mismatches} author/evidence attribution "
+            "mismatch(es)."
+        )
+    raw_citation_faults = 0 if structural_only else int(
+        render_stats.get("raw_citation_faults", 0) or 0
+    )
+    if raw_citation_faults:
+        faults.append(
+            f"The output used {raw_citation_faults} citation surface(s) outside "
+            "the [E####]-only contract."
+        )
+    invalid_citations = 0 if structural_only else int(
+        render_stats.get("invalid_citations", 0) or 0
+    )
+    if invalid_citations:
+        faults.append(
+            f"The rendered output contained {invalid_citations} citation(s) "
+            "outside the call-local document and page set."
+        )
+    quote_faults = 0 if structural_only else int(
+        render_stats.get("quote_faults", 0) or 0
+    )
+    if quote_faults:
+        faults.append(
+            f"The output contained {quote_faults} quoted span(s) that could "
+            "not be verified against the cited page."
+        )
+    separated_groups = 0 if structural_only else int(
+        render_stats.get("separated_parenthetical_groups", 0) or 0
+    )
+    if separated_groups:
+        faults.append(
+            f"The output contained {separated_groups} separated parenthetical "
+            "citation group(s). Group supporting [E####] markers with spaces "
+            "only and leave them unwrapped."
+        )
+    redundant_author_cites = 0 if structural_only else int(
+        render_stats.get("redundant_author_parentheticals", 0) or 0
+    )
+    if redundant_author_cites:
+        faults.append(
+            f"The output named an author and then repeated that author in "
+            f"{redundant_author_cites} full parenthetical citation(s). Put the "
+            "evidence marker directly after a narratively named author."
+        )
+    orphan_parentheticals = 0 if structural_only else int(
+        render_stats.get("orphan_parenthetical_groups", 0) or 0
+    )
+    if orphan_parentheticals:
+        faults.append(
+            f"The output placed {orphan_parentheticals} parenthetical citation "
+            "group(s) after completed sentences or at paragraph openings. Put "
+            "the evidence markers before the sentence's terminal punctuation."
+        )
+    uncited_paragraphs = (
+        [] if structural_only else list(audit.get("uncited_paragraphs") or [])
+    )
+    if uncited_paragraphs:
+        faults.append(
+            "Paragraph(s) without a valid call-local citation: "
+            + ", ".join(str(index + 1) for index in uncited_paragraphs)
+            + "."
+        )
+    return faults or ["The output failed the section quality contract."]
+
+
+def _section_retry_reason(audit: dict, render_stats: dict,
+                          section_kind: str,
+                          structural_only: bool = False) -> str:
+    if structural_only:
+        return "structure"
+    if int(render_stats.get("attribution_mismatches", 0) or 0):
+        return "attribution"
+    if any(
+        int(render_stats.get(key, 0) or 0)
+        for key in (
+            "unknown_eids",
+            "raw_citation_faults",
+            "invalid_citations",
+            "quote_faults",
+        )
+    ):
+        return "evidence"
+    if _citation_surface_fault_count(render_stats):
+        return "citation_surface"
+    if (
+        section_kind == "closing"
+        and not audit.get("closing_citation_repetition_ok", True)
+    ):
+        return "citation_surface"
+    if (
+        not audit.get("structure_ok", False)
+        or (
+            section_kind == "closing"
+            and not audit.get("closing_paragraph_citations_ok", False)
+        )
+        or not audit.get("paragraph_citations_ok", False)
+    ):
+        return "structure"
+    return "coverage"
+
+
+def _section_retry_stage(stage: str, retry_reason: str, attempt: int,
+                         section_kind: str) -> str:
+    """Preserve historical stage names outside the two-retry closing path."""
+    base = f"{stage}_{retry_reason}_retry"
+    return f"{base}_{attempt}" if section_kind == "closing" else base
+
+
+def _resolve_nonclosing_retry(prior_state: dict, retry_state: dict,
+                               retry_reason: str,
+                               section_kind: str = "stream"):
+    """Accept only a retry that clears the complete hard contract."""
+    del prior_state, retry_reason
+    if section_kind == "closing":
+        return retry_state, "unresolved"
+    if _section_candidate_passes(
+        retry_state["audit"],
+        retry_state["render_stats"],
+        section_kind,
+    ):
+        accepted = dict(retry_state)
+        accepted["_nonclosing_retry_accepted"] = True
+        return accepted, "retry_accepted"
+    return retry_state, "unresolved"
+
+
+def _run_bounded_section_retries(initial_state: dict, section_kind: str,
+                                   retry_candidate,
+                                   structural_only: bool = False):
+    """Run at most one repair call after the initial section candidate."""
+    state = initial_state
+    if _section_candidate_passes(
+        state["audit"], state["render_stats"], section_kind,
+        structural_only,
+    ):
+        return state, 0, True
+    max_retries = (
+        _MAX_CLOSING_MODEL_CALLS - 1
+        if section_kind == "closing"
+        else 1
+    )
+    for attempt in range(1, max_retries + 1):
+        state = retry_candidate(state, attempt)
+        if _section_candidate_passes(
+            state["audit"], state["render_stats"], section_kind,
+            structural_only,
+        ):
+            return state, attempt, True
+    return state, max_retries, False
+
+
+_FROZEN_SECTION_SCHEMA_VERSION = "accepted-sections-v1"
+_BODY_CHECKPOINT_SCHEMA_VERSION = "writer-body-checkpoint-v1"
+
+
+def _text_sha256(text: str) -> str:
+    """Return the SHA-256 identity of a section's exact UTF-8 bytes."""
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _json_sha256(value) -> str:
+    """Hash a JSON-compatible value with deterministic encoding."""
+    encoded = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def _audit_frozen_section_identity(assembled_text: str, sections,
+                                   section_spans) -> dict:
+    """Verify that assembly retained every accepted section byte-for-byte."""
+    frozen = tuple(sections)
+    spans = list(section_spans)
+    records = []
+    ok = len(frozen) == len(spans)
+
+    for index, accepted in enumerate(frozen):
+        if index >= len(spans):
+            records.append({
+                "index": index,
+                "ok": False,
+                "reason": "missing_span",
+                "accepted_sha256": _text_sha256(accepted),
+            })
+            continue
+
+        span = spans[index]
+        start = int(span.get("start", -1))
+        end = int(span.get("end", -1))
+        bounds_ok = 0 <= start <= end <= len(assembled_text)
+        assembled_section = (
+            assembled_text[start:end] if bounds_ok else ""
+        )
+        accepted_sha256 = _text_sha256(accepted)
+        assembled_sha256 = _text_sha256(assembled_section)
+        record_ok = (
+            bounds_ok
+            and assembled_section == accepted
+            and accepted_sha256 == assembled_sha256
+        )
+        records.append({
+            "index": index,
+            "kind": span.get("kind", "section"),
+            "start": start,
+            "end": end,
+            "utf8_bytes": len(accepted.encode("utf-8")),
+            "accepted_sha256": accepted_sha256,
+            "assembled_sha256": assembled_sha256,
+            "ok": record_ok,
+            "reason": "ok" if record_ok else (
+                "content_changed" if bounds_ok else "invalid_span"
+            ),
+        })
+        ok = ok and record_ok
+
+    if len(spans) > len(frozen):
+        ok = False
+        for index in range(len(frozen), len(spans)):
+            records.append({
+                "index": index,
+                "ok": False,
+                "reason": "unexpected_span",
+            })
+
+    return {
+        "schema_version": _FROZEN_SECTION_SCHEMA_VERSION,
+        "section_count": len(frozen),
+        "span_count": len(spans),
+        "sections": records,
+        "ok": bool(ok),
+    }
+
+
+def _assemble_frozen_sections(sections, closing_index=None) -> tuple:
+    """Join accepted sections while retaining their exact byte identity.
+
+    The private closing marker belongs to assembly metadata. It is inserted
+    immediately before the accepted closing text and is excluded from that
+    section's recorded span.
+    """
+    frozen = tuple(sections)
+    if not frozen:
+        raise ValueError("at least one accepted section is required")
+    if any(not isinstance(section, str) or not section for section in frozen):
+        raise ValueError("accepted sections must be non-empty strings")
+    if any(_CLOSING_START_MARKER in section for section in frozen):
+        raise ValueError("accepted section contains the private closing marker")
+    if closing_index is not None and not (
+        isinstance(closing_index, int)
+        and 0 <= closing_index < len(frozen)
+    ):
+        raise ValueError("closing_index is outside the accepted section list")
+
+    pieces = []
+    spans = []
+    cursor = 0
+    for index, section in enumerate(frozen):
+        separator = "" if index == 0 else "\n\n"
+        pieces.append(separator)
+        cursor += len(separator)
+
+        kind = "closing" if index == closing_index else "section"
+        if index == closing_index:
+            marker_prefix = f"{_CLOSING_START_MARKER} "
+            pieces.append(marker_prefix)
+            cursor += len(marker_prefix)
+
+        start = cursor
+        pieces.append(section)
+        cursor += len(section)
+        spans.append({
+            "index": index,
+            "kind": kind,
+            "start": start,
+            "end": cursor,
+        })
+
+    assembled = "".join(pieces)
+    audit = _audit_frozen_section_identity(assembled, frozen, spans)
+    if not audit["ok"]:
+        raise RuntimeError("accepted section identity changed during assembly")
+    return assembled, audit
+
+
+def _build_body_checkpoint_payload(
+    sections,
+    *,
+    ledger_sha256: str,
+    section_claims,
+    section_coverage,
+    call_contracts,
+    diagnostics=None,
+) -> tuple:
+    """Serialize the accepted body before any closing call is attempted."""
+    frozen = tuple(sections)
+    body_text, freeze_audit = _assemble_frozen_sections(frozen)
+    section_records = [
+        {
+            "index": index,
+            "text": section,
+            "sha256": _text_sha256(section),
+            "utf8_bytes": len(section.encode("utf-8")),
+        }
+        for index, section in enumerate(frozen)
+    ]
+    payload = {
+        "schema_version": _BODY_CHECKPOINT_SCHEMA_VERSION,
+        "checkpoint_stage": "body_accepted_before_closing",
+        "artifact_contract": _WRITER_ARTIFACT_CONTRACT,
+        "execution_profile": _writer_execution_profile(),
+        "citation_representation": _CITATION_REPRESENTATION_VERSION,
+        "post_acceptance_mutation_policy": (
+            _POST_ACCEPTANCE_MUTATION_POLICY
+        ),
+        "ledger_sha256": ledger_sha256,
+        "body_sha256": _text_sha256(body_text),
+        "body_utf8_bytes": len(body_text.encode("utf-8")),
+        "body_section_count": len(frozen),
+        "body_sections": section_records,
+        "body_freeze": freeze_audit,
+        "section_claims": list(section_claims or []),
+        "section_coverage": list(section_coverage or []),
+        "body_call_count": len(call_contracts or []),
+        "body_call_contracts_sha256": _json_sha256(
+            list(call_contracts or [])
+        ),
+        "diagnostics": dict(diagnostics or {}),
+    }
+    reconstructed = "\n\n".join(
+        record["text"] for record in payload["body_sections"]
+    )
+    if reconstructed != body_text:
+        raise RuntimeError("body checkpoint reconstruction changed accepted bytes")
+    return payload, body_text, freeze_audit
+
+
+def _split_marked_closing(text: str) -> dict:
+    """Separate the explicitly marked closing from the assembled review."""
+    source = text or ""
+    marker_count = source.count(_CLOSING_START_MARKER)
+    if marker_count != 1:
+        return {
+            "ok": False,
+            "marker_count": marker_count,
+            "marker_at_paragraph_start": False,
+            "body": source,
+            "closing": "",
+            "without_marker": source,
+        }
+    marker_start = source.index(_CLOSING_START_MARKER)
+    prefix = source[:marker_start]
+    marker_at_paragraph_start = (
+        not prefix.strip()
+        or bool(re.search(r"\n[ \t]*\n[ \t]*$", prefix))
+    )
+    body = prefix.rstrip()
+    closing = source[marker_start + len(_CLOSING_START_MARKER):].lstrip()
+    if body and closing:
+        without_marker = body + "\n\n" + closing
+    else:
+        without_marker = body or closing
+    return {
+        "ok": marker_at_paragraph_start and bool(closing),
+        "marker_count": marker_count,
+        "marker_at_paragraph_start": marker_at_paragraph_start,
+        "body": body,
+        "closing": closing,
+        "without_marker": without_marker.strip(),
+    }
+
+
+def _audit_final_structure(text: str, closing_docs,
+                           enforce_citation_integrity: bool = True) -> dict:
+    """Validate every shipped paragraph and the identified closing section."""
+    split = _split_marked_closing(text)
+    whole = _audit_section_structure(split["without_marker"], "full_review")
+    closing_audit = _audit_section_coverage(
+        split["closing"], closing_docs, "closing",
+    )
+    closing_ok = (
+        closing_audit["ok"]
+        if enforce_citation_integrity
+        else closing_audit["structure_ok"]
+    )
+    return {
+        "ok": bool(split["ok"] and whole["ok"] and closing_ok),
+        "citation_integrity_enforced": enforce_citation_integrity,
+        "closing_marker_count": split["marker_count"],
+        "closing_marker_at_paragraph_start": split["marker_at_paragraph_start"],
+        "paragraph_count": whole["paragraph_count"],
+        "incomplete_paragraph_count": whole["incomplete_paragraph_count"],
+        "incomplete_paragraphs": whole["incomplete_paragraphs"],
+        "closing": closing_audit,
+        "text_without_marker": split["without_marker"],
+    }
+
+
+# Legacy coverage-patch prose is prohibited by the v19 acceptance contract.
 _COVERAGE_PATCH_SENTINEL = "[[COV-PATCH]] "
 
 
-def _append_coverage_fallback(text: str, chunk_docs, required_docs: int,
-                              allowed_pairs=None, display_lookup=None) -> tuple:
-    # v15.14: accept display_lookup. Without it, the post-rendered text's
-    # display-form cites resolved to doc_id=None and were invisible here —
-    # the fallback believed nothing was cited and injected patch sentences
-    # for docs the section already cites (the v15.6 over-injection mode).
-    allowed_pairs = set(allowed_pairs or [])
-    cited = _strict_cited_doc_ids(
-        text, allowed_pairs=allowed_pairs, display_lookup=display_lookup,
-    )
-    if len(cited) >= required_docs:
-        return text, 0
-
-    additions = []
-    for d in chunk_docs:
-        did = str(d.get("doc_id", "")).strip()
-        if not did or did in cited:
-            continue
-        quote = None
-        for q in d.get("quotes", []) or []:
-            pg = int(q.get("page", 0) or 0)
-            if pg and (not allowed_pairs or (did, pg) in allowed_pairs):
-                quote = q
-                break
-        if not quote:
-            continue
-        pg = int(quote.get("page", 0) or 0)
-        tx = _clip(quote.get("text", ""), n=180)
-        # v15.7: prepend sentinel; final assembly strips these unless
-        # removing them would push the section below coverage.
-        additions.append(
-            f'{_COVERAGE_PATCH_SENTINEL}A further source records "{tx}" {render_citation(did, pg)}.'
-        )
-        cited.add(did)
-        if len(cited) >= required_docs:
-            break
-
-    if not additions:
-        return text, 0
-
-    patched = (text or "").rstrip()
-    if patched:
-        patched += "\n\n"
-    patched += " ".join(additions)
-    return patched.strip(), len(additions)
-
-
-def _strip_coverage_patches_when_safe(text: str, allowed_docs, allowed_pairs,
-                                        display_lookup=None) -> tuple:
-    """v15.7: walk the assembled essay paragraph-by-paragraph; for each
-    paragraph that contains a coverage-patch sentence (prefixed with the
-    sentinel), test whether removing the patch sentence still leaves the
-    paragraph above its coverage floor (>=1 cited doc — paragraphs already
-    pass the section-level coverage at this point; this is a per-paragraph
-    safety check). Drop patch sentences when safe, strip the sentinel when
-    not. Returns (cleaned_text, n_dropped, n_kept).
-    """
-    if not text or _COVERAGE_PATCH_SENTINEL not in text:
-        return text, 0, 0
-    allowed_pairs = set(allowed_pairs or [])
-    n_dropped = 0
-    n_kept = 0
-    out_paras = []
-    for para in text.split("\n\n"):
-        if _COVERAGE_PATCH_SENTINEL not in para:
-            out_paras.append(para)
-            continue
-        sentences = _split_sentences_for_cleanup(para)
-        non_patch_sents = [s for s in sentences if _COVERAGE_PATCH_SENTINEL not in s]
-        joined_non_patch = " ".join(non_patch_sents)
-        non_patch_cited = _strict_cited_doc_ids(
-            joined_non_patch,
-            allowed_pairs=allowed_pairs,
-            display_lookup=display_lookup,
-        )
-        if len(non_patch_cited) >= 1:
-            # Paragraph stands on its own — drop the patch sentences.
-            new_para = " ".join(non_patch_sents).strip()
-            if new_para:
-                out_paras.append(new_para)
-                n_dropped += sum(
-                    1 for s in sentences if _COVERAGE_PATCH_SENTINEL in s
-                )
-            else:
-                # Empty after drop — keep with sentinel stripped.
-                cleaned = para.replace(_COVERAGE_PATCH_SENTINEL, "")
-                out_paras.append(cleaned)
-                n_kept += sum(
-                    1 for s in sentences if _COVERAGE_PATCH_SENTINEL in s
-                )
-        else:
-            # Patch is load-bearing — strip sentinel, keep sentence.
-            cleaned = para.replace(_COVERAGE_PATCH_SENTINEL, "")
-            out_paras.append(cleaned)
-            n_kept += sum(
-                1 for s in sentences if _COVERAGE_PATCH_SENTINEL in s
-            )
-    cleaned_text = "\n\n".join(out_paras)
-    return cleaned_text, n_dropped, n_kept
-
-
-def _coverage_retry_prompt(original_prompt: str, prior_chunk: str, required_docs: int) -> str:
+def _coverage_retry_prompt(original_prompt: str, prior_chunk: str,
+                           required_docs: int, section_kind: str = "",
+                           retry_reason: str = "coverage",
+                           faults=None) -> str:
     # v15.7: retry prompt now demands [E####] markers consistent with
     # _SYSTEM_CITATION_INSTRUCTION. The previous version forbade
     # author-year citations and demanded canonical '(DocId: p.N)' — both
@@ -1874,19 +3261,63 @@ def _coverage_retry_prompt(original_prompt: str, prior_chunk: str, required_docs
     # version restates the marker contract and asks for at least N
     # distinct DOCS-worth of markers (the audit checks doc coverage, not
     # marker count).
+    reason_text = {
+        "structure": (
+            "The previous output contained an incomplete paragraph, an invalid "
+            "paragraph boundary, or an undersized closing."
+        ),
+        "attribution": (
+            "The previous output attached an evidence marker to an incompatible "
+            "author attribution."
+        ),
+        "coverage": (
+            "The previous output did not cite enough distinct papers from the "
+            "allowed evidence."
+        ),
+        "evidence": (
+            "The previous output used an unknown or malformed evidence ID."
+        ),
+        "citation_surface": (
+            "The previous output used a redundant or incorrectly grouped "
+            "citation surface."
+        ),
+    }.get(retry_reason, "The previous output failed a section quality rule.")
+    fault_lines = "\n".join(
+        f"- {fault}" for fault in (faults or [reason_text])
+    )
+    del prior_chunk
+    clean_room = section_kind == "closing"
+    prior_block = ""
+    repair_mode = (
+        "Generate a fresh closing from the allowed evidence above. Do not reuse "
+        "the rejected output. Return exactly one uninterrupted paragraph, "
+        "with no blank lines or paragraph breaks."
+        if clean_room else
+        "Generate a fresh section from the allowed evidence above. Do not reuse "
+        "the rejected output."
+    )
     return f"""{original_prompt}
 
-Coverage repair:
-The previous draft failed the citation coverage rule. Write the section again using only [E####] markers drawn from the ALLOWED CITATIONS list at the top of this prompt.
+Section repair:
+The previous output failed the checks listed below:
+{fault_lines}
+
+{repair_mode} Use only [E####] markers drawn from the ALLOWED CITATIONS list at the top of this prompt.
 
 Requirements:
 - Cite at least {required_docs} DIFFERENT papers when that many are listed. (One paper can contribute multiple markers; the count is of distinct papers.)
 - Every paragraph must include at least one [E####] marker.
-- Use ONLY [E####] markers from the ALLOWED CITATIONS list. Do not invent IDs. Do not write '(Author Year, p.N)', 'Author (Year, p.N)', '(DocId: p.N)' or any other citation surface — the renderer expands every [E####] into the correct surface.
+- Put markers before the sentence's terminal punctuation. Never place markers after a completed sentence or at a paragraph opening.
+- For a multi-source claim, copy two or more allowed markers and place them next to one another with spaces only. Do not put parentheses or semicolons around evidence markers.
+- Keep the prose claim-led. If an author must be the grammatical subject, put that paper's allowed marker directly after the author name and before the verb. When the source supports the whole sentence, use its allowed marker without repeating the author in prose.
+- Use ONLY [E####] markers from the ALLOWED CITATIONS list. Copy every allowed marker character-for-character. Do not invent IDs. Do not write '(Author Year, p.N)', 'Author (Year, p.N)', '(DocId: p.N)' or any other citation surface — the renderer expands every [E####] into the correct surface.
 - Preserve the same substantive role and word range.
+- Paraphrase the evidence. Do not use quotation marks in the repair.
+- Finish every paragraph with a complete standalone sentence and terminal punctuation.
+{f'- Aim for 140-180 words. The hard accepted range is {_MIN_CLOSING_WORDS}-{_MAX_CLOSING_WORDS} words. Use 2-3 citation groups total and cite each evidence marker at most once.' if section_kind == 'closing' else ''}
+{prior_block}
 
-Previous draft:
-{prior_chunk}
+{_OUTPUT_ONLY_DIRECTIVE}
 
 Rewrite:"""
 
@@ -1927,13 +3358,18 @@ _PROSE_DIRECTIVE = (
     # literature-review prose than the older "chain of inference" metaphor.
     "Write a scholarly literature review organised around streams of "
     "related scholarship. Each section presents ONE stream and synthesises "
-    "across its sources. Argue in direct positive claims; avoid contrastive "
+    "across its sources. Use historical phenomena, mechanisms, and conditions "
+    "as grammatical subjects. Keep author-led sentences rare; whenever an "
+    "author is named, place that paper's allowed evidence marker immediately "
+    "after the name and before the verb. Argue in direct positive claims; avoid contrastive "
     "framings such as 'not X but Y', 'rather than', 'unlike', or 'in "
     "contrast'. Vary sentence length; introduce claims as full sentences "
     "rather than via colon setups. "
     # v12 multi-doc rule.
     "Each paragraph must integrate at least two DISTINCT documents; do not "
     "cite the same document for more than two consecutive citations. "
+    "Finish every paragraph and section with a complete standalone sentence. "
+    "Create continuity by carrying a substantive theme across sections. "
     # v12 anti-meta + topic restate.
     "Make claims directly about the substantive question. Do NOT write meta-"
     "statements about the review itself ('this review', 'the literature "
@@ -1961,12 +3397,26 @@ def _prev_tail_block(previous_tail: str) -> str:
     # cost. Set RRR_WRITER_PREV_TAIL_STRONG=0 to reproduce v14.1 prompt shape.
     if os.environ.get("RRR_WRITER_PREV_TAIL_STRONG", "1") == "1":
         block += (
-            "\nIMPORTANT: Open your first sentence as a natural continuation "
-            "of the Previous ending above — pick up a thread, contrast a "
-            "finding, follow a scope condition. Do NOT begin by restating the "
-            "topic on its own; the reader has just read the previous section.\n"
+            "\nIMPORTANT: The Previous ending is a complete sentence. Open "
+            "with another complete, standalone sentence that develops one of "
+            "its themes, findings, or scope conditions. Do not continue its "
+            "grammar, and do not restate the topic on its own.\n"
         )
     return block
+
+
+def _closing_continuity_block(previous_tail: str) -> str:
+    """Provide thematic continuity without expanding citation authority."""
+    if not previous_tail:
+        return ""
+    return (
+        "CONTINUITY CONTEXT ONLY. The excerpt below grants no citation or "
+        "evidentiary authority. Do not copy its citations. Ground every closing "
+        "claim only in the ALLOWED CITATIONS and CALL-LOCAL EVIDENCE that "
+        "follow. Its sole purpose is to help the closing continue the prior "
+        "section's theme.\n"
+        f"Previous ending:\n...{previous_tail}\n"
+    )
 
 
 def _build_opening_prompt(topic: str, stance_summary: str, evidence: str, allowed_list: str):
@@ -1982,7 +3432,9 @@ Evidence:
 
 {_PROSE_DIRECTIVE}
 
-Open the review. State the substantive question and what is at stake intellectually (not in NGO terms). Name the live disagreement: what positions exist, where they conflict, without listing them as a survey. 200-300 words. End mid-thought; the argument continues.
+Open the review. State the substantive question and what is at stake intellectually (not in NGO terms). Define the live disagreement through its competing mechanisms, historical cases, and scope conditions without listing papers as a survey. Keep the exposition claim-led. 200-300 words. End with a complete standalone sentence whose substantive theme can carry into the next section.
+
+{_OUTPUT_ONLY_DIRECTIVE}
 
 Begin:"""
 
@@ -2119,13 +3571,7 @@ _RELATION_OPENERS = {
 
 
 def _format_outline_block(cluster: dict, doc_to_evidence_ids) -> str:
-    """v15: render a cluster's outline posture into a prompt-ready block.
-
-    The block carries (a) the free-text elaboration the writer should render verbatim as the
-    section's posture, (b) a multi-citation list of the cluster's papers via
-    evidence IDs (the writer is told to use these together when stating the
-    shared claim), (c) internal disagreement if any.
-    """
+    """Render a claims-first section brief from a planned cluster."""
     if not cluster or not isinstance(cluster, dict):
         return ""
 
@@ -2137,26 +3583,44 @@ def _format_outline_block(cluster: dict, doc_to_evidence_ids) -> str:
                 out.append(ids[0])
         return out
 
-    eids = _eids(cluster.get("doc_ids", []))
+    doc_ids = list(cluster.get("doc_ids", []) or [])
+    lead_doc_id = (cluster.get("lead_doc_id") or "").strip()
+    if lead_doc_id in doc_ids:
+        doc_ids = [lead_doc_id] + [did for did in doc_ids if did != lead_doc_id]
+    eids = _eids(doc_ids)
     elaboration = (cluster.get("elaboration") or "").strip()
     disagreement = (cluster.get("internal_disagreement") or "").strip()
     if not elaboration:
         return ""
 
     lines = [
-        "STREAM POSTURE (use this as the section's substantive claim about "
-        "the world; do NOT print it verbatim, but anchor the section's "
-        "argument to it):",
+        "SECTION ARGUMENT BRIEF:",
+        "Historical claim:",
         f"  {elaboration}",
+        "Build the section around this claim, its mechanism, and its scope "
+        "conditions. Use papers as evidence for the argument. Organize the "
+        "prose by claims and connections, not as one sentence per author.",
     ]
     if len(eids) >= 2:
-        cite_block = "; ".join(f"[{e}]" for e in eids[:5])
+        cite_block = " ".join(f"[{e}]" for e in eids[:5])
         lines.append(
-            f"Cite these stream members together once when stating the shared "
-            f"posture: ({cite_block})"
+            "Evidence coverage target: support the central historical claim "
+            f"once with these adjacent markers: {cite_block}"
+        )
+        lines.append(
+            "Keep grouped markers unwrapped and separated only by spaces. "
+            "The renderer will create one parenthetical citation."
+        )
+    elif eids:
+        lines.append(
+            "Evidence coverage target: ground the central historical claim "
+            f"with [{eids[0]}]."
         )
     if disagreement:
-        lines.append(f"Internal disagreement to acknowledge in passing: {disagreement}")
+        lines.extend([
+            "Qualification or internal disagreement:",
+            f"  {disagreement}",
+        ])
     return "\n".join(lines)
 
 
@@ -2165,23 +3629,15 @@ def _build_stream_prompt(topic: str, cluster_label: str, evidence: str,
                          outline_block: str = "",
                          claims_so_far: str = "",
                          relation: str = "",
-                         topic_shape: str = "",
-                         lead_surname: str = "",
-                         forbidden_opener_surnames: list = None):
+                         topic_shape: str = ""):
     """v15: single section builder. Same arity as the legacy per-stance
     builders so the dispatcher loop in compose_from_ledger does not need to
     branch on shape. `relation` and `topic_shape` are passed through so the
     prompt can name the stream's structural relation to the topic — without
     any supports/critiques/complicates vocabulary.
 
-    v15.7: `lead_surname` + `forbidden_opener_surnames` is the
-    parallel-writer guard. Each section computes its lead author from
-    outline_plan's lead_doc_id upfront; downstream sections are told
-    explicitly which surnames they MUST NOT use as the section opener.
-    Closes the INST 02 cloned-author-opener class ('Austin emphasizes
-    ... patterns and paths' appearing in 3 different chunks with 3
-    different cites) which the parallel writer's empty claims_so_far
-    silenced in v15.6.
+    The section brief carries evidence coverage targets while leaving the
+    sentence subjects and paragraph order to the claims being developed.
     """
     outline_section = (outline_block + "\n\n") if outline_block else ""
     prior_section = (claims_so_far + "\n\n") if claims_so_far else ""
@@ -2192,28 +3648,11 @@ def _build_stream_prompt(topic: str, cluster_label: str, evidence: str,
         f"{relation_gloss}.\n"
         if relation_gloss else ""
     )
-    forbid_line = ""
-    if forbidden_opener_surnames:
-        forbid_list = "; ".join(sorted(set(forbidden_opener_surnames)))
-        forbid_line = (
-            f"OPENER GUARD: Do NOT open this section with any of these author "
-            f"surnames as the topic-sentence subject (they are the lead authors "
-            f"of OTHER sections): {forbid_list}. They may still be cited inside "
-            f"the section if their evidence is in your ALLOWED CITATIONS list, "
-            f"but the OPENING SENTENCE must be led by a different surname.\n"
-        )
-    lead_line = ""
-    if lead_surname:
-        lead_line = (
-            f"SECTION LEAD: Open with a sentence whose grammatical subject "
-            f"names '{lead_surname}' (this cluster's lead author). The cite "
-            f"that anchors the opener must resolve to {lead_surname}'s paper.\n"
-        )
     return f"""Continue this literature review on: {topic}
 
 {prev_block}
 {prior_section}Stream: {cluster_label}.
-{relation_line}{lead_line}{forbid_line}
+{relation_line}
 ALLOWED CITATIONS:
 {allowed_list}
 
@@ -2222,12 +3661,255 @@ ALLOWED CITATIONS:
 
 {_PROSE_DIRECTIVE}
 
-Present this stream of literature. Open with a direct, substantive claim grounded in the STREAM POSTURE above — never name the stream's structural relation in the prose (no 'this stream supports/critiques/complicates'); express the relation by the shape of the argument and the sources you cite together. Cite the stream's lead and one supporting source in the same sentence when stating the shared claim. Develop the claim through one specific mechanism, condition, or pattern the sources jointly establish; trace one downstream implication that another source in the stream sharpens or qualifies. 220-300 words. End mid-thought; the next section continues the review.
+Present this stream as an argument organized around historical claims. Open with the central claim in the SECTION ARGUMENT BRIEF. The opening sentence does not need an author as its grammatical subject. Never name the stream's structural relation in the prose (no 'this stream supports/critiques/complicates'); express the relation through the argument and the sources cited together. Meet the Evidence coverage target in the brief. Develop one specific mechanism, condition, or pattern that the sources jointly establish, then explain one implication or qualification. Connect each paragraph's opening claim to the preceding section or paragraph. 220-300 words. End with a complete standalone sentence whose substantive theme can carry into the next section.
+
+{_OUTPUT_ONLY_DIRECTIVE}
 
 Continue:"""
 
 
-def _build_closing_prompt(topic: str, evidence: str, allowed_list: str, previous_tail: str):
+def _claim_without_citation_surfaces(claim: str) -> str:
+    """Remove citation text and punctuation-only shells from a digest claim."""
+    claim = str(claim or "")
+    for start, end in reversed(_parenthetical_citation_containers(claim)):
+        claim = claim[:start] + claim[end:]
+    citations = list(parse_citations(claim))
+    for citation in sorted(citations, key=lambda item: item["start"], reverse=True):
+        claim = claim[:citation["start"]] + claim[citation["end"]:]
+    claim = re.sub(r"\[[Ee]\d{1,5}\]", "", claim)
+    claim = re.sub(r"\([;,\s]*\)", "", claim)
+    claim = re.sub(r"\s+([,.;:!?])", r"\1", claim)
+    claim = re.sub(r"\s{2,}", " ", claim).strip(" ;,")
+    return claim
+
+
+def _accepted_claim_excerpt(section_text: str, max_chars: int = 220) -> str:
+    """Extract a compact claim from an accepted section without cite surfaces."""
+    paragraphs = _prose_paragraphs(section_text)
+    if not paragraphs:
+        return ""
+    sentences = _split_sentences_for_cleanup(paragraphs[0])
+    claim = sentences[0].strip() if sentences else paragraphs[0].strip()
+    claim = _claim_without_citation_surfaces(claim)
+    return _clip(claim, n=max_chars)
+
+
+def _body_citation_trace(body_chunks, docs) -> list:
+    """Return valid body citations in source order with section provenance."""
+    allowed_pairs, allowed_docs, _ = _build_allowed_citations(docs)
+    display_lookup = _build_display_lookup(allowed_docs)
+    trace = []
+    for section_index, section in enumerate(body_chunks or []):
+        for citation in parse_citations(
+            section or "", display_lookup=display_lookup,
+        ):
+            doc_id = citation.get("doc_id")
+            page = int(citation.get("page", 0) or 0)
+            if doc_id not in allowed_docs or (doc_id, page) not in allowed_pairs:
+                continue
+            trace.append({
+                "section_index": section_index,
+                "doc_id": doc_id,
+                "page": page,
+                "start": int(citation.get("start", 0) or 0),
+            })
+    return trace
+
+
+def _select_closing_evidence_packet(docs, body_chunks,
+                                    max_docs: int = _MAX_CLOSING_DOCS) -> tuple:
+    """Select a small packet from sources actually cited by the frozen body.
+
+    Selection first takes one source from each accepted stream in section
+    order, then fills remaining slots by cross-section reach, citation
+    frequency, document score, and first appearance. One passage is retained
+    per document, preferring the page most often cited in the accepted body.
+    """
+    max_docs = max(1, int(max_docs))
+    trace = _body_citation_trace(body_chunks, docs)
+    docs_by_id = {
+        str(doc.get("doc_id", "") or "").strip(): doc
+        for doc in docs or []
+        if str(doc.get("doc_id", "") or "").strip()
+    }
+    doc_counts = defaultdict(int)
+    doc_sections = defaultdict(set)
+    doc_first_seen = {}
+    page_counts = defaultdict(lambda: defaultdict(int))
+    page_first_seen = {}
+    section_docs = defaultdict(list)
+
+    for position, record in enumerate(trace):
+        doc_id = record["doc_id"]
+        page = record["page"]
+        section_index = record["section_index"]
+        doc_counts[doc_id] += 1
+        doc_sections[doc_id].add(section_index)
+        doc_first_seen.setdefault(doc_id, position)
+        page_counts[doc_id][page] += 1
+        page_first_seen.setdefault((doc_id, page), position)
+        if doc_id not in section_docs[section_index]:
+            section_docs[section_index].append(doc_id)
+
+    ranked_docs = sorted(
+        doc_counts,
+        key=lambda doc_id: (
+            -len(doc_sections[doc_id]),
+            -doc_counts[doc_id],
+            -float(docs_by_id.get(doc_id, {}).get("avg_score", 0) or 0),
+            doc_first_seen[doc_id],
+            doc_id,
+        ),
+    )
+    selected_ids = []
+
+    # The opening is index 0. Streams carry the body argument, so sample them
+    # first and use the opening when capacity remains.
+    stream_indices = sorted(index for index in section_docs if index != 0)
+    section_order = stream_indices + ([0] if 0 in section_docs else [])
+    for section_index in section_order:
+        for doc_id in section_docs[section_index]:
+            if doc_id not in selected_ids:
+                selected_ids.append(doc_id)
+                break
+        if len(selected_ids) >= max_docs:
+            break
+    for doc_id in ranked_docs:
+        if len(selected_ids) >= max_docs:
+            break
+        if doc_id not in selected_ids:
+            selected_ids.append(doc_id)
+
+    selected_docs = []
+    selected_pages = {}
+    fallback_passages = 0
+    for doc_id in selected_ids:
+        source_doc = docs_by_id.get(doc_id)
+        if not source_doc:
+            continue
+        ranked_pages = sorted(
+            page_counts[doc_id],
+            key=lambda page: (
+                -page_counts[doc_id][page],
+                page_first_seen[(doc_id, page)],
+                page,
+            ),
+        )
+        selected_quote = None
+        for page in ranked_pages:
+            selected_quote = next(
+                (
+                    quote for quote in (source_doc.get("quotes") or [])
+                    if str(quote.get("doc_id", doc_id) or "").strip() == doc_id
+                    and int(quote.get("page", 0) or 0) == page
+                ),
+                None,
+            )
+            if selected_quote:
+                selected_pages[doc_id] = page
+                break
+        if selected_quote is None:
+            quotes = list(source_doc.get("quotes") or [])
+            if not quotes:
+                continue
+            selected_quote = quotes[0]
+            selected_pages[doc_id] = int(
+                selected_quote.get("page", 0) or 0
+            )
+            fallback_passages += 1
+        selected_doc = dict(source_doc)
+        selected_doc["quotes"] = [selected_quote]
+        selected_docs.append(selected_doc)
+
+    packet = _select_call_evidence(selected_docs, quotes_per_doc=1)
+    stats = {
+        "body_section_count": len(body_chunks or []),
+        "body_citation_count": len(trace),
+        "body_cited_doc_ids": ranked_docs,
+        "body_cited_doc_count": len(ranked_docs),
+        "selected_doc_ids": [
+            str(doc.get("doc_id", "") or "").strip() for doc in packet
+        ],
+        "selected_doc_count": len(packet),
+        "selected_pages": selected_pages,
+        "selected_evidence_ids": sorted(_build_evidence_id_map(packet)),
+        "passage_fallbacks": fallback_passages,
+        "max_docs": max_docs,
+    }
+    return packet, stats
+
+
+def _build_closing_digest(section_claims, body_chunks, closing_docs) -> str:
+    """Render accepted claims and body-cited evidence into a compact digest."""
+    selected_ids = {
+        str(doc.get("doc_id", "") or "").strip()
+        for doc in closing_docs or []
+    }
+    evidence_ids_by_doc = _group_evidence_ids_by_doc(closing_docs)
+    allowed_pairs, allowed_docs, _ = _build_allowed_citations(closing_docs)
+    display_lookup = _build_display_lookup(allowed_docs)
+    lines = [
+        "ACCEPTED BODY DIGEST. The body is final. Synthesize its claims without "
+        "copying its sentences.",
+    ]
+
+    claims = list(section_claims or [])
+    for index, record in enumerate(claims, 1):
+        claim = str(record.get("accepted_claim", "") or "").strip()
+        if not claim:
+            for key in (
+                "historical_claim", "claim", "posture", "elaboration",
+            ):
+                claim = str(record.get(key, "") or "").strip()
+                if claim:
+                    break
+        if not claim:
+            mechanisms = [
+                str(value).strip()
+                for value in (record.get("mechanisms") or [])
+                if str(value).strip()
+            ]
+            claim = "; ".join(mechanisms[:2])
+        claim = _claim_without_citation_surfaces(
+            claim or str(record.get("cluster", "") or "")
+        )
+        claim = _clip(claim, n=220)
+        claim = claim.rstrip(".!?")
+
+        body_index = index
+        cited_ids = []
+        if body_index < len(body_chunks or []):
+            for citation in parse_citations(
+                body_chunks[body_index] or "",
+                display_lookup=display_lookup,
+            ):
+                doc_id = citation.get("doc_id")
+                page = int(citation.get("page", 0) or 0)
+                if (
+                    doc_id in selected_ids
+                    and (doc_id, page) in allowed_pairs
+                    and doc_id not in cited_ids
+                ):
+                    cited_ids.append(doc_id)
+        markers = [
+            f"[{evidence_ids_by_doc[doc_id][0]}]"
+            for doc_id in cited_ids
+            if evidence_ids_by_doc.get(doc_id)
+        ]
+        label = str(record.get("cluster", "") or f"stream {index}").strip()
+        grounding = (
+            " Grounding retained for the closing: " + " ".join(markers) + "."
+            if markers else ""
+        )
+        lines.append(f"- Accepted stream {index}, {label}: {claim}.{grounding}")
+
+    lines.append("SELECTED BODY-CITED EVIDENCE:")
+    lines.extend(_format_doc_entry(doc) for doc in closing_docs or [])
+    return "\n".join(lines)
+
+
+def _build_closing_prompt(topic: str, digest: str, allowed_list: str,
+                          previous_tail: str = ""):
     # v8 (R4/R6): closing must synthesise without restating prior section claims;
     # do not paraphrase the same two mechanisms that opened.
     # v13: the v12 smoke produced a methodology-stub closing ("This would
@@ -2238,30 +3920,37 @@ def _build_closing_prompt(topic: str, evidence: str, allowed_list: str, previous
     # resolution) is preserved but reframed as ACTIVE statements grounded in
     # the cited sources, not as hypothetical assessments of what would settle
     # the question.
-    prev_block = _prev_tail_block(previous_tail)
+    # The fourth argument remains for compatibility with older direct callers.
+    # v19 derives continuity from accepted claims and does not expose a prose
+    # tail that could be copied or treated as fresh evidentiary authority.
+    del previous_tail
     return f"""Close this literature review on: {topic}
 
-{prev_block}
 ALLOWED CITATIONS:
 {allowed_list}
 
-Section claims already made (do NOT restate the specific mechanisms below; synthesise across them):
-{evidence}
+{digest}
 
-{_PROSE_DIRECTIVE}
+Write exactly one continuous, claim-led synthesis paragraph. Aim for 140-180
+words. The hard accepted range is {_MIN_CLOSING_WORDS}-{_MAX_CLOSING_WORDS}
+words.
 
-Write the closing as a synthesis grounded in the cited sources. Structure:
-1. Name the underlying point of agreement that the literature converges on, citing AT LEAST ONE source by author and page.
-2. Name the precise remaining disagreement that the cited sources leave open, citing AT LEAST ONE distinct source by author and page (so the closing cites at least 2 distinct documents in total).
-3. Identify the specific historical evidence or empirical comparison that would settle the disagreement, drawing on a measurement type or case that the cited sources have already used — not a future-research wishlist.
+Begin with the underlying point of agreement. State the precise remaining
+disagreement. Finish with the specific historical case, comparison, or
+measurement already present in the selected evidence that distinguishes the
+competing explanations.
 
-STRICT RULES:
-- Do NOT write methodology-stub prose: avoid "this would involve measuring", "future research should", "further work would assess", "would provide a nuanced understanding", "remains an open question", "remains a subject of debate".
-- v13.1 FIX-E: also forbidden — "would be necessary", "would illuminate", "would clarify", "would resolve", "would shed light", "would inform", "would allow us to", "thorough comparison", "thorough examination". More generally: do NOT attach the modal "would" to a methodology verb such as comparison, examination, assessment, analysis, or investigation.
-- Use present-tense indicative statements about what the cited sources SHOW, not conditional-tense statements about what future work WOULD show.
-- Do NOT write "In conclusion" or "To summarize".
-- Every claim must be tied to a cited source from the allowed list and must name an author AND a page. Closing paragraphs without citations are forbidden.
-- 150-200 words.
+Use 2-3 citation groups total and cite at least two distinct documents. Cite
+each [E####] marker at most once. When several sources support one move, place
+their markers next to one another before the terminal punctuation. Ground the
+three analytic moves, not every sentence.
+
+Use direct present-tense claims about historical phenomena, mechanisms, and
+conditions. Do not write future-research or methodology-stub prose. Do not
+write "In conclusion" or "To summarize". Return one complete paragraph with
+no heading, blank line, or commentary.
+
+{_OUTPUT_ONLY_DIRECTIVE}
 
 Continue:"""
 
@@ -2317,19 +4006,25 @@ def _ollama_chat(prompt: str, metrics=None, stage="writer"):
     import ollama
     import time
     _system = _writer_system_prompt()
+    qwen_prose_transport = _uses_qwen_prose_transport(_MODEL)
+    if qwen_prose_transport:
+        _system += "\n\n" + _QWEN_PROSE_TRANSPORT_INSTRUCTION
     prompt_path = _dump_writer_prompt(stage, _system, prompt)
     start = time.perf_counter()
+    chat_kwargs = {
+        "model": _MODEL,
+        "messages": [
+            {"role": "system", "content": _system},
+            {"role": "user", "content": prompt},
+        ],
+        "options": _DEFAULT_CHAT_OPTIONS,
+        "keep_alive": _KEEP_ALIVE,
+        "stream": False,
+    }
+    if qwen_prose_transport:
+        chat_kwargs["format"] = _QWEN_PROSE_SCHEMA
     try:
-        res = ollama.chat(
-            model=_MODEL,
-            messages=[
-                {"role": "system", "content": _system},
-                {"role": "user", "content": prompt}
-            ],
-            options=_DEFAULT_CHAT_OPTIONS,
-            keep_alive=_KEEP_ALIVE,
-            stream=False,
-        )
+        res = ollama.chat(**chat_kwargs)
     except Exception as e:
         _dump_writer_response(prompt_path, error=e)
         if metrics:
@@ -2337,12 +4032,32 @@ def _ollama_chat(prompt: str, metrics=None, stage="writer"):
                                success=False, duration_s=time.perf_counter() - start,
                                prompt_chars=len(prompt), error=e)
         raise
-    out = (res.get("message", {}).get("content") or "").strip()
-    _dump_writer_response(prompt_path, response=out)
+    raw_out = (res.get("message", {}).get("content") or "").strip()
+    try:
+        out = (
+            _decode_qwen_prose_transport(raw_out)
+            if qwen_prose_transport
+            else raw_out
+        )
+    except ValueError as exc:
+        _dump_writer_response(prompt_path, response=raw_out, error=exc)
+        if metrics:
+            metrics.record_llm(
+                stage,
+                _MODEL,
+                options=_DEFAULT_CHAT_OPTIONS,
+                success=False,
+                duration_s=time.perf_counter() - start,
+                prompt_chars=len(prompt),
+                response_chars=len(raw_out),
+                error=exc,
+            )
+        raise
+    _dump_writer_response(prompt_path, response=raw_out)
     if metrics:
         metrics.record_llm(stage, _MODEL, options=_DEFAULT_CHAT_OPTIONS,
                            duration_s=time.perf_counter() - start,
-                           prompt_chars=len(prompt), response_chars=len(out))
+                           prompt_chars=len(prompt), response_chars=len(raw_out))
     return out
 
 
@@ -2584,6 +4299,65 @@ def _strip_fabricated_quotes(full_text: str, allowed_docs, metrics=None,
     return out, stats
 
 
+def _first_paragraph_sentence_span(text: str, sentence_count: int):
+    """Locate the first N sentences in the first paragraph."""
+    source = text or ""
+    paragraph_break = _PARAGRAPH_BREAK_RE.search(source)
+    first_paragraph_end = (
+        paragraph_break.start() if paragraph_break else len(source)
+    )
+    first_paragraph = source[:first_paragraph_end]
+    sentences = _split_sentences_for_cleanup(first_paragraph)
+    selected = sentences[:max(1, sentence_count)]
+    if not selected:
+        return None
+
+    cursor = 0
+    first_start = None
+    last_end = None
+    for sentence in selected:
+        needle = sentence.strip()
+        start = first_paragraph.find(needle, cursor)
+        if start < 0:
+            return None
+        if first_start is None:
+            first_start = start
+        last_end = start + len(needle)
+        cursor = last_end
+    return {
+        "start": first_start,
+        "end": last_end,
+        "text": first_paragraph[first_start:last_end],
+        "sentence_count": len(selected),
+    }
+
+
+def _replace_first_paragraph_opener(text: str, sentence_count: int,
+                                    rewritten: str) -> tuple:
+    """Replace an opener while retaining every later source byte."""
+    span = _first_paragraph_sentence_span(text, sentence_count)
+    if not span:
+        return text, "opener_span_missing"
+    candidate = (rewritten or "").strip()
+    if not candidate or "\n" in candidate or "\r" in candidate:
+        return text, "paragraph_injection"
+    original_length = max(1, len(span["text"].strip()))
+    if len(candidate) > int(original_length * 1.2) + 10:
+        return text, "length_growth"
+    candidate_sentences = _split_sentences_for_cleanup(candidate)
+    if len(candidate_sentences) != span["sentence_count"]:
+        return text, "sentence_count_mismatch"
+    if any(
+        not _ends_with_terminal_punctuation(sentence)
+        for sentence in candidate_sentences
+    ):
+        return text, "incomplete_rewrite"
+    rewritten_text = text[:span["start"]] + candidate + text[span["end"]:]
+    if len(_prose_paragraphs(rewritten_text)) != len(_prose_paragraphs(text)):
+        return text, "paragraph_count_mismatch"
+    return rewritten_text, "ok"
+
+
 def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
     """v11-B: rewrite the first sentence(s) of each interior section so the
     review flows from section to section instead of each restating the topic
@@ -2617,19 +4391,18 @@ def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
     interior_indices = list(range(1, len(chunks) - 1))
     extracts = []
     for i in interior_indices:
-        sents = _split_sentences_for_cleanup(chunks[i])
-        if not sents:
+        span = _first_paragraph_sentence_span(chunks[i], stitch_n)
+        if not span:
             continue
-        opener_sents = sents[:stitch_n]
-        opener = " ".join(s.strip() for s in opener_sents).strip()
-        prev_sents = _split_sentences_for_cleanup(chunks[i - 1])
+        opener = span["text"].strip()
+        prev_sents = _sentences_paragraph_local(chunks[i - 1])
         prev_tail = prev_sents[-1].strip() if prev_sents else ""
         if not opener:
             continue
         extracts.append({
             "index": i,
             "opener": opener,
-            "opener_sent_count": len(opener_sents),
+            "opener_sent_count": span["sentence_count"],
             "prev_tail": prev_tail,
         })
 
@@ -2643,15 +4416,19 @@ def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
         f"Below are the OPENING {opener_unit} of several adjacent sections in "
         "the same review. Each currently restates the topic framing on its "
         "own, which reads as several mini-essays stitched together. Rewrite "
-        f"each OPENING ({opener_unit}) so it flows from the previous "
-        "section's last sentence — pick up a thread, contrast a finding, "
-        "follow a scope condition — rather than re-introducing the topic.",
+        f"each OPENING ({opener_unit}) as a complete standalone sentence "
+        "that develops a theme, finding, or scope condition from the "
+        "previous section. The previous section already ends with a complete "
+        "sentence. Do not continue its grammar and do not re-introduce the topic.",
         "",
         "STRICT RULES:",
         "- Keep every citation token — 'Author (Year, p.N)', '(Author Year, p.N)', "
         "'(Doc_Year: p.N)' or '[E####]' — exactly UNCHANGED, character for character.",
         "- Do NOT add or remove any citation.",
         "- Do NOT exceed the original block length by more than ~20%.",
+        "- Keep the original sentence count. Every rewritten sentence must "
+        "end with terminal punctuation.",
+        "- Return each rewritten opener as one line with no paragraph break.",
         f"- Return ONLY a single JSON object whose 'rewritten' field is the "
         f"{opener_unit} (joined into one string, original sentence-boundary "
         f"order preserved): "
@@ -2711,6 +4488,8 @@ def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
     skipped_empty = 0
     skipped_topic_paraphrase = 0
     skipped_tail_echo = 0
+    skipped_layout_change = 0
+    skipped_incomplete = 0
     interior_set = set(interior_indices)
     prev_tail_by_index = {e["index"]: e["prev_tail"] for e in extracts}
 
@@ -2761,12 +4540,14 @@ def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
         if not rewritten or idx not in interior_set:
             skipped_empty += 1
             continue
-        sents = _split_sentences_for_cleanup(new_chunks[idx])
-        if not sents:
+        span = _first_paragraph_sentence_span(
+            new_chunks[idx], opener_sent_count_by_index.get(idx, 1),
+        )
+        if not span:
+            skipped_layout_change += 1
             continue
         n_open = opener_sent_count_by_index.get(idx, 1)
-        n_open = min(n_open, len(sents))
-        orig_opener_block = " ".join(s.strip() for s in sents[:n_open])
+        orig_opener_block = span["text"].strip()
         orig_cites = _citation_fingerprints(orig_opener_block)
         new_cites = _citation_fingerprints(rewritten)
         if orig_cites != new_cites:
@@ -2795,7 +4576,16 @@ def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
             ):
                 skipped_tail_echo += 1
                 continue
-        new_chunks[idx] = " ".join([rewritten] + [s.strip() for s in sents[n_open:]])
+        rewritten_chunk, layout_reason = _replace_first_paragraph_opener(
+            new_chunks[idx], n_open, rewritten,
+        )
+        if layout_reason != "ok":
+            if layout_reason == "incomplete_rewrite":
+                skipped_incomplete += 1
+            else:
+                skipped_layout_change += 1
+            continue
+        new_chunks[idx] = rewritten_chunk
         applied += 1
 
     if metrics:
@@ -2804,6 +4594,15 @@ def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
         metrics.set("writer_stitch_skipped_empty", skipped_empty)
         metrics.set("writer_stitch_skipped_topic_paraphrase", skipped_topic_paraphrase)
         metrics.set("writer_stitch_skipped_tail_echo", skipped_tail_echo)
+        metrics.set("writer_stitch_skipped_layout_change", skipped_layout_change)
+        metrics.set("writer_stitch_skipped_incomplete", skipped_incomplete)
+        metrics.set(
+            "writer_stitch_paragraph_counts_preserved",
+            all(
+                len(_prose_paragraphs(before)) == len(_prose_paragraphs(after))
+                for before, after in zip(chunks, new_chunks)
+            ),
+        )
     if applied or skipped_topic_paraphrase or skipped_tail_echo:
         print(f"[Writer] Cross-section stitch: rewrote {applied} section "
               f"opener(s) (skipped {skipped_citation} citation drift, "
@@ -2839,12 +4638,15 @@ def _collect_cited_docs(text: str, allowed_docs, author_year_to_docid):
 
 
 def compose_from_ledger(ledger_path=None, metrics=None):
+    writer_started_at = time.perf_counter()
     ledger_path = ledger_path or str(runs_path("review_ledger.json"))
     if not os.path.isfile(ledger_path):
         raise SystemExit(f"Ledger not found: {ledger_path}")
 
     with open(ledger_path, encoding="utf-8") as f:
         data = json.load(f)
+    with open(ledger_path, "rb") as f:
+        ledger_sha256 = hashlib.sha256(f.read()).hexdigest()
 
     topic_display = data.get("topic", "(no topic)")
     # v12: writer prompts use the reformulated topic question. Falls back to
@@ -2867,7 +4669,7 @@ def compose_from_ledger(ledger_path=None, metrics=None):
     pdf_page_offsets = data.get("pdf_page_offsets", {}) or {}
     dois_by_docid = data.get("dois_by_docid", {}) or {}
 
-    ledger_allowed_pairs, ledger_allowed_docs, _ = _build_allowed_citations(docs)
+    ledger_allowed_pairs, _, _ = _build_allowed_citations(docs)
     if not ledger_allowed_pairs:
         raise SystemExit("No allowed citations found in ledger.")
 
@@ -2909,27 +4711,9 @@ def compose_from_ledger(ledger_path=None, metrics=None):
     # Build chunk_plan in the cluster order Stage 3 picked. Each entry uses
     # the single v15 stream-section builder, partial-applied with the
     # cluster's relation + topic_shape.
-    # v15.7: compute lead author surname per cluster from outline_plan's
-    # lead_doc_id (Stage 2 field). Each cluster's prompt then knows which
-    # surname to OPEN with and which surnames are reserved by OTHER
-    # clusters' openers — closing the parallel-writer cloned-opener gap.
+    # The lead document remains first in each claims-first evidence target.
+    # It no longer dictates the grammatical subject of the section opener.
     from functools import partial
-    cluster_lead_surnames: dict = {}
-    for cid in ordered_cluster_ids:
-        c = clusters_by_id.get(cid)
-        if not c:
-            continue
-        lead_did = (c.get("lead_doc_id") or "").strip()
-        if not lead_did:
-            # Fall back to the first doc_id in the cluster.
-            doc_ids = c.get("doc_ids") or []
-            lead_did = doc_ids[0] if doc_ids else ""
-        if lead_did:
-            label = _doc_id_to_author_label(lead_did)
-            cluster_lead_surnames[cid] = _author_surnames_only(label)
-        else:
-            cluster_lead_surnames[cid] = ""
-    all_lead_surnames = {s for s in cluster_lead_surnames.values() if s}
 
     chunk_plan = []
     for cid in ordered_cluster_ids:
@@ -2939,13 +4723,9 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         cluster_docs = [docs_by_id[did] for did in c["doc_ids"] if did in docs_by_id]
         if not cluster_docs:
             continue
-        this_lead = cluster_lead_surnames.get(cid, "")
-        forbidden = sorted(s for s in all_lead_surnames if s and s != this_lead)
         builder = partial(_build_stream_prompt,
                           relation=c.get("relation", ""),
-                          topic_shape=topic_shape,
-                          lead_surname=this_lead,
-                          forbidden_opener_surnames=forbidden)
+                          topic_shape=topic_shape)
         # Reuse the legacy 5-tuple shape so the dispatcher loop below works
         # unchanged. Position 0 ("stance") now carries the relation; position
         # 1 ("cluster") carries the cluster's shared_thread label.
@@ -2971,23 +4751,46 @@ def compose_from_ledger(ledger_path=None, metrics=None):
 
     chunks = []
     section_claims = []
-    total_removed_citations = 0
-    total_style_removed = 0
-    total_coverage_fallbacks = 0
     total_evidence_id_renders = 0
     # v8 (R5): observability for new postproc surfaces
     total_double_paren_collapsed = 0
     total_author_led_openings = 0
-    # v14 FIX-BRACKET: count [Doc_Year] bracket-id rewrites across all chunks
-    # and the final assembly pass.
-    total_bracket_id_rewrites = 0
     # v15.7: track renderer-side attribution gate + unknown-eid signal across
     # chunks so the quality manifest and finalize_covered_chunk can act on them.
     total_unknown_eids = 0
     total_attribution_mismatches = 0
     total_attribution_retries = 0
+    total_structure_retries = 0
+    total_section_model_retries = 0
+    total_retry_candidates_accepted = 0
+    total_sections_failed_after_retry = 0
+    total_closing_model_retries = 0
+    closing_retry_routes: list = []
+    section_retry_routes = defaultdict(int)
+    closing_digest_stats = {}
+    total_invalid_citation_faults = 0
+    total_raw_citation_faults = 0
+    total_quote_faults = 0
+    total_style_violations_detected = 0
+    total_meta_commentary_detected = 0
+    total_adjacent_paren_merges = 0
+    total_duplicate_citation_identities_removed = 0
+    total_post_sentence_marker_reattachments = 0
+    quote_audit_records: list = []
+    citation_surface_records: list = []
     unknown_eid_snippets: list = []
     attribution_mismatch_snippets: list = []
+    structure_failure_records: list = []
+    author_year_repair_stats = {
+        "attempts": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "replacements_proposed": 0,
+        "replacements_accepted": 0,
+        "distinct_docs_rescued": 0,
+        "collision_skips": 0,
+    }
+    author_year_repair_records: list = []
     section_coverage = []
     call_contracts = []
     call_allowed_pairs = set()
@@ -3006,7 +4809,13 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         with open(runs_path("writer_call_contracts.json"), "w", encoding="utf-8") as f:
             json.dump(
                 {
-                    "schema_version": "corrected-writer-v17",
+                    "schema_version": _WRITER_ARTIFACT_CONTRACT,
+                    "artifact_contract": _WRITER_ARTIFACT_CONTRACT,
+                    "execution_profile": _writer_execution_profile(),
+                    "citation_representation": _CITATION_REPRESENTATION_VERSION,
+                    "post_acceptance_mutation_policy": (
+                        _POST_ACCEPTANCE_MUTATION_POLICY
+                    ),
                     "quotes_per_doc": _writer_quotes_per_doc(),
                     "calls": call_contracts,
                 },
@@ -3020,241 +4829,336 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         retry_allowed_list = _list_allowed_citations(call_docs, pages_by_doc)
         register_call(stage, call_docs, retry_allowed_list, prompt)
 
-    # v10: display->canonical lookup built once per run. The writer is asked
-    # for display surface 'Author (Year, p.N)' but the existing per-section
-    # validators (citation removal, coverage audit, redundancy detection) all
-    # speak canonical '(Doc_Year: p.N)'. We rewrite display->canonical at the
-    # START of postprocess_chunk so the canonical machinery keeps working
-    # unchanged; the FINAL assembly converts everything back to display.
-    chunk_display_lookup = _build_display_lookup(ledger_allowed_docs)
-
-    def _chunk_display_to_canonical(text):
-        def repl(m):
-            label = m.group(1).strip().lower()
-            year = m.group(2)
-            page = int(m.group(3))
-            did = chunk_display_lookup.get((label, year))
-            if did:
-                return render_citation_canonical(did, page)
-            return m.group(0)
-        # v10.2: rewrite BOTH 'Author (Year, p.N)' AND '(Author Year, p.N)' to
-        # the canonical surface. The paren-shape was the silent failure mode in
-        # the v10.1 smoke (model mixed the two; we caught only one).
-        text = DISPLAY_CITE_RE.sub(repl, text)
-        text = DISPLAY_PAREN_CITE_RE.sub(repl, text)
-        return text
-
     def postprocess_chunk(chunk, chunk_docs):
-        nonlocal total_removed_citations, total_style_removed, total_evidence_id_renders
+        nonlocal total_evidence_id_renders
         nonlocal total_double_paren_collapsed, total_author_led_openings
-        nonlocal total_bracket_id_rewrites
         nonlocal total_unknown_eids, total_attribution_mismatches
+        nonlocal total_invalid_citation_faults, total_raw_citation_faults
+        nonlocal total_quote_faults, total_style_violations_detected
+        nonlocal total_meta_commentary_detected, total_adjacent_paren_merges
+        nonlocal total_duplicate_citation_identities_removed
+        nonlocal total_post_sentence_marker_reattachments
 
-        chunk = _strip_wrapping(chunk)
-        # v15.5: the writer now produces ONLY [E####] evidence-ID markers.
-        # The context-aware renderer below converts each marker to either
-        # the narrative '(Year, p.N)' (when the author is already named in
-        # prose) or the parenthetical '(Author Year, p.N)' (otherwise).
-        # This eliminates the display->canonical->display surface-cycling
-        # the older pipeline needed.
-        # v15.7: renderer now also acts as attribution gate — returns stats
-        # dict with attribution_mismatches that finalize_covered_chunk uses
-        # to decide whether to trigger a coverage retry.
+        # v19 candidate transaction. Transport cleanup and deterministic
+        # citation rendering happen before validation. Semantic detectors
+        # inspect copies and never delete prose.
+        chunk = _strip_wrapping(chunk).replace("\r\n", "\n").replace("\r", "\n")
+        raw_citation_stats = _audit_raw_citation_contract(chunk, chunk_docs)
+        total_raw_citation_faults += raw_citation_stats["raw_citation_faults"]
+        chunk, marker_reattachments = (
+            _reattach_post_sentence_evidence_markers(chunk)
+        )
+        total_post_sentence_marker_reattachments += marker_reattachments
+
         chunk_evidence_id_map = _build_evidence_id_map(chunk_docs)
         chunk, render_stats = _render_evidence_id_citations(
             chunk, chunk_evidence_id_map
+        )
+        render_stats.update(raw_citation_stats)
+        render_stats["post_sentence_marker_reattachments"] = (
+            marker_reattachments
         )
         total_evidence_id_renders += render_stats["replacements"]
         total_unknown_eids += render_stats["unknown_eids"]
         unknown_eid_snippets.extend(render_stats["unknown_eid_snippets"])
         total_attribution_mismatches += render_stats["attribution_mismatches"]
-        attribution_mismatch_snippets.extend(render_stats["attribution_mismatch_snippets"])
-
-        # v14 FIX-BRACKET: catch [Doc_Year] bracketed canonical doc_ids the
-        # model invents when it confuses bracket-evidence-id syntax with the
-        # canonical doc_id.
-        chunk, bracket_rewrites = _render_bracketed_doc_ids(
-            chunk,
-            {ev["doc_id"] for ev in chunk_evidence_id_map.values()},
-            {
-                did: sorted(
-                    eid
-                    for eid, ev in chunk_evidence_id_map.items()
-                    if ev["doc_id"] == did
-                )
-                for did in {ev["doc_id"] for ev in chunk_evidence_id_map.values()}
-            },
+        attribution_mismatch_snippets.extend(
+            render_stats["attribution_mismatch_snippets"]
         )
-        total_bracket_id_rewrites += bracket_rewrites
 
-        # v15.7: _chunk_display_to_canonical retired. The validators
-        # (_audit_section_coverage, _remove_invalid_citations,
-        # _drop_cross_section_redundancy, _strict_cited_doc_ids) now
-        # consume display-form citations natively via parse_citations +
-        # display_lookup. The canonical surface is no longer used as an
-        # internal validation form. The user-facing output is display
-        # form '(Author Year, p.N)' / 'Author (Year, p.N)' — no more
-        # display→canonical→display surface-cycling.
-        # v15.7: wire _collapse_double_parens into the chunked path. v15.6
-        # reported writer_double_paren_collapsed=0 in every run because the
-        # chunked path had no call site; the audit found 50 ((...)) wrappings
-        # shipped to users.
         chunk, dp_collapsed = _collapse_double_parens(chunk)
         total_double_paren_collapsed += dp_collapsed
-        # v8 (R5): observe author-led-opening violations and count them.
-        # v15.7: was being called TWICE (the comment was duplicated and so was
-        # the call); single invocation now matches every other observation
-        # point in postprocess_chunk.
-        total_author_led_openings += _count_author_led_openings(chunk)
 
-        # v13: removed the legacy pre-cleanup arms (_strip_placeholder_citations,
-        # _fix_ajr_abbreviation, _repair_year_only_citations, _extract_citation_dumps).
-        # All four had 0-hit metrics on the v12 smoke and the v13 prompt surface
-        # no longer produces any of the shapes they targeted.
+        chunk_allowed_pairs, chunk_allowed_docs, _ = _build_allowed_citations(
+            chunk_docs
+        )
+        chunk_display_lookup_local = _build_display_lookup(chunk_allowed_docs)
+        citation_merge_stats = {}
+        chunk, adjacent_merges = _merge_adjacent_paren_cites(
+            chunk,
+            display_lookup=chunk_display_lookup_local,
+            stats=citation_merge_stats,
+        )
+        total_adjacent_paren_merges += adjacent_merges
+        duplicates_removed = int(
+            citation_merge_stats.get("duplicate_identities_removed", 0) or 0
+        )
+        total_duplicate_citation_identities_removed += duplicates_removed
 
-        chunk = _strip_orphaned_citations(chunk)
-        chunk = _strip_references_section(chunk)
-        chunk = _strip_continuation_markers(chunk)
-        chunk = _strip_conclusion(chunk)
+        invalid_citations = []
         if _writer_enforcement_enabled():
-            chunk_allowed_pairs, chunk_allowed_docs, _ = _build_allowed_citations(chunk_docs)
-            chunk_display_lookup_local = _build_display_lookup(chunk_allowed_docs)
-            chunk, removed = _remove_invalid_citations(
-                chunk,
-                chunk_allowed_docs,
-                allowed_pairs=chunk_allowed_pairs,
-                display_lookup=chunk_display_lookup_local,
+            _discarded_invalid_cleanup, invalid_citations = (
+                _remove_invalid_citations(
+                    chunk,
+                    chunk_allowed_docs,
+                    allowed_pairs=chunk_allowed_pairs,
+                    display_lookup=chunk_display_lookup_local,
+                )
             )
-            total_removed_citations += len(removed)
+        render_stats["invalid_citations"] = len(invalid_citations)
+        render_stats["invalid_citation_records"] = invalid_citations[:10]
+        total_invalid_citation_faults += len(invalid_citations)
 
-        chunk, style_removed = _remove_style_violations(chunk)
-        total_style_removed += len(style_removed)
+        quote_stats = _audit_quote_contract(
+            chunk,
+            chunk_allowed_docs,
+            display_lookup=chunk_display_lookup_local,
+        )
+        render_stats["quote_faults"] = quote_stats["quote_faults"]
+        render_stats["quote_audit"] = quote_stats
+        total_quote_faults += quote_stats["quote_faults"]
+        if quote_stats["checked_quotes"] or quote_stats["quote_faults"]:
+            quote_audit_records.append(quote_stats)
 
-        return chunk, 0, 0, 0, len(style_removed), render_stats
+        surface_stats = _audit_citation_surface_contract(chunk)
+        render_stats.update(surface_stats)
+        if _citation_surface_fault_count(surface_stats):
+            citation_surface_records.append(surface_stats)
+
+        _sentences, style_violations = _collect_style_violations(chunk)
+        render_stats["style_violations_detected"] = len(style_violations)
+        total_style_violations_detected += len(style_violations)
+        _discarded_meta_cleanup, meta_records = _strip_meta_commentary(chunk)
+        render_stats["meta_commentary_detected"] = len(meta_records)
+        render_stats["meta_commentary_snippets"] = meta_records[:5]
+        total_meta_commentary_detected += len(meta_records)
+        author_led_openings = _count_author_led_openings(chunk)
+        render_stats["author_led_openings"] = author_led_openings
+        total_author_led_openings += author_led_openings
+
+        return chunk, 0, 0, 0, 0, render_stats
 
     def finalize_covered_chunk(raw, prompt, chunk_docs, section_kind, stage):
-        nonlocal total_coverage_fallbacks, total_attribution_retries
+        nonlocal total_attribution_retries
+        nonlocal total_structure_retries, total_closing_model_retries
+        nonlocal total_section_model_retries
+        nonlocal total_retry_candidates_accepted
+        nonlocal total_sections_failed_after_retry
+        local_failure_records = []
         chunk, repairs, placeholders, ajr, style_removed, render_stats = postprocess_chunk(raw, chunk_docs)
         audit = _audit_section_coverage(chunk, chunk_docs, section_kind)
+        structural_only = not _writer_enforcement_enabled()
 
-        # v15.7: renderer-as-attribution-gate triggers a coverage retry when
-        # the renderer detected a prose-surname-vs-eid-author mismatch. The
-        # gate ALREADY fixed the cite shape (emits '(CorrectAuthor Year, p.N)'
-        # instead of bare year), but the prose still names the wrong author.
-        # A retry gives the writer a fresh attempt with the original prompt;
-        # if the retry still mismatches, we accept the self-healed render and
-        # surface the mismatch in the quality manifest.
-        attribution_retry_done = False
-        if (
-            _writer_enforcement_enabled()
-            and render_stats["attribution_mismatches"] > 0
+        def record_failed_candidate(state, phase, attempt):
+            current_audit = state["audit"]
+            current_render = state["render_stats"]
+            record = {
+                "stage": stage,
+                "phase": phase,
+                "attempt": attempt,
+                "section": section_kind,
+                "word_count": current_audit["word_count"],
+                "paragraph_count": current_audit["paragraph_count"],
+                "closing_paragraph_count_ok": current_audit[
+                    "closing_paragraph_count_ok"
+                ],
+                "cited_doc_count": current_audit["cited_doc_count"],
+                "required_cited_docs": current_audit["required_cited_docs"],
+                "incomplete_paragraph_count": current_audit[
+                    "incomplete_paragraph_count"
+                ],
+                "closing_word_floor_ok": current_audit[
+                    "closing_word_floor_ok"
+                ],
+                "closing_word_ceiling_ok": current_audit[
+                    "closing_word_ceiling_ok"
+                ],
+                "uncited_closing_paragraphs": current_audit[
+                    "uncited_closing_paragraphs"
+                ],
+                "uncited_paragraphs": current_audit["uncited_paragraphs"],
+                "unknown_eids": current_render["unknown_eids"],
+                "attribution_mismatches": current_render[
+                    "attribution_mismatches"
+                ],
+                "separated_parenthetical_groups": current_render.get(
+                    "separated_parenthetical_groups", 0
+                ),
+                "redundant_author_parentheticals": current_render.get(
+                    "redundant_author_parentheticals", 0
+                ),
+                "orphan_parenthetical_groups": current_render.get(
+                    "orphan_parenthetical_groups", 0
+                ),
+                "raw_citation_faults": current_render.get(
+                    "raw_citation_faults", 0
+                ),
+                "invalid_citations": current_render.get(
+                    "invalid_citations", 0
+                ),
+                "quote_faults": current_render.get("quote_faults", 0),
+                "faults": _section_quality_faults(
+                    current_audit, current_render, section_kind,
+                    structural_only,
+                ),
+            }
+            local_failure_records.append(record)
+            structure_failure_records.append(record)
+
+        state = {
+            "chunk": chunk,
+            "repairs": repairs,
+            "placeholders": placeholders,
+            "ajr": ajr,
+            "style_removed": style_removed,
+            "audit": audit,
+            "render_stats": render_stats,
+        }
+        if not _section_candidate_passes(
+            state["audit"], state["render_stats"], section_kind,
+            structural_only,
         ):
-            if metrics:
-                metrics.inc("writer_attribution_retries")
-            total_attribution_retries += 1
-            attribution_retry_done = True
-            retry_prompt = _coverage_retry_prompt(
-                prompt, chunk, audit["required_cited_docs"],
+            record_failed_candidate(state, "generated", 0)
+
+        def retry_candidate(prior_state, attempt):
+            nonlocal total_attribution_retries, total_structure_retries
+            nonlocal total_closing_model_retries
+            nonlocal total_section_model_retries
+            retry_reason = _section_retry_reason(
+                prior_state["audit"], prior_state["render_stats"], section_kind,
+                structural_only,
             )
-            register_retry_call(
-                f"{stage}_attribution_retry", chunk_docs, retry_prompt
+            retry_stage = _section_retry_stage(
+                stage, retry_reason, attempt, section_kind,
             )
-            raw_retry = _ollama_chat(
-                retry_prompt, metrics=metrics, stage=f"{stage}_attribution_retry",
-            )
-            chunk_retry, repairs_r, placeholders_r, ajr_r, style_removed_r, render_stats_retry = postprocess_chunk(
-                raw_retry, chunk_docs,
-            )
-            audit_retry = _audit_section_coverage(chunk_retry, chunk_docs, section_kind)
-            # Only accept the retry if it (a) clears the audit, AND (b) has
-            # fewer attribution mismatches than the original. Otherwise keep
-            # the original (already self-healed by the renderer).
-            retry_better = (
-                audit_retry["ok"]
-                and render_stats_retry["attribution_mismatches"]
-                < render_stats["attribution_mismatches"]
-            )
-            if retry_better:
-                chunk = chunk_retry
-                audit = audit_retry
-                repairs += repairs_r
-                placeholders += placeholders_r
-                ajr += ajr_r
-                style_removed += style_removed_r
+            total_section_model_retries += 1
+            section_retry_routes[retry_reason] += 1
+            if section_kind == "closing":
+                total_closing_model_retries += 1
+                closing_retry_routes.append(retry_reason)
                 if metrics:
-                    metrics.inc("writer_attribution_retry_accepted")
-            else:
+                    metrics.inc("writer_closing_model_retries")
+            if retry_reason == "structure":
+                total_structure_retries += 1
                 if metrics:
-                    metrics.inc("writer_attribution_retry_rejected")
-
-        if audit["ok"] or not _writer_enforcement_enabled():
-            return chunk, repairs, placeholders, ajr, style_removed, audit
-
-        # v8 (R11): try the deterministic fallback FIRST — it's free, uses the
-        # same allowed-pairs provenance as the LLM retry would, and resolves
-        # the small-shortfall case (which dominates) without a ~2s LLM call.
-        chunk_allowed_pairs, chunk_allowed_doc_ids, _ = _build_allowed_citations(chunk_docs)
-        # v15.14: display_lookup so the fallback sees the rendered display
-        # cites (same fix as _audit_section_coverage got in v15.7).
-        chunk_fallback_dl = _build_display_lookup(chunk_allowed_doc_ids)
-        chunk, fallback_count = _append_coverage_fallback(
-            chunk,
-            chunk_docs,
-            audit["required_cited_docs"],
-            allowed_pairs=chunk_allowed_pairs,
-            display_lookup=chunk_fallback_dl,
-        )
-        if fallback_count:
-            total_coverage_fallbacks += fallback_count
-            if metrics:
-                metrics.inc("writer_section_coverage_fallbacks", fallback_count)
-        audit = _audit_section_coverage(chunk, chunk_docs, section_kind)
-        if audit["ok"]:
-            return chunk, repairs, placeholders, ajr, style_removed, audit
-
-        # Deterministic fallback couldn't reach the required doc count.
-        # Escalate to LLM coverage retry as the last resort — but skip it if
-        # we already did the attribution retry on this section, to avoid
-        # paying two LLM retries.
-        if not attribution_retry_done:
-            if metrics:
+                    metrics.inc("writer_structure_retries")
+            elif retry_reason == "attribution":
+                total_attribution_retries += 1
+                if metrics:
+                    metrics.inc("writer_attribution_retries")
+            elif retry_reason == "evidence":
+                if metrics:
+                    metrics.inc("writer_evidence_integrity_retries")
+            elif metrics:
                 metrics.inc("writer_section_coverage_retries")
-            retry_prompt = _coverage_retry_prompt(prompt, chunk, audit["required_cited_docs"])
-            register_retry_call(
-                f"{stage}_coverage_retry", chunk_docs, retry_prompt
+
+            retry_prompt = _coverage_retry_prompt(
+                prompt,
+                prior_state["chunk"],
+                prior_state["audit"]["required_cited_docs"],
+                section_kind=section_kind,
+                retry_reason=retry_reason,
+                faults=_section_quality_faults(
+                    prior_state["audit"],
+                    prior_state["render_stats"],
+                    section_kind,
+                    structural_only,
+                ),
             )
-            raw = _ollama_chat(retry_prompt, metrics=metrics, stage=f"{stage}_coverage_retry")
-            chunk, repairs2, placeholders2, ajr2, style_removed2, _retry_stats = postprocess_chunk(raw, chunk_docs)
-            audit = _audit_section_coverage(chunk, chunk_docs, section_kind)
-        else:
-            repairs2 = placeholders2 = ajr2 = 0
-            style_removed2 = 0
-        if not audit["ok"]:
-            # Final deterministic top-up in case the LLM retry made partial progress.
-            chunk, fallback_count2 = _append_coverage_fallback(
-                chunk,
-                chunk_docs,
-                audit["required_cited_docs"],
-                allowed_pairs=chunk_allowed_pairs,
-                display_lookup=chunk_fallback_dl,
+            register_retry_call(retry_stage, chunk_docs, retry_prompt)
+            raw_retry = _ollama_chat(
+                retry_prompt, metrics=metrics, stage=retry_stage,
             )
-            if fallback_count2:
-                total_coverage_fallbacks += fallback_count2
-                if metrics:
-                    metrics.inc("writer_section_coverage_fallbacks", fallback_count2)
-                audit = _audit_section_coverage(chunk, chunk_docs, section_kind)
-        if not audit["ok"]:
+            (
+                retry_chunk, repairs2, placeholders2, ajr2, style_removed2,
+                retry_render_stats,
+            ) = postprocess_chunk(raw_retry, chunk_docs)
+            retry_state = {
+                "chunk": retry_chunk,
+                "repairs": prior_state["repairs"] + repairs2,
+                "placeholders": prior_state["placeholders"] + placeholders2,
+                "ajr": prior_state["ajr"] + ajr2,
+                "style_removed": prior_state["style_removed"] + style_removed2,
+                "audit": _audit_section_coverage(
+                    retry_chunk, chunk_docs, section_kind,
+                ),
+                "render_stats": retry_render_stats,
+            }
+            nonclosing_resolution = None
+            if section_kind != "closing" and not structural_only:
+                retry_state, nonclosing_resolution = _resolve_nonclosing_retry(
+                    prior_state, retry_state, retry_reason, section_kind,
+                )
+
+            if (
+                metrics and retry_reason == "attribution"
+                and (
+                    nonclosing_resolution == "retry_accepted"
+                    or _section_candidate_passes(
+                        retry_state["audit"],
+                        retry_state["render_stats"],
+                        section_kind,
+                        structural_only,
+                    )
+                )
+            ):
+                metrics.inc("writer_attribution_retry_accepted")
+            elif metrics and retry_reason == "attribution":
+                metrics.inc("writer_attribution_retry_rejected")
+            if not _section_candidate_passes(
+                retry_state["audit"],
+                retry_state["render_stats"],
+                section_kind,
+                structural_only,
+            ):
+                record_failed_candidate(retry_state, "after_retry", attempt)
+            return retry_state
+
+        state, retries_used, accepted = _run_bounded_section_retries(
+            state, section_kind, retry_candidate, structural_only,
+        )
+        if retries_used and accepted:
+            total_retry_candidates_accepted += 1
+        if not accepted:
+            if retries_used:
+                total_sections_failed_after_retry += 1
+            failure_record = {
+                "schema_version": _WRITER_ARTIFACT_CONTRACT,
+                "execution_profile": _writer_execution_profile(),
+                "error": "section_quality_validation_failed",
+                "stage": stage,
+                "section": section_kind,
+                "model_retries": retries_used,
+                "audit": state["audit"],
+                "render_stats": state["render_stats"],
+                "candidate_failures": local_failure_records,
+                "faults": _section_quality_faults(
+                    state["audit"], state["render_stats"], section_kind,
+                    structural_only,
+                ),
+            }
+            try:
+                ensure_dir(str(runs_path()))
+                with open(
+                    runs_path("writer_section_failure.json"),
+                    "w",
+                    encoding="utf-8",
+                ) as f:
+                    json.dump(failure_record, f, indent=2, ensure_ascii=False)
+            except Exception as artifact_error:
+                print(
+                    "[Writer] Could not write writer_section_failure.json: "
+                    f"{artifact_error}"
+                )
             raise ValueError(
-                f"citation coverage failed for {section_kind}: "
-                f"{audit['cited_doc_count']}/{audit['required_cited_docs']} cited docs"
+                f"section quality failed for {section_kind}: "
+                f"coverage={state['audit']['cited_doc_count']}/"
+                f"{state['audit']['required_cited_docs']}, "
+                f"paragraphs={state['audit']['paragraph_count']}, "
+                f"incomplete_paragraphs="
+                f"{state['audit']['incomplete_paragraph_count']}, "
+                f"unknown_eids={state['render_stats']['unknown_eids']}, "
+                f"attribution_mismatches="
+                f"{state['render_stats']['attribution_mismatches']}, "
+                f"citation_surface_faults="
+                f"{_citation_surface_fault_count(state['render_stats'])}, "
+                f"hard_integrity_faults="
+                f"{_hard_candidate_fault_count(state['render_stats'])}, "
+                f"words={state['audit']['word_count']}"
             )
         return (
-            chunk,
-            repairs + repairs2,
-            placeholders + placeholders2,
-            ajr + ajr2,
-            style_removed + style_removed2,
-            audit,
+            state["chunk"], state["repairs"], state["placeholders"],
+            state["ajr"], state["style_removed"], state["audit"],
         )
 
     def generate_covered_chunk(prompt, chunk_docs, section_kind, stage):
@@ -3298,10 +5202,17 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         print(f"[Writer] Opening failed: {e}")
         if metrics:
             metrics.inc("writer_sections_failed")
+        raise RuntimeError(
+            "writer opening failed structural or evidence validation"
+        ) from e
 
     # Generate stance sections
     stance_jobs = []
-    parallel_tail = chunks[-1][-_TAIL_CHARS:] if chunks else ""
+    parallel_tail = (
+        chunks[-1][-_TAIL_CHARS:]
+        if chunks and _writer_uses_raw_previous_tail()
+        else ""
+    )
     for i, (stance, cluster, cluster_docs, prompt_builder, cluster_plan) in enumerate(chunk_plan):
         cluster_docs_sorted = _select_call_evidence(
             sorted(cluster_docs, key=_score_doc, reverse=True)[:6]
@@ -3339,6 +5250,7 @@ def compose_from_ledger(ledger_path=None, metrics=None):
             "cluster": job["cluster"],
             "docs": [d.get("doc_id") for d in job["docs"]],
             "mechanisms": top_mechs[:4],
+            "accepted_claim": _accepted_claim_excerpt(chunk),
             "word_count": word_count,
             # v15.4.0 (Bug 4 half-fix): extract author surnames the chunk
             # named in prose, so the next section's claims_so_far block can
@@ -3407,6 +5319,9 @@ def compose_from_ledger(ledger_path=None, metrics=None):
                 print(f"[Writer] {job['stance']}/{job['cluster']} failed: {e}")
                 if metrics:
                     metrics.inc("writer_sections_failed")
+                raise RuntimeError(
+                    f"writer section failed for {job['stance']}/{job['cluster']}"
+                ) from e
     else:
         # v11.2 lever 3: when sequential, build the accumulated claims summary
         # right before each section's prompt so it sees what's already been
@@ -3425,7 +5340,11 @@ def compose_from_ledger(ledger_path=None, metrics=None):
             synthesis_block = _format_outline_block(
                 cluster_plan, _group_evidence_ids_by_doc(cluster_docs_sorted)
             )
-            previous_tail = chunks[-1][-_TAIL_CHARS:] if chunks else ""
+            previous_tail = (
+                chunks[-1][-_TAIL_CHARS:]
+                if chunks and _writer_uses_raw_previous_tail()
+                else ""
+            )
             claims_so_far = _format_claims_so_far(section_claims)
             prompt = prompt_builder(topic, cluster, evidence, allowed_list, previous_tail,
                                     synthesis_block, claims_so_far)
@@ -3455,41 +5374,100 @@ def compose_from_ledger(ledger_path=None, metrics=None):
                 print(f"[Writer] {job['stance']}/{job['cluster']} failed: {e}")
                 if metrics:
                     metrics.inc("writer_sections_failed")
+                raise RuntimeError(
+                    f"writer section failed for {job['stance']}/{job['cluster']}"
+                ) from e
 
-    # Generate closing
-    used_doc_ids = []
-    for claim in section_claims:
-        for did in claim.get("docs", []):
-            if did and did not in used_doc_ids:
-                used_doc_ids.append(did)
-    closing_docs_unbounded = [
-        d for d in docs if d.get("doc_id") in set(used_doc_ids)
-    ]
-    closing_docs = _select_call_evidence(
-        sorted(closing_docs_unbounded, key=_score_doc, reverse=True)[:6]
+    # Generate the closing from a deterministic digest of the accepted body.
+    # The packet contains one passage for at most four sources that the body
+    # actually cited. It can therefore be reconstructed from a body checkpoint
+    # without rerunning any accepted section.
+    body_chunks = tuple(chunks)
+    (
+        body_checkpoint_payload,
+        body_checkpoint,
+        body_freeze_audit,
+    ) = _build_body_checkpoint_payload(
+        body_chunks,
+        ledger_sha256=ledger_sha256,
+        section_claims=section_claims,
+        section_coverage=section_coverage,
+        call_contracts=call_contracts,
+        diagnostics={
+            "section_model_retries": total_section_model_retries,
+            "retry_candidates_accepted": (
+                total_retry_candidates_accepted
+            ),
+            "sections_failed_after_retry": (
+                total_sections_failed_after_retry
+            ),
+            "retry_routes": dict(section_retry_routes),
+            "attribution_retries": total_attribution_retries,
+            "structure_retries": total_structure_retries,
+            "unknown_evidence_ids": total_unknown_eids,
+            "attribution_mismatches": total_attribution_mismatches,
+            "raw_citation_faults": total_raw_citation_faults,
+            "invalid_citation_faults": total_invalid_citation_faults,
+            "quote_faults": total_quote_faults,
+            "post_sentence_marker_reattachments": (
+                total_post_sentence_marker_reattachments
+            ),
+        },
     )
+    ensure_dir(str(runs_path()))
+    body_checkpoint_path = runs_path("writer_body_checkpoint.json")
+    body_checkpoint_bytes = json.dumps(
+        body_checkpoint_payload,
+        indent=2,
+        ensure_ascii=False,
+    ).encode("utf-8")
+    body_checkpoint_path.write_bytes(body_checkpoint_bytes)
+    body_checkpoint_artifact_sha256 = hashlib.sha256(
+        body_checkpoint_bytes
+    ).hexdigest()
+    if metrics:
+        metrics.set("writer_body_freeze", body_freeze_audit)
+        metrics.set(
+            "writer_body_checkpoint_sha256",
+            _text_sha256(body_checkpoint),
+        )
+    closing_docs, closing_digest_stats = _select_closing_evidence_packet(
+        docs, body_chunks,
+    )
+    available_doc_count = len({
+        str(doc.get("doc_id", "") or "").strip()
+        for doc in docs
+        if str(doc.get("doc_id", "") or "").strip()
+    })
+    required_body_cited_docs = min(2, available_doc_count)
+    if (
+        _writer_enforcement_enabled()
+        and len(closing_docs) < required_body_cited_docs
+    ):
+        raise RuntimeError(
+            "accepted body did not retain enough valid cited sources for "
+            f"closing generation: {len(closing_docs)}/"
+            f"{required_body_cited_docs}"
+        )
 
     _, _, closing_pages_by_doc = _build_allowed_citations(closing_docs)
     allowed_list = _list_allowed_citations(closing_docs, closing_pages_by_doc)
     if not allowed_list:
-        allowed_list = "(Use only citations already present in the preceding text.)"
-    claim_lines = []
-    for claim in section_claims:
-        mechs = "; ".join(claim.get("mechanisms", [])[:3]) or "no mechanism recorded"
-        docs_line = ", ".join(str(d) for d in claim.get("docs", [])[:5])
-        claim_lines.append(
-            f"- {claim['stance'].upper()} / {claim['cluster']}: mechanisms: {mechs}. Documents: {docs_line}."
-        )
-    evidence_parts = ["Section claims:"] + claim_lines
-    if closing_docs:
-        evidence_parts.append("\nRepresentative evidence:")
-        evidence_parts.extend(_format_doc_entry(d) for d in closing_docs)
-    evidence = "\n".join(evidence_parts)
-
-    previous_tail = chunks[-1][-_TAIL_CHARS:] if chunks else ""
-    prompt = _build_closing_prompt(topic, evidence, allowed_list, previous_tail)
+        allowed_list = "(No call-local citations are available.)"
+    closing_digest = _build_closing_digest(
+        section_claims, body_chunks, closing_docs,
+    )
+    closing_digest_stats = {
+        **closing_digest_stats,
+        "digest_chars": len(closing_digest),
+        "digest_sha256": hashlib.sha256(
+            closing_digest.encode("utf-8")
+        ).hexdigest(),
+    }
+    prompt = _build_closing_prompt(topic, closing_digest, allowed_list)
     register_call("writer_closing", closing_docs, allowed_list, prompt)
 
+    closing_generated_audit = None
     try:
         chunk, repairs, placeholders, ajr, style_removed, audit = generate_covered_chunk(
             prompt,
@@ -3500,24 +5478,50 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         word_count = _count_words(chunk)
         print(f"[Writer] Closing: {word_count} words; cited_docs={audit['cited_doc_count']}")
         section_coverage.append(audit)
+        closing_generated_audit = dict(audit)
         chunks.append(chunk)
+        closing_model_calls = 1 + total_closing_model_retries
+        if closing_model_calls > _MAX_CLOSING_MODEL_CALLS:
+            raise RuntimeError(
+                "closing generation exceeded its model-call cap: "
+                f"{closing_model_calls}/{_MAX_CLOSING_MODEL_CALLS}"
+            )
+        if metrics:
+            metrics.set("writer_closing_model_calls_total", closing_model_calls)
+            metrics.set(
+                "writer_closing_first_pass_accepted",
+                total_closing_model_retries == 0,
+            )
+            metrics.set("writer_closing_retry_routes", closing_retry_routes)
+            metrics.set("writer_closing_digest", closing_digest_stats)
         if metrics:
             metrics.inc("writer_sections_succeeded")
     except Exception as e:
         print(f"[Writer] Closing failed: {e}")
         if metrics:
             metrics.inc("writer_sections_failed")
+            metrics.set(
+                "writer_closing_model_calls_total",
+                1 + total_closing_model_retries,
+            )
+            metrics.set("writer_closing_first_pass_accepted", False)
+            metrics.set("writer_closing_retry_routes", closing_retry_routes)
+            metrics.set("writer_closing_digest", closing_digest_stats)
+        raise RuntimeError(
+            "writer closing failed structural or evidence validation"
+        ) from e
 
-    # v11-B: one batched LLM call that rewrites the opening sentence of each
-    # interior section so the review flows section-to-section instead of each
-    # restating the topic framing. Operates on the chunks list (each chunk is
-    # one section). Verifies citation tokens are preserved per opener; any
-    # opener whose citation set drifts is silently reverted to the original.
-    if metrics:
-        with metrics.stage("writer_stitch"):
-            chunks = _apply_cross_section_stitch(chunks, topic, metrics=metrics)
-    else:
-        chunks = _apply_cross_section_stitch(chunks, topic, metrics=None)
+    expected_chunk_count = len(chunk_plan) + 2
+    if len(chunks) != expected_chunk_count:
+        raise RuntimeError(
+            "writer section count mismatch: "
+            f"expected {expected_chunk_count}, found {len(chunks)}"
+        )
+
+    # Accepted section identities are now fixed. Continuity is created in each
+    # section prompt; final assembly does not run a stitch call.
+    if closing_generated_audit is None or not chunks:
+        raise RuntimeError("writer lost closing section identity before assembly")
 
     # v15.14: refuse to ship an empty essay. Previously, if every section
     # generation failed (opening, all streams, closing), chunks == [] and an
@@ -3531,27 +5535,23 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         )
 
     # Final assembly
-    full_text = "\n\n".join(chunks)
-    # v15.7: final-assembly renderer is a safety net (per-chunk pass already
-    # ran). Any new mismatches detected here are surfaced in the quality
-    # manifest but cannot retry — at this point the writer LLM has finished.
-    # Each generation response has already been rendered against its
-    # call-local map. Any raw marker that appears after stitching has no
-    # call-level authority and is removed as an unknown ID.
-    full_text, final_render_stats = _render_evidence_id_citations(full_text, {})
-    total_evidence_id_renders += final_render_stats["replacements"]
-    total_unknown_eids += final_render_stats["unknown_eids"]
-    unknown_eid_snippets.extend(final_render_stats["unknown_eid_snippets"])
-    total_attribution_mismatches += final_render_stats["attribution_mismatches"]
-    attribution_mismatch_snippets.extend(final_render_stats["attribution_mismatch_snippets"])
-
-    # v14 FIX-BRACKET: final-assembly bracket-id rewrite for [Doc_Year] residue
-    # that survived per-chunk postprocess (rare but possible if a chunk join
-    # introduced new bracketed-doc-id text in stitch fallback paths).
-    full_text, final_bracket_rewrites = _render_bracketed_doc_ids(
-        full_text, call_allowed_docs, call_evidence_id_map,
+    accepted_sections = tuple(chunks)
+    full_text, frozen_assembly_audit = _assemble_frozen_sections(
+        accepted_sections,
+        closing_index=len(accepted_sections) - 1,
     )
-    total_bracket_id_rewrites += final_bracket_rewrites
+    # Each accepted response has already been rendered against its call-local
+    # evidence map. Final assembly records zero renderer activity and rejects
+    # any unresolved marker below.
+    final_render_stats = {
+        "replacements": 0,
+        "unknown_eids": 0,
+        "attribution_mismatches": 0,
+    }
+
+    # Bracketed document identifiers are rejected before section acceptance.
+    # This retired-operation counter remains in the manifest for comparison.
+    final_bracket_rewrites = 0
 
     # v15.7: _display_to_canonical retired at final assembly. The user-facing
     # surface is now display ('Author (Year, p.N)' / '(Author Year, p.N)')
@@ -3560,227 +5560,247 @@ def compose_from_ledger(ledger_path=None, metrics=None):
     # built here because validators want it for doc_id resolution.
     allowed_pairs = call_allowed_pairs
     allowed_docs = call_allowed_docs
-    author_year_to_docid = _build_author_year_lookup(allowed_docs)
     display_lookup = _build_display_lookup(allowed_docs)
 
-    # v14.2 fix #1: quote verification. Scan every '"..."' span >=20 chars,
-    # locate the nearest canonical (doc_id: p.N) citation, and verify the
-    # quoted text against the actual page text. Sentences containing an
-    # UNVERIFIED quote are stripped before later cleanup. The v14.2 investigation found 2 fabrications in
-    # the 12-run smoke; the architecture's pre-fix validators only checked
-    # citation tuples and never inspected quoted prose. Toggle via
-    # RRR_QUOTE_VERIFY=0 to disable (default 1).
-    if metrics:
-        with metrics.stage("writer_quote_verify"):
-            full_text, quote_verify_stats = _strip_fabricated_quotes(
-                full_text, allowed_docs, metrics=metrics,
-                display_lookup=display_lookup,
-            )
-    else:
-        full_text, quote_verify_stats = _strip_fabricated_quotes(
-            full_text, allowed_docs, metrics=None,
-            display_lookup=display_lookup,
-        )
+    # Quote verification runs on each candidate before acceptance. These
+    # aggregate figures describe candidate faults; no shipped sentence is
+    # deleted here.
+    quote_verify_stats = {
+        "checked_quotes": sum(
+            int(record.get("checked_quotes", 0) or 0)
+            for record in quote_audit_records
+        ),
+        "verified_real": sum(
+            int(record.get("verified_real", 0) or 0)
+            for record in quote_audit_records
+        ),
+        "quote_faults_detected": total_quote_faults,
+        "fabricated_stripped": 0,
+        "strand_guard_kept": 0,
+        "post_acceptance_mutation": False,
+        "candidate_audits": quote_audit_records[:20],
+    }
     if metrics:
         metrics.set("writer_quote_verification", quote_verify_stats)
-        if quote_verify_stats.get("fabricated_stripped"):
-            metrics.inc(
-                "writer_fabricated_quotes_stripped",
-                int(quote_verify_stats["fabricated_stripped"]),
-            )
-    if quote_verify_stats.get("fabricated_stripped"):
-        print(
-            f"[Writer] Quote verifier: {quote_verify_stats['fabricated_stripped']} "
-            f"fabricated quote(s) stripped from "
-            f"{quote_verify_stats['checked_quotes']} checked "
-            f"(verified_real={quote_verify_stats['verified_real']}, "
-            f"kept_no_cite={quote_verify_stats['fabricated_kept_no_citation']}, "
-            f"kept_doc_not_in_corpus={quote_verify_stats['fabricated_kept_doc_not_in_corpus']}, "
-            f"kept_page_unreadable={quote_verify_stats['fabricated_kept_page_not_readable']})"
-        )
-        for fab in quote_verify_stats["fabrications"][:5]:
-            print(
-                f"         - ({fab['doc_id']}: p.{fab['page']}) "
-                f"\"{fab['quote'][:120]}...\""
-            )
-    elif quote_verify_stats.get("checked_quotes"):
-        print(
-            f"[Writer] Quote verifier: {quote_verify_stats['verified_real']}/"
-            f"{quote_verify_stats['checked_quotes']} quotes verified as real "
-            f"(0 fabrications)"
-        )
 
     # v13: removed the legacy final-assembly arms (_repair_year_only_citations,
     # _fix_ajr_abbreviation, _strip_placeholder_citations, _extract_citation_dumps,
     # _normalize_citation_case). All five had 0-hit metrics on the v12 smoke
     # and target shapes the v13 prompt+display surface no longer produces.
 
-    if os.environ.get("RRR_BYPASS_VALIDATION", "0") == "1":
-        removed_citations = []
-        print("[Writer] Citation removal skipped because RRR_BYPASS_VALIDATION=1")
-        if metrics:
-            metrics.set("writer_bypass_validation", True)
-    else:
-        full_text, removed_citations = _remove_invalid_citations(
-            full_text, allowed_docs, allowed_pairs=allowed_pairs,
-            display_lookup=display_lookup,
-        )
-        total_removed_citations += len(removed_citations)
-    if removed_citations:
-        print(f"[Writer] Removed {len(removed_citations)} invalid citation(s):")
-        for r in removed_citations:
-            if r.get("page"):
-                print(f"         - {r['doc_id']}: p.{r['page']} ({r.get('reason', 'invalid')})")
-            else:
-                print(f"         - {r['doc_id']} ({r.get('reason', 'invalid')})")
+    removed_citations = []
+    final_style_removed = []
+    if metrics and os.environ.get("RRR_BYPASS_VALIDATION", "0") == "1":
+        metrics.set("writer_bypass_validation", True)
 
-    full_text, final_style_removed = _remove_style_violations(full_text)
-    total_style_removed += len(final_style_removed)
-
-    # v9 (R6): final-assembly cross-section redundancy drop. Conservative —
-    # only fires when a sentence's citations are a strict subset of those
-    # already cited AND it has substantial content overlap with an earlier
-    # sentence. Configurable via env (set 0 to disable, or raise the overlap
-    # threshold to be even more conservative).
-    # v13: RRR_WRITER_DROP_REDUNDANCY and RRR_WRITER_REDUNDANCY_OVERLAP retired.
-    # The v9 R6 safety-net dedupe is conservative (fires 0-6 times per smoke)
-    # and disabling it has no production justification.
-    full_text, redundancy_drops = _drop_cross_section_redundancy(
-        full_text, min_token_overlap=4, display_lookup=display_lookup,
+    # The historical redundancy detector now runs on a copy for diagnostics.
+    # Its proposed deletions never reach accepted prose.
+    (
+        _discarded_redundancy_cleanup,
+        redundancy_candidates,
+        closing_words_before_redundancy,
+    ) = _drop_body_redundancy_preserving_closing(
+        full_text,
+        min_token_overlap=4,
+        display_lookup=display_lookup,
         allowed_docs=allowed_docs,
     )
-    if redundancy_drops:
-        print(f"[Writer] Dropped {len(redundancy_drops)} redundant sentence(s) at final assembly:")
-        for r in redundancy_drops[:5]:
-            print(f"         - overlap={r['overlap_tokens']} cited={r['cited_pairs']}: {r['snippet']}")
-        if metrics:
-            metrics.inc("writer_redundancy_drops", len(redundancy_drops))
-            metrics.set("writer_redundancy_examples", redundancy_drops[:10])
+    redundancy_drops = []
+    if metrics:
+        metrics.set(
+            "writer_redundancy_candidates",
+            redundancy_candidates[:20],
+        )
 
-    full_text = _strip_orphaned_citations(full_text)
-    full_text = _strip_references_section(full_text)
-    full_text = _strip_continuation_markers(full_text)
+    # Meta-commentary is observed on a copy. Candidate prompts and local
+    # retries carry the writing rule; final assembly does not delete prose.
+    _discarded_meta_cleanup, meta_removed = _strip_meta_commentary(full_text)
+    if metrics:
+        metrics.set("writer_meta_commentary_detected", len(meta_removed))
 
-    # v12: drop sentences that talk about the review itself ("the literature
-    # reviewed here converges...", "this review will examine..."). Runs after
-    # the structural strips and before the citation surface rewrite so the
-    # detector sees the canonical form, not the display form.
-    full_text, meta_removed = _strip_meta_commentary(full_text)
-    if meta_removed and metrics:
-        metrics.inc("writer_meta_commentary_stripped", len(meta_removed))
-    if meta_removed:
-        print(f"[Writer] Stripped {len(meta_removed)} meta-commentary sentence(s):")
-        for s in meta_removed[:3]:
-            print(f"         - {s}")
-
-    full_text = re.sub(r'\n{3,}', '\n\n', full_text)
-
-    # v10: detect-then-LLM-rewrite style enforcement (one batched call). Runs
-    # AFTER validation so the rewriter sees the final citation surface and is
-    # forbidden from changing any (Year, p.N) tokens. Refuses to apply rewrites
-    # that would reintroduce a violation or alter a citation.
-    full_text, style_stats = _apply_style_enforcement(full_text, metrics=metrics)
+    # Style rules are diagnostic after acceptance. The retired whole-review
+    # rewriter makes no model call and applies no replacement.
+    _style_sentences, final_style_violations = _collect_style_violations(
+        full_text
+    )
+    style_stats = {
+        "violations": len(final_style_violations),
+        "rewrites_applied": 0,
+        "trailing_stripped": 0,
+        "fallback_reason": "diagnostic_only_v19",
+        "post_acceptance_mutation": False,
+    }
     if metrics:
         metrics.set("writer_style_enforcement", style_stats)
-    if style_stats.get("violations"):
-        print(f"[Writer] Style: {style_stats['violations']} flagged, "
-              f"{style_stats['rewrites_applied']} rewritten "
-              f"(trailing_significance stripped: {style_stats['trailing_stripped']}, "
-              f"fallback_reason: {style_stats['fallback_reason']})")
-    elif style_stats.get("trailing_stripped"):
-        print(f"[Writer] Style: stripped {style_stats['trailing_stripped']} "
-              "trailing-significance phrase(s); no other violations.")
 
     # v15.5: placeholder strip retired — the writer no longer copies the
     # "(Author, Year)" exemplar because the prompt no longer SHOWS that
     # exemplar (replaced with "[E####]" usage examples).
 
-    # v13: hard rule-9 enforcement at final assembly. The v12 prose audit found
-    # three zero-citation paragraphs (paras 4, 9, 12 — the closing) that the
-    # prompt-level rule-9 directive failed to prevent. The prompt directive is
-    # the right place to ASK for multi-source paragraphs; this is the safety
-    # net that drops the worst case (zero citations) when the model still
-    # produces filler / bridging / methodology paragraphs. Conservative: only
-    # drops a paragraph when no citation surface of any kind is present.
-    # v15.7: strip coverage-fallback patch sentences when they are no longer
-    # load-bearing for paragraph coverage. v15.6 run 04 shipped the first
-    # line of the review as a verbatim 'A further source records ...' patch.
-    # Sentinel-tagged at fallback time; dropped here unless paragraph would
-    # become uncited otherwise.
-    full_text, n_patches_dropped, n_patches_kept = _strip_coverage_patches_when_safe(
-        full_text, allowed_docs, allowed_pairs, display_lookup=display_lookup,
-    )
+    # Coverage fallback prose is retired. A sentinel in accepted text is an
+    # invariant failure.
+    n_patches_dropped = 0
+    n_patches_kept = full_text.count(_COVERAGE_PATCH_SENTINEL)
     if metrics:
         metrics.set("writer_coverage_patches_dropped", n_patches_dropped)
         metrics.set("writer_coverage_patches_shipped", n_patches_kept)
-    if n_patches_dropped or n_patches_kept:
-        print(
-            f"[Writer] Coverage patches: dropped={n_patches_dropped} "
-            f"shipped={n_patches_kept}"
-        )
+    if n_patches_kept:
+        raise RuntimeError("frozen section contains a legacy coverage patch")
 
-    # v15.7: pass keep_closing=True at final assembly. Without it, a closing
-    # paragraph whose only cited sentence was upstream-stripped would be
-    # silently deleted along with the rest of the structurally important
-    # synthesis paragraph. The per-chunk variant already uses keep_closing;
-    # this aligns final assembly with the same contract.
-    full_text, zero_cite_dropped, zc_kept_closing = _drop_zero_citation_paragraphs(
-        full_text, keep_closing=True
+    # Closing identity is explicit and revalidated below. Zero-citation
+    # deletion is retired; every paragraph passed the section-local gate.
+    citation_integrity_enforced = _writer_enforcement_enabled()
+    zero_cite_dropped = []
+    zc_kept_closing = None
+
+    # Adjacent citation merging already ran inside each candidate transaction.
+    # Final assembly only reports those deterministic pre-acceptance changes.
+    adjacent_paren_merges = total_adjacent_paren_merges
+    duplicate_citations_removed = (
+        total_duplicate_citation_identities_removed
     )
-    if zero_cite_dropped and metrics:
-        metrics.inc("writer_zero_cite_paragraphs_dropped", len(zero_cite_dropped))
-        metrics.set("writer_zero_cite_paragraphs", zero_cite_dropped[:5])
-    if zc_kept_closing and metrics:
-        metrics.inc("writer_zero_cite_closing_kept")
-        metrics.set("writer_zero_cite_closing_kept_snippet", zc_kept_closing)
-    if zero_cite_dropped:
-        print(f"[Writer] Dropped {len(zero_cite_dropped)} zero-citation paragraph(s):")
-        for snippet in zero_cite_dropped[:3]:
-            print(f"         - {snippet}")
-    if zc_kept_closing:
-        print(f"[Writer] Kept weak closing (no recognised cite): {zc_kept_closing}")
-
-    cited_docs = _collect_cited_docs(full_text, allowed_docs, author_year_to_docid)
-    # v13: all_dump_citations was previously a side-channel from
-    # _extract_citation_dumps. With that helper retired (citation_dump_docs=0
-    # on every recent smoke), cited_docs is derived purely from the rendered
-    # full_text — no side channel needed.
-    cited_docids = sorted(cited_docs)
-
-    # v15.7.2: merge whitespace-adjacent paren cites into one semicolon-
-    # joined parenthetical. Runs AFTER _collect_cited_docs so ref-list
-    # counting is unaffected — the merged form is the user-facing surface
-    # only. '(A 2007, p.9) (B 1989, p.6)' → '(A 2007, p.9; B 1989, p.6)'.
-    full_text, adjacent_paren_merges = _merge_adjacent_paren_cites(full_text)
     if metrics:
         metrics.set("writer_adjacent_paren_merges", adjacent_paren_merges)
-    if adjacent_paren_merges:
-        print(f"[Writer] Merged {adjacent_paren_merges} adjacent paren-cite pair(s).")
+        metrics.set(
+            "writer_duplicate_citation_identities_removed",
+            duplicate_citations_removed,
+        )
+
+    raw_eid_residue = _EVIDENCE_ID_LIKE_RE.findall(full_text)
+    bracketed_doc_id_residue = [
+        match.group(0) for match in _BRACKETED_DOC_ID_RE.finditer(full_text)
+    ]
+    pre_ship_surface_stats = _audit_citation_surface_contract(full_text)
+    if raw_eid_residue or bracketed_doc_id_residue:
+        raise RuntimeError(
+            "frozen review retained an unresolved evidence identifier"
+        )
+    if _citation_surface_fault_count(pre_ship_surface_stats):
+        raise RuntimeError(
+            "frozen review retained a rejected citation surface"
+        )
+
+    # Final structural gate. Every paragraph must be complete, and the exact
+    # generated closing must retain its word floor and document coverage.
+    # A second dedupe scan is a no-residue assertion.
+    final_structure = _audit_final_structure(
+        full_text,
+        closing_docs,
+        enforce_citation_integrity=citation_integrity_enforced,
+    )
+    _deduped_check, residual_duplicate_citations = (
+        _dedupe_grouped_citation_identities(
+            full_text, display_lookup=display_lookup,
+        )
+    )
+    final_structure = _apply_residual_duplicate_gate(
+        final_structure,
+        residual_duplicate_citations,
+        citation_integrity_enforced,
+    )
+    final_structure_manifest = {
+        key: value
+        for key, value in final_structure.items()
+        if key != "text_without_marker"
+    }
+    if metrics:
+        metrics.set("writer_final_structure", final_structure_manifest)
+        metrics.set("writer_structure_retries_total", total_structure_retries)
+        metrics.set(
+            "writer_closing_model_retries_total",
+            total_closing_model_retries,
+        )
+        metrics.set(
+            "writer_structure_failure_records",
+            structure_failure_records[:20],
+        )
+    if not final_structure["ok"]:
+        ensure_dir(str(runs_path()))
+        failure_record = {
+            "schema_version": _WRITER_ARTIFACT_CONTRACT,
+            "execution_profile": _writer_execution_profile(),
+            "error": "final_writer_structure_validation_failed",
+            "final_structure": final_structure_manifest,
+            "generated_closing": closing_generated_audit,
+            "structure_retries": total_structure_retries,
+            "structure_failures": structure_failure_records,
+            "duplicate_citation_identities_removed": duplicate_citations_removed,
+        }
+        with open(
+            runs_path("writer_structure_failure.json"),
+            "w",
+            encoding="utf-8",
+        ) as f:
+            json.dump(failure_record, f, indent=2, ensure_ascii=False)
+        raise RuntimeError(
+            "final writer structure validation failed; refusing to write review"
+        )
+
+    full_text, shipped_freeze_audit = _assemble_frozen_sections(
+        accepted_sections
+    )
+    if final_structure["text_without_marker"] != full_text:
+        raise RuntimeError(
+            "closing-marker removal changed the frozen review surface"
+        )
+    cited_docs = _strict_cited_doc_ids(
+        full_text,
+        allowed_pairs=allowed_pairs,
+        display_lookup=display_lookup,
+    )
+    cited_docids = sorted(cited_docs)
 
     # v15.9 (#6): build citations.json provenance manifest AND, if
     # RRR_LINKIFY=1, rewrite in-text citations as markdown links pointing at
     # the source PDF at the right page. Runs BEFORE the final write so the
     # markdown that lands on disk is the linkified version when opted in.
-    full_text, citations_manifest = _emit_citations_manifest(
+    frozen_review_text = full_text
+    manifest_text, citations_manifest = _emit_citations_manifest(
         full_text, allowed_docs, display_lookup,
         pdf_paths_by_docid, pdf_page_offsets, dois_by_docid,
-        linkify=(os.environ.get("RRR_LINKIFY", "0") == "1"),
+        linkify=False,
     )
+    if manifest_text != frozen_review_text:
+        raise RuntimeError("citation manifest generation changed frozen prose")
     if citations_manifest:
         with open(runs_path("citations.json"), "w", encoding="utf-8") as f:
             json.dump(citations_manifest, f, indent=2, ensure_ascii=False)
         print(f"[Writer] citations.json written ({len(citations_manifest['citations'])} cites, "
               f"{citations_manifest['distinct_docs']} distinct docs)")
 
-    total_words = _count_words(full_text)
+    if os.environ.get("RRR_LINKIFY", "0") == "1":
+        linked_text, _linked_manifest = _emit_citations_manifest(
+            frozen_review_text,
+            allowed_docs,
+            display_lookup,
+            pdf_paths_by_docid,
+            pdf_page_offsets,
+            dois_by_docid,
+            linkify=True,
+        )
+        linked_path = runs_path("review_composed_linked.md")
+        linked_path.write_bytes(linked_text.encode("utf-8"))
+
+    total_words = _count_words(frozen_review_text)
 
     ensure_dir(str(runs_path()))
     out_path = runs_path("review_composed.md")
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(full_text)
+    out_path.write_bytes(frozen_review_text.encode("utf-8"))
+    output_sha256 = hashlib.sha256(out_path.read_bytes()).hexdigest()
+    expected_output_sha256 = _text_sha256(frozen_review_text)
+    if output_sha256 != expected_output_sha256:
+        raise RuntimeError("review file bytes differ from the frozen review")
+    full_text = frozen_review_text
 
     with open(runs_path("review_cited_docs.json"), "w", encoding="utf-8") as f:
         json.dump(cited_docids, f, indent=2)
+
+    shipped_surface_stats = _audit_citation_surface_contract(full_text)
+    shipped_source_parades = _count_source_parade_paragraphs(full_text)
+    writer_runtime_seconds = round(
+        time.perf_counter() - writer_started_at,
+        6,
+    )
 
     # v15.7: quality_manifest.json — surfaces every observable quality
     # signal the writer produced, plus snippets where applicable, so an
@@ -3789,10 +5809,33 @@ def compose_from_ledger(ledger_path=None, metrics=None):
     # decision stays one-shot at Stage 0 — but a transparent record of
     # what the writer detected and self-healed.
     quality_manifest = {
-        "schema_version": "v15.7",
+        "schema_version": _WRITER_ARTIFACT_CONTRACT,
+        "artifact_contract": _WRITER_ARTIFACT_CONTRACT,
+        "execution_profile": _writer_execution_profile(),
+        "citation_representation": _CITATION_REPRESENTATION_VERSION,
+        "post_acceptance_mutation_policy": (
+            _POST_ACCEPTANCE_MUTATION_POLICY
+        ),
+        "output_sha256": output_sha256,
+        "output_bytes": len(out_path.read_bytes()),
+        "body_checkpoint": {
+            "schema_version": _BODY_CHECKPOINT_SCHEMA_VERSION,
+            "path": body_checkpoint_path.name,
+            "artifact_sha256": body_checkpoint_artifact_sha256,
+            "body_sha256": body_checkpoint_payload["body_sha256"],
+            "ledger_sha256": ledger_sha256,
+            "reconstructs_exact_body": True,
+        },
+        "body_freeze": body_freeze_audit,
+        "marked_assembly_freeze": frozen_assembly_audit,
+        "shipped_assembly_freeze": shipped_freeze_audit,
+        "accepted_sections_shipped_byte_identical": True,
+        "writer_runtime_seconds": writer_runtime_seconds,
         "word_count": total_words,
         "distinct_docs_cited": len(cited_docids),
         "chunks_written": len(chunks),
+        "chunks_expected": expected_chunk_count,
+        "all_planned_sections_present": len(chunks) == expected_chunk_count,
         # Attribution gate (renderer-as-gate; coverage retry on mismatch)
         "attribution_mismatches": total_attribution_mismatches,
         "attribution_retries": total_attribution_retries,
@@ -3800,18 +5843,116 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         # Evidence-id integrity
         "unknown_evidence_ids": total_unknown_eids,
         "unknown_evidence_id_snippets": unknown_eid_snippets[:10],
+        "author_year_repair": {
+            **author_year_repair_stats,
+            "records": author_year_repair_records[:20],
+        },
         # Surface coherence (display-form leaks should now be 0 with the
         # ALLOWED CITATIONS prompt fix; tracked here to detect regressions)
-        "invalid_citations_removed": total_removed_citations,
+        "invalid_citations_removed": 0,
+        "invalid_citation_faults_detected": total_invalid_citation_faults,
+        "raw_citation_faults_detected": total_raw_citation_faults,
+        "citation_surface_candidate_faults": citation_surface_records[:20],
+        "shipped_citation_surface": shipped_surface_stats,
         "double_paren_collapsed": total_double_paren_collapsed,
+        "post_sentence_marker_reattachments": (
+            total_post_sentence_marker_reattachments
+        ),
         "adjacent_paren_merges": adjacent_paren_merges,
+        "duplicate_citation_identities_removed": duplicate_citations_removed,
+        "residual_duplicate_citation_identities": residual_duplicate_citations,
+        "source_parade_paragraphs": shipped_source_parades,
+        "author_led_openings_detected": total_author_led_openings,
+        # Structural completeness and closing lineage
+        "structure_retries": total_structure_retries,
+        "closing_model_retries": total_closing_model_retries,
+        "structure_failures": structure_failure_records,
+        "final_structure": final_structure_manifest,
+        "closing": {
+            "model_calls": 1 + total_closing_model_retries,
+            "maximum_model_calls": _MAX_CLOSING_MODEL_CALLS,
+            "first_pass_accepted": total_closing_model_retries == 0,
+            "retry_routes": closing_retry_routes,
+            "digest": closing_digest_stats,
+            "generated_words": closing_generated_audit["word_count"],
+            "generated_cited_doc_count": closing_generated_audit["cited_doc_count"],
+            "generated_cited_docs": closing_generated_audit["cited_docs"],
+            "generated_paragraph_count": closing_generated_audit["paragraph_count"],
+            "generated_complete": closing_generated_audit["structure_ok"],
+            "generated_within_word_ceiling": closing_generated_audit[
+                "closing_word_ceiling_ok"
+            ],
+            "generated_citation_occurrences": closing_generated_audit[
+                "closing_citation_occurrences"
+            ],
+            "generated_unique_citation_pairs": closing_generated_audit[
+                "closing_unique_citation_pairs"
+            ],
+            "generated_repeated_citation_pairs": closing_generated_audit[
+                "closing_repeated_citation_pairs"
+            ],
+            "generated_citation_repetition_ok": closing_generated_audit[
+                "closing_citation_repetition_ok"
+            ],
+            "words_before_redundancy": closing_words_before_redundancy,
+            "shipped_words": final_structure_manifest["closing"]["word_count"],
+            "shipped_cited_doc_count": final_structure_manifest["closing"]["cited_doc_count"],
+            "shipped_cited_docs": final_structure_manifest["closing"]["cited_docs"],
+            "shipped_paragraph_count": final_structure_manifest["closing"]["paragraph_count"],
+            "shipped_complete": final_structure_manifest["closing"]["structure_ok"],
+            "shipped_citation_occurrences": final_structure_manifest[
+                "closing"
+            ]["closing_citation_occurrences"],
+            "shipped_unique_citation_pairs": final_structure_manifest[
+                "closing"
+            ]["closing_unique_citation_pairs"],
+            "shipped_repeated_citation_pairs": final_structure_manifest[
+                "closing"
+            ]["closing_repeated_citation_pairs"],
+            "shipped_citation_repetition_ok": final_structure_manifest[
+                "closing"
+            ]["closing_citation_repetition_ok"],
+            "minimum_words": _MIN_CLOSING_WORDS,
+            "maximum_words": _MAX_CLOSING_WORDS,
+        },
         # Drop validators
         "zero_cite_paragraphs_dropped": len(zero_cite_dropped),
         "zero_cite_closing_kept": 1 if zc_kept_closing else 0,
         "redundancy_drops": len(redundancy_drops),
-        "style_sentences_removed": total_style_removed,
+        "redundancy_candidates": len(redundancy_candidates),
+        "style_sentences_removed": 0,
+        "style_violations_detected": len(final_style_violations),
+        "meta_commentary_detected": len(meta_removed),
+        "style_enforcement": style_stats,
+        "model_calls": {
+            "total_writer_calls": len(call_contracts),
+            "stitch_calls": 0,
+            "whole_review_style_calls": 0,
+            "closing_calls": 1 + total_closing_model_retries,
+        },
+        "candidate_transactions": {
+            "accepted_sections": len(chunks),
+            "rejected_candidates": len(structure_failure_records),
+            "candidate_rollbacks": len(structure_failure_records),
+            "model_retries": total_section_model_retries,
+            "retry_candidates_accepted": (
+                total_retry_candidates_accepted
+            ),
+            "sections_failed_after_retry": (
+                total_sections_failed_after_retry
+            ),
+            "retry_routes": dict(section_retry_routes),
+        },
+        "post_acceptance_mutations": {
+            "sentences_deleted": 0,
+            "stitch_rewrites": 0,
+            "style_rewrites": 0,
+            "redundancy_deletions": 0,
+            "citation_repairs": 0,
+            "paragraphs_deleted": 0,
+        },
         # Coverage fallback
-        "coverage_fallbacks": total_coverage_fallbacks,
+        "coverage_fallbacks": 0,
         "coverage_patches_dropped_at_final": n_patches_dropped,
         "coverage_patches_shipped_to_user": n_patches_kept,
         # Quote verification
@@ -3820,6 +5961,8 @@ def compose_from_ledger(ledger_path=None, metrics=None):
             "verified_real": quote_verify_stats.get("verified_real", 0),
             "fabricated_stripped": quote_verify_stats.get("fabricated_stripped", 0),
             "strand_guard_kept": quote_verify_stats.get("strand_guard_kept", 0),
+            "candidate_faults_detected": total_quote_faults,
+            "post_acceptance_mutation": False,
         },
         # Outline (carried up from Stage 0/1/2 for one-stop quality view)
         "outline": {
@@ -3837,44 +5980,112 @@ def compose_from_ledger(ledger_path=None, metrics=None):
         f"[Writer] quality_manifest.json written "
         f"(attribution_mismatches={total_attribution_mismatches}, "
         f"unknown_eids={total_unknown_eids}, "
-        f"display_leaks≈{total_removed_citations}, "
-        f"coverage_patches_shipped={n_patches_kept})"
+        f"raw_citation_faults={total_raw_citation_faults}, "
+        f"post_acceptance_mutations=0)"
     )
 
     print(f"[Writer] review_composed.md written ({total_words} words).")
     print(
         f"[Writer] stats: chunks={len(chunks)} distinct_docs={len(cited_docids)} "
-        f"removed={total_removed_citations} style_removed={total_style_removed} "
-        f"coverage_fallbacks={total_coverage_fallbacks} evidence_id_renders={total_evidence_id_renders} "
+        f"writer_calls={len(call_contracts)} evidence_id_renders={total_evidence_id_renders} "
+        f"marker_reattachments={total_post_sentence_marker_reattachments} "
+        f"author_year_repairs={author_year_repair_stats['replacements_accepted']} "
         f"double_paren_collapsed={total_double_paren_collapsed} author_led_openings={total_author_led_openings} "
-        f"redundancy_drops={len(redundancy_drops)} bracket_id_rewrites={total_bracket_id_rewrites} "
+        f"redundancy_candidates={len(redundancy_candidates)} source_parades={shipped_source_parades} "
         f"unknown_eids={total_unknown_eids} attribution_mismatches={total_attribution_mismatches} "
-        f"attribution_retries={total_attribution_retries}"
+        f"attribution_retries={total_attribution_retries} "
+        f"section_retries={total_section_model_retries} "
+        f"retries_accepted={total_retry_candidates_accepted} "
+        f"closing_model_retries={total_closing_model_retries} "
+        f"runtime_s={writer_runtime_seconds:.3f} "
+        f"post_acceptance_mutations=0"
     )
     if metrics:
         metrics.set("writer_stats", {
+            "artifact_contract": _WRITER_ARTIFACT_CONTRACT,
+            "execution_profile": _writer_execution_profile(),
+            "citation_representation": _CITATION_REPRESENTATION_VERSION,
+            "post_acceptance_mutation_policy": (
+                _POST_ACCEPTANCE_MUTATION_POLICY
+            ),
             "chunks_written": len(chunks),
             "distinct_docs_cited": len(cited_docids),
             "word_count": total_words,
-            "removed_citations": total_removed_citations,
-            "style_sentences_removed": total_style_removed,
-            "coverage_fallbacks": total_coverage_fallbacks,
+            "output_sha256": output_sha256,
+            "writer_runtime_seconds": writer_runtime_seconds,
+            "writer_model_calls": len(call_contracts),
+            "stitch_model_calls": 0,
+            "whole_review_style_model_calls": 0,
+            "post_acceptance_mutations": 0,
+            "body_checkpoint_artifact_sha256": (
+                body_checkpoint_artifact_sha256
+            ),
+            "body_checkpoint_sha256": body_checkpoint_payload[
+                "body_sha256"
+            ],
+            "body_freeze": body_freeze_audit,
+            "shipped_freeze": shipped_freeze_audit,
+            "raw_citation_faults": total_raw_citation_faults,
+            "invalid_citation_faults": total_invalid_citation_faults,
+            "quote_faults": total_quote_faults,
+            "rejected_candidates": len(structure_failure_records),
+            "candidate_rollbacks": len(structure_failure_records),
+            "section_model_retries": total_section_model_retries,
+            "retry_candidates_accepted": (
+                total_retry_candidates_accepted
+            ),
+            "sections_failed_after_retry": (
+                total_sections_failed_after_retry
+            ),
+            "section_retry_routes": dict(section_retry_routes),
+            "style_violations_detected": len(final_style_violations),
+            "meta_commentary_detected": len(meta_removed),
+            "citation_surface_candidate_faults": len(
+                citation_surface_records
+            ),
+            "post_sentence_marker_reattachments": (
+                total_post_sentence_marker_reattachments
+            ),
+            "source_parade_paragraphs": shipped_source_parades,
+            "redundancy_candidates": len(redundancy_candidates),
+            "removed_citations": 0,
+            "style_sentences_removed": 0,
+            "coverage_fallbacks": 0,
             "evidence_id_renders": total_evidence_id_renders,
+            "author_year_repair": {
+                **author_year_repair_stats,
+                "records": author_year_repair_records[:20],
+            },
             "double_paren_collapsed": total_double_paren_collapsed,
             "author_led_openings": total_author_led_openings,
             "redundancy_drops": len(redundancy_drops),
-            "bracket_id_rewrites": total_bracket_id_rewrites,
+            "bracket_id_rewrites": 0,
             "unknown_eids": total_unknown_eids,
             "attribution_mismatches": total_attribution_mismatches,
             "attribution_retries": total_attribution_retries,
+            "structure_retries": total_structure_retries,
+            "closing_model_retries": total_closing_model_retries,
+            "duplicate_citation_identities_removed": duplicate_citations_removed,
+            "final_structure": final_structure_manifest,
             "section_claims": section_claims,
             "section_coverage": section_coverage,
         })
         metrics.set("writer_mode", "chunked")
-        metrics.inc("writer_removed_citations", total_removed_citations)
-        metrics.inc("writer_style_sentences_removed", total_style_removed)
+        metrics.set(
+            "writer_execution_profile", _writer_execution_profile()
+        )
+        metrics.inc("writer_removed_citations", 0)
+        metrics.inc("writer_style_sentences_removed", 0)
         metrics.inc("writer_evidence_id_renders", total_evidence_id_renders)
+        metrics.set(
+            "writer_allowed_author_year_repairs",
+            author_year_repair_stats["replacements_accepted"],
+        )
         metrics.inc("writer_double_paren_collapsed", total_double_paren_collapsed)
+        metrics.inc(
+            "writer_post_sentence_marker_reattachments",
+            total_post_sentence_marker_reattachments,
+        )
         metrics.inc("writer_author_led_openings", total_author_led_openings)
         # v15.7: always emit attribution counters (even at 0) so the 9-battery
         # can distinguish "fired with zero hits" from "never fired".
@@ -3888,8 +6099,7 @@ def compose_from_ledger(ledger_path=None, metrics=None):
                 "writer_attribution_mismatch_snippets",
                 attribution_mismatch_snippets[:20],
             )
-        if total_bracket_id_rewrites:
-            metrics.inc("writer_bracket_id_rewrites", total_bracket_id_rewrites)
+        metrics.inc("writer_bracket_id_rewrites", 0)
 
     return str(out_path)
 

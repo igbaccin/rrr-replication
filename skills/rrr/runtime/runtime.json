@@ -1,6 +1,6 @@
 {
   "distribution": "rrr-poc",
-  "version": "15.17.0",
-  "wheel": "rrr_poc-15.17.0-py3-none-any.whl",
-  "sha256": "44436a6e13d93cec6dc0f83d26e9089efd82fca39612fc349be55934fd6b327e"
+  "version": "15.19.0",
+  "wheel": "rrr_poc-15.19.0-py3-none-any.whl",
+  "sha256": "6b4213b65d32d3cf2b9ac93f7fee7d02cddd9c03f32c89ecd180faacbd8e4495"
 }
