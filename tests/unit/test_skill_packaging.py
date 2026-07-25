@@ -117,17 +117,29 @@ class SkillPackagingTests(unittest.TestCase):
             (PLUGIN_ROOT / "scripts" / "bootstrap_rrr.py").read_bytes(),
         )
 
-    def test_website_wheel_matches_the_plugin_bundle(self):
-        runtime = json.loads(
+    def test_local_distribution_is_versioned_independently_from_hosted(self):
+        """The local product and the hosted runtimes are separate profiles.
+
+        They were once the same wheel, synced from dist/ into the plugin. They
+        are now versioned independently -- vlm for local models, vcx and vcl
+        for the hosted agents -- because they are different writers with
+        different prose contracts, not successive versions of one thing.
+        """
+        local_wheels = sorted((ROOT / "dist").glob("rrr_poc-*.whl"))
+        self.assertEqual(1, len(local_wheels), "expected exactly one local wheel")
+        local_wheel = local_wheels[0]
+        local_hash = hashlib.sha256(local_wheel.read_bytes()).hexdigest()
+        checksum = (
+            ROOT / "dist" / f"{local_wheel.name}.sha256"
+        ).read_text(encoding="ascii")
+        self.assertEqual(checksum, f"{local_hash}  {local_wheel.name}\n")
+
+        hosted = json.loads(
             (PLUGIN_ROOT / "runtime" / "runtime.json").read_text(encoding="utf-8")
         )
-        plugin_wheel = PLUGIN_ROOT / "runtime" / runtime["wheel"]
-        website_wheel = ROOT / "dist" / runtime["wheel"]
-        self.assertEqual(website_wheel.read_bytes(), plugin_wheel.read_bytes())
-        checksum = (ROOT / "dist" / f"{runtime['wheel']}.sha256").read_text(
-            encoding="ascii"
-        )
-        self.assertEqual(checksum, f"{runtime['sha256']}  {runtime['wheel']}\n")
+        # The local wheel must not be silently republished as the hosted
+        # runtime: that is how a local-only fix would reach Codex untested.
+        self.assertNotEqual(local_wheel.name, hosted["wheel"])
 
     def test_bootstrap_reinstalls_a_changed_wheel_with_the_same_version(self):
         bootstrap_path = PLUGIN_ROOT / "scripts" / "bootstrap_rrr.py"

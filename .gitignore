@@ -35,3 +35,6 @@
 /.vscode/
 .DS_Store
 *.log
+
+# Python build artifacts
+/build/

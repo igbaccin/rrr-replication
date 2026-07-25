@@ -1,0 +1,20 @@
+{
+  "condition": "phase_g_qwen3_1_7b_refusal_near",
+  "model": "qwen3:1.7b",
+  "n": 1,
+  "success": 1,
+  "writer_failed": 0,
+  "checker_failed": 0,
+  "success_rate": 1.0,
+  "zero_hard_e1_e5_among_success": 1,
+  "stub_closings_among_success": 0,
+  "e_events": {
+    "e1": 0,
+    "e2": 0,
+    "e3": 0,
+    "e4": 0,
+    "e5": 0,
+    "e3_soft": 2
+  },
+  "mean_words_success": 1684
+}

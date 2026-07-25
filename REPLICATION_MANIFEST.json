@@ -1,6 +1,6 @@
 {
   "schema_version": "rrr-replication-v1",
-  "package_status": "corrected_results_and_h3_synchronized_notebooklm_pending",
+  "package_status": "vlm_2_0_local_battery_deposited_manuscript_exhibits_pending",
   "prepared_at_utc": "2026-07-22T16:03:00Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History",
@@ -11,7 +11,7 @@
     "archival_base_commit": "3574e35cd988c6c1d0b0f9c3ae95ad4455fbbfea",
     "production_repository": "igbaccin/rrr-poc",
     "production_commit": null,
-    "production_commit_status": "to be recorded after the cleaned public history is established"
+    "production_commit_status": "vlm.2.0 shipped to rrr-poc main"
   },
   "population": {
     "classified_attempts": 2425,
@@ -87,5 +87,23 @@
     "historical_rrr_skill_h3": "Stored runs used the superseded writer and were replaced by the corrected H3 condition.",
     "cost_latency_figure": "Corrected replay timings are not comparable with original full-pipeline timings.",
     "corpus_pdfs": "Most source documents are copyrighted and must be obtained by the replicator."
-  }
+  },
+  "current_local_battery": {
+    "profile_version": "vlm.2.0",
+    "distribution_version": "2.0.0+lm",
+    "path": "results/local_battery_vlm_2_0",
+    "code_fingerprint": "7297d94125ca8c76bcd3ce0bea7f136b1e1f57898d06399605febe2deb5985d4",
+    "total_items": 941,
+    "success": 846,
+    "checker_failed": 61,
+    "writer_failed": 34,
+    "reference_model": {
+      "name": "mistral-small:24b",
+      "success": "647/660",
+      "zero_hard_e1_e5_among_success": 631,
+      "stub_closings": 0
+    },
+    "note": "Scored outcomes computed directly from the 941 outputs. The paper exhibit suite in results/corrected/ is the prior (v17) generation; regenerating its writer-dependent tables from this battery is a pending author step because 95 honest weak-model failures need a treatment decision."
+  },
+  "production_repository": "igbaccin/rrr-poc"
 }
