@@ -1,6 +1,6 @@
 {
   "schema_version": "rrr-replication-v1",
-  "package_status": "vlm_2_0_local_battery_deposited_manuscript_exhibits_pending",
+  "package_status": "vlm_2_1_local_battery_deposited_manuscript_exhibits_pending",
   "prepared_at_utc": "2026-07-22T16:03:00Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History",
@@ -89,21 +89,30 @@
     "corpus_pdfs": "Most source documents are copyrighted and must be obtained by the replicator."
   },
   "current_local_battery": {
-    "profile_version": "vlm.2.0",
-    "distribution_version": "2.0.0+lm",
-    "path": "results/local_battery_vlm_2_0",
+    "profile_version": "vlm.2.1",
+    "distribution_version": "2.0.1+lm",
+    "path": "results/local_battery_vlm_2_1",
     "code_fingerprint": "7297d94125ca8c76bcd3ce0bea7f136b1e1f57898d06399605febe2deb5985d4",
     "total_items": 941,
-    "success": 846,
+    "success": 887,
     "checker_failed": 61,
     "writer_failed": 34,
     "reference_model": {
       "name": "mistral-small:24b",
-      "success": "647/660",
-      "zero_hard_e1_e5_among_success": 631,
+      "success": "653/660",
+      "zero_hard_e1_e5_among_success": 653,
       "stub_closings": 0
     },
-    "note": "Scored outcomes computed directly from the 941 outputs. The paper exhibit suite in results/corrected/ is the prior (v17) generation; regenerating its writer-dependent tables from this battery is a pending author step because 95 honest weak-model failures need a treatment decision."
+    "note": "Scored outcomes computed directly from the 941 outputs. The paper exhibit suite in results/corrected/ is the prior (v17) generation; regenerating its writer-dependent tables from this battery is a pending author step because 95 honest weak-model failures need a treatment decision.",
+    "generation": {
+      "by": "vlm.2.0",
+      "code_fingerprint": "7297d94125ca8c76bcd3ce0bea7f136b1e1f57898d06399605febe2deb5985d4"
+    },
+    "citation_normalization": {
+      "by": "vlm.2.1",
+      "fingerprint": "105396b8e35e3fb024cd479fca5e9d0613f6de9e9af7838f9d6b2458d3711d99",
+      "note": "deterministic final-assembly doc-id surface normalizer applied post-generation to the frozen vlm.2.0 reviews; verified 0 prose changes, 0 checker regressions across 941 runs"
+    }
   },
   "production_repository": "igbaccin/rrr-poc"
 }
