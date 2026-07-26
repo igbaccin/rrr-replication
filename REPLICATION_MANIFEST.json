@@ -1,17 +1,17 @@
 {
   "schema_version": "rrr-replication-v1",
-  "package_status": "vlm_2_1_local_battery_deposited_manuscript_exhibits_pending",
-  "prepared_at_utc": "2026-07-22T16:03:00Z",
+  "package_status": "vlm_2_1_results_and_exhibits_deposited_manuscript_prose_pending",
+  "prepared_at_utc": "2026-07-26T10:44:40Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History",
     "author": "Igor Martins"
   },
   "source": {
     "archival_repository": "igbaccin/rrr-poc-history",
-    "archival_base_commit": "3574e35cd988c6c1d0b0f9c3ae95ad4455fbbfea",
+    "archival_base_commit": "f475fbc8385b36f6e507d1b2dc7b32e1790899e1",
     "production_repository": "igbaccin/rrr-poc",
-    "production_commit": null,
-    "production_commit_status": "vlm.2.0 shipped to rrr-poc main"
+    "production_commit": "dcb53b73c2570791197b0b313865fb2b0b1cf5af",
+    "production_commit_status": "vlm.2.1 shipped to rrr-poc main"
   },
   "population": {
     "classified_attempts": 2425,
@@ -22,21 +22,21 @@
     "main_rrr_scored_reviews": 100
   },
   "accepted_results": {
-    "path": "results/corrected",
+    "path": "results/local_battery_vlm_2_1/exhibits",
     "manifest": {
-      "path": "results/corrected/manifest.json",
-      "bytes": 20817,
-      "sha256": "b097550657fa9e0804b3ed29433bc1e8ad893299cac4f260ee07f848a223744c"
+      "path": "results/local_battery_vlm_2_1/exhibits/manifest.json",
+      "bytes": 22834,
+      "sha256": "9ddc1351a491156a060a83ed1c163b1b750f3dbbf3b02fa722a61311046af869"
     },
     "analysis_manifest": {
-      "path": "results/corrected/analysis_source/manifest.json",
-      "bytes": 6279,
-      "sha256": "8834cf4bde4f7ce01f19782a657db91d3a2b951595db937df0a95af01d71c1a2"
+      "path": "results/local_battery_vlm_2_1/exhibits/analysis_source/manifest.json",
+      "bytes": 6225,
+      "sha256": "4bb56fefe3e9e3675cd1e94987a04b1220f18a34f2d61d25c9f444718a219d4a"
     },
     "validation": {
-      "path": "results/corrected/analysis_source/validation.json",
-      "bytes": 5993,
-      "sha256": "61ebb6fdce997674442c99a8fed052aeda1610e1c306e1a7f5e17f1938592a6a"
+      "path": "results/local_battery_vlm_2_1/exhibits/analysis_source/validation.json",
+      "bytes": 6321,
+      "sha256": "ec6108086129edd11bbe51cb83b6e72d49797f4d6d522d252fd87f5cf1be55c5"
     }
   },
   "replay_archive": {
@@ -81,6 +81,7 @@
     }
   ],
   "pending": {
+    "manuscript_prose": "The accepted vlm.2.1 numerical results and artifacts are deposited. Prose integration remains the author's next step.",
     "notebooklm": "A one-run pilot is deposited as provisional. The final human-run protocol is pending."
   },
   "excluded": {
@@ -104,7 +105,7 @@
       "zero_hard_note": "638 of 653 successes are integrity-clean. The 15 that are not are validation-DISABLED releases (citation validation bypassed by design). Validation-ENABLED subset: 553/560 success, all 553 zero-hard. Main condition phase_a_main: 99/100.",
       "stub_closings": 0
     },
-    "note": "Scored outcomes computed directly from the 941 outputs. Failures: 20 checker-flagged + 34 writer = 54. The paper exhibit suite in results/corrected/ is the prior (v17) generation; regenerating its writer-dependent tables from this battery is a pending author step because the 54 honest failures (mostly weak-model) need a treatment decision.",
+    "note": "Outcomes are computed from 941 writer-stage attempts: 887 success, 20 checker-flagged, and 34 writer failures. The accepted paper artifacts are deposited under results/local_battery_vlm_2_1/exhibits/. The prior v17 bundle remains under results/corrected/ for historical comparison.",
     "generation": {
       "by": "vlm.2.0",
       "code_fingerprint": "7297d94125ca8c76bcd3ce0bea7f136b1e1f57898d06399605febe2deb5985d4"
@@ -112,7 +113,7 @@
     "citation_normalization": {
       "by": "vlm.2.1",
       "fingerprint": "105396b8e35e3fb024cd479fca5e9d0613f6de9e9af7838f9d6b2458d3711d99",
-      "note": "deterministic final-assembly doc-id surface normalizer applied post-generation to the frozen vlm.2.0 reviews; verified 0 prose changes, 0 checker regressions across 941 runs"
+      "note": "Deterministic final-assembly document-ID normalizer applied to 907 produced vlm.2.0 reviews. It changes 49 review files; per_run.csv records 41 checker-failed to success transitions."
     },
     "failures_total": 54,
     "denominator_note": "Per-model counts here are WRITER-STAGE: only attempts that produced a writer ledger entered the 941-item battery. Attempts that refused or failed before the writer are preserved separately as the 1,184 pre-writer terminals. End-to-end model rates must recombine the two (941 writer replays + 1,184 pre-writer + 300 baselines = 2,425 classified)."

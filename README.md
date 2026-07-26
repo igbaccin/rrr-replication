@@ -76,9 +76,11 @@ continue to run on the user's computer.
 
 ## Evidence
 
-In the reported evaluation, full RRR produced 100 clean reviews in 100 runs.
-The released reviews contained no E1 through E5 citation failures under the
-automated checker.
+In the main condition, full RRR produced 99 integrity-clean reviews in 100
+runs. The checker rejected one review containing a conflated author-year
+attribution. Across the validation-enabled evaluation, all 553 released
+reviews were free of E1 through E5 citation failures under the automated
+checker.
 
 | Code | Failure checked |
 | --- | --- |

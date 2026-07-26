@@ -1,8 +1,8 @@
 {
   "schema_version": "corrected-paper-analysis-v1",
-  "generated_at_utc": "2026-07-26T09:56:20.312680+00:00",
+  "generated_at_utc": "2026-07-26T10:48:31.375005+00:00",
   "generator": "scripts/build_corrected_results_change_map_vlm21.py",
-  "generator_sha256": "72375d2a267001c57f3a2617a257362650a9c9696a9cbbab2378706cc63a5ef7",
+  "generator_sha256": "de10946f328287ed7c0b1834b9066a544ff152f7becf154b2abb441463941b31",
   "replay_manifest": "replays/writer_correction_260720/bundle/manifest.json",
   "replay_manifest_sha256": "f9fa382c941a0093bff590aeb3024d57169e431268dc0d67b81ad821a73955e7",
   "corrected_output_root": "pod_outputs/battery_vlm21_materialized",
@@ -118,5 +118,5 @@
     "README.md",
     "manifest.json"
   ],
-  "report": "revision_notes/change_map_vlm21_2026-07-25.md"
+  "report": "revision_notes/corrected_results_change_map.md"
 }

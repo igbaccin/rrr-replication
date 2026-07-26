@@ -67,4 +67,8 @@ writer. They do not enter the accepted analytical bundle.
 
 ## NotebookLM status
 
-`results/external_comparisons/notebooklm_pilot/` preserves a single provisional pilot, its runbook, and its scoring sheet. The final human-run NotebookLM protocol remains pending. The pilot is labelled provisional in `results/corrected/tables/T_workflow_comparison.csv` and should not be interpreted as a completed comparison arm.
+`results/external_comparisons/notebooklm_pilot/` preserves a single provisional
+pilot, its runbook, and its scoring sheet. The final human-run NotebookLM
+protocol remains pending. The pilot is labelled provisional in
+`results/local_battery_vlm_2_1/exhibits/tables/T_workflow_comparison.csv` and
+does not constitute a completed comparison arm.

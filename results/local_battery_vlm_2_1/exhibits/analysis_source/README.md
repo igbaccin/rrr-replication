@@ -1,16 +1,14 @@
 # Corrected paper analysis source
 
-This directory contains the paired July and corrected writer results used to
-map changes before manuscript revision. The full join key is `(batch,
-condition, run)`. The frozen July paper bundle remains under
-`private/artifacts/pre_correction_snapshot/`.
+This directory contains the machine-readable analytical source used to build
+the vlm.2.1 paper tables and figures. The full join key is `(batch, condition,
+run)`.
 
-Rebuild from the repository root with:
+`validation.json` records 21 passing checks over the 941 writer-stage attempts,
+1,184 preserved pre-writer outcomes, and 300 independent baselines. The checks
+also require every model-outcome row to account for every attempted run.
 
-```powershell
-.\.venv\Scripts\python.exe scripts\build_corrected_results_change_map.py
-```
-
-`validation.json` records the required count and historical-reproduction
-checks. The narrative change map is
-`revision_notes/corrected_results_change_map.md`.
+The original source ledgers contain copyrighted corpus material and remain in
+the private project history. The reviewer package deposits the validated
+analytical source, the raw generated reviews, the normalization reproducer, and
+the complete generated tables and figures.

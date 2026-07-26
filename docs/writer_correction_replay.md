@@ -20,7 +20,11 @@ The analytical source also preserves 1,184 pre-writer terminal outcomes and 300 
 
 Each replay begins with `review_ledger.json`. The archive retains retrieval, document admission, retained passages, working claims, clusters, outline selection, topic-fit decisions, and original run variation. It excludes the original generated review, writer metrics, citation output, quality output, checker results, and completion status from the corrected input tree.
 
-Each corrected run writes a new review, citation record, writer-call contract, prompt and response capture, metrics, completion status, and run manifest. The original run manifest is copied under the explicit name `source_run_manifest.json`.
+Each successful or checker-flagged corrected run writes a new review, citation
+record, writer-call contract, prompt and response capture, metrics, completion
+status, and run manifest. The 34 writer failures retain their terminal records
+and produce no review. The original run manifest is copied under the explicit
+name `source_run_manifest.json`.
 
 ## Replay archive
 
@@ -86,6 +90,12 @@ python scripts/audit_corrected_writer_replay.py \
 
 ## Interpretation
 
-The new reviews are stochastic regenerations from fixed upstream ledgers. Comparisons between original and corrected reviews map the consequences of the repair. They do not identify a causal effect because the writer output was regenerated stochastically.
+The 907 produced reviews are stochastic regenerations from fixed upstream
+ledgers. Comparisons between original and corrected reviews map the
+consequences of the repair. They do not identify a causal effect because the
+writer output was regenerated stochastically.
 
-The accepted replay eliminates every citation surface outside the selected call packets across all 941 replayed runs. `results/corrected/analysis_source/validation.json` records the complete automated validation.
+The accepted replay eliminates every citation surface outside the selected
+call packets in the 907 produced reviews. The remaining 34 attempts are
+recorded as writer failures. The complete automated validation is deposited at
+`results/local_battery_vlm_2_1/exhibits/analysis_source/validation.json`.

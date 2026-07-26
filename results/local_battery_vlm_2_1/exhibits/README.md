@@ -1,22 +1,13 @@
-# vlm.2.1 paper exhibits (regenerated)
+# vlm.2.1 paper artifacts
 
-Tables and figures regenerated from the vlm.2.1 battery via the standard
-builders (`build_corrected_results_change_map` + `build_corrected_paper_artifacts`),
-run on the materialized normalized tree. Every value was cross-checked against
-`../per_run.csv` before deposit.
+This bundle uses 941 writer-stage attempts, 300 independent baselines, and 1,184 preserved pre-writer outcomes. Of the writer-stage attempts, 907 produced reviews and 34 ended in writer failure. Writer-dependent exhibits are regenerated from `analysis_source/`.
 
-Key changes vs the v17 exhibits (in `results/corrected/`, kept for reference):
-- T1 main integrity: 100/100 -> 99/100 zero-E1-E5; citations/run 31.8 -> 47.7;
-  body words 1682 -> 2064 (paper WORD_RE metric).
-- T2/robustness: f1 98->100, f2 95->98, gender 29->30, colonial 28->29.
-- Validation-gate ablation (B): 95% -> 85% clean (the denser-citing writer
-  leaks more when validation is off; the full-RRR vs ablation contrast widens
-  from 5 to 14 points).
-- F5 model ladder: attempts denominator, recombined with the 1,184 pre-writer
-  terminals (the correct end-to-end view); large weak-model gains (qwen3:4b,
-  mistral:7b).
+The analytical source passes 21 checks. This artifact bundle passes ten additional checks, including complete attempted-run accounting across all 60 model-by-probe rows and all 33 writer failures in the model ladder. T3 is copied from the frozen bundle because it uses the independent C and C2 baselines.
 
-Writer-independent exhibits (B2/C/C2 baselines, H arms, H3, corpus size,
-refusal calibration) carry over unchanged.
+The historical H3 condition is excluded because it used the original writer. Its corrected replacement contains ten completed and scored runs, all free of E1--E5 under the common checker. The cost and latency figure is omitted until a comparable timing construction is defined.
 
-These are DATA artifacts. Prose integration into the manuscript is the author's.
+Rebuild from the repository root with:
+
+```powershell
+python scripts/build_corrected_paper_artifacts_vlm21.py
+```
