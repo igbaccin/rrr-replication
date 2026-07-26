@@ -7,18 +7,18 @@ equivalent to in-writer with 0 prose-content changes and 0 checker regressions
 across all 941 runs). It holds the scored outcomes computed directly from the
 reviews: `summary.json` (overall, per-model, per-condition), `per_run.csv`, and
 `conditions/*.json`. Headline: 887/941 success; mistral-small:24b 653/660
-(99%), all zero-hard-E1-E5 among success, zero stub closings. Weak models fail
+(99%), zero stub closings. Integrity-clean (zero hard E1-E5): 638 of 653 successes; the 15 non-clean successes are validation-DISABLED releases (bypass by design). Validation-ENABLED subset: 553/560, all 553 clean; main condition 99/100. Weak models fail
 more than the strong ladder because the citation-integrity checker fails
-malformed citations instead of shipping them; report the ladder separately.
+malformed citations instead of shipping them. NOTE ON DENOMINATORS: per-model counts here are writer-stage (attempts that reached the writer). Attempts that refused or failed earlier are the separate 1,184 pre-writer terminals; end-to-end ladder rates must recombine the two. So e.g. qwen3:0.6b 64/87 is 'clean of those that reached the writer', not an overall success rate.
 
-`corrected/` is the PRIOR (v17) generation's full paper exhibit suite. — all
+`corrected/` is the PRIOR (v17) generation's full paper exhibit suite — all
 tables and figures. The new battery supersedes only its writer-dependent cells
 (integrity, conditions, citation taxonomy, local-model outcomes, word counts).
 Its writer-independent exhibits (controlled staircase baselines, refusal
 calibration, corpus size, stability, the H3 Claude comparison) are unaffected.
 Regenerating the writer-dependent exhibits from the new battery is a pending
 analytical step: the exhibit builder requires every replay to be "success", and
-the new battery has 95 honest weak-model failures whose treatment in the paper
+the new battery has 54 honest failures (20 checker-flagged + 34 writer) whose treatment in the paper
 is an author decision.
 
 

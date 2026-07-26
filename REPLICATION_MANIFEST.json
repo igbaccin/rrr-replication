@@ -95,15 +95,16 @@
     "code_fingerprint": "7297d94125ca8c76bcd3ce0bea7f136b1e1f57898d06399605febe2deb5985d4",
     "total_items": 941,
     "success": 887,
-    "checker_failed": 61,
+    "checker_failed": 20,
     "writer_failed": 34,
     "reference_model": {
       "name": "mistral-small:24b",
       "success": "653/660",
-      "zero_hard_e1_e5_among_success": 653,
+      "zero_hard_e1_e5_among_success": 638,
+      "zero_hard_note": "638 of 653 successes are integrity-clean. The 15 that are not are validation-DISABLED releases (citation validation bypassed by design). Validation-ENABLED subset: 553/560 success, all 553 zero-hard. Main condition phase_a_main: 99/100.",
       "stub_closings": 0
     },
-    "note": "Scored outcomes computed directly from the 941 outputs. The paper exhibit suite in results/corrected/ is the prior (v17) generation; regenerating its writer-dependent tables from this battery is a pending author step because 95 honest weak-model failures need a treatment decision.",
+    "note": "Scored outcomes computed directly from the 941 outputs. Failures: 20 checker-flagged + 34 writer = 54. The paper exhibit suite in results/corrected/ is the prior (v17) generation; regenerating its writer-dependent tables from this battery is a pending author step because the 54 honest failures (mostly weak-model) need a treatment decision.",
     "generation": {
       "by": "vlm.2.0",
       "code_fingerprint": "7297d94125ca8c76bcd3ce0bea7f136b1e1f57898d06399605febe2deb5985d4"
@@ -112,7 +113,9 @@
       "by": "vlm.2.1",
       "fingerprint": "105396b8e35e3fb024cd479fca5e9d0613f6de9e9af7838f9d6b2458d3711d99",
       "note": "deterministic final-assembly doc-id surface normalizer applied post-generation to the frozen vlm.2.0 reviews; verified 0 prose changes, 0 checker regressions across 941 runs"
-    }
+    },
+    "failures_total": 54,
+    "denominator_note": "Per-model counts here are WRITER-STAGE: only attempts that produced a writer ledger entered the 941-item battery. Attempts that refused or failed before the writer are preserved separately as the 1,184 pre-writer terminals. End-to-end model rates must recombine the two (941 writer replays + 1,184 pre-writer + 300 baselines = 2,425 classified)."
   },
   "production_repository": "igbaccin/rrr-poc"
 }

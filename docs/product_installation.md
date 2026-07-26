@@ -164,7 +164,7 @@ default.
 ### Install RRR
 
 ```bash
-python -m pip install https://raw.githubusercontent.com/igbaccin/rrr-replication/main/dist/rrr_poc-15.19.0-py3-none-any.whl
+python -m pip install "git+https://github.com/igbaccin/rrr-replication.git"
 ```
 
 Install and start Ollama using its platform-specific installer. Download the
