@@ -1,42 +1,47 @@
 {
   "schema_version": "rrr-replication-v1",
-  "package_status": "corrected_results_and_h3_synchronized_notebooklm_pending",
-  "prepared_at_utc": "2026-07-22T16:03:00Z",
+  "package_status": "vlm_2_1_and_completed_external_comparisons_synchronized",
+  "prepared_at_utc": "2026-08-03T15:58:09Z",
   "paper": {
-    "title": "Retrieval-Restricted Reasoning: A Proof of Concept for Adapting Language Models to Economic History",
+    "title": "Retrieval-Restricted Reasoning: Supporting Scholarly Synthesis with Language Models",
     "author": "Igor Martins"
   },
   "source": {
     "archival_repository": "igbaccin/rrr-poc-history",
-    "archival_base_commit": "3574e35cd988c6c1d0b0f9c3ae95ad4455fbbfea",
+    "archival_base_commit": "f475fbc8385b36f6e507d1b2dc7b32e1790899e1",
+    "accepted_profile": "vlm.2.1",
     "production_repository": "igbaccin/rrr-poc",
     "production_commit": null,
-    "production_commit_status": "to be recorded after the cleaned public history is established"
+    "production_commit_status": "The public product repository is outside this results synchronization and does not carry explicit NotebookLM result records."
   },
   "population": {
     "classified_attempts": 2425,
     "corrected_writer_replays": 941,
+    "produced_reviews": 907,
+    "writer_failures": 34,
     "preserved_independent_baselines": 300,
     "preserved_pre_writer_terminals": 1184,
     "main_rrr_attempts": 100,
-    "main_rrr_scored_reviews": 100
+    "main_rrr_scored_reviews": 100,
+    "main_rrr_clean_reviews": 99,
+    "main_rrr_parsed_citations": 4767
   },
   "accepted_results": {
     "path": "results/corrected",
     "manifest": {
       "path": "results/corrected/manifest.json",
-      "bytes": 20817,
-      "sha256": "b097550657fa9e0804b3ed29433bc1e8ad893299cac4f260ee07f848a223744c"
+      "bytes": 20896,
+      "sha256": "a63ea7c98b56ce9f7657c2c64ccb54961ba6a2f3469c2124c762f4b7e48a1fcb"
     },
     "analysis_manifest": {
       "path": "results/corrected/analysis_source/manifest.json",
-      "bytes": 6279,
-      "sha256": "8834cf4bde4f7ce01f19782a657db91d3a2b951595db937df0a95af01d71c1a2"
+      "bytes": 6225,
+      "sha256": "01cf4830cba9cf9aec7eb1ea01370e25d064f7771bd0736d5e0932e5366e93cb"
     },
     "validation": {
       "path": "results/corrected/analysis_source/validation.json",
-      "bytes": 5993,
-      "sha256": "61ebb6fdce997674442c99a8fed052aeda1610e1c306e1a7f5e17f1938592a6a"
+      "bytes": 6321,
+      "sha256": "22658885b1e3709e5238bbe0fd15129a499b76e0ad143586a991d0611298f580"
     }
   },
   "replay_archive": {
@@ -80,8 +85,58 @@
       "sha256": "e3f5eaa7176b010c73ce83896937eb2ff4154ea3598e7f06a4428ace7153bab6"
     }
   ],
-  "pending": {
-    "notebooklm": "A one-run pilot is deposited as provisional. The final human-run protocol is pending."
+  "notebooklm_comparison": {
+    "workflow": "NotebookLM grounded chat",
+    "path": "results/external_comparisons/notebooklm",
+    "attempts": 5,
+    "reviews": 5,
+    "interface_citation_chips": 176,
+    "copied_page_looking_references": 178,
+    "page_claims_checked": 5,
+    "page_claims_supported": 3,
+    "common_checker_status": "unavailable because the exported record does not bind each citation surface to both document and page",
+    "files": [
+      {
+        "path": "results/external_comparisons/notebooklm/RUNBOOK.md",
+        "bytes": 4389,
+        "sha256": "2db7fda2f7646b953a97ff9c09b81f61f7e4c62d7d01829b8a55c57a77f46f7b"
+      },
+      {
+        "path": "results/external_comparisons/notebooklm/run_01.md",
+        "bytes": 9182,
+        "sha256": "6ef94047318737176c88a52d98bcfe77571834e0ab54dd223efa893eee717384"
+      },
+      {
+        "path": "results/external_comparisons/notebooklm/run_02.md",
+        "bytes": 9196,
+        "sha256": "d5bf1f57c86bddbed36c9bd7eceda99aebbf841e6a859d9be6f06e8a69ba49ae"
+      },
+      {
+        "path": "results/external_comparisons/notebooklm/run_03.md",
+        "bytes": 9864,
+        "sha256": "ad80c3ca853935ac9c5e978b49936125ea1de7d00dc4b9a45a53aff40961198e"
+      },
+      {
+        "path": "results/external_comparisons/notebooklm/run_04.md",
+        "bytes": 7148,
+        "sha256": "90a0dd3a8bf2d8d88da269a1fa009178f26c8e558b15031df103c30b464365ce"
+      },
+      {
+        "path": "results/external_comparisons/notebooklm/run_05.md",
+        "bytes": 9209,
+        "sha256": "edd77adaddd356b4913e6a76abc3668357678dafe5eff5f9f31a432927423e82"
+      },
+      {
+        "path": "results/external_comparisons/notebooklm/scoring_sheet.csv",
+        "bytes": 809,
+        "sha256": "4fa4daa36f7004ddbcd63146cd866db3fdfc430a4070a21eae70956c3e84ef1c"
+      },
+      {
+        "path": "results/external_comparisons/notebooklm/verification_sample.md",
+        "bytes": 2021,
+        "sha256": "a8c64ff95952c1ec846ffa49f036c4fd8e707e99536de0eeeee87b3748feb1b2"
+      }
+    ]
   },
   "excluded": {
     "historical_rrr_skill_h3": "Stored runs used the superseded writer and were replaced by the corrected H3 condition.",

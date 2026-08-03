@@ -37,7 +37,7 @@ exhibits under `reproduced_artifacts/`.
 | `results/corrected/figures/` | Corrected figures in PDF and PNG formats |
 | `results/corrected/external_comparisons/rrr_skill/` | Accepted corrected H3 result record |
 | `results/replay_inputs/` | Compressed frozen ledgers for the corrected writer replays |
-| `results/external_comparisons/` | Completed Claude Code summaries and the provisional NotebookLM pilot record |
+| `results/external_comparisons/` | Completed Claude Code summaries and five-run NotebookLM record |
 | `results/rebuild_inputs/` | Frozen table inputs required by the corrected exhibit builder |
 | `REPLICATION_MANIFEST.json` | Package status, population accounting, exclusions, and integrity hashes |
 
@@ -52,15 +52,18 @@ The corrected analytical source classifies 2,425 attempts.
 | Runs ending before the writer | 1,184 | Preserved with their original terminal states |
 | Total | 2,425 | Complete classified source population |
 
-The 941 regenerated reviews are stochastic continuations from frozen upstream
-ledgers. Retrieval, document admission, retained passages, topic-fit decisions,
-and outline state are held fixed for this correction. The replay identifies the
-corrected writer boundary. It does not estimate a causal treatment effect
-between the two generations.
+The 941 writer-stage attempts are stochastic continuations from frozen upstream
+ledgers. They produced 907 scored reviews and 34 writer failures. Retrieval,
+document admission, retained passages, topic-fit decisions, and outline state
+are held fixed for this correction. The replay identifies the corrected writer
+boundary. It does not estimate a causal treatment effect between the two
+generations.
 
 The main corrected RRR condition contains 100 completed and scored reviews.
-All 100 have zero E1 through E5 events under the deposited checker. The
-complete condition inventory and run counts are recorded in
+Ninety-nine have zero E1 through E5 events under the deposited checker. One
+review contains a conflated author-year attribution counted as E1. Across the
+condition, the checker identified 4,767 citation surfaces. The complete
+condition inventory and run counts are recorded in
 `results/corrected/analysis_source/condition_changes.csv`.
 
 ## Verifying the writer replay inputs
@@ -134,10 +137,13 @@ condition is deposited under
 clean reviews across 642 parsed citations. `external_comparisons.md` records
 both execution procedures.
 
-The NotebookLM directory currently preserves one pilot response, its runbook,
-and its scoring sheet. It is marked provisional throughout the package. The
-final NotebookLM exercise will be added after the human-run protocol is
-completed.
+The completed NotebookLM comparison contains five independent reviews produced
+from the same 50 uploaded works and common prompt. The deposited record includes
+the copied responses, interface chip counts, scoring sheet, and a separate
+five-claim page check. NotebookLM did not export the stable document-page
+mapping required by the common E1 through E5 checker. The diagnostic page check
+found support for three of five sampled claims. The full record is under
+`results/external_comparisons/notebooklm/`.
 
 ## Reproducibility boundaries
 

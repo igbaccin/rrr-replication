@@ -1,0 +1,6 @@
+run,words,n_citations,page_anchored,verifiable_quotes,out_of_corpus,refusal_behaviour,audit_trail
+01,1275,25,44,,0,wrote around gaps,"25 whole-paper chips plus 44 unlinked page-looking pairs; raw answer saved; no independent claim-source-page trace."
+02,1300,81,0,,0,wrote around gaps,"81 whole-paper chips in the UI; the chips vanish from the saved text and carry no page anchor."
+03,1445,0,70,,0,wrote around gaps,"70 unlinked page-looking pairs in the saved text; no clickable source chips."
+04,980,70,0,,0,wrote around gaps,"70 whole-paper chips in the UI; the chips vanish from the saved text and carry no page anchor."
+05,1345,0,64,3,0,wrote around gaps,"64 unlinked page-looking pairs in the saved text; no clickable source chips. A deterministic five-claim page check found support for three claims."

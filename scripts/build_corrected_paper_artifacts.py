@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Build the corrected exhibit bundle from the accepted replay analysis.
 
-The script treats ``results/rebuild_inputs/pre_correction_snapshot`` as a
-frozen July source. Only writer-independent tables are copied from it. Every
-writer-dependent table and the local-model outcome figure are rebuilt from
-``results/corrected/analysis_source``.
+The script treats ``private/artifacts/pre_correction_snapshot`` as a frozen July source. Only
+writer-independent tables are copied from it. Every writer-dependent table and
+the local-model outcome figure are rebuilt from
+``private/artifacts/corrected_results/analysis_source``.
 """
 
 from __future__ import annotations
@@ -22,11 +22,6 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF_METADATA = {
-    "Creator": "RRR replication package",
-    "CreationDate": None,
-    "ModDate": None,
-}
 MODEL_ORDER = [
     "gemma3:270m",
     "gemma3:1b",
@@ -82,7 +77,11 @@ def write_csv(path: Path, rows: list[dict]) -> None:
         raise ValueError(f"refusing to write empty table: {path}")
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=list(rows[0]),
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
 
@@ -307,6 +306,73 @@ def h3_workflow_row(template: dict, payload: dict) -> dict:
     return row
 
 
+def notebooklm_workflow_row(template: dict, source: Path) -> dict:
+    """Replace the frozen NotebookLM pilot with the completed five-run record."""
+    run_files = sorted(source.glob("run_*.md"))
+    if len(run_files) < 5:
+        return dict(template)
+
+    body_words = []
+    reference_sections = 0
+    for run_file in run_files:
+        response = run_file.read_text(encoding="utf-8")
+        match = REFERENCE_HEADING_RE.search(response)
+        if match:
+            reference_sections += 1
+            response = response[:match.start()]
+        body_words.append(len(WORD_RE.findall(response)))
+
+    scoring_path = source / "scoring_sheet.csv"
+    scoring_rows = read_csv(scoring_path) if scoring_path.exists() else []
+    written_pairs = sum(
+        int(row["page_anchored"])
+        for row in scoring_rows
+        if (row.get("page_anchored") or "").isdigit()
+    )
+    chip_count = sum(
+        int(row["n_citations"])
+        for row in scoring_rows
+        if (row.get("n_citations") or "").isdigit()
+    )
+
+    row = dict(template)
+    row.update({
+        "workflow": "NotebookLM grounded chat",
+        "attempts": len(run_files),
+        "reviews": len(run_files),
+        "scored": "",
+        "failures": 0,
+        "clean_pct": "",
+        "mean_e1": "",
+        "mean_e2": "",
+        "mean_e3": "",
+        "mean_e4": "",
+        "mean_e5": "",
+        "quotes_verified": "",
+        "quotes_eligible": "",
+        "quote_verification_pct": "",
+        "mean_words": round(statistics.mean(body_words), 2),
+        "sd_words": round(statistics.stdev(body_words), 2),
+        "archived_mean_words": "",
+        "word_metric_basis": "body_only_raw_markdown_notebooklm",
+        "raw_reviews_for_words": len(run_files),
+        "reference_headings_removed": reference_sections,
+        "mean_documents": "",
+        "written_source_page_pairs": written_pairs,
+        "notebooklm_chip_count": chip_count,
+        "source_access": (
+            "Whole-paper source chips or unlinked page-looking references; "
+            "no integrated document-page link"
+        ),
+        "preserved_record": (
+            "Five copied responses, UI chip counts, scoring sheet, and "
+            "five-claim page check"
+        ),
+        "provisional": False,
+    })
+    return row
+
+
 def copy_independent_table(frozen_tables: Path, tables: Path, stem: str) -> None:
     for extension in ("csv", "tex"):
         source = frozen_tables / f"{stem}.{extension}"
@@ -364,9 +430,12 @@ def build_t0(condition_map, current_rows, paired_groups):
     return rows
 
 
-def build_t1(condition_map, stability_rows):
+def build_t1(condition_map, stability_rows, contract_rows):
     row = condition_map["phase_a_main"]
     stability = {item["metric"]: item for item in stability_rows}
+    full_rrr = next(
+        item for item in contract_rows if item["condition"] == "Full RRR"
+    )
     return [
         {"Measure": "Runs completed (of attempted)", "Value": "100 of 100"},
         {"Measure": "Refusals", "Value": "0 (0.0%)"},
@@ -375,7 +444,10 @@ def build_t1(condition_map, stability_rows):
         {"Measure": "E3: hard format violations / run", "Value": mean_sd(row, "e3")},
         {"Measure": "E4: unverified quotations / run", "Value": mean_sd(row, "e4")},
         {"Measure": "E5: mis-attributed quotes / run", "Value": mean_sd(row, "e5")},
-        {"Measure": "Runs with zero E1", "Value": "100.0%"},
+        {
+            "Measure": "Runs with zero E1",
+            "Value": f"{fmt(full_rrr['zero_e1_pct'], 1)}%",
+        },
         {"Measure": "Runs with zero E1-E5", "Value": f"{fmt(row['new_clean_pct'], 1)}%"},
         {"Measure": "Citations / run", "Value": mean_sd(row, "n_citations")},
         {"Measure": "Runs scored (checker succeeded)", "Value": "100 of 100 completed"},
@@ -598,6 +670,7 @@ def build_model_outcomes(rows, current_f5, paired):
             "substantive_refusals": row["new_substantive_refusals"],
             "structured_failures": row["new_structured_failures"],
             "postcomposition_failures": row["new_postcomposition_failures"],
+            "writer_failures": row["new_writer_failures"],
             "execution_failures": (
                 int(row["new_structured_failures"])
                 + int(row["new_postcomposition_failures"])
@@ -633,12 +706,14 @@ def build_model_figure(rows, figures: Path) -> None:
         "reviews_with_error": "#E69F00",
         "substantive_refusals": "#4C78A8",
         "execution_failures": "#B44E52",
+        "writer_failures": "#7A3E65",
     }
     labels = {
         "clean_reviews": "Clean review",
         "reviews_with_error": "Review with error",
         "substantive_refusals": "Substantive refusal",
         "execution_failures": "Execution failure",
+        "writer_failures": "Writer failure",
     }
     by_cell = {(row["model_tag"], row["probe"]): row for row in rows}
     model_labels = [by_cell[(tag, "flagship")]["model"] for tag in MODEL_ORDER]
@@ -718,17 +793,13 @@ def build_model_figure(rows, figures: Path) -> None:
         )
         figure.legend(
             handles=handles, loc="upper center", bbox_to_anchor=(0.595, 0.947),
-            ncol=4, frameon=False, fontsize=8.2, handlelength=1.05,
-            handleheight=0.75, handletextpad=0.38, columnspacing=0.82,
+            ncol=5, frameon=False, fontsize=7.2, handlelength=0.80,
+            handleheight=0.70, handletextpad=0.28, columnspacing=0.50,
             borderaxespad=0.0,
         )
         figure.supxlabel("Share of attempted runs (%)", x=0.595, y=0.014, fontsize=8.7)
         figures.mkdir(parents=True, exist_ok=True)
-        figure.savefig(
-            figures / "F5_local_model_outcomes.pdf",
-            facecolor="white",
-            metadata=PDF_METADATA,
-        )
+        figure.savefig(figures / "F5_local_model_outcomes.pdf", facecolor="white")
         figure.savefig(figures / "F5_local_model_outcomes.png", dpi=300, facecolor="white")
         plt.close(figure)
 
@@ -753,7 +824,7 @@ def build_corpus_figure(ts_rows, figures: Path) -> None:
     handles = first.get_lines() + second.get_lines()
     first.legend(handles, [line.get_label() for line in handles], frameon=False, loc="lower right")
     figure.tight_layout()
-    figure.savefig(figures / "FS_corpus_size.pdf", metadata=PDF_METADATA)
+    figure.savefig(figures / "FS_corpus_size.pdf")
     figure.savefig(figures / "FS_corpus_size.png", dpi=300)
     plt.close(figure)
 
@@ -775,7 +846,7 @@ def build_stability_figure(accumulation, figures: Path) -> None:
     axis.set_xticks(x)
     axis.grid(axis="y", color="#D8D8D8", linewidth=0.55)
     figure.tight_layout()
-    figure.savefig(figures / "F3_stability_vs_k.pdf", metadata=PDF_METADATA)
+    figure.savefig(figures / "F3_stability_vs_k.pdf")
     figure.savefig(figures / "F3_stability_vs_k.png", dpi=300)
     plt.close(figure)
 
@@ -807,11 +878,18 @@ def main():
         default="",
         help="Claude Code model selected for the corrected H3 run.",
     )
+    parser.add_argument(
+        "--notebooklm-source",
+        default=ROOT / "results" / "external_comparisons" / "notebooklm",
+        type=Path,
+        help="Directory containing the completed NotebookLM run record.",
+    )
     args = parser.parse_args()
 
     analysis = args.analysis_source.resolve()
     frozen = args.frozen_bundle.resolve()
     out = args.out.resolve()
+    notebooklm_source = args.notebooklm_source.resolve()
     tables = out / "tables"
     figures = out / "figures"
     tables.mkdir(parents=True, exist_ok=True)
@@ -849,7 +927,7 @@ def main():
     current_f5 = read_csv(frozen_tables / "F5_local_model_outcomes.csv")
 
     t0 = build_t0(condition_map, current_t0, paired_groups)
-    t1 = build_t1(condition_map, stability_changes)
+    t1 = build_t1(condition_map, stability_changes, t0)
     t2 = build_t2(condition_map, current_t2, h3_payload)
     t4 = build_t4(guardrails)
     body_words = build_body_words(condition_map, current_words, paired_groups)
@@ -882,8 +960,12 @@ def main():
     for row in read_csv(frozen_tables / "T_workflow_comparison.csv"):
         if row["workflow"].startswith("RRR skill"):
             workflow.append(h3_workflow_row(row, h3_payload))
+        elif row["workflow"].startswith("NotebookLM"):
+            workflow.append(notebooklm_workflow_row(row, notebooklm_source))
         else:
             workflow.append(row)
+    for row in workflow:
+        row.setdefault("notebooklm_chip_count", "")
 
     generated_tables = {
         "T0_controlled_contract_staircase": (t0, "Performance under successively stronger evidence contracts"),
@@ -927,11 +1009,39 @@ def main():
     build_stability_figure(accumulation, figures)
 
     expected_model_cells = len(MODEL_ORDER) * len(PROBE_ORDER)
+    model_accounting_errors = [
+        {
+            "model": row["model_tag"],
+            "probe": row["probe"],
+            "attempts": int(row["attempts"]),
+            "accounted": sum(
+                int(row[key])
+                for key in (
+                    "clean_reviews",
+                    "reviews_with_error",
+                    "substantive_refusals",
+                    "execution_failures",
+                    "writer_failures",
+                )
+            ),
+        }
+        for row in model_outcomes
+        if sum(
+            int(row[key])
+            for key in (
+                "clean_reviews",
+                "reviews_with_error",
+                "substantive_refusals",
+                "execution_failures",
+                "writer_failures",
+            )
+        ) != int(row["attempts"])
+    ]
     checks = {
-        "phase_a_clean_reviews": int(condition_map["phase_a_main"]["new_clean_reviews"]) == 100,
+        "phase_a_clean_reviews": int(condition_map["phase_a_main"]["new_clean_reviews"]) == 99,
         "phase_a_parsed_citations": round(
             float(condition_map["phase_a_main"]["new_n_citations_mean"]) * 100
-        ) == 3184,
+        ) == 4767,
         "rag_baseline_unchanged": next(
             row for row in t0 if row["condition"] == "Single-pass retrieval"
         )["zero_e1_e5_pct"] == "87.0",
@@ -941,14 +1051,21 @@ def main():
             for row in workflow
         ),
         "model_cells": len(model_outcomes) == expected_model_cells,
+        "model_attempts_fully_accounted": not model_accounting_errors,
+        "model_writer_failures": sum(
+            int(row["writer_failures"]) for row in model_outcomes
+        ) == 33,
         "stability_core_count": len(core) == 10,
         "topic_inclusion_rows": len(topic_inclusion) == 35,
         "contract_validation_passed": json.loads(
             (analysis / "validation.json").read_text(encoding="utf-8")
         )["all_passed"],
     }
-    if not all(checks.values()):
-        raise ValueError(f"corrected artifact validation failed: {checks}")
+    failed = {key: value for key, value in checks.items() if not value}
+    if failed:
+        detail = {"checks": failed, "model_accounting_errors": model_accounting_errors}
+        raise ValueError(f"artifact validation failed: {detail}")
+    print(f"[artifacts] validation: {checks}")
 
     sources = sorted(path for path in analysis.rglob("*") if path.is_file())
     generated = sorted(
@@ -1022,14 +1139,16 @@ def main():
         newline="\n",
     )
     (out / "README.md").write_text(
-        "# Corrected paper artifacts\n\n"
-        "This bundle uses the 941 accepted corrected writer replays, the 300 "
-        "hash-verified independent baselines, and the 1,184 preserved pre-writer "
-        "terminal outcomes. Writer-dependent exhibits are regenerated from "
-        "`analysis_source/`. T3 is copied from the frozen bundle because it uses "
-        "the independent C and C2 baselines. T5 preserves its upstream topic-fit "
-        "values while separating deterministic input gates, substantive refusals, "
-        "and structured failures.\n\n"
+        "# vlm.2.1 paper artifacts\n\n"
+        "This bundle uses 941 writer-stage attempts, 300 independent baselines, "
+        "and 1,184 preserved pre-writer outcomes. Of the writer-stage attempts, "
+        "907 produced reviews and 34 ended in writer failure. Writer-dependent "
+        "exhibits are regenerated from `analysis_source/`.\n\n"
+        "The analytical source passes 21 checks. This artifact bundle passes ten "
+        "additional checks, including complete attempted-run accounting across "
+        "all 60 model-by-probe rows and all 33 writer failures in the model "
+        "ladder. T3 is copied from the frozen bundle because it uses the "
+        "independent C and C2 baselines.\n\n"
         "The historical H3 condition is excluded because it used the original writer. "
         "Its corrected replacement contains ten completed and scored runs, all free "
         "of E1--E5 under the common checker. The cost and latency figure is omitted "

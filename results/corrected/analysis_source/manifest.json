@@ -1,12 +1,12 @@
 {
   "schema_version": "corrected-paper-analysis-v1",
-  "generated_at_utc": "2026-07-21T10:31:06.976451+00:00",
-  "generator": "scripts/build_corrected_results_change_map.py",
-  "generator_sha256": "65e51900845c78f2681efdd3b42d844e891ba592a8502e7dd31a3b8e3aa7313d",
-  "replay_manifest": "results/replay_inputs/writer_correction_260720.tar.gz::corrected_writer_v17/manifest.json",
+  "generated_at_utc": "2026-07-26T18:21:37.747761+00:00",
+  "generator": "scripts/build_corrected_results_change_map_vlm21.py",
+  "generator_sha256": "07cb3936730a0d97a3db1a1e8cb4e32b0314f75986c537a194471cc5f77ab32a",
+  "replay_manifest": "replays/writer_correction_260720/bundle/manifest.json",
   "replay_manifest_sha256": "f9fa382c941a0093bff590aeb3024d57169e431268dc0d67b81ad821a73955e7",
-  "corrected_output_root": "runs/corrected_writer_v17 (regenerated, not deposited)",
-  "frozen_pre_correction_bundle": "results/rebuild_inputs/pre_correction_snapshot",
+  "corrected_output_root": "pod_outputs/battery_vlm21_materialized",
+  "frozen_pre_correction_bundle": "private/artifacts/pre_correction_snapshot",
   "join_key": [
     "batch",
     "condition",
@@ -118,5 +118,5 @@
     "README.md",
     "manifest.json"
   ],
-  "report": "paired change records deposited in this directory"
+  "report": "revision_notes/corrected_results_change_map.md"
 }

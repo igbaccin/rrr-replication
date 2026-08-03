@@ -65,6 +65,23 @@ N_ARM=10 ARM_MODEL=claude-opus-4-8 ./scripts/run_claude_skill_arm.sh
 The earlier skill runs remain historical because they used the superseded
 writer. They do not enter the accepted analytical bundle.
 
-## NotebookLM status
+## Completed NotebookLM comparison
 
-`results/external_comparisons/notebooklm_pilot/` preserves a single provisional pilot, its runbook, and its scoring sheet. The final human-run NotebookLM protocol remains pending. The pilot is labelled provisional in `results/corrected/tables/T_workflow_comparison.csv` and should not be interpreted as a completed comparison arm.
+Five independent NotebookLM notebooks received the same 50 uploaded works and
+the common literature-review prompt. All five produced a review. Body length
+ranged from 996 to 1,464 words, with a mean of 1,286.6 and a sample standard
+deviation of 175.13.
+
+The interface displayed 176 whole-paper citation chips across the five runs.
+The copied responses contained 178 plain page-looking references. These
+surfaces did not provide a stable claim-to-document-to-page record, so the
+NotebookLM reviews remain outside the common E1 through E5 checker.
+
+A separate diagnostic check followed five page-attributed claims from run 05
+into the extracted corpus. Three cited pages supported the associated claim.
+All five notebooks answered the supported prompt, so this comparison supplies
+no refusal-calibration estimate for an unsupported question.
+
+The copied responses, runbook, scoring sheet, and diagnostic page check are
+deposited under `results/external_comparisons/notebooklm/`. The completed row
+appears in `results/corrected/tables/T_workflow_comparison.csv`.

@@ -109,8 +109,14 @@ def verify_corrected_results(package: dict) -> None:
     )
     main = next(row for row in rows if row["condition"] == "phase_a_main")
     require(main["attempts"] == "100", "Phase A attempt count mismatch")
-    require(main["new_clean_reviews"] == "100", "Phase A clean-review count mismatch")
-    for metric in ("new_e1_events", "new_e2_events", "new_e3_events", "new_e4_events", "new_e5_events"):
+    require(main["new_clean_reviews"] == "99", "Phase A clean-review count mismatch")
+    require(main["new_e1_events"] == "1", "Phase A E1 count mismatch")
+    require(
+        round(float(main["new_n_citations_mean"]) * int(main["new_scored_reviews"]))
+        == 4767,
+        "Phase A parsed-citation count mismatch",
+    )
+    for metric in ("new_e2_events", "new_e3_events", "new_e4_events", "new_e5_events"):
         require(main[metric] == "0", f"Phase A contains nonzero {metric}")
 
     required_tables = (
@@ -161,8 +167,21 @@ def verify_external_comparisons(package: dict) -> None:
     require(h3.get("attempts") == "10", "corrected H3 table attempt count mismatch")
     require(h3.get("scored") == "10", "corrected H3 table scored count mismatch")
     require(h3.get("clean_pct") == "100.0", "corrected H3 table clean rate mismatch")
-    notebook = next(row for row in rows if row["workflow"] == "NotebookLM pilot")
-    require(notebook.get("provisional") == "True", "NotebookLM pilot is not marked provisional")
+    notebook = next(row for row in rows if row["workflow"] == "NotebookLM grounded chat")
+    require(notebook.get("attempts") == "5", "NotebookLM attempt count mismatch")
+    require(notebook.get("reviews") == "5", "NotebookLM review count mismatch")
+    require(notebook.get("provisional") == "False", "NotebookLM row is still provisional")
+    require(notebook.get("written_source_page_pairs") == "178", "NotebookLM page-pair count mismatch")
+    require(notebook.get("notebooklm_chip_count") == "176", "NotebookLM chip count mismatch")
+
+    notebook_record = package["notebooklm_comparison"]
+    require(notebook_record.get("attempts") == 5, "NotebookLM manifest attempt count mismatch")
+    require(notebook_record.get("reviews") == 5, "NotebookLM manifest review count mismatch")
+    require(notebook_record.get("page_claims_checked") == 5, "NotebookLM page-check denominator mismatch")
+    require(notebook_record.get("page_claims_supported") == 3, "NotebookLM page-check result mismatch")
+    for record in notebook_record.get("files", []):
+        verify_file_record(record)
+    require(len(notebook_record.get("files", [])) == 8, "NotebookLM file inventory mismatch")
 
 
 def verify_package_hygiene() -> None:
@@ -220,8 +239,6 @@ def main() -> int:
     print("[replication] PASS: package hygiene")
     if package.get("source", {}).get("production_commit") is None:
         print("[replication] PENDING: cleaned production commit will be recorded at freeze")
-    if package.get("pending", {}).get("notebooklm"):
-        print("[replication] PENDING: final NotebookLM protocol")
     return 0
 
 

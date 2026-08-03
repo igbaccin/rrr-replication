@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-07-21T10:31:06.962214+00:00",
+  "generated_at_utc": "2026-07-26T18:21:37.733135+00:00",
   "checks": [
     {
       "check": "replay item count",
@@ -23,43 +23,48 @@
       "detail": 2425
     },
     {
-      "check": "all corrected reviews changed",
+      "check": "all produced corrected reviews changed",
       "passed": true,
-      "detail": 941
+      "detail": {
+        "produced_reviews": 907,
+        "review_hashes_changed": 907
+      }
     },
     {
       "check": "overall paired writer totals",
       "passed": true,
       "detail": {
         "runs": 941,
-        "review_hashes_changed": 941,
-        "identical_document_sets": 604,
-        "mean_paired_document_jaccard": 0.93,
-        "identical_citation_pair_sets": 2,
-        "mean_paired_citation_pair_jaccard": 0.512,
+        "review_hashes_changed": 907,
+        "identical_document_sets": 608,
+        "mean_paired_document_jaccard": 0.929,
+        "identical_citation_pair_sets": 1,
+        "mean_paired_citation_pair_jaccard": 0.508,
         "old_parsed_citations": 34819,
         "old_emitted_body_words": 1636518,
         "old_scored_reviews": 941,
         "old_clean_reviews": 829,
         "old_reviews_with_error": 112,
         "old_writer_refusals": 0,
-        "new_parsed_citations": 29361,
-        "new_emitted_body_words": 1478504,
-        "new_scored_reviews": 940,
-        "new_clean_reviews": 846,
-        "new_reviews_with_error": 94,
-        "new_writer_refusals": 1,
-        "parsed_citation_change_pct": -15.7,
-        "emitted_body_word_change_pct": -9.7
+        "old_writer_failures": 0,
+        "new_parsed_citations": 40586,
+        "new_emitted_body_words": 1810484,
+        "new_scored_reviews": 907,
+        "new_clean_reviews": 872,
+        "new_reviews_with_error": 35,
+        "new_writer_refusals": 0,
+        "new_writer_failures": 34,
+        "parsed_citation_change_pct": 16.6,
+        "emitted_body_word_change_pct": 10.6
       }
     },
     {
-      "check": "accepted corrected commit counts",
+      "check": "writer-stage outcome accounting",
       "passed": true,
       "detail": {
-        "85626d04c25d300a0c6bf87528025c5640bcd955": 563,
-        "91bb26e0971e0a1b8a2a2768d814d4dabb160d33": 376,
-        "f662af148ee496205cbb614ed05cb8f590322ee6": 2
+        "scored_reviews": 907,
+        "writer_failures": 34,
+        "attempts": 941
       }
     },
     {
@@ -79,7 +84,7 @@
     {
       "check": "Phase A corrected clean count",
       "passed": true,
-      "detail": 100
+      "detail": 99
     },
     {
       "check": "Phase A old body-word mean",
@@ -112,7 +117,7 @@
     {
       "check": "frozen artifact bundle present",
       "passed": true,
-      "detail": "results/rebuild_inputs/pre_correction_snapshot/tables/T1_main_integrity.csv"
+      "detail": "D:\\RRR\\private\\artifacts\\pre_correction_snapshot\\tables\\T1_main_integrity.csv"
     },
     {
       "check": "frozen model outcome counts reproduced",
@@ -120,14 +125,25 @@
       "detail": 60
     },
     {
+      "check": "model outcome rows exhaust attempted runs",
+      "passed": true,
+      "detail": 60
+    },
+    {
+      "check": "model ladder writer failures",
+      "passed": true,
+      "detail": 33
+    },
+    {
       "check": "corrected empty-output classification",
       "passed": true,
       "detail": {
-        "new_clean_reviews": 14,
-        "new_reviews_with_error": 4,
+        "new_clean_reviews": 12,
+        "new_reviews_with_error": 0,
         "new_substantive_refusals": 0,
         "new_structured_failures": 1,
-        "new_postcomposition_failures": 1
+        "new_postcomposition_failures": 0,
+        "new_writer_failures": 7
       }
     },
     {
@@ -153,9 +169,9 @@
           "condition": "__all_replayed_writer_runs__",
           "generation": "new",
           "runs": 941,
-          "citation_manifest_surfaces": 29362,
-          "corpus_bound_surfaces": 29354,
-          "unbound_or_e1_surfaces": 8,
+          "citation_manifest_surfaces": 40586,
+          "corpus_bound_surfaces": 40571,
+          "unbound_or_e1_surfaces": 15,
           "outside_first_two_passage_surfaces": 0,
           "outside_share_pct_of_bound": 0.0,
           "runs_with_outside_surface": 0,
@@ -189,9 +205,9 @@
           "condition": "phase_a_main",
           "generation": "new",
           "runs": 100,
-          "citation_manifest_surfaces": 3184,
-          "corpus_bound_surfaces": 3184,
-          "unbound_or_e1_surfaces": 0,
+          "citation_manifest_surfaces": 4767,
+          "corpus_bound_surfaces": 4766,
+          "unbound_or_e1_surfaces": 1,
           "outside_first_two_passage_surfaces": 0,
           "outside_share_pct_of_bound": 0.0,
           "runs_with_outside_surface": 0,

@@ -1,11 +1,16 @@
 # Corrected paper analysis source
 
-This directory contains the paired July and corrected writer results used to map changes before manuscript revision. The full join key is `(batch, condition, run)`.
+This directory contains the paired July and corrected writer results used to
+map changes before manuscript revision. The full join key is `(batch,
+condition, run)`. The frozen July paper bundle remains under
+`private/artifacts/pre_correction_snapshot/`.
 
-The deposited files are the accepted run-level analytical source. Regenerate the paper tables and figures from the repository root with:
+Rebuild from the repository root with:
 
-```bash
-python scripts/build_corrected_paper_artifacts.py --out reproduced_artifacts
+```powershell
+.\.venv\Scripts\python.exe scripts\build_corrected_results_change_map_vlm21.py --corrected-root pod_outputs\battery_vlm21_materialized
 ```
 
-`validation.json` records the required population, historical-reproduction, and writer-contract checks. The frozen writer inputs are deposited as `results/replay_inputs/writer_correction_260720.tar.gz`.
+`validation.json` records the required count and historical-reproduction
+checks. The narrative change map is
+`revision_notes/corrected_results_change_map.md`.
