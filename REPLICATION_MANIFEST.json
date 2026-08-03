@@ -8,11 +8,11 @@
   },
   "source": {
     "archival_repository": "igbaccin/rrr-poc-history",
-    "archival_base_commit": "f475fbc8385b36f6e507d1b2dc7b32e1790899e1",
+    "archival_base_commit": "b68070225e95fe3e856c0124d0bf885265eda4a0",
     "accepted_profile": "vlm.2.1",
     "production_repository": "igbaccin/rrr-poc",
-    "production_commit": null,
-    "production_commit_status": "The public product repository is outside this results synchronization and does not carry explicit NotebookLM result records."
+    "production_commit": "f4e62c02859e28956c65eaea11eba407a8a6c6c5",
+    "production_commit_status": "Public product release paired with this replication package. Explicit NotebookLM result records remain in the replication and archival repositories."
   },
   "population": {
     "classified_attempts": 2425,

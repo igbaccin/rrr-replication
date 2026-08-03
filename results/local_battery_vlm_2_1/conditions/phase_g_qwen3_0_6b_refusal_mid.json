@@ -1,0 +1,20 @@
+{
+  "condition": "phase_g_qwen3_0_6b_refusal_mid",
+  "model": "qwen3:0.6b",
+  "n": 19,
+  "success": 14,
+  "success_rate": 0.7368,
+  "checker_failed": 2,
+  "writer_failed": 3,
+  "zero_hard_e1_e5_among_success": 14,
+  "stub_closings_among_success": 0,
+  "e_events": {
+    "e1": 0,
+    "e2": 0,
+    "e3": 7,
+    "e4": 0,
+    "e5": 0,
+    "e3_soft": 1
+  },
+  "mean_words_success": 602
+}

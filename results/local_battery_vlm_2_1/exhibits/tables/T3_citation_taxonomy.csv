@@ -1,0 +1,3 @@
+condition,distinct_citations,in_corpus,real_not_in_corpus,unresolved,lookup_failed,pending_lookup
+phase_c_unrestricted,166,9 (5.4%),151 (91.0%),6 (3.6%),0 (0.0%),0 (0.0%)
+phase_c2_prompt_constrained,56,52 (92.9%),4 (7.1%),0 (0.0%),0 (0.0%),0 (0.0%)

@@ -89,8 +89,17 @@ def verify_corrected_results(package: dict) -> None:
         require(name in checks, f"missing validation check: {name}")
         require(checks[name].get("passed") is True, f"failed validation check: {name}")
         require(checks[name].get("detail") == expected, f"unexpected count for: {name}")
+    require(
+        checks.get("model outcome rows exhaust attempted runs", {}).get("passed") is True,
+        "model outcome rows do not exhaust attempted runs",
+    )
+    require(
+        checks.get("model ladder writer failures", {}).get("detail") == 33,
+        "model ladder writer-failure count mismatch",
+    )
 
-    condition_path = ROOT / "results/corrected/analysis_source/condition_changes.csv"
+    accepted_root = ROOT / accepted["path"]
+    condition_path = accepted_root / "analysis_source/condition_changes.csv"
     with condition_path.open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
     require(rows, "condition change table is empty")
@@ -127,9 +136,35 @@ def verify_corrected_results(package: dict) -> None:
         "T4_guardrail_activation.csv",
         "T5_refusal_calibration.csv",
         "T_workflow_comparison.csv",
+        "F5_local_model_outcomes.csv",
     )
     for name in required_tables:
-        require((ROOT / "results/corrected/tables" / name).is_file(), f"missing table: {name}")
+        require((accepted_root / "tables" / name).is_file(), f"missing table: {name}")
+
+    with (accepted_root / "tables/F5_local_model_outcomes.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        model_rows = list(csv.DictReader(handle))
+    require(len(model_rows) == 60, "model table row count mismatch")
+    require(
+        sum(int(row["writer_failures"]) for row in model_rows) == 33,
+        "model table writer-failure count mismatch",
+    )
+    for row in model_rows:
+        accounted = sum(
+            int(row[key])
+            for key in (
+                "clean_reviews",
+                "reviews_with_error",
+                "substantive_refusals",
+                "execution_failures",
+                "writer_failures",
+            )
+        )
+        require(
+            accounted == int(row["attempts"]),
+            f"incomplete model outcome row: {row['model_tag']}/{row['probe']}",
+        )
 
 
 def verify_replay_archive(package: dict) -> None:
@@ -160,7 +195,10 @@ def verify_external_comparisons(package: dict) -> None:
         require(len(payload.get("per_run", [])) == record["attempts"], f"attempt count mismatch: {record['workflow']}")
         require(payload.get("summary", {}).get("n_scored") == record["scored_reviews"], f"scored count mismatch: {record['workflow']}")
 
-    workflow_table = ROOT / "results/corrected/tables/T_workflow_comparison.csv"
+    workflow_table = (
+        ROOT / package["accepted_results"]["path"]
+        / "tables/T_workflow_comparison.csv"
+    )
     with workflow_table.open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
     h3 = next(row for row in rows if row["workflow"] == "Claude Code with the /rrr skill")
@@ -200,12 +238,19 @@ def verify_package_hygiene() -> None:
         require((ROOT / "src/rrr" / name).is_file(), f"missing RRR module: {name}")
 
     prohibited = []
+    ignored_parts = {".git", "__pycache__", ".pytest_cache", "reproduced_artifacts"}
     for path in ROOT.rglob("*"):
-        if ".git" in path.parts:
+        if ignored_parts.intersection(path.parts):
             continue
-        if path.is_dir() and path.name == "__pycache__":
-            prohibited.append(path.relative_to(ROOT).as_posix())
-        elif path.is_file() and path.suffix.lower() == ".pdf" and "results/corrected/figures" not in path.as_posix():
+        allowed_figure_roots = (
+            "results/corrected/figures",
+            "results/local_battery_vlm_2_1/exhibits/figures",
+        )
+        if (
+            path.is_file()
+            and path.suffix.lower() == ".pdf"
+            and not any(root in path.as_posix() for root in allowed_figure_roots)
+        ):
             prohibited.append(path.relative_to(ROOT).as_posix())
     require(not prohibited, f"prohibited package artifacts: {prohibited[:10]}")
 

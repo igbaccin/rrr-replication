@@ -1,15 +1,16 @@
 # Reproducing the deposited RRR evaluation
 
-[About RRR](../README.md) · [Installation modes](product_installation.md) · [Before running](before_running.md)
+[About RRR](../README.md) · [Installation modes](product_installation.md) ·
+[Before running](before_running.md)
 
-This document describes the deposited analytical records, corrected writer
-replays, and full-pipeline reproduction procedure that accompany the RRR
-evaluation.
+This repository contains the accepted vlm.2.1 analytical records, paper tables
+and figures, raw generated reviews, frozen replay inputs, and external
+comparison summaries.
 
 ## Fast verification
 
-The deposited results can be checked without the copyrighted corpus or an
-installed language model.
+The deposited package can be checked without the copyrighted corpus or a
+language model:
 
 ```bash
 python -m venv .venv
@@ -18,15 +19,17 @@ python scripts/verify_replication.py
 python -m unittest discover -s tests/unit -v
 ```
 
-To regenerate the corrected tables and figures from the deposited analytical
-source, run:
+Regenerate the accepted tables and figures from the deposited analytical
+source:
 
 ```bash
 python scripts/build_corrected_paper_artifacts.py --out reproduced_artifacts
 ```
 
-The script validates the expected populations and writes the regenerated
-exhibits under `reproduced_artifacts/`.
+The command writes `reproduced_artifacts/`. Its validation requires all 941
+writer-stage attempts and all 1,184 pre-writer outcomes to be fully accounted
+for. It also checks the 300 independent baselines, the 60 model-by-probe rows,
+and the 33 writer failures in the model ladder.
 
 ## Deposited evaluation contents
 
@@ -40,17 +43,18 @@ exhibits under `reproduced_artifacts/`.
 | `results/external_comparisons/` | Completed Claude Code summaries and five-run NotebookLM record |
 | `results/rebuild_inputs/` | Frozen table inputs required by the corrected exhibit builder |
 | `REPLICATION_MANIFEST.json` | Package status, population accounting, exclusions, and integrity hashes |
+| `results/local_battery_vlm_2_1/` | Raw reviews, normalization records, and the first vlm.2.1 exhibit generation |
 
 ## Result population
 
-The corrected analytical source classifies 2,425 attempts.
+The complete analytical population contains 2,425 attempts.
 
-| Population | Attempts | Treatment |
+| Population | Attempts | Accepted treatment |
 | --- | ---: | --- |
-| Runs that reached the writer | 941 | Regenerated under the corrected evidence contract |
-| Independent B2, C, and C2 baselines | 300 | Preserved with verified hashes because they do not use the RRR writer |
-| Runs ending before the writer | 1,184 | Preserved with their original terminal states |
-| Total | 2,425 | Complete classified source population |
+| Attempts that reached the writer | 941 | 887 success, 20 checker-flagged, 34 writer failures |
+| Independent B2, C, and C2 baselines | 300 | Preserved with verified hashes |
+| Attempts ending before the writer | 1,184 | Preserved with their recorded terminal states |
+| Total | 2,425 | Fully classified |
 
 The 941 writer-stage attempts are stochastic continuations from frozen upstream
 ledgers. They produced 907 scored reviews and 34 writer failures. Retrieval,
@@ -66,31 +70,52 @@ condition, the checker identified 4,767 citation surfaces. The complete
 condition inventory and run counts are recorded in
 `results/corrected/analysis_source/condition_changes.csv`.
 
-## Verifying the writer replay inputs
+The model table and graph use 105 attempted runs per ladder model. They combine
+the writer-stage outcomes with the earlier terminal outcomes and display writer
+failures separately.
 
-The replay archive is compressed because its 941 ledgers expand to
-approximately 299 MiB.
+## Reproducing the normalization
+
+Install the package and run:
+
+```bash
+python results/local_battery_vlm_2_1/reproduce_normalization.py
+```
+
+The script applies the deterministic vlm.2.1 citation normalization to all 907
+raw generated reviews. It reports 49 changed review files. `per_run.csv`
+records 41 checker-failed runs that become successful after normalization.
+
+Complete E1 through E5 rescoring requires the source corpus. Most PDFs are
+copyrighted and must be obtained legally by the replicator.
+
+## Replaying the writer
+
+Extract the frozen ledgers:
 
 ```bash
 mkdir -p replay_inputs
 tar -xzf results/replay_inputs/writer_correction_260720.tar.gz -C replay_inputs
+```
+
+List the smoke profile:
+
+```bash
 python scripts/run_corrected_writer_replay.py \
   --bundle replay_inputs/corrected_writer_v17 \
   --profile smoke \
   --list
 ```
 
-Execute the smoke replay after starting Ollama and installing the required
-model:
+The full replay requires the reconstructed 50-document corpus and the recorded
+local models. Language-model generation is stochastic, so regenerated prose
+and secondary metrics may vary.
 
-```bash
-python scripts/run_corrected_writer_replay.py \
-  --bundle replay_inputs/corrected_writer_v17 \
-  --profile smoke
-```
+## External comparisons
 
-The full replay can be divided across workers with `--shard-count` and
-`--shard-index`. See `writer_correction_replay.md` and `runpod_replay.md`.
+The completed direct Claude Code comparisons cover Haiku 4.5, Sonnet 4.5, and
+Opus 4.8. Their summaries are under
+`results/external_comparisons/claude_code/`.
 
 ## Re-executing the full pipeline
 
@@ -148,12 +173,9 @@ found support for three of five sampled claims. The full record is under
 ## Reproducibility boundaries
 
 - Corpus PDFs must be obtained by the replicator.
-- Local model tags identify the tested model tiers. Availability and upstream
-  model packaging can change over time.
+- Local model tags preserve the tested model identities.
 - Language-model outputs are stochastic.
-- Corrected writer timings are excluded because replay timings are not
-  comparable with the original full-pipeline timings.
-- The historical RRR skill arm is excluded because it used the superseded
-  writer. The corrected replacement has a separate accepted run record.
-- Original commit hashes embedded in replay records refer to the private
-  archival history. They remain historical provenance identifiers.
+- Corrected writer timings are excluded because they are not comparable with
+  the original full-pipeline timings.
+- Historical commit identifiers embedded in replay records remain provenance
+  references to the private development history.
