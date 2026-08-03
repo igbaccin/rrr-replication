@@ -1,5 +1,10 @@
 # Raw reviews and reproduction
 
+This directory preserves the as-released vlm.2.1 record for provenance. Its
+stored outcomes predate the checker rule that counts any unrendered internal
+evidence identifier as E3. Current accepted scores and exhibits are under
+`results/corrected/`.
+
 The battery contains 941 writer-stage attempts. The directory
 `reviews_raw/<batch>/<condition>/<run>.md` contains the 907 attempts that
 produced a review: 887 successful reviews and 20 checker-flagged reviews. The
@@ -25,13 +30,16 @@ is gated by each run's allowed documents in `allowed_docs.json`.
 
 `per_run.csv` records the before-and-after outcome in `outcome_asrun` (vlm.2.0)
 and `outcome` (vlm.2.1). It contains 41 rows that move from `checker_failed` to
-`success`. Reproducing the complete E1 through E5 check requires the source
+`success` under the historical checker. Reproducing the complete current E1
+through E5 check requires the source
 corpus, including copyrighted documents that replicators must obtain
 separately.
 
 ## Denominators
 
-The per-model counts in `summary.json` describe attempts that reached the
-writer. The 1,184 attempts that refused or failed earlier are preserved
-separately. The model table and graph under `exhibits/` combine both groups and
-use all 105 attempted runs per ladder model.
+The historical per-model counts in `summary.json` describe attempts that
+reached the writer under the as-released checker. The 1,184 attempts that
+refused or failed earlier are preserved separately. The model table and graph
+under `exhibits/` combine both groups and use all 105 attempted runs per ladder
+model. This first-generation exhibit snapshot is retained for provenance.
+Current accepted exhibits are under `results/corrected/`.

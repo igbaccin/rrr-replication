@@ -85,7 +85,7 @@ collection. The remaining reviews contained no E1 through E5 event.
 | --- | --- |
 | E1 | A citation points outside the declared corpus. |
 | E2 | A citation points to a page that does not exist. |
-| E3 | A citation does not follow the required format. |
+| E3 | A citation does not follow the required format, or an internal evidence identifier remains in the released text. |
 | E4 | A quotation cannot be verified on the cited page. |
 | E5 | A quotation is attributed to the wrong source. |
 

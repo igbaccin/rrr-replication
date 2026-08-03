@@ -158,7 +158,7 @@ def audit_run(item: dict, bundle: Path, outputs: Path) -> list[str]:
         and sha256(run_dir / "review_composed.md") == item["source_review_sha256"]
     ):
         errors.append("corrected_review_matches_original_review_hash")
-    if re.search(r"\[[Ee]\d{1,5}\]", review):
+    if re.search(r"(?<![A-Za-z0-9_])[Ee]\d{3,5}(?![A-Za-z0-9_])", review):
         errors.append("raw_evidence_id_in_review")
 
     citation_manifest = load_json(run_dir / "citations_manifest.json")

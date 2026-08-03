@@ -43,7 +43,7 @@ and the 33 writer failures in the model ladder.
 | `results/external_comparisons/` | Completed Claude Code summaries and five-run NotebookLM record |
 | `results/rebuild_inputs/` | Frozen table inputs required by the corrected exhibit builder |
 | `REPLICATION_MANIFEST.json` | Package status, population accounting, exclusions, and integrity hashes |
-| `results/local_battery_vlm_2_1/` | Raw reviews, normalization records, and the first vlm.2.1 exhibit generation |
+| `results/local_battery_vlm_2_1/` | Historical raw reviews, normalization records, and the first vlm.2.1 exhibit generation |
 
 ## Result population
 
@@ -51,7 +51,7 @@ The complete analytical population contains 2,425 attempts.
 
 | Population | Attempts | Accepted treatment |
 | --- | ---: | --- |
-| Attempts that reached the writer | 941 | 887 success, 20 checker-flagged, 34 writer failures |
+| Attempts that reached the writer | 941 | 907 produced reviews and 34 writer failures |
 | Independent B2, C, and C2 baselines | 300 | Preserved with verified hashes |
 | Attempts ending before the writer | 1,184 | Preserved with their recorded terminal states |
 | Total | 2,425 | Fully classified |
@@ -62,6 +62,11 @@ document admission, retained passages, topic-fit decisions, and outline state
 are held fixed for this correction. The replay identifies the corrected writer
 boundary. It does not estimate a causal treatment effect between the two
 generations.
+
+Under the current accepted checker, 860 of the 907 produced reviews are free of
+E1 through E5 and 47 contain at least one event. The as-released records under
+`results/local_battery_vlm_2_1/` preserve the earlier checker outcomes for
+provenance. Current tables, figures, and scores are under `results/corrected/`.
 
 The main corrected RRR condition contains 100 completed and scored reviews.
 Ninety-nine have zero E1 through E5 events under the deposited checker. One
@@ -84,7 +89,9 @@ python results/local_battery_vlm_2_1/reproduce_normalization.py
 
 The script applies the deterministic vlm.2.1 citation normalization to all 907
 raw generated reviews. It reports 49 changed review files. `per_run.csv`
-records 41 checker-failed runs that become successful after normalization.
+records 41 checker-failed runs that became successful under the historical
+checker. The accepted rescore also counts any unrendered internal evidence
+identifier as E3.
 
 Complete E1 through E5 rescoring requires the source corpus. Most PDFs are
 copyrighted and must be obtained legally by the replicator.

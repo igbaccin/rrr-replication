@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_utc": "2026-07-26T18:21:37.733135+00:00",
+  "generated_at_utc": "2026-08-03T20:00:08.894970+00:00",
   "checks": [
     {
       "check": "replay item count",
@@ -50,8 +50,8 @@
         "new_parsed_citations": 40586,
         "new_emitted_body_words": 1810484,
         "new_scored_reviews": 907,
-        "new_clean_reviews": 872,
-        "new_reviews_with_error": 35,
+        "new_clean_reviews": 860,
+        "new_reviews_with_error": 47,
         "new_writer_refusals": 0,
         "new_writer_failures": 34,
         "parsed_citation_change_pct": 16.6,
@@ -138,8 +138,8 @@
       "check": "corrected empty-output classification",
       "passed": true,
       "detail": {
-        "new_clean_reviews": 12,
-        "new_reviews_with_error": 0,
+        "new_clean_reviews": 11,
+        "new_reviews_with_error": 1,
         "new_substantive_refusals": 0,
         "new_structured_failures": 1,
         "new_postcomposition_failures": 0,

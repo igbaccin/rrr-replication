@@ -511,6 +511,39 @@ class CitationCheckerTests(unittest.TestCase):
         self.assertEqual(result["e3"], 0)
         self.assertEqual(result["n_citations"], 0)
 
+    def test_unrendered_evidence_ids_are_hard_e3_in_every_surface(self):
+        surfaces = {
+            "square_bracket": "The claim remains [E0145].",
+            "parenthesized": "The claim remains (E0145).",
+            "embedded": "Austin (2008, E0145) supports the claim.",
+            "bare": "The claim remains tied to E0145 in the released text.",
+            "lowercase": "The claim remains tied to e0145 in the released text.",
+        }
+        for label, text in surfaces.items():
+            with self.subTest(label=label):
+                result = self.check(text)
+                self.assertEqual(result["e3"], 1)
+                self.assertEqual(
+                    result["e3_details"][0]["reason"],
+                    "unrendered_evidence_id",
+                )
+
+    def test_each_unrendered_evidence_id_is_one_hard_e3_event(self):
+        result = self.check(
+            "The claim remains (E0145) (E0146; E0169) in the released text."
+        )
+        self.assertEqual(result["e3"], 3)
+        self.assertEqual(
+            [detail["raw"] for detail in result["e3_details"]],
+            ["E0145", "E0146", "E0169"],
+        )
+
+    def test_evidence_id_pattern_does_not_match_error_class_or_words(self):
+        result = self.check(
+            "The E3 category is discussed alongside model E0145alpha."
+        )
+        self.assertEqual(result["e3"], 0)
+
     def test_repeated_group_units_count_twice_and_document_once(self):
         result = self.check(
             "The comparison is established "

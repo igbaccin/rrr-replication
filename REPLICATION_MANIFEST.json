@@ -1,14 +1,14 @@
 {
   "schema_version": "rrr-replication-v1",
-  "package_status": "vlm_2_1_and_completed_external_comparisons_synchronized",
-  "prepared_at_utc": "2026-08-03T15:58:09Z",
+  "package_status": "vlm_2_1_checker_corrected_and_external_comparisons_synchronized",
+  "prepared_at_utc": "2026-08-03T20:18:44Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: Supporting Scholarly Synthesis with Language Models",
     "author": "Igor Martins"
   },
   "source": {
     "archival_repository": "igbaccin/rrr-poc-history",
-    "archival_base_commit": "b68070225e95fe3e856c0124d0bf885265eda4a0",
+    "archival_base_commit": "a0f29a7e46f0de3e2bd169576b278dcfd40b563e",
     "accepted_profile": "vlm.2.1",
     "production_repository": "igbaccin/rrr-poc",
     "production_commit": "f4e62c02859e28956c65eaea11eba407a8a6c6c5",
@@ -18,6 +18,8 @@
     "classified_attempts": 2425,
     "corrected_writer_replays": 941,
     "produced_reviews": 907,
+    "produced_clean_reviews": 860,
+    "produced_reviews_with_error": 47,
     "writer_failures": 34,
     "preserved_independent_baselines": 300,
     "preserved_pre_writer_terminals": 1184,
@@ -31,17 +33,17 @@
     "manifest": {
       "path": "results/corrected/manifest.json",
       "bytes": 20896,
-      "sha256": "a63ea7c98b56ce9f7657c2c64ccb54961ba6a2f3469c2124c762f4b7e48a1fcb"
+      "sha256": "86cd192001c1e28e0b082adca52b45e59bb47bebdb6fd9a6ef7e685ec9946a78"
     },
     "analysis_manifest": {
       "path": "results/corrected/analysis_source/manifest.json",
       "bytes": 6225,
-      "sha256": "01cf4830cba9cf9aec7eb1ea01370e25d064f7771bd0736d5e0932e5366e93cb"
+      "sha256": "b2c1ab01532d3394904162e72a43cc51dfb13abc976a0551a2b9dc8b63d3e657"
     },
     "validation": {
       "path": "results/corrected/analysis_source/validation.json",
       "bytes": 6321,
-      "sha256": "22658885b1e3709e5238bbe0fd15129a499b76e0ad143586a991d0611298f580"
+      "sha256": "4577617ca2c22ab92929376ed883e0d806104e693be835cea7e6d4dec41876ee"
     }
   },
   "replay_archive": {

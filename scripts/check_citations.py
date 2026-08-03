@@ -13,7 +13,8 @@ v14.2 error taxonomy (expanded from the original E1/E2/E3):
     E3  Format violation       — citation-like pattern that misses strict
                                   format. Now HARD-only: page-only (p.5),
                                   doc-without-page, multi-page citation,
-                                  square-bracket dump. Author-year-text
+                                  square-bracket dump, or unrendered internal
+                                  evidence identifier. Author-year-text
                                   surfaces (e.g. "Hopkins (2009)" without a
                                   page) are no longer E3 — they appear in
                                   e3_soft for visibility but do NOT count
@@ -586,7 +587,8 @@ _LOOSE_AUTHOR_YEAR_RE = re.compile(
 #   - canonical-form cite missing a page
 #   - bare page-only cite, e.g. (p.5)
 #   - page range or multi-page packed citation, e.g. (Foo: p.5, p.7)
-#   - square-bracket evidence-id dump that survived the renderer
+#   - square-bracket citation dump that survived the renderer
+#   - any unrendered internal evidence identifier that survived the renderer
 _E3_HARD_PATTERNS = [
     ("doc_without_page", re.compile(r"\((?=[^)]*[A-Za-z0-9_&.\-]+_\d{4})(?![^)]*:\s*p\.)[^)]*\)")),
     ("page_only", re.compile(r"\((?:pp?\.)\s*\d+(?:\s*(?:,|-|and)\s*(?:pp?\.)?\s*\d+)*\)", re.IGNORECASE)),
@@ -594,6 +596,9 @@ _E3_HARD_PATTERNS = [
     ("square_bracket_dump", re.compile(
         r"^\s*\[[^\]\n]*[A-Za-z0-9_&.\-]+:\s*p\.\d+[^\]\n]*(?:;\s*[A-Za-z0-9_&.\-]+:\s*p\.\d+|,\s*p\.\d+)[^\]\n]*\]\s*$",
         re.MULTILINE,
+    )),
+    ("unrendered_evidence_id", re.compile(
+        r"(?<![A-Za-z0-9_])[Ee]\d{3,5}(?![A-Za-z0-9_])",
     )),
 ]
 
@@ -1209,7 +1214,8 @@ def check_review(text, metadata_path="metadata.csv", data_dir="data", quote_chec
             docs_cited.add(did)
 
     # E3 HARD: format violations that are unambiguously broken (page-only,
-    # canonical cite missing a page, multi-page packed cite, bracket dump).
+    # canonical cite missing a page, multi-page packed cite, bracket dump,
+    # or unrendered internal evidence identifier).
     # v13.1 (FIX-F): exclude spans already classified by the display-form scan
     # so a legitimate "Author (Year, p.N)" surface is not double-counted.
     e3_details = []

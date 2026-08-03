@@ -2,6 +2,14 @@
   "battery": "local_reference_vlm_2_1",
   "profile_version": "vlm.2.1",
   "distribution_version": "2.0.1+lm",
+  "score_provenance": {
+    "status": "historical_as_released",
+    "note": "The outcome and E1-E5 fields below preserve the as-released checker record before unrendered internal evidence identifiers were added to E3.",
+    "accepted_current_results": "results/corrected/analysis_source/overall_writer_changes.csv",
+    "current_produced_reviews": 907,
+    "current_clean_reviews": 860,
+    "current_reviews_with_error": 47
+  },
   "generation": {
     "by": "vlm.2.0",
     "code_fingerprint": "7297d94125ca8c76bcd3ce0bea7f136b1e1f57898d06399605febe2deb5985d4"

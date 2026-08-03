@@ -99,6 +99,16 @@ def verify_corrected_results(package: dict) -> None:
     )
 
     accepted_root = ROOT / accepted["path"]
+    overall_path = accepted_root / "analysis_source/overall_writer_changes.csv"
+    with overall_path.open(encoding="utf-8", newline="") as handle:
+        overall_rows = list(csv.DictReader(handle))
+    require(len(overall_rows) == 1, "overall writer summary must contain one row")
+    overall = overall_rows[0]
+    require(overall["new_scored_reviews"] == "907", "produced-review count mismatch")
+    require(overall["new_clean_reviews"] == "860", "clean-review count mismatch")
+    require(overall["new_reviews_with_error"] == "47", "error-bearing review count mismatch")
+    require(overall["new_writer_failures"] == "34", "writer-failure count mismatch")
+
     condition_path = accepted_root / "analysis_source/condition_changes.csv"
     with condition_path.open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle))
@@ -137,6 +147,7 @@ def verify_corrected_results(package: dict) -> None:
         "T5_refusal_calibration.csv",
         "T_workflow_comparison.csv",
         "F5_local_model_outcomes.csv",
+        "TS_corpus_size.csv",
     )
     for name in required_tables:
         require((accepted_root / "tables" / name).is_file(), f"missing table: {name}")
@@ -165,6 +176,37 @@ def verify_corrected_results(package: dict) -> None:
             accounted == int(row["attempts"]),
             f"incomplete model outcome row: {row['model_tag']}/{row['probe']}",
         )
+
+    flagship = {
+        row["model_tag"]: row for row in model_rows if row["probe"] == "flagship"
+    }
+    require(
+        flagship["qwen3:4b"]["clean_reviews"] == "24"
+        and flagship["qwen3:4b"]["reviews_with_error"] == "1"
+        and float(flagship["qwen3:4b"]["mean_e3"]) == 0.2,
+        "Qwen 3 4B flagship score mismatch",
+    )
+    require(
+        flagship["qwen3:8b"]["clean_reviews"] == "25"
+        and flagship["qwen3:8b"]["reviews_with_error"] == "0",
+        "Qwen 3 8B flagship score mismatch",
+    )
+    require(
+        flagship["mistral:7b"]["clean_reviews"] == "12"
+        and flagship["mistral:7b"]["reviews_with_error"] == "8"
+        and float(flagship["mistral:7b"]["mean_e3"]) == 0.95,
+        "Mistral 7B flagship score mismatch",
+    )
+
+    with (accepted_root / "tables/TS_corpus_size.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        corpus_rows = list(csv.DictReader(handle))
+    corpus_scores = {row["Corpus docs"]: row["Zero-error %"] for row in corpus_rows}
+    require(
+        corpus_scores == {"10": "100", "25": "100", "50": "96"},
+        "corpus-size score mismatch",
+    )
 
 
 def verify_replay_archive(package: dict) -> None:
