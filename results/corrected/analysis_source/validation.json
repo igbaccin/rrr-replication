@@ -117,7 +117,7 @@
     {
       "check": "frozen artifact bundle present",
       "passed": true,
-      "detail": "D:\\RRR\\private\\artifacts\\pre_correction_snapshot\\tables\\T1_main_integrity.csv"
+      "detail": "results/rebuild_inputs/pre_correction_snapshot/tables/T1_main_integrity.csv"
     },
     {
       "check": "frozen model outcome counts reproduced",

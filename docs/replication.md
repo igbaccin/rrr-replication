@@ -184,5 +184,5 @@ found support for three of five sampled claims. The full record is under
 - Language-model outputs are stochastic.
 - Corrected writer timings are excluded because they are not comparable with
   the original full-pipeline timings.
-- Historical commit identifiers embedded in replay records remain provenance
-  references to the private development history.
+- Development snapshots in the replay records are represented by stable
+  anonymous labels.

@@ -324,8 +324,8 @@ def main() -> int:
     print("[replication] PASS: corrected Phase A integrity")
     print("[replication] PASS: external comparison summaries")
     print("[replication] PASS: package hygiene")
-    if package.get("source", {}).get("production_commit") is None:
-        print("[replication] PENDING: cleaned production commit will be recorded at freeze")
+    if package.get("source", {}).get("review_repository"):
+        print("[replication] PASS: anonymous review repository recorded")
     return 0
 
 

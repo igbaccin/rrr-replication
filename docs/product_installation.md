@@ -58,12 +58,16 @@ On Windows, use `py --version` when the `python` command is unavailable.
 
 ### Install once
 
+Download the full repository ZIP from the
+[anonymous review repository](https://anonymous.4open.science/r/rrr-replication-1B8C)
+and extract it. Then register the extracted checkout as a local marketplace:
+
 ```bash
-codex plugin marketplace add igbaccin/rrr-replication --ref main
+codex plugin marketplace add <path-to-this-checkout>
 codex plugin add rrr@rrr-replication
 ```
 
-The first command registers the public RRR repository as a Codex marketplace.
+The first command registers the downloaded RRR checkout as a Codex marketplace.
 The second installs its RRR plugin. Start a new Codex task after installation
 so that Codex loads the `$rrr` skill.
 
@@ -106,8 +110,8 @@ Ollama and an Anthropic API key are unnecessary.
 Paste this message into Claude Code:
 
 ```text
-Install RRR as a personal Claude Code skill from
-https://github.com/igbaccin/rrr-replication.
+Install RRR as a personal Claude Code skill from the downloaded reviewer
+package at <path-to-this-checkout>.
 
 Copy the complete skills/rrr directory to ~/.claude/skills/rrr. Preserve
 SKILL.md, runtime, scripts, and agents. Run scripts/bootstrap_rrr.py --json
@@ -164,7 +168,8 @@ default.
 ### Install RRR
 
 ```bash
-python -m pip install "git+https://github.com/igbaccin/rrr-replication.git"
+cd <path-to-this-checkout>
+python -m pip install .
 ```
 
 Install and start Ollama using its platform-specific installer. Download the
@@ -216,11 +221,10 @@ requires a separate provider account, an API key, and paid API usage.
 The Codex and Claude skills install the optional API dependencies when the user
 explicitly requests `api openai` or `api anthropic`.
 
-A terminal user can clone the repository and install the API extras:
+A terminal user can install the API extras from the downloaded checkout:
 
 ```bash
-git clone https://github.com/igbaccin/rrr-replication.git
-cd rrr-replication
+cd <path-to-this-checkout>
 python -m pip install ".[api]"
 ```
 

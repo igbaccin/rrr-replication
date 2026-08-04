@@ -5,7 +5,7 @@ rrr._normalize_leaked_doc_id_citations (gated by the run's allowed docs) and
 report which reviews change. This reproduces the deterministic surface transform
 that reclassified 41 checker-failures to success (see per_run.csv columns
 outcome_asrun -> outcome). Requires the vlm.2.1 package installed
-(pip install "git+https://github.com/igbaccin/rrr-replication.git").
+from the repository root (`python -m pip install .`).
 
 Full E1-E5 re-scoring additionally needs the corpus (metadata + page text);
 this script verifies the surface transform, which is corpus-independent.

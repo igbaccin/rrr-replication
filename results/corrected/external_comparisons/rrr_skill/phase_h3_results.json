@@ -1798,12 +1798,12 @@
     "inner_runtime": "api",
     "inner_model": "claude-opus-4-8",
     "source_commits": [
-      "6b2044242a3b8fe248ed38db02ad42d850c2679a"
+      "review-snapshot-C"
     ],
     "run_manifests_checked": 10,
     "dirty_run_manifests": 6,
     "dirty_paths": [
-      "response_to_reviewers.tex"
+      "anonymous-review-materials"
     ],
     "orchestrator_model_selected": "claude-opus-4-8",
     "source_result_sha256": "9f599f98d2a496b90dfbdc492bf8d0074b4309fc90daae13f0f0e3b61c8bdc4d"

@@ -109,6 +109,3 @@ are described in the [replication guide](docs/replication.md).
 
 The source code is distributed under the terms in `LICENSE.txt`. Please cite
 the accompanying paper when using RRR in published research.
-
-Questions about RRR can be directed to Igor Martins at
-`igor.martins@ekh.lu.se`.

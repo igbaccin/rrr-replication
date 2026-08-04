@@ -21,7 +21,7 @@ the released review texts without rerunning a model.
 To reproduce the deterministic text transformation:
 
 ```bash
-pip install "git+https://github.com/igbaccin/rrr-replication.git"
+python -m pip install .
 python results/local_battery_vlm_2_1/reproduce_normalization.py
 ```
 

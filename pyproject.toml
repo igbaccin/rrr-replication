@@ -9,7 +9,7 @@ description = "Retrieval-Restricted Reasoning, a literature-review pipeline that
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE.txt" }
-authors = [{ name = "Igor B. Martins" }]
+authors = [{ name = "Anonymous Author" }]
 keywords = ["retrieval", "rag", "literature-review", "economic-history", "llm"]
 
 # Runtime deps. The `ollama` client is required in every runtime because the
@@ -40,8 +40,8 @@ all = ["anthropic>=0.40.0", "openai>=2.44.0", "paramiko>=3.5.0"]
 rrr = "rrr.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/igbaccin/rrr-poc"
-Repository = "https://github.com/igbaccin/rrr-poc"
+Homepage = "https://anonymous.4open.science/r/rrr-replication-1B8C"
+Repository = "https://anonymous.4open.science/r/rrr-replication-1B8C"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

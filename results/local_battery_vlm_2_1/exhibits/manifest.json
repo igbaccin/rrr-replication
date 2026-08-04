@@ -14,7 +14,7 @@
   "external_comparisons": {
     "corrected_h3": {
       "path": "results/corrected/external_comparisons/rrr_skill/phase_h3_results.json",
-      "sha256": "e3f5eaa7176b010c73ce83896937eb2ff4154ea3598e7f06a4428ace7153bab6",
+      "sha256": "2372d70e0f9f5fac977f0dcf3a582416235a3c3cd70218b6f8909f06c7cdf8a4",
       "attempts": 10,
       "scored_reviews": 10,
       "clean_reviews": 10

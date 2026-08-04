@@ -14,7 +14,7 @@
   "external_comparisons": {
     "corrected_h3": {
       "path": "results/corrected/external_comparisons/rrr_skill/phase_h3_results.json",
-      "sha256": "e3f5eaa7176b010c73ce83896937eb2ff4154ea3598e7f06a4428ace7153bab6",
+      "sha256": "2372d70e0f9f5fac977f0dcf3a582416235a3c3cd70218b6f8909f06c7cdf8a4",
       "attempts": 10,
       "scored_reviews": 10,
       "clean_reviews": 10
@@ -399,7 +399,7 @@
     },
     {
       "path": "results/corrected/analysis_source/validation.json",
-      "sha256": "4577617ca2c22ab92929376ed883e0d806104e693be835cea7e6d4dec41876ee"
+      "sha256": "15de512d893eaaf55704f4beb3f98c05aebe579268dc98feb186029d8b19a7de"
     },
     {
       "path": "results/corrected/analysis_source/writer_contract_changes.csv",

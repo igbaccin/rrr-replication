@@ -35,7 +35,7 @@ Protocol: `scripts/claude_arm/NOTEBOOKLM_PROTOCOL.md` (frozen). N = 5–10 runs,
 1. Go to notebooklm.google.com, sign in with a Google account (free tier is
    enough: 50 sources per notebook = exactly our corpus).
 2. "Create new" notebook → name it `RRR-H2`.
-3. Upload ALL 50 PDFs from `D:\RRR\corpus\` (drag-and-drop the whole
+3. Upload all 50 PDFs from `<path-to-corpus>` (drag-and-drop the whole
    selection). Wait until every source shows as processed (no spinner).
 
 ## Per run (run 01 … run NN)
