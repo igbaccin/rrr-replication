@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Build the corrected exhibit bundle from the accepted replay analysis.
+"""Regenerate the paper's tables and figures from the deposited records.
 
-The script treats ``private/artifacts/pre_correction_snapshot`` as a frozen July source. Only
-writer-independent tables are copied from it. Every writer-dependent table and
-the local-model outcome figure are rebuilt from
-``private/artifacts/corrected_results/analysis_source``.
+Writer-independent tables come from
+``results/rebuild_inputs/pre_correction_snapshot``. The remaining exhibits are
+rebuilt from ``results/corrected/analysis_source``.
 """
 
 from __future__ import annotations

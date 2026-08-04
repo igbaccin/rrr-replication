@@ -5,6 +5,5 @@ numpy>=1.26
 rapidfuzz>=3.9.7
 ollama>=0.1.0
 pybtex>=0.24.0
-paramiko>=3.5.0
 langdetect>=1.0.9
 matplotlib>=3.8

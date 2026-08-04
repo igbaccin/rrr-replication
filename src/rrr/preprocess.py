@@ -8,8 +8,7 @@ from multiprocessing import Pool, cpu_count
 # v14.3: extractor swapped pdfminer.six -> PyMuPDF after the v14.3 extraction
 # audit (workflow wf_b750f0f0-eeb) showed PyMuPDF: 14-44x faster, 0 fi/fl
 # ligatures vs pdfminer's 3186 across 488 pages, 0 double-space runs (vs
-# pervasive), preserves per-character font/superscript metadata. Cleanup
-# pipeline in scripts/clean_page_text.py handles residual artifacts.
+# pervasive), preserves per-character font/superscript metadata.
 
 # Reference section markers (case-insensitive check done separately).
 # v14.3: dropped the leading `\b` boundary on the inline REFERENCES match so
@@ -197,9 +196,8 @@ def extract_pages(pdf_path: str):
     leaves ligatures + double-spaces from column-flowed layouts), PyMuPDF
     reads the PDF's text objects directly and produces cleaner output.
     Empty pages (commonly the JSTOR splash or a between-section blank) are
-    dropped post-strip. normalize_text still applies for unicode hyphen /
-    quote canonicalisation; the scripts/clean_page_text.py pass adds the
-    heavier-weight cleanup steps.
+    dropped post-strip. normalize_text applies unicode hyphen and quote
+    canonicalisation before pages enter the retained corpus.
     """
     with pymupdf.open(pdf_path) as doc:
         pages = [page.get_text() for page in doc]

@@ -30,7 +30,7 @@
     "manifest": {
       "path": "results/corrected/manifest.json",
       "bytes": 20896,
-      "sha256": "96093e9991f6b6eb20f4fe88cb2e6ce7cb3fb7fa785bf20f1404cf31b2f54f87"
+      "sha256": "57e0c249ad189594ebe492b3f238d6e4ac0cb2c3c4c2ffb829616e3163446d4e"
     },
     "analysis_manifest": {
       "path": "results/corrected/analysis_source/manifest.json",
@@ -42,13 +42,6 @@
       "bytes": 6313,
       "sha256": "15de512d893eaaf55704f4beb3f98c05aebe579268dc98feb186029d8b19a7de"
     }
-  },
-  "replay_archive": {
-    "path": "results/replay_inputs/writer_correction_260720.tar.gz",
-    "archive_root": "corrected_writer_v17",
-    "items": 941,
-    "bytes": 60722872,
-    "sha256": "8df36cea7e7a7b3b2b1fe615c3b4ab6db0f6729df02816de84ead8390436755f"
   },
   "external_comparisons": [
     {
@@ -97,8 +90,8 @@
     "files": [
       {
         "path": "results/external_comparisons/notebooklm/RUNBOOK.md",
-        "bytes": 4391,
-        "sha256": "0a06682a3a22e423db0cf19af6d1c6ca1310d1b9044c470871b718f83c68d0b6"
+        "bytes": 1541,
+        "sha256": "3d6af5350be373cff23804d3032a0e83fa8b5f884c7c6c170c0616285a2fde02"
       },
       {
         "path": "results/external_comparisons/notebooklm/run_01.md",
@@ -138,8 +131,8 @@
     ]
   },
   "anonymization": {
-    "download_watermark_redaction": "Institutional download-watermark strings were replaced in the replay archive and in one preserved raw review. Outcome labels, citations, and aggregate results are unchanged.",
-    "development_snapshot_labels": "Development commit identifiers in replay run manifests and the H3 result record were replaced with the stable labels review-snapshot-A, review-snapshot-B, and review-snapshot-C."
+    "download_watermark_redaction": "An institutional download-watermark string was replaced in one preserved raw review. Outcome labels, citations, and aggregate results are unchanged.",
+    "development_snapshot_labels": "The development commit identifier in the H3 result record was replaced with the stable label review-snapshot-C."
   },
   "excluded": {
     "historical_rrr_skill_h3": "Stored runs used the superseded writer and were replaced by the corrected H3 condition.",

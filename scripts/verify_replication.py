@@ -5,10 +5,8 @@ from __future__ import annotations
 
 import csv
 import hashlib
-import io
 import json
 import sys
-import tarfile
 from pathlib import Path
 
 
@@ -209,27 +207,6 @@ def verify_corrected_results(package: dict) -> None:
     )
 
 
-def verify_replay_archive(package: dict) -> None:
-    record = package["replay_archive"]
-    verify_file_record(record)
-    archive = ROOT / record["path"]
-    manifest_member = f"{record['archive_root']}/manifest.json"
-    with tarfile.open(archive, mode="r:gz") as handle:
-        member = handle.getmember(manifest_member)
-        extracted = handle.extractfile(member)
-        require(extracted is not None, "replay manifest could not be read from archive")
-        replay_manifest = json.load(io.TextIOWrapper(extracted, encoding="utf-8"))
-    require(len(replay_manifest.get("items", [])) == 941, "replay archive item count mismatch")
-    require(
-        len(replay_manifest.get("independent_baselines", [])) == 300,
-        "replay archive baseline count mismatch",
-    )
-    require(
-        len(replay_manifest.get("terminal_before_writer", [])) == 1184,
-        "replay archive terminal count mismatch",
-    )
-
-
 def verify_external_comparisons(package: dict) -> None:
     for record in package["external_comparisons"]:
         verify_file_record(record)
@@ -268,6 +245,14 @@ def verify_package_hygiene() -> None:
     require(not (ROOT / "runs").exists(), "obsolete or generated root runs directory is present")
     require(not (ROOT / "src/rrr/e4_validate.py").exists(), "obsolete e4_validate.py is present")
     require(not (ROOT / "src/rrr/schemas.py").exists(), "obsolete schemas.py is present")
+    expected_scripts = {
+        "build_corrected_paper_artifacts.py",
+        "check_citations.py",
+        "rescore_paper_outputs.py",
+        "verify_replication.py",
+    }
+    deposited_scripts = {path.name for path in (ROOT / "scripts").iterdir() if path.is_file()}
+    require(deposited_scripts == expected_scripts, "unexpected reviewer-package scripts")
     required_modules = (
         "writer.py",
         "reasoner.py",
@@ -280,14 +265,17 @@ def verify_package_hygiene() -> None:
         require((ROOT / "src/rrr" / name).is_file(), f"missing RRR module: {name}")
 
     prohibited = []
-    ignored_parts = {".git", "__pycache__", ".pytest_cache", "reproduced_artifacts"}
+    ignored_parts = {
+        ".git",
+        ".venv",
+        "__pycache__",
+        ".pytest_cache",
+        "reproduced_artifacts",
+    }
     for path in ROOT.rglob("*"):
         if ignored_parts.intersection(path.parts):
             continue
-        allowed_figure_roots = (
-            "results/corrected/figures",
-            "results/local_battery_vlm_2_1/exhibits/figures",
-        )
+        allowed_figure_roots = ("results/corrected/figures",)
         if (
             path.is_file()
             and path.suffix.lower() == ".pdf"
@@ -311,16 +299,14 @@ def main() -> int:
         package = load_json(MANIFEST_PATH)
         require(package.get("schema_version") == "rrr-replication-v1", "unsupported package manifest")
         verify_corrected_results(package)
-        verify_replay_archive(package)
         verify_external_comparisons(package)
         verify_package_hygiene()
-    except (VerificationError, KeyError, OSError, tarfile.TarError, json.JSONDecodeError) as exc:
+    except (VerificationError, KeyError, OSError, json.JSONDecodeError) as exc:
         print(f"[replication] FAILED: {exc}", file=sys.stderr)
         return 1
 
     print("[replication] PASS: deposited file hashes")
     print("[replication] PASS: 2,425-attempt population accounting")
-    print("[replication] PASS: 941-item writer replay archive")
     print("[replication] PASS: corrected Phase A integrity")
     print("[replication] PASS: external comparison summaries")
     print("[replication] PASS: package hygiene")

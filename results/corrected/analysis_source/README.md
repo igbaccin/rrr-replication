@@ -1,16 +1,17 @@
-# Corrected paper analysis source
+# Accepted paper analysis source
 
-This directory contains the paired July and corrected writer results used to
-map changes before manuscript revision. The full join key is `(batch,
-condition, run)`. The frozen July paper bundle remains under
-`private/artifacts/pre_correction_snapshot/`.
+This directory contains the run-level analytical records used to generate the
+accepted paper exhibits. The records account for 941 attempts that reached the
+writer, 300 independent baselines, and 1,184 outcomes that ended before the
+writer. The full join key for paired records is `(batch, condition, run)`.
 
-Rebuild from the repository root with:
+`validation.json` records the count and historical-reproduction checks. The
+supported exhibit builder reads this directory directly:
 
-```powershell
-.\.venv\Scripts\python.exe scripts\build_corrected_results_change_map_vlm21.py --corrected-root pod_outputs\battery_vlm21_materialized
+```bash
+python scripts/build_corrected_paper_artifacts.py --out reproduced_artifacts
 ```
 
-`validation.json` records the required count and historical-reproduction
-checks. The narrative change map is
-`revision_notes/corrected_results_change_map.md`.
+The original preparation paths retained in `manifest.json` document how this
+analytical snapshot was produced. They are provenance fields and are not
+required for reviewer verification or exhibit regeneration.

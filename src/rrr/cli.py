@@ -54,7 +54,7 @@ def t2(args, meta_path):
     # v13: cli.t2 now only dispatches to the live multi-pass path. The legacy
     # single-pass T2 (`t2` without --multi) was the v6-era strict reasoner
     # entrypoint; the layered_t2 architecture (v8+) supersedes it end-to-end
-    # and is what every battery script invokes. Same for the v6-era t1 (single
+    # and is the supported review path. Same for the v6-era t1 (single
     # claim, no writer) and t3 (page extraction) entrypoints — t3 stays retired
     # (v13 removed). t1 REVIVED in v15.9 as a claim-evaluator mode: same
     # pipeline as T2 up to Stage 2 posture, but stops before the writer and
@@ -62,8 +62,7 @@ def t2(args, meta_path):
     if not getattr(args, "multi", False):
         raise SystemExit(
             "cli.t2 now requires --multi. The single-pass path was retired in v13; "
-            "use scripts/run_small_validation.py or scripts/run_battery.sh for the "
-            "full layered pipeline."
+            "rerun the command with --multi for the full layered pipeline."
         )
     # v15.11: deferred import so env vars set by main() (RRR_MODEL,
     # RRR_TOPIC_LANG) take effect before reasoner reads them at import time.

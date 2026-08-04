@@ -102,6 +102,7 @@ are described in the [replication guide](docs/replication.md).
 | `skills/rrr/` | Portable Codex and Claude skill bundle |
 | `dist/` | Installable Python wheel and SHA-256 checksum |
 | `docs/` | Product and replication documentation |
+| `scripts/` | Verification, exhibit-regeneration, and citation-checking tools |
 | `tests/unit/` | Automated tests for the pipeline and runtime modes |
 | `results/` | Deposited evaluation records and generated exhibits |
 

@@ -30,25 +30,18 @@ counts. `reviews_raw/` contains the 907 generated review files.
 `REVIEWS_README.md` explains the normalization reproduction and denominator
 rules.
 
-## Current paper artifacts
+## Paper artifacts
 
-`local_battery_vlm_2_1/exhibits/` preserves the first vlm.2.1 table and figure bundle. Its
-analytical source passes all 21 checks, and its artifact manifest records ten
-additional passing checks.
-
-The F5 model table and graph use all 105 attempted runs per ladder model. They
-combine writer-stage results with the preserved pre-writer outcomes and display
-writer failures as a separate category. Every row accounts for every attempt.
-
-`corrected/` contains the later accepted analytical and exhibit generation. It
+`corrected/` contains the accepted analytical records, tables, and figures. It
 records 40,586 parsed citations across 907 produced reviews, 34 writer failures,
-and the 99-clean Phase A result.
+and the 99-clean Phase A result. The model table and graph account for all 105
+attempted runs per ladder model, including pre-writer outcomes and writer
+failures.
 
 ## Reproduction material
 
-`replay_inputs/` contains the compressed frozen ledgers used for corrected
-writer reproduction. `rebuild_inputs/pre_correction_snapshot/` contains the
-label and baseline inputs required by the exhibit builder.
+`rebuild_inputs/pre_correction_snapshot/` contains the label and baseline
+inputs required by the exhibit builder.
 
 `external_comparisons/claude_code/` contains the completed direct Claude Code
 comparisons. `external_comparisons/notebooklm/` contains five completed

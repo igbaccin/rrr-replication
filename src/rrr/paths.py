@@ -29,8 +29,7 @@ from typing import Optional
 # ---------------------------------------------------------------------------
 
 def _slugify(text: str, max_len: int = 60) -> str:
-    """Lowercase-alnum slug with underscores. Mirrors the pattern
-    scripts/run_small_validation.py:56-58 uses."""
+    """Return a lowercase alphanumeric slug joined with underscores."""
     slug = re.sub(r"[^A-Za-z0-9]+", "_", (text or "").strip()).strip("_").lower()
     return slug[:max_len] or "topic"
 

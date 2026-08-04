@@ -47,7 +47,6 @@ from typing import Optional
 #                           RTX 5090. Dense (not MoE), so it does NOT leak
 #                           reasoning into content the way the a3b MoE does —
 #                           clean JSON on RRR's tight-budget structured stages.
-#                           Already in scripts/pod_pull_models.sh.
 #
 #   NOT RECOMMENDED:
 #       qwen3:30b-a3b       30B MoE / 3B active. Verified (v15.13) to leak

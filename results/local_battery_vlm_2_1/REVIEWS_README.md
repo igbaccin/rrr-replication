@@ -39,7 +39,6 @@ separately.
 
 The historical per-model counts in `summary.json` describe attempts that
 reached the writer under the as-released checker. The 1,184 attempts that
-refused or failed earlier are preserved separately. The model table and graph
-under `exhibits/` combine both groups and use all 105 attempted runs per ladder
-model. This first-generation exhibit snapshot is retained for provenance.
-Current accepted exhibits are under `results/corrected/`.
+refused or failed earlier are preserved in the accepted analytical records.
+The model table and graph under `results/corrected/` combine both groups and
+use all 105 attempted runs per ladder model.
