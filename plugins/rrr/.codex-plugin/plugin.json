@@ -1,6 +1,6 @@
 {
   "name": "rrr",
-  "version": "0.2.0+codex.20260723094917",
+  "version": "0.2.0+codex.20260808065049",
   "description": "Create page-cited reviews and claim evaluations from a selected PDF collection.",
   "author": {
     "name": "Anonymous Author"
@@ -12,18 +12,21 @@
     "literature-review",
     "retrieval",
     "citations",
-    "historical-methods"
+    "historical-methods",
+    "education",
+    "research"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "RRR",
-    "shortDescription": "Page-cited reviews from your own PDFs",
+    "shortDescription": "Page-cited reviews from PDFs",
     "longDescription": "Select a folder of PDFs and ask RRR for a literature review or claim evaluation with page-level evidence and audit artifacts.",
     "developerName": "RRR",
-    "category": "Productivity",
+    "category": "Education & Research",
     "capabilities": [
-      "Read",
-      "Write"
+      "Literature reviews",
+      "Claim evaluation",
+      "Page-cited evidence"
     ],
     "defaultPrompt": [
       "Use $rrr t2 followed by a topic to review my PDFs.",
