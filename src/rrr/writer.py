@@ -4617,24 +4617,8 @@ def _apply_cross_section_stitch(chunks, topic: str, metrics=None):
 # that the reasoner-side caller doesn't need.
 
 def _collect_cited_docs(text: str, allowed_docs, author_year_to_docid):
-    """Writer-side collector: shared canonical / bare-canonical / legacy
-    author-year scans (via render._collect_cited_docs) PLUS the v10 display
-    surfaces. The display branch lives here because reasoner's fallback path
-    doesn't emit display forms.
-    """
-    cited_docs = _shared_collect_cited_docs(text, allowed_docs, author_year_to_docid)
-    display_lookup = _build_display_lookup(allowed_docs)
-    for m in DISPLAY_CITE_RE.finditer(text or ""):
-        key = (m.group(1).strip().lower(), m.group(2))
-        did = display_lookup.get(key)
-        if did:
-            cited_docs.add(did)
-    for m in DISPLAY_PAREN_CITE_RE.finditer(text or ""):
-        key = (m.group(1).strip().lower(), m.group(2))
-        did = display_lookup.get(key)
-        if did:
-            cited_docs.add(did)
-    return cited_docs
+    """Collect cited documents with the same parser as citations.json."""
+    return _shared_collect_cited_docs(text, allowed_docs, author_year_to_docid)
 
 
 def compose_from_ledger(ledger_path=None, metrics=None):
