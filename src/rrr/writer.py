@@ -4126,7 +4126,14 @@ def _ollama_chat(prompt: str, metrics=None, stage="writer"):
     return out
 
 
-_FABRICATED_QUOTE_RE = re.compile(r'"([^"\n]{20,})"')
+_FABRICATED_QUOTE_RE = re.compile(
+    r'"([^"\u201c\u201d\n]{20,})"|\u201c([^"\u201c\u201d\n]{20,})\u201d'
+)
+# vlm.2.5: a coverage quotation is introduced by its own citation and a
+# reporting verb (see the coverage patch template). It was verified when it
+# was inserted, so the verifier leaves it alone; the sentinel marks it while
+# the review is still being assembled, and the template marks it afterwards.
+_COVERAGE_QUOTE_INTRODUCER_RE = re.compile(r"\(\d{4}, p\.\d+\) reports?, $")
 
 
 def _is_period_inside_paren(text: str, idx: int) -> bool:
@@ -4192,9 +4199,24 @@ def _normalise_for_quote_match(s: str) -> str:
     return s.strip()
 
 
+def _quote_is_coverage_patch(full_text: str, q_start: int) -> bool:
+    """True when the quotation opening at ``q_start`` is a coverage quotation."""
+    line_start = full_text.rfind("\n", 0, q_start) + 1
+    sentence_start = line_start
+    for idx in range(q_start - 1, line_start - 1, -1):
+        if full_text[idx] in ".?!" and not _is_period_inside_paren(full_text, idx):
+            sentence_start = idx + 1
+            break
+    sentence_head = full_text[sentence_start:q_start]
+    if _COVERAGE_PATCH_SENTINEL.strip() in sentence_head:
+        return True
+    return bool(_COVERAGE_QUOTE_INTRODUCER_RE.search(sentence_head))
+
+
 def _strip_fabricated_quotes(full_text: str, allowed_docs, metrics=None,
                               display_lookup=None):
-    """v14.2 fix #1: scan the assembled essay for every '"..."' span >=20 chars,
+    """v14.2 fix #1: scan the assembled essay for every '"..."' span >=20 chars
+    (vlm.2.5: curly marks too, skipping code-generated coverage quotations),
     locate the nearest canonical (doc_id: p.N) citation within +/-200 chars,
     and verify the normalised quoted text is a substring of
     data/page_text/{doc_id}_page_{N}.txt. Sentences containing an
@@ -4223,6 +4245,7 @@ def _strip_fabricated_quotes(full_text: str, allowed_docs, metrics=None,
     stats = {
         "enabled": True,
         "checked_quotes": 0,
+        "coverage_quotes_skipped": 0,
         "verified_real": 0,
         "fabricated_stripped": 0,
         "fabricated_kept_no_citation": 0,
@@ -4261,9 +4284,12 @@ def _strip_fabricated_quotes(full_text: str, allowed_docs, metrics=None,
 
     spans_to_strip = []
     for qm in _FABRICATED_QUOTE_RE.finditer(full_text):
-        stats["checked_quotes"] += 1
-        quote = qm.group(1)
+        quote = qm.group(1) or qm.group(2)
         q_start, q_end = qm.span()
+        if _quote_is_coverage_patch(full_text, q_start):
+            stats["coverage_quotes_skipped"] += 1
+            continue
+        stats["checked_quotes"] += 1
 
         win_start = max(0, q_start - 200)
         win_end = min(len(full_text), q_end + 200)
