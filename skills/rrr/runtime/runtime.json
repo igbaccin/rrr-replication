@@ -1,9 +1,9 @@
 {
   "distribution": "rrr-poc",
   "profile": "cl",
-  "profile_version": "vcl.2.1",
+  "profile_version": "vcl.2.2",
   "context": "Claude hosted agent",
-  "version": "15.19.1",
-  "wheel": "rrr_poc-15.19.1-py3-none-any.whl",
-  "sha256": "77247d3cac71d3496864a75df021508c355906bab59d10c02c8b98e66925f3c8"
+  "version": "15.19.2",
+  "wheel": "rrr_poc-15.19.2-py3-none-any.whl",
+  "sha256": "898ffc81e67c0940896364ccf767d5c5b1d1a42e337d5ce6d8c9b831bd3ac5a0"
 }
