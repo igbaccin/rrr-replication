@@ -1,9 +1,9 @@
 {
   "distribution": "rrr-poc",
   "profile": "cx",
-  "profile_version": "vcx.2.2",
+  "profile_version": "vcx.2.3",
   "context": "Codex hosted agent",
-  "version": "15.19.2",
-  "wheel": "rrr_poc-15.19.2-py3-none-any.whl",
-  "sha256": "898ffc81e67c0940896364ccf767d5c5b1d1a42e337d5ce6d8c9b831bd3ac5a0"
+  "version": "15.19.3",
+  "wheel": "rrr_poc-15.19.3-py3-none-any.whl",
+  "sha256": "7db0bbb75b365db0a057678ac1d051366a85cc467b859dfddde2ad48ca468ed5"
 }
