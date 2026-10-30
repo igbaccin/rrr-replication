@@ -767,6 +767,62 @@ def _author_surnames_only(label: str) -> str:
 _EID_LOOKBACK_CHARS = 80
 
 
+_CONJOINED_NAME_BEFORE_LABEL_RE = re.compile(
+    r"(?<![\w.])"
+    r"[A-Z][\w'\u2019\-]*(?:\s+(?:et\s+al\.?|[A-Z][\w'\u2019\-]*))*"
+    r"\s*,?\s*(?:and|&)\s*$"
+)
+
+
+def _label_preceded_by_conjoined_name(prefix: str) -> bool:
+    """True when the prose before an author label reads ``X and``.
+
+    ``Mokyr and Kuznets`` names two documents. A bare-year citation after the
+    second name would read as a two-author work, which run 043 of the July
+    2026 battery released as ``Mokyr and Kuznets (1973, p.1)``. Any
+    capitalised name joined by ``and`` or ``&`` blocks the narrative form; the
+    parenthetical that replaces it keeps both the prose and the citation true.
+    """
+    return bool(_CONJOINED_NAME_BEFORE_LABEL_RE.search((prefix or "").rstrip()))
+
+
+def _repair_unresolved_display_citations(text: str, display_lookup: dict) -> tuple:
+    """Rebind ``X and Author (Year, p.N)`` to ``X and Author (Author Year, p.N)``.
+
+    Runs on the surfaces the parser cannot resolve. The prose names stay; only
+    the parenthetical is rewritten, and only when the last conjoined name with
+    that year resolves to one document.
+    """
+    if not display_lookup:
+        return text or "", 0
+    replacements = []
+    for citation in parse_citations(text or "", display_lookup=display_lookup):
+        if citation.get("doc_id") is not None:
+            continue
+        label = str(citation.get("label") or "").strip()
+        year = str(citation.get("year") or "")
+        if not label or not year or citation.get("page") is None:
+            continue
+        units = [u.strip() for u in re.split(r"\s+(?:and|&)\s+", label) if u.strip()]
+        if len(units) < 2:
+            continue
+        tail = units[-1]
+        if display_lookup.get((tail.lower(), year)) is None:
+            continue
+        raw = citation.get("raw") or ""
+        tail_match = re.search(
+            r"\(\s*" + re.escape(year) + r"[a-z]?(?:,\s*|\s+)p\.\s*(\d+)\)\s*$", raw,
+        )
+        if not tail_match:
+            continue
+        rebound = raw[:tail_match.start()] + f"({tail} {year}, p.{tail_match.group(1)})"
+        replacements.append((citation["start"], citation["end"], rebound))
+    out = text or ""
+    for start, end, rebound in sorted(replacements, reverse=True):
+        out = out[:start] + rebound + out[end:]
+    return out, len(replacements)
+
+
 def _render_evidence_id_citations(text: str, evidence_map: dict) -> tuple:
     """v15.7: context-aware evidence-ID renderer + attribution gate.
 
@@ -808,6 +864,7 @@ def _render_evidence_id_citations(text: str, evidence_map: dict) -> tuple:
         "unknown_eid_snippets": [],
         "attribution_mismatches": 0,
         "attribution_mismatch_snippets": [],
+        "conjoined_subject_parentheticals": 0,
     }
     if not text:
         return text or "", stats
@@ -877,6 +934,14 @@ def _render_evidence_id_citations(text: str, evidence_map: dict) -> tuple:
                     or bool(adjacency_re.search(immediate))
                 )
             )
+            if author_immediately_before and _label_preceded_by_conjoined_name(
+                immediate[:len(immediate) - len(surnames)]
+            ):
+                # "Mokyr and Kuznets [E0081]": the surname is adjacent, but the
+                # prose names a second author, so a bare year would read as a
+                # two-author work. Keep the parenthetical with the author.
+                author_immediately_before = False
+                stats["conjoined_subject_parentheticals"] += 1
             # v15.7 attribution gate: if THIS doc's surname is not
             # adjacent, check whether some OTHER known author surname is.
             # If yes, that is a prose-vs-cite mismatch — record and force
@@ -5649,6 +5714,27 @@ def compose_from_ledger(ledger_path=None, metrics=None):
             "writer_duplicate_citation_identities_removed",
             duplicate_citations_removed,
         )
+
+    # A paged display citation the parser cannot resolve names no corpus
+    # document. Rebind it to the author its year names; if it still does not
+    # resolve, the review is not shipped, since the checker would score it E1.
+    full_text, unresolved_display_repairs = _repair_unresolved_display_citations(
+        full_text, display_lookup,
+    )
+    unresolved_display_citations = [
+        citation["raw"]
+        for citation in parse_citations(full_text, display_lookup=display_lookup)
+        if citation.get("doc_id") is None
+        and citation.get("label")
+        and citation.get("page") is not None
+    ]
+    if metrics:
+        metrics.set("writer_unresolved_display_repairs", unresolved_display_repairs)
+        metrics.set(
+            "writer_unresolved_display_citations", unresolved_display_citations[:20],
+        )
+    if citation_integrity_enforced and unresolved_display_citations:
+        raise RuntimeError("frozen review retained an unresolved display citation")
 
     raw_eid_residue = _EVIDENCE_ID_LIKE_RE.findall(full_text)
     bracketed_doc_id_residue = [
