@@ -1,0 +1,16 @@
+{
+  "topic": "Institutions are the fundamental cause of long-run economic growth",
+  "docs_total": 50,
+  "docs_admitted": 50,
+  "docs_selected_for_llm": 24,
+  "docs_represented": 24,
+  "admission_share": 1.0,
+  "selection_share": 0.48,
+  "represented_share": 0.48,
+  "admitted_probe_coverage": 1.0,
+  "selected_probe_coverage": 1.0,
+  "mean_admitted_score": 69.74,
+  "mean_selected_score": 78.25,
+  "rejection_counts": {},
+  "warnings": []
+}

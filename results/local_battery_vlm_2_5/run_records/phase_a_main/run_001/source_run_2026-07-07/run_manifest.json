@@ -1,0 +1,165 @@
+{
+  "created_at": "2026-07-07T14:39:06Z",
+  "task": "T2_LAYERED_GLOBAL",
+  "topic": "Institutions are the fundamental cause of long-run economic growth",
+  "model": "mistral-small:24b",
+  "repo_root": "/workspace/RRR",
+  "git": {
+    "commit": "8e219fea8913c71ff4c97a5c3900ac1e1381c396",
+    "branch": "main",
+    "dirty": true,
+    "status_short": [
+      "?? claim_cache/"
+    ],
+    "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "untracked_list_sha256": "9ee97c7d8a365b7d5465fdf947efd4e3698de7ce8fbfcc6c59baac23a280ef23"
+  },
+  "hardware": {
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+    "python": "3.11.10",
+    "gpus": [
+      "NVIDIA GeForce RTX 4090, 24564 MiB, 595.71.05"
+    ]
+  },
+  "env": {
+    "PYTHONPATH": ":/workspace/RRR/src",
+    "RRR_CONCURRENCY": "4",
+    "RRR_CORPUS_LANG": "en",
+    "RRR_MODEL": "mistral-small:24b",
+    "RRR_RUN_ID": "battery_phase_a_main_001",
+    "RRR_STAGE_CACHE": "0",
+    "RRR_TOPIC_LANG": "en"
+  },
+  "artifacts": {
+    "metadata": {
+      "path": "metadata.csv",
+      "sha256": "53adca56d07719bb670e5f033a7b18ea920d625993061bb6298c78e6f6a35a98"
+    },
+    "indices": {
+      "bm25": {
+        "path": "/workspace/RRR/indices/bm25.pkl",
+        "sha256": "0e04207cdfaad147f94a0dcab1661c222a9317c167a756d23ce79ba67f9e6a82"
+      },
+      "page_ids": {
+        "path": "/workspace/RRR/indices/page_ids.npy",
+        "sha256": "5738d74bf23798d2f8b71beb6b8aed60e7003ea5a22ba126f818d6b437c905bd"
+      },
+      "docs": {
+        "path": "/workspace/RRR/indices/docs.csv",
+        "sha256": "684f5d2cebfebd6426c79ab1603942055434982495c1780cb1e34a9fb307100e"
+      }
+    },
+    "page_text": {
+      "sha256": "3969ca7199526858d04159f24b6efe8b5f45e8d77eb509320c89f8efd8020575",
+      "files": 1277
+    }
+  },
+  "plan": {
+    "keywords_must": [
+      "institutions",
+      "economic growth",
+      "long run"
+    ],
+    "keywords_any": [
+      "development",
+      "growth",
+      "economy",
+      "causes",
+      "fundamental"
+    ],
+    "exclude": [
+      "short term",
+      "microeconomics",
+      "finance"
+    ],
+    "probes": [
+      "institutions are the fundamental cause of long-run economic growth",
+      "role of institutions in economic development",
+      "institutions and long-term growth",
+      "economic causes of institutional change",
+      "institutional quality and economic performance",
+      "historical perspective on economic growth",
+      "inclusive political institutions",
+      "rule of law",
+      "human capital accumulation",
+      "technological progress",
+      "economic convergence",
+      "endogenous growth theory"
+    ],
+    "planner_meta": {
+      "mode": "llm_two_stage",
+      "model": "mistral-small:24b",
+      "duration_s": 9.7697,
+      "corpus_lang": "en",
+      "topic_lang": "en",
+      "cross_lang_retrieval": false,
+      "terms_of_art_count": 6,
+      "probes_added_by_terms": 6,
+      "topic_reformulated": true
+    },
+    "terms_of_art": [
+      "inclusive political institutions",
+      "rule of law",
+      "human capital accumulation",
+      "technological progress",
+      "economic convergence",
+      "endogenous growth theory"
+    ],
+    "topic_display": "Institutions are the fundamental cause of long-run economic growth",
+    "topic_question": "What is the role of institutions in shaping long-run economic growth?",
+    "topic_dimensions": [
+      "Mechanism of influence",
+      "Scope conditions for effectiveness",
+      "Measurement of institutional quality",
+      "Historical period",
+      "Geographical region"
+    ],
+    "active_probes": [
+      "institutions are the fundamental cause of long-run economic growth",
+      "role of institutions in economic development",
+      "institutions and long-term growth",
+      "economic causes of institutional change",
+      "institutional quality and economic performance",
+      "historical perspective on economic growth",
+      "inclusive political institutions",
+      "rule of law"
+    ]
+  },
+  "extra": {
+    "admit_settings": {
+      "per_doc_topk": 30,
+      "max_sents_per_page": 8,
+      "min_chars": 20,
+      "min_doc_snips": 3,
+      "ev_cap": 8,
+      "min_sent_score": "40",
+      "bypass_validation": "0"
+    },
+    "topic_fit": {
+      "topic": "Institutions are the fundamental cause of long-run economic growth",
+      "docs_total": 50,
+      "docs_admitted": 50,
+      "docs_selected_for_llm": 24,
+      "docs_represented": 24,
+      "admission_share": 1.0,
+      "selection_share": 0.48,
+      "represented_share": 0.48,
+      "admitted_probe_coverage": 1.0,
+      "selected_probe_coverage": 1.0,
+      "mean_admitted_score": 69.74,
+      "mean_selected_score": 78.25,
+      "rejection_counts": {},
+      "warnings": []
+    },
+    "writer_failed": false,
+    "writer_error": null,
+    "outputs": [
+      "review_ledger.json",
+      "review_narrative.md",
+      "topic_fit.json",
+      "admission_rejections.json",
+      "run_metrics.json",
+      "review_composed.md"
+    ]
+  }
+}

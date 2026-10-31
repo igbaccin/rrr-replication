@@ -1,0 +1,60 @@
+===== SYSTEM =====
+CITE only via evidence IDs: every citation is one [E####] marker. Examples: 'North and Weingast [E0001] argue that...' OR 'credible commitment underpins growth [E0001].' Multi-source: 'shared finding [E0001] [E0007] [E0014].' DO NOT write '(Author Year, p.N)', 'Author (Year, p.N)', '(p.5)' or any other citation surface — the renderer converts every [E####] to the right surface for you.
+
+BOUNDARY RULES:
+1. Use only [E####] IDs from the ALLOWED CITATIONS list.
+2. If a claim is not supported by allowed evidence, state it WITHOUT a citation. Do not invent evidence IDs.
+3. QUOTED TEXT: paraphrase by default. Reserve quotation marks (" ") for SHORT phrases (≤12 words) you copy-paste verbatim from the Evidence section. Multi-sentence quotes, ellipsis-truncated quotes, and paraphrased-but-quoted material are fabrications and get stripped.
+4. Finish every paragraph and every section with a complete, standalone sentence. Section transitions are thematic. Never leave a clause or sentence for the next section to complete.
+5. Return only the requested review prose. Begin with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+
+===== USER =====
+Continue this literature review on: What is the role of institutions in shaping long-run economic growth?
+
+Previous ending:
+... colonial education systems was not uniform across Africa. British rule, in particular, was more conducive to the development of formal education compared to other colonial powers (Frankema 2012, p.15). This differential impact on education systems suggests that the institutional frameworks imposed by colonial powers played a crucial role in shaping long-run economic growth in Africa. Frankema (2012, p.1) does not directly address the causal role of institutions in economic growth, but it does indicate that the development of formal education systems was a critical factor in economic outcomes.
+
+IMPORTANT: The Previous ending is a complete sentence. Open with another complete, standalone sentence that develops one of its themes, findings, or scope conditions. Do not continue its grammar, and do not restate the topic on its own.
+
+CLAIMS ALREADY MADE IN PRIOR SECTIONS (do NOT repeat these openers or the same mechanism phrasing, and do NOT re-introduce an author already named in prose below with a fresh "X argues / X shows..." sentence — cite them parenthetically instead):
+  Section 1 [SAME_AS_TOPIC_CAUSE/Institutions and economic growth in Europe]: (no mechanism recorded) (citing North_1989, North&Weingast_1989)
+  Section 2 [RIVAL_TO_TOPIC_CAUSE/Institutional impacts on inequality and economic growth]: (no mechanism recorded) (citing Ogilvie_2007, Sokoloff&Engerman_2000)
+  Section 3 [RIVAL_TO_TOPIC_CAUSE/Economic history and policy implications for Africa]: (no mechanism recorded) (citing Hopkins_2009, Simson_2019)
+  Section 4 [UPSTREAM_OF_TOPIC_CAUSE/Colonial institutions and economic outcomes]: (no mechanism recorded) (citing AcemogluEtAl_2001, AcemogluEtAl_2002)
+  Section 5 [ADJACENT/Role of women and colonial education in African development]: (no mechanism recorded) (citing Akyeampong&Fofack_2014, Frankema_2012)
+  Already named in prose (cite parenthetically, do not re-introduce): North, North and Weingast, Hopkins, Simson, Acemoglu et al., Akyeampong and Fofack, Frankema
+
+Stream: Historical institutions and contemporary African development.
+Structural relation of this stream to the topic (adjacent): this stream addresses a related but distinct question and engages the topic only obliquely.
+SECTION LEAD: Open with a sentence whose grammatical subject names 'Nunn and Wantchekon' (this cluster's lead author). The cite that anchors the opener must resolve to Nunn and Wantchekon's paper.
+OPENER GUARD: Do NOT open this section with any of these author surnames as the topic-sentence subject (they are the lead authors of OTHER sections): Acemoglu et al.; Akyeampong and Fofack; Hopkins; North; Ogilvie. They may still be cited inside the section if their evidence is in your ALLOWED CITATIONS list, but the OPENING SENTENCE must be led by a different surname.
+
+ALLOWED CITATIONS:
+  - [E0025] (paper Austin_2008, page 2; author surname: Austin)
+  - [E0026] (paper Austin_2008, page 15; author surname: Austin)
+  - [E0113] (paper Nunn&Wantchekon_2011, page 27; author surname: Nunn and Wantchekon)
+  - [E0114] (paper Nunn&Wantchekon_2011, page 4; author surname: Nunn and Wantchekon)
+
+STREAM POSTURE (use this as the section's substantive claim about the world; do NOT print it verbatim, but anchor the section's argument to it):
+  The slave trade in Africa led to a culture of mistrust that persists today, impacting contemporary levels of trust within African societies.
+Cite these stream members together once when stating the shared posture: ([E0025]; [E0113])
+
+Evidence:
+[Austin_2008] cite as Austin (2008)
+  Paper's central claim: The paper argues that the 'reversal of fortune' thesis oversimplifies causation by compressing different historical periods and paths, contra Acemoglu, Johnson, Robinson, and Nunn's formulations.
+  [E0025] "Despite this decline, most economists have little difﬁculty in seeing the behaviour of the older industrial economies today in the context of patterns and paths of institutional evolution, investment and policy experience going back at least to the original industrialisation of Europe, its overseas 'off-shoots', and Japan. For economic historians of these countries, the main interest of AJR's work is perhaps what it offers towards over-coming two limitations of the 'new institutionalist' economic historiography associated with Douglass North, which already emphasised the political delivery of secure private property rights as the key to long-term economic growth (North and Thomas, 1973; North, 1981, 1990): the apparent difﬁculty of testing the institutionalist approach quantitatively, and the insufﬁciency of the theory for explaining why institutions that were apparently favourable for economic growth were adopted in some countries but not in others (cf. Bates, 1995; North, 1997)." (from Austin_2008, p.2)
+  [E0026] "First, where European settlers were not present to compete for African labour, the expansion of indigenous commodity production was often in the interests of colonial governments. Second, colonial administrations that sought ﬁscal security, and encouraged their subjects to feel some material interest in the status quo, tended to change their institutional prescriptions in response to the incentives created by indigenous economic and political action. Contrary to Nunn's hypothesis, Governor-General Clifford opted for a higher rather than lower production equilibrium." (from Austin_2008, p.15)
+
+[Nunn&Wantchekon_2011] cite as Nunn and Wantchekon (2011)
+  Paper's central claim: The paper argues that the slave trade caused a culture of mistrust to develop within Africa, which persists to this day and accounts for at least half of the reduced-form effect of the slave trade on trust.
+  [E0113] "Moreover, if we compare the point estimates to estimates using the same specification and sample, but not including the interethnic slave exports control (which are −0.104, −0.126 and −0.107, respectively), we find that the point estimates are barely affected by the inclusion of the control. These findings suggest that essentially all of the estimated effect of the slave trade on intergroup trust is not explained by the effect of the slave trade on the trustworthiness of others.32 Our final strategy is to estimate directly how much of the slave trade's effect on trust works through an individual's external environment-such as the rule of law and the trustworthiness of others-versus through individuals' internal norms of mistrust. We do this by constructing a second slave-export variable." (from Nunn&Wantchekon_2011, p.27)
+  [E0114] "Our estimates show that both channels are important, but that the internal channel is at least twice as large as the external channel. These results complement recent studies documenting the importance of trust: for economic development (Stephen Knack and Philip Keefer 1997; Marcel Fafchamps 2006; Guido Tabellini 2007; Yann Algan and Pierre Cahuc 2010); for international trade (Avner Greif 1989; Luigi Guiso, Paola Sapienza, and Luigi Zingales 2007a); for political institutions (Robert Putnam 2000); and for firm management practices (Nicholas Bloom, Raffaella Sadun, and John Van Reenen 2008). Given the mounting evidence of the importance of trust, our contribution here is in helping to understand and explain its origins." (from Nunn&Wantchekon_2011, p.4)
+
+Write a scholarly literature review organised around streams of related scholarship. Each section presents ONE stream and synthesises across its sources. Argue in direct positive claims; avoid contrastive framings such as 'not X but Y', 'rather than', 'unlike', or 'in contrast'. Vary sentence length; introduce claims as full sentences rather than via colon setups. Each paragraph must integrate at least two DISTINCT documents; do not cite the same document for more than two consecutive citations. Finish every paragraph and section with a complete standalone sentence. Create continuity by carrying a substantive theme across sections. Make claims directly about the substantive question. Do NOT write meta-statements about the review itself ('this review', 'the literature reviewed here', 'as discussed above', 'we will examine'). Do not restate the topic or the thesis.
+
+Present this stream of literature. Open with a direct, substantive claim grounded in the STREAM POSTURE above. Never name the stream's structural relation in the prose (no 'this stream supports/critiques/complicates'); express the relation by the shape of the argument and the sources you cite together. Cite the stream's lead and one supporting source in the same sentence when stating the shared claim. Develop the claim through one specific mechanism, condition, or pattern the sources jointly establish; trace one downstream implication that another source in the stream qualifies. 220-300 words. End with a complete standalone sentence whose substantive theme can carry into the next section.
+
+Return only the requested review prose. Begin immediately with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+Continue:

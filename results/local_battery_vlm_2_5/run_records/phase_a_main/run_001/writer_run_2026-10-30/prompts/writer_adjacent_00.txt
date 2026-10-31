@@ -1,0 +1,59 @@
+===== SYSTEM =====
+CITE only via evidence IDs: every citation is one [E####] marker. Examples: 'North and Weingast [E0001] argue that...' OR 'credible commitment underpins growth [E0001].' Multi-source: 'shared finding [E0001] [E0007] [E0014].' DO NOT write '(Author Year, p.N)', 'Author (Year, p.N)', '(p.5)' or any other citation surface — the renderer converts every [E####] to the right surface for you.
+
+BOUNDARY RULES:
+1. Use only [E####] IDs from the ALLOWED CITATIONS list.
+2. If a claim is not supported by allowed evidence, state it WITHOUT a citation. Do not invent evidence IDs.
+3. QUOTED TEXT: paraphrase by default. Reserve quotation marks (" ") for SHORT phrases (≤12 words) you copy-paste verbatim from the Evidence section. Multi-sentence quotes, ellipsis-truncated quotes, and paraphrased-but-quoted material are fabrications and get stripped.
+4. Finish every paragraph and every section with a complete, standalone sentence. Section transitions are thematic. Never leave a clause or sentence for the next section to complete.
+5. Return only the requested review prose. Begin with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+
+===== USER =====
+Continue this literature review on: What is the role of institutions in shaping long-run economic growth?
+
+Previous ending:
+...s. Acemoglu et al. (2002, p.33) highlight that these extractive institutions were designed to maximize rents for European colonists rather than to foster long-term growth, leading to persistent economic underdevelopment in regions with high mortality rates. However, Acemoglu et al. (2001, p.27) further illustrate that the persistence of these extractive institutions is not inevitable, as they can be altered through political and economic reforms, suggesting that institutional change remains a viable path for economic development in regions historically burdened by extractive colonial legacies.
+
+IMPORTANT: The Previous ending is a complete sentence. Open with another complete, standalone sentence that develops one of its themes, findings, or scope conditions. Do not continue its grammar, and do not restate the topic on its own.
+
+CLAIMS ALREADY MADE IN PRIOR SECTIONS (do NOT repeat these openers or the same mechanism phrasing, and do NOT re-introduce an author already named in prose below with a fresh "X argues / X shows..." sentence — cite them parenthetically instead):
+  Section 1 [SAME_AS_TOPIC_CAUSE/Institutions and economic growth in Europe]: (no mechanism recorded) (citing North_1989, North&Weingast_1989)
+  Section 2 [RIVAL_TO_TOPIC_CAUSE/Institutional impacts on inequality and economic growth]: (no mechanism recorded) (citing Ogilvie_2007, Sokoloff&Engerman_2000)
+  Section 3 [RIVAL_TO_TOPIC_CAUSE/Economic history and policy implications for Africa]: (no mechanism recorded) (citing Hopkins_2009, Simson_2019)
+  Section 4 [UPSTREAM_OF_TOPIC_CAUSE/Colonial institutions and economic outcomes]: (no mechanism recorded) (citing AcemogluEtAl_2001, AcemogluEtAl_2002)
+  Already named in prose (cite parenthetically, do not re-introduce): North, North and Weingast, Hopkins, Simson, Acemoglu et al.
+
+Stream: Role of women and colonial education in African development.
+Structural relation of this stream to the topic (adjacent): this stream addresses a related but distinct question and engages the topic only obliquely.
+SECTION LEAD: Open with a sentence whose grammatical subject names 'Akyeampong and Fofack' (this cluster's lead author). The cite that anchors the opener must resolve to Akyeampong and Fofack's paper.
+OPENER GUARD: Do NOT open this section with any of these author surnames as the topic-sentence subject (they are the lead authors of OTHER sections): Acemoglu et al.; Hopkins; North; Nunn and Wantchekon; Ogilvie. They may still be cited inside the section if their evidence is in your ALLOWED CITATIONS list, but the OPENING SENTENCE must be led by a different surname.
+
+ALLOWED CITATIONS:
+  - [E0017] (paper Akyeampong&Fofack_2014, page 15; author surname: Akyeampong and Fofack)
+  - [E0018] (paper Akyeampong&Fofack_2014, page 20; author surname: Akyeampong and Fofack)
+  - [E0065] (paper Frankema_2012, page 15; author surname: Frankema)
+  - [E0066] (paper Frankema_2012, page 1; author surname: Frankema)
+
+STREAM POSTURE (use this as the section's substantive claim about the world; do NOT print it verbatim, but anchor the section's argument to it):
+  The role of women and colonial education in African development highlights specific aspects of colonial rule that affected economic outcomes, but it does not directly address institutions as the fundamental cause of long-run economic growth.
+Cite these stream members together once when stating the shared posture: ([E0017]; [E0065])
+
+Evidence:
+[Akyeampong&Fofack_2014] cite as Akyeampong and Fofack (2014)
+  Paper's central claim: The paper argues that African women made significant contributions to economic growth and development during both pre-colonial and colonial periods, contra views that marginalize their role.
+  [E0017] "Women were relegated to marginal lands for food farming. The de-privileging of women in access to land in the context of cash crops was reinforced by the central role of men in the codification of customary law under colonial rule (Lawrance, Osborn, and Roberts 2006). Polly Hill (1963) has documented how Krobo and Akuapem farmers in the Gold Coast migrated in search of farm land for cocoa, propelling the economic revolution that made the Gold Coast the world's leading producer of cocoa in 1911." (from Akyeampong&Fofack_2014, p.15)
+  [E0018] "Patriarchal alliances and customary law: The invention of custom One key avenue for the codification of the subordinate status of women in the colonial era was through customary law. Colonial rule introduced a dual legal system of European courts based on common and civil law and native courts Emmanuel Akyeampong and Hippolyte Fofack 60" (from Akyeampong&Fofack_2014, p.20)
+
+[Frankema_2012] cite as Frankema (2012)
+  Paper's central claim: The paper argues that British rule was more conducive to the development of formal education in sub-Saharan Africa than other colonial powers, contra the notion that all colonial powers had similarly negative impacts on African education sy
+  [E0065] "Demand for missionary education depended on a range of cost-benefit calculations made by African political leaders on the macro level and African families on the micro level. The implementation of a new set of social and political institutions altered the (perceived) benefits of formal education, which were related to new [download watermark removed]" (from Frankema_2012, p.15)
+  [E0066] "The origins of formal education in sub-Saharan Africa: was British rule more benign? Author(s): EWOUT H.P." (from Frankema_2012, p.1)
+
+Write a scholarly literature review organised around streams of related scholarship. Each section presents ONE stream and synthesises across its sources. Argue in direct positive claims; avoid contrastive framings such as 'not X but Y', 'rather than', 'unlike', or 'in contrast'. Vary sentence length; introduce claims as full sentences rather than via colon setups. Each paragraph must integrate at least two DISTINCT documents; do not cite the same document for more than two consecutive citations. Finish every paragraph and section with a complete standalone sentence. Create continuity by carrying a substantive theme across sections. Make claims directly about the substantive question. Do NOT write meta-statements about the review itself ('this review', 'the literature reviewed here', 'as discussed above', 'we will examine'). Do not restate the topic or the thesis.
+
+Present this stream of literature. Open with a direct, substantive claim grounded in the STREAM POSTURE above. Never name the stream's structural relation in the prose (no 'this stream supports/critiques/complicates'); express the relation by the shape of the argument and the sources you cite together. Cite the stream's lead and one supporting source in the same sentence when stating the shared claim. Develop the claim through one specific mechanism, condition, or pattern the sources jointly establish; trace one downstream implication that another source in the stream qualifies. 220-300 words. End with a complete standalone sentence whose substantive theme can carry into the next section.
+
+Return only the requested review prose. Begin immediately with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+Continue:

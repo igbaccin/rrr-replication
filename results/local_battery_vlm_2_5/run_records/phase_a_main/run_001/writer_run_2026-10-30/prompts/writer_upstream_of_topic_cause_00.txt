@@ -1,0 +1,58 @@
+===== SYSTEM =====
+CITE only via evidence IDs: every citation is one [E####] marker. Examples: 'North and Weingast [E0001] argue that...' OR 'credible commitment underpins growth [E0001].' Multi-source: 'shared finding [E0001] [E0007] [E0014].' DO NOT write '(Author Year, p.N)', 'Author (Year, p.N)', '(p.5)' or any other citation surface — the renderer converts every [E####] to the right surface for you.
+
+BOUNDARY RULES:
+1. Use only [E####] IDs from the ALLOWED CITATIONS list.
+2. If a claim is not supported by allowed evidence, state it WITHOUT a citation. Do not invent evidence IDs.
+3. QUOTED TEXT: paraphrase by default. Reserve quotation marks (" ") for SHORT phrases (≤12 words) you copy-paste verbatim from the Evidence section. Multi-sentence quotes, ellipsis-truncated quotes, and paraphrased-but-quoted material are fabrications and get stripped.
+4. Finish every paragraph and every section with a complete, standalone sentence. Section transitions are thematic. Never leave a clause or sentence for the next section to complete.
+5. Return only the requested review prose. Begin with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+
+===== USER =====
+Continue this literature review on: What is the role of institutions in shaping long-run economic growth?
+
+Previous ending:
+...ing scope of development policy to incorporate governance, indicating a shift towards recognizing the role of institutions in economic development. This recognition has enabled the new economic history of Africa to gain attention from development specialists. However, Simson (2019, p.11) qualifies this by pointing out that the growth in military spending and debt service payments in post-colonial Africa posed significant challenges to economic stability. This highlights the need for institutional reforms that can mitigate such expenditures and redirect resources towards productive investments.
+
+IMPORTANT: The Previous ending is a complete sentence. Open with another complete, standalone sentence that develops one of its themes, findings, or scope conditions. Do not continue its grammar, and do not restate the topic on its own.
+
+CLAIMS ALREADY MADE IN PRIOR SECTIONS (do NOT repeat these openers or the same mechanism phrasing, and do NOT re-introduce an author already named in prose below with a fresh "X argues / X shows..." sentence — cite them parenthetically instead):
+  Section 1 [SAME_AS_TOPIC_CAUSE/Institutions and economic growth in Europe]: (no mechanism recorded) (citing North_1989, North&Weingast_1989)
+  Section 2 [RIVAL_TO_TOPIC_CAUSE/Institutional impacts on inequality and economic growth]: (no mechanism recorded) (citing Ogilvie_2007, Sokoloff&Engerman_2000)
+  Section 3 [RIVAL_TO_TOPIC_CAUSE/Economic history and policy implications for Africa]: (no mechanism recorded) (citing Hopkins_2009, Simson_2019)
+  Already named in prose (cite parenthetically, do not re-introduce): North, North and Weingast, Hopkins, Simson
+
+Stream: Colonial institutions and economic outcomes.
+Structural relation of this stream to the topic (upstream_of_topic_cause): this stream identifies an ANTECEDENT that flows INTO the topic's causal variable as a trigger; the stream's account complements rather than competes with the topic's claim.
+SECTION LEAD: Open with a sentence whose grammatical subject names 'Acemoglu et al.' (this cluster's lead author). The cite that anchors the opener must resolve to Acemoglu et al.'s paper.
+OPENER GUARD: Do NOT open this section with any of these author surnames as the topic-sentence subject (they are the lead authors of OTHER sections): Akyeampong and Fofack; Hopkins; North; Nunn and Wantchekon; Ogilvie. They may still be cited inside the section if their evidence is in your ALLOWED CITATIONS list, but the OPENING SENTENCE must be led by a different surname.
+
+ALLOWED CITATIONS:
+  - [E0001] (paper AcemogluEtAl_2001, page 27; author surname: Acemoglu et al.)
+  - [E0002] (paper AcemogluEtAl_2001, page 19; author surname: Acemoglu et al.)
+  - [E0009] (paper AcemogluEtAl_2002, page 33; author surname: Acemoglu et al.)
+  - [E0010] (paper AcemogluEtAl_2002, page 6; author surname: Acemoglu et al.)
+
+STREAM POSTURE (use this as the section's substantive claim about the world; do NOT print it verbatim, but anchor the section's argument to it):
+  The cluster examines how differences in European mortality rates influenced the establishment of extractive institutions in colonies, which in turn affected current income per capita.
+Cite these stream members together once when stating the shared posture: ([E0001]; [E0009])
+
+Evidence:
+[AcemogluEtAl_2001] cite as Acemoglu et al. (2001)
+  Paper's central claim: The paper argues that differences in European mortality rates led to the establishment of extractive institutions in colonies with high mortality, which persisted and significantly affected current income per capita, contra geographic or cl
+  [E0001] "Our argument rests on the following premises: (1) Europeans adopted very different colonization strategies, with different associated institutions. In one extreme, as in the case of the United States, Australia, and New Zealand, they went and settled in the colonies and set up institutions that enforced the rule of law and encouraged investment. In the other extreme, as in the Congo or the Gold Coast, they set up extractive states with the intention of transferring resources rapidly to the metropole." (from AcemogluEtAl_2001, p.27)
+  [E0002] "22 The results with other covariates are also very similar. We repeated the same regressions using a variety of alternative measures of institutions, including constraints on the executive from the Polity III data set, an index of law and order tradition from Political Risk Services, a measure of property rights from the Heritage Foundation, a measure of rule of law from the Fraser Institute, and the efficiency of the judiciary from Business International. The results and the magnitudes are very similar to those reported in Table 4." (from AcemogluEtAl_2001, p.19)
+
+[AcemogluEtAl_2002] cite as Acemoglu et al. (2002)
+  Paper's central claim: The paper argues that the reversal in relative incomes among former European colonies is due to institutional changes introduced by colonialism, contra geographic factors.
+  [E0009] "It is important to emphasize that "equilibrium institutions" may be extractive, even though such institutions do not encourage economic development. This is because institutions are shaped, at least in part, by politically powerful groups that may obtain fewer rents with institutions of private property (e.g., North [1990]), or fear losing their political power if there is institutional development (e.g., Acemoglu and Robinson [2000, 2001]), or simply may be reluctant to initiate institutional change because they would not be the direct beneficiaries of the resulting economic gains. In the context of the development experience of the former colonies, this implies that equilibrium institutions are likely to have been designed to maximize the rents to European colonists, not to maximize long-run growth." (from AcemogluEtAl_2002, p.33)
+  [E0010] "Our thesis in the current paper is related, but emphasizes the influence of population density and prosperity on the policies pursued by the Europeans (see also Engerman and Sokoloff [1997]). In addition, here we document the reversal in relative incomes among the former colonies, show that it was related to industrialization, and provide evidence that the interaction between institutions and the opportunity to industrialize during the nineteenth century played a central role in the long-run development of the former colonies.4 3. In this context, see also Frank [1978], Rodney [1972], Wallerstein [1974- 1980], and Williams [1944]." (from AcemogluEtAl_2002, p.6)
+
+Write a scholarly literature review organised around streams of related scholarship. Each section presents ONE stream and synthesises across its sources. Argue in direct positive claims; avoid contrastive framings such as 'not X but Y', 'rather than', 'unlike', or 'in contrast'. Vary sentence length; introduce claims as full sentences rather than via colon setups. Each paragraph must integrate at least two DISTINCT documents; do not cite the same document for more than two consecutive citations. Finish every paragraph and section with a complete standalone sentence. Create continuity by carrying a substantive theme across sections. Make claims directly about the substantive question. Do NOT write meta-statements about the review itself ('this review', 'the literature reviewed here', 'as discussed above', 'we will examine'). Do not restate the topic or the thesis.
+
+Present this stream of literature. Open with a direct, substantive claim grounded in the STREAM POSTURE above. Never name the stream's structural relation in the prose (no 'this stream supports/critiques/complicates'); express the relation by the shape of the argument and the sources you cite together. Cite the stream's lead and one supporting source in the same sentence when stating the shared claim. Develop the claim through one specific mechanism, condition, or pattern the sources jointly establish; trace one downstream implication that another source in the stream qualifies. 220-300 words. End with a complete standalone sentence whose substantive theme can carry into the next section.
+
+Return only the requested review prose. Begin immediately with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+Continue:

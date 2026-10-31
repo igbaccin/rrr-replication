@@ -1,0 +1,822 @@
+{
+  "schema_version": "corrected-writer-v17",
+  "quotes_per_doc": 2,
+  "calls": [
+    {
+      "stage": "writer_opening",
+      "document_ids": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "Hopkins_2009",
+        "North_1989",
+        "Ogilvie_2007"
+      ],
+      "evidence_ids": [
+        "E0001",
+        "E0002",
+        "E0009",
+        "E0010",
+        "E0025",
+        "E0026",
+        "E0073",
+        "E0074",
+        "E0105",
+        "E0106",
+        "E0129",
+        "E0130"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 19
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 6
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33
+        },
+        {
+          "doc_id": "Austin_2008",
+          "page": 2
+        },
+        {
+          "doc_id": "Austin_2008",
+          "page": 15
+        },
+        {
+          "doc_id": "Hopkins_2009",
+          "page": 8
+        },
+        {
+          "doc_id": "Hopkins_2009",
+          "page": 18
+        },
+        {
+          "doc_id": "North_1989",
+          "page": 6
+        },
+        {
+          "doc_id": "North_1989",
+          "page": 9
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "page": 3
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "page": 12
+        }
+      ],
+      "prompt_sha256": "186e5d8918d6fdf6385dafa15c0977e7d270bf5b1d8351fa6c8691bec0f90f20",
+      "prompt_chars": 13440,
+      "passages": [
+        {
+          "evidence_id": "E0001",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27,
+          "display_text": "Our argument rests on the following premises: (1) Europeans adopted very different colonization strategies, with different associated institutions. In one extreme, as in the case of the United States, Australia, and New Zealand, they went and settled in the colonies and set up institutions that enforced the rule of law and encouraged investment. In the other extreme, as in the Congo or the Gold Coast, they set up extractive states with the intention of transferring resources rapidly to the metropole.",
+          "display_text_sha256": "6af55768d2be7c92e6f11b4443c30b7ad35f112749925c35f5bd843f12c85505",
+          "source_text_sha256": "6af55768d2be7c92e6f11b4443c30b7ad35f112749925c35f5bd843f12c85505"
+        },
+        {
+          "evidence_id": "E0002",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 19,
+          "display_text": "22 The results with other covariates are also very similar. We repeated the same regressions using a variety of alternative measures of institutions, including constraints on the executive from the Polity III data set, an index of law and order tradition from Political Risk Services, a measure of property rights from the Heritage Foundation, a measure of rule of law from the Fraser Institute, and the efficiency of the judiciary from Business International. The results and the magnitudes are very similar to those reported in Table 4.",
+          "display_text_sha256": "451f4ef0cad8c02513a8536e60bf4911e9551469453d01a798374ef2ec95899e",
+          "source_text_sha256": "451f4ef0cad8c02513a8536e60bf4911e9551469453d01a798374ef2ec95899e"
+        },
+        {
+          "evidence_id": "E0025",
+          "doc_id": "Austin_2008",
+          "page": 2,
+          "display_text": "Despite this decline, most economists have little difﬁculty in seeing the behaviour of the older industrial economies today in the context of patterns and paths of institutional evolution, investment and policy experience going back at least to the original industrialisation of Europe, its overseas 'off-shoots', and Japan. For economic historians of these countries, the main interest of AJR's work is perhaps what it offers towards over-coming two limitations of the 'new institutionalist' economic historiography associated with Douglass North, which already emphasised the political delivery of secure private property rights as the key to long-term economic growth (North and Thomas, 1973; North, 1981, 1990): the apparent difﬁculty of testing the institutionalist approach quantitatively, and the insufﬁciency of the theory for explaining why institutions that were apparently favourable for economic growth were adopted in some countries but not in others (cf. Bates, 1995; North, 1997).",
+          "display_text_sha256": "5befe97ab2964e3817ef1fcd061372a3b37f0dacdc3a298205473bbf2cfae059",
+          "source_text_sha256": "5befe97ab2964e3817ef1fcd061372a3b37f0dacdc3a298205473bbf2cfae059"
+        },
+        {
+          "evidence_id": "E0026",
+          "doc_id": "Austin_2008",
+          "page": 15,
+          "display_text": "First, where European settlers were not present to compete for African labour, the expansion of indigenous commodity production was often in the interests of colonial governments. Second, colonial administrations that sought ﬁscal security, and encouraged their subjects to feel some material interest in the status quo, tended to change their institutional prescriptions in response to the incentives created by indigenous economic and political action. Contrary to Nunn's hypothesis, Governor-General Clifford opted for a higher rather than lower production equilibrium.",
+          "display_text_sha256": "a58168ea22aacf2f27b0da95da1654ba95ccaded1506d9f5c73cef34c9bd7cd1",
+          "source_text_sha256": "a58168ea22aacf2f27b0da95da1654ba95ccaded1506d9f5c73cef34c9bd7cd1"
+        },
+        {
+          "evidence_id": "E0105",
+          "doc_id": "North_1989",
+          "page": 9,
+          "display_text": "The creation of the Bank of England (1694) and the development of new financial instruments led to a dramatic decline in the cost of transacting and have been described as the English financial revolution. Both institutions and consequent falling transaction costs reflect increased security of the time dimension of property rights, a dimension critical to both a long-term capital market and to economic growth itself. In terms of the very simple political model outlined in Section 2, the original trade of certain rights to Parliament in return for revenues was a product of the fiscal crises of the Hundred Years- War.",
+          "display_text_sha256": "d9f2dca54531c82f5b37be3bc3e7b901b556d55c2facf3288c1a0b0b4bd64fa8",
+          "source_text_sha256": "d9f2dca54531c82f5b37be3bc3e7b901b556d55c2facf3288c1a0b0b4bd64fa8"
+        },
+        {
+          "evidence_id": "E0106",
+          "doc_id": "North_1989",
+          "page": 6,
+          "display_text": "The foregoing discussion profiles transaction costs in a growing economy. The emergence of political institutions that specify \"efficient\" property rights and provide increasingly effective enforcement should show up in terms of the development of economic institutions to facilitate market exchanges. As a result, costs per transaction will be falling; but the size of the transactions sector in the aggregate will be a growing proportion of GNP, as increasing specialization and division of labor multiplies the aggregate volume of exchanges.",
+          "display_text_sha256": "b8c5c2050dfe248348e339dc0abd9d3cca690efa4a817b7974b3950ee615a0f9",
+          "source_text_sha256": "b8c5c2050dfe248348e339dc0abd9d3cca690efa4a817b7974b3950ee615a0f9"
+        },
+        {
+          "evidence_id": "E0129",
+          "doc_id": "Ogilvie_2007",
+          "page": 12,
+          "display_text": ". shared beliefs make up part of the institutional structure of a society', although he repudiates the game-theoretic view (described below), according to which 'beliefs are institutions'.52 In an application of this approach, North and his co-authors ascribe economic failures in Latin America to a system of shared beliefs about political legitimacy and individual rights, which has blocked the institutions that might guarantee property rights and contract enforcement.53 Landes argues that the superior performance of European over non-European economies derived from distinctive European beliefs in changing the world through human intervention, and European values for diligence, thrift, tenacity, honesty, and tolerance, which were not shared by non-European cultures, and which gave rise to European institutions that were distinctively 'capitalistic': 'if we learn anything from the history of economic development', Landes writes, 'it is that culture makes all the difference. (Here Max Weber was right on.)'54 Exogenous cultural theories are also applied on the micro-level, with Richardson contending that Catholic beliefs about the afterlife motivated medieval craftsmen to follow the 'efﬁcient' rules of guilds, while the disappearance of these beliefs with the Protestant Reformation caused guilds to decline.",
+          "display_text_sha256": "0db860e238019a007f12e509ca2195d77a852be8e16ab49b9987fc833023fd34",
+          "source_text_sha256": "0db860e238019a007f12e509ca2195d77a852be8e16ab49b9987fc833023fd34"
+        },
+        {
+          "evidence_id": "E0130",
+          "doc_id": "Ogilvie_2007",
+          "page": 3,
+          "display_text": "I would like to see institutions transformed from a fashion accessory into an indispensable instrument in the toolkit of every economic historian. To do that, I think it is worth standing back from our ﬁrst, ﬁne, careless rapture, and thinking about how best to incorporate institutions into our long-term research programme. That is what I want to do here.",
+          "display_text_sha256": "99e183c7a2c7564f720871daf6106d2c240850e1756c8749795defebae735289",
+          "source_text_sha256": "99e183c7a2c7564f720871daf6106d2c240850e1756c8749795defebae735289"
+        },
+        {
+          "evidence_id": "E0009",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33,
+          "display_text": "It is important to emphasize that \"equilibrium institutions\" may be extractive, even though such institutions do not encourage economic development. This is because institutions are shaped, at least in part, by politically powerful groups that may obtain fewer rents with institutions of private property (e.g., North [1990]), or fear losing their political power if there is institutional development (e.g., Acemoglu and Robinson [2000, 2001]), or simply may be reluctant to initiate institutional change because they would not be the direct beneficiaries of the resulting economic gains. In the context of the development experience of the former colonies, this implies that equilibrium institutions are likely to have been designed to maximize the rents to European colonists, not to maximize long-run growth.",
+          "display_text_sha256": "13aa73096b50a35ce23636a30284fa5d3845a9f8e311b844ea1e5b964b7d327f",
+          "source_text_sha256": "13aa73096b50a35ce23636a30284fa5d3845a9f8e311b844ea1e5b964b7d327f"
+        },
+        {
+          "evidence_id": "E0010",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 6,
+          "display_text": "Our thesis in the current paper is related, but emphasizes the influence of population density and prosperity on the policies pursued by the Europeans (see also Engerman and Sokoloff [1997]). In addition, here we document the reversal in relative incomes among the former colonies, show that it was related to industrialization, and provide evidence that the interaction between institutions and the opportunity to industrialize during the nineteenth century played a central role in the long-run development of the former colonies.4 3. In this context, see also Frank [1978], Rodney [1972], Wallerstein [1974- 1980], and Williams [1944].",
+          "display_text_sha256": "d8b6e800c9cbdd7909f1b98bceb8c3da98b1969f89555cf8e1a51e20ed8fd2f7",
+          "source_text_sha256": "d8b6e800c9cbdd7909f1b98bceb8c3da98b1969f89555cf8e1a51e20ed8fd2f7"
+        },
+        {
+          "evidence_id": "E0073",
+          "doc_id": "Hopkins_2009",
+          "page": 18,
+          "display_text": "Englebert concludes that ethno-linguistic frag mentation has no significant effect on the quality of public goods provided b African governments. Societies can be ethnically homogeneous but still b dysfunctional, and ethnically heterogeneous but still capable of upholdin the rule of law and developing progressive institutions. To the extent th Africa's dismal economic record is linked to the presence of poor institutions 58 Alberto Alesina, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat an Romain Wacziarg, * Fractionalization', Journal of Economic Growth, 8 (2003), 155-94; James D.",
+          "display_text_sha256": "70a01b01e14251bd05ebab388f0aa58f0dadf481dc9ff0596762914886f5e9ba",
+          "source_text_sha256": "70a01b01e14251bd05ebab388f0aa58f0dadf481dc9ff0596762914886f5e9ba"
+        },
+        {
+          "evidence_id": "E0074",
+          "doc_id": "Hopkins_2009",
+          "page": 8,
+          "display_text": "By the 1990s, a new catch-phrase, 'bringing the state back in', had come into vogue.19 The scope of development policy widened to incorporate what became known as 'governance', and policy recommendations allowed institutions and organizations to come to the fore. Some specialists, looking for fresh inspiration, even suggested that the ex perience of East Asia might be more relevant to Africa than that of the United States.20 The prominence attached to the role of institutions enabled the new economic history of Africa to claim the attention of development specialists. 'Good' institutions, as the literature calls them, matter because they are crucial to providing incentives for investment, which is essential for devel opment.",
+          "display_text_sha256": "bb351342c6b387ba613f7e0f3a2c06d7012302461bb0d3fe933a6198e32a5c53",
+          "source_text_sha256": "bb351342c6b387ba613f7e0f3a2c06d7012302461bb0d3fe933a6198e32a5c53"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 0
+    },
+    {
+      "stage": "writer_same_as_topic_cause",
+      "document_ids": [
+        "North&Weingast_1989",
+        "North_1989"
+      ],
+      "evidence_ids": [
+        "E0097",
+        "E0098",
+        "E0105",
+        "E0106"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "North&Weingast_1989",
+          "page": 2
+        },
+        {
+          "doc_id": "North&Weingast_1989",
+          "page": 29
+        },
+        {
+          "doc_id": "North_1989",
+          "page": 6
+        },
+        {
+          "doc_id": "North_1989",
+          "page": 9
+        }
+      ],
+      "prompt_sha256": "8a4d9ac1f89a472ac2c0cbcd09fc451872313b66dd5985c8eedf4b6974fae792",
+      "prompt_chars": 7241,
+      "passages": [
+        {
+          "evidence_id": "E0105",
+          "doc_id": "North_1989",
+          "page": 9,
+          "display_text": "The creation of the Bank of England (1694) and the development of new financial instruments led to a dramatic decline in the cost of transacting and have been described as the English financial revolution. Both institutions and consequent falling transaction costs reflect increased security of the time dimension of property rights, a dimension critical to both a long-term capital market and to economic growth itself. In terms of the very simple political model outlined in Section 2, the original trade of certain rights to Parliament in return for revenues was a product of the fiscal crises of the Hundred Years- War.",
+          "display_text_sha256": "d9f2dca54531c82f5b37be3bc3e7b901b556d55c2facf3288c1a0b0b4bd64fa8",
+          "source_text_sha256": "d9f2dca54531c82f5b37be3bc3e7b901b556d55c2facf3288c1a0b0b4bd64fa8"
+        },
+        {
+          "evidence_id": "E0106",
+          "doc_id": "North_1989",
+          "page": 6,
+          "display_text": "The foregoing discussion profiles transaction costs in a growing economy. The emergence of political institutions that specify \"efficient\" property rights and provide increasingly effective enforcement should show up in terms of the development of economic institutions to facilitate market exchanges. As a result, costs per transaction will be falling; but the size of the transactions sector in the aggregate will be a growing proportion of GNP, as increasing specialization and division of labor multiplies the aggregate volume of exchanges.",
+          "display_text_sha256": "b8c5c2050dfe248348e339dc0abd9d3cca690efa4a817b7974b3950ee615a0f9",
+          "source_text_sha256": "b8c5c2050dfe248348e339dc0abd9d3cca690efa4a817b7974b3950ee615a0f9"
+        },
+        {
+          "evidence_id": "E0097",
+          "doc_id": "North&Weingast_1989",
+          "page": 29,
+          "display_text": "Evidence from capital markets provides a striking indication of this. Recent research that has significantly upgraded France's economic performance before the French Revolution has led to an overhauling of traditional interpretations of British as well as French economic history.56 If England and France were almost at parity in economic performance, the clear implication is that institutions per se-and in particular, the institutional changes we have described-were not so revolutionary after all. Similarly, the elaborate bureaucratic structure inherited from Louis XIV was not such a hindrance to economic growth.",
+          "display_text_sha256": "906942fbcc7e5ebb8194d81e6f3c978d7e68d19cb2e71e532373bcd7aad87ee3",
+          "source_text_sha256": "906942fbcc7e5ebb8194d81e6f3c978d7e68d19cb2e71e532373bcd7aad87ee3"
+        },
+        {
+          "evidence_id": "E0098",
+          "doc_id": "North&Weingast_1989",
+          "page": 2,
+          "display_text": "Their success was remarkable, as the evidence from capital markets shows. This article focuses on the political factors underpinning economic growth and the development of markets-not simply the rules governing economic exchange, but also the institutions governing how these rules are enforced and how they may be changed. A critical political factor is the degree to which the regime or sovereign is committed to or bound by these rules.",
+          "display_text_sha256": "bdf9d56b46458baa3a0b9306348ced8e78baf0ba2888312af1d979c2e2c10a65",
+          "source_text_sha256": "bdf9d56b46458baa3a0b9306348ced8e78baf0ba2888312af1d979c2e2c10a65"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 1
+    },
+    {
+      "stage": "writer_rival_to_topic_cause",
+      "document_ids": [
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "evidence_ids": [
+        "E0129",
+        "E0130",
+        "E0161",
+        "E0162"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "Ogilvie_2007",
+          "page": 3
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "page": 12
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 2
+        },
+        {
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 4
+        }
+      ],
+      "prompt_sha256": "ec3c6e0130fb386ff37bbe2b5247ab9bb41f91a8b084c0e7ac4b2c0b8eb1c73b",
+      "prompt_chars": 9160,
+      "passages": [
+        {
+          "evidence_id": "E0129",
+          "doc_id": "Ogilvie_2007",
+          "page": 12,
+          "display_text": ". shared beliefs make up part of the institutional structure of a society', although he repudiates the game-theoretic view (described below), according to which 'beliefs are institutions'.52 In an application of this approach, North and his co-authors ascribe economic failures in Latin America to a system of shared beliefs about political legitimacy and individual rights, which has blocked the institutions that might guarantee property rights and contract enforcement.53 Landes argues that the superior performance of European over non-European economies derived from distinctive European beliefs in changing the world through human intervention, and European values for diligence, thrift, tenacity, honesty, and tolerance, which were not shared by non-European cultures, and which gave rise to European institutions that were distinctively 'capitalistic': 'if we learn anything from the history of economic development', Landes writes, 'it is that culture makes all the difference. (Here Max Weber was right on.)'54 Exogenous cultural theories are also applied on the micro-level, with Richardson contending that Catholic beliefs about the afterlife motivated medieval craftsmen to follow the 'efﬁcient' rules of guilds, while the disappearance of these beliefs with the Protestant Reformation caused guilds to decline.",
+          "display_text_sha256": "0db860e238019a007f12e509ca2195d77a852be8e16ab49b9987fc833023fd34",
+          "source_text_sha256": "0db860e238019a007f12e509ca2195d77a852be8e16ab49b9987fc833023fd34"
+        },
+        {
+          "evidence_id": "E0130",
+          "doc_id": "Ogilvie_2007",
+          "page": 3,
+          "display_text": "I would like to see institutions transformed from a fashion accessory into an indispensable instrument in the toolkit of every economic historian. To do that, I think it is worth standing back from our ﬁrst, ﬁne, careless rapture, and thinking about how best to incorporate institutions into our long-term research programme. That is what I want to do here.",
+          "display_text_sha256": "99e183c7a2c7564f720871daf6106d2c240850e1756c8749795defebae735289",
+          "source_text_sha256": "99e183c7a2c7564f720871daf6106d2c240850e1756c8749795defebae735289"
+        },
+        {
+          "evidence_id": "E0161",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 2,
+          "display_text": "These differentials in paths of development have long been of central concern to scholars of Latin America and have recentiy attracted more attention from economic historians and economists more generally (North, 1988; Engerman and Sokoloff, 1997; Coatsworth 1993, 1998; Acemoglu, Johnson and Robinson, 2000; Engerman, Haber and Sokoloff, 2000). Although conventional economic factors have certainly not been ignored, the explanations offered for the contrasting records in growth have most often focused on institutions and highlighted the variation across societies in conditions relevant to growth such as the security of property rights, prevalence of corruption, structures of the financial sector, investment in public infrastructure and social capital, and the inclination to work hard or be entrepreneurial. But ascribing differences in development to differences in institutions raises the challenge of explaining where the differences in institutions come from.",
+          "display_text_sha256": "a6d392d455a9bfa1bf33f92a7592eae407c188eb4a5790306a22db2a714a68a0",
+          "source_text_sha256": "a6d392d455a9bfa1bf33f92a7592eae407c188eb4a5790306a22db2a714a68a0"
+        },
+        {
+          "evidence_id": "E0162",
+          "doc_id": "Sokoloff&Engerman_2000",
+          "page": 4,
+          "display_text": "Economists traditionally emphasize the pervasive influence of factor endowment, so the qualitative thrust of this approach may not be entirely novel (Baldwin, 1956; Lewis, 1955; Domar, 1970). What is new, however, is the specific focus on how the extremely different environments in which the Europeans established their colonies may have led to societies with very different degrees of inequality, and on how these differences might have persisted over time and affected the course of development through their impact on the institutions that evolved. In particular, while essentially all the economies established in the New World began with an abundance of land and natural resources relative to labor, and thus high living standards on average, other aspects of their factor endowments varied in ways that meant that the great majority were characterized virtually from the outset by extreme inequality in wealth, human capital, and political power.",
+          "display_text_sha256": "27faaa3209743741e3e12f5efe2551139c6ea65f19aa3eaa9661b9abc2173a2e",
+          "source_text_sha256": "27faaa3209743741e3e12f5efe2551139c6ea65f19aa3eaa9661b9abc2173a2e"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 2
+    },
+    {
+      "stage": "writer_rival_to_topic_cause",
+      "document_ids": [
+        "Hopkins_2009",
+        "Simson_2019"
+      ],
+      "evidence_ids": [
+        "E0073",
+        "E0074",
+        "E0153",
+        "E0154"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "Hopkins_2009",
+          "page": 8
+        },
+        {
+          "doc_id": "Hopkins_2009",
+          "page": 18
+        },
+        {
+          "doc_id": "Simson_2019",
+          "page": 2
+        },
+        {
+          "doc_id": "Simson_2019",
+          "page": 11
+        }
+      ],
+      "prompt_sha256": "7abef1591d69307f6a6114cde07d408e246b2948dfc072a1b62e9e23948cfd8c",
+      "prompt_chars": 8667,
+      "passages": [
+        {
+          "evidence_id": "E0073",
+          "doc_id": "Hopkins_2009",
+          "page": 18,
+          "display_text": "Englebert concludes that ethno-linguistic frag mentation has no significant effect on the quality of public goods provided b African governments. Societies can be ethnically homogeneous but still b dysfunctional, and ethnically heterogeneous but still capable of upholdin the rule of law and developing progressive institutions. To the extent th Africa's dismal economic record is linked to the presence of poor institutions 58 Alberto Alesina, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat an Romain Wacziarg, * Fractionalization', Journal of Economic Growth, 8 (2003), 155-94; James D.",
+          "display_text_sha256": "70a01b01e14251bd05ebab388f0aa58f0dadf481dc9ff0596762914886f5e9ba",
+          "source_text_sha256": "70a01b01e14251bd05ebab388f0aa58f0dadf481dc9ff0596762914886f5e9ba"
+        },
+        {
+          "evidence_id": "E0074",
+          "doc_id": "Hopkins_2009",
+          "page": 8,
+          "display_text": "By the 1990s, a new catch-phrase, 'bringing the state back in', had come into vogue.19 The scope of development policy widened to incorporate what became known as 'governance', and policy recommendations allowed institutions and organizations to come to the fore. Some specialists, looking for fresh inspiration, even suggested that the ex perience of East Asia might be more relevant to Africa than that of the United States.20 The prominence attached to the role of institutions enabled the new economic history of Africa to claim the attention of development specialists. 'Good' institutions, as the literature calls them, matter because they are crucial to providing incentives for investment, which is essential for devel opment.",
+          "display_text_sha256": "bb351342c6b387ba613f7e0f3a2c06d7012302461bb0d3fe933a6198e32a5c53",
+          "source_text_sha256": "bb351342c6b387ba613f7e0f3a2c06d7012302461bb0d3fe933a6198e32a5c53"
+        },
+        {
+          "evidence_id": "E0153",
+          "doc_id": "Simson_2019",
+          "page": 2,
+          "display_text": "These 'neopatrimonial' tendencies in Africa have long been of academic interest. Theory holds that modern administrative and governance institutions function according to a patrimonial logic rather than a legal-rational one.2 Under the veneer of a modern state structure, government resources are treated as the private property of the political patrons that control them, and are used to buy the loyalty of supporters rather than deliver broad-based public goods and services. Vertical ethnic and regional ties that bind the village to the centre trump horizontal class interests, resulting in policy-making that focuses on consumption rather than public goods.3 Econometric studies have sought to identify the political and economic consequences of these patronage structures.",
+          "display_text_sha256": "dda99c604cd6dd3c620c29446b0cc5155a1bac07c8d93e2eaa9936a57986c35d",
+          "source_text_sha256": "dda99c604cd6dd3c620c29446b0cc5155a1bac07c8d93e2eaa9936a57986c35d"
+        },
+        {
+          "evidence_id": "E0154",
+          "doc_id": "Simson_2019",
+          "page": 11,
+          "display_text": "This process was particularly marked in Kenya, where subsidies and interest peaked at 30 per cent of spending in the early 1990s, displacing both capital and recurrent spending. Tanzania also experienced a high debt burden with interest payments peaking at 18 per cent of expenditure, while Uganda's debt payments remained smaller as the country had less access to capital markets during Idi Amin's rule and started receiving debt relief earlier than its neighbours.38 Another important post-colonial expenditure shift was the growth in military spending. Under colonial rule the metropolis had effectively subsidized much of the defence of the colonies, as foreign policy and defence was an imperial matter rather than the responsibility of individual colonies.39 Domestic military spending began to grow in the independence period and escalated towards the end of the 1960s and 1970s in response to regional instability and growing domestic dissent.",
+          "display_text_sha256": "baffcefe7043af3c644faa2408cc1f0a89f93a79f7a7d30fc7b8905950996eba",
+          "source_text_sha256": "baffcefe7043af3c644faa2408cc1f0a89f93a79f7a7d30fc7b8905950996eba"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 3
+    },
+    {
+      "stage": "writer_upstream_of_topic_cause",
+      "document_ids": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002"
+      ],
+      "evidence_ids": [
+        "E0001",
+        "E0002",
+        "E0009",
+        "E0010"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 19
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 6
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33
+        }
+      ],
+      "prompt_sha256": "c1a0c9934a23b375e9fb73d8c545f62955d94a2acafa3cf588a26ce5857adf63",
+      "prompt_chars": 8431,
+      "passages": [
+        {
+          "evidence_id": "E0001",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27,
+          "display_text": "Our argument rests on the following premises: (1) Europeans adopted very different colonization strategies, with different associated institutions. In one extreme, as in the case of the United States, Australia, and New Zealand, they went and settled in the colonies and set up institutions that enforced the rule of law and encouraged investment. In the other extreme, as in the Congo or the Gold Coast, they set up extractive states with the intention of transferring resources rapidly to the metropole.",
+          "display_text_sha256": "6af55768d2be7c92e6f11b4443c30b7ad35f112749925c35f5bd843f12c85505",
+          "source_text_sha256": "6af55768d2be7c92e6f11b4443c30b7ad35f112749925c35f5bd843f12c85505"
+        },
+        {
+          "evidence_id": "E0002",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 19,
+          "display_text": "22 The results with other covariates are also very similar. We repeated the same regressions using a variety of alternative measures of institutions, including constraints on the executive from the Polity III data set, an index of law and order tradition from Political Risk Services, a measure of property rights from the Heritage Foundation, a measure of rule of law from the Fraser Institute, and the efficiency of the judiciary from Business International. The results and the magnitudes are very similar to those reported in Table 4.",
+          "display_text_sha256": "451f4ef0cad8c02513a8536e60bf4911e9551469453d01a798374ef2ec95899e",
+          "source_text_sha256": "451f4ef0cad8c02513a8536e60bf4911e9551469453d01a798374ef2ec95899e"
+        },
+        {
+          "evidence_id": "E0009",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33,
+          "display_text": "It is important to emphasize that \"equilibrium institutions\" may be extractive, even though such institutions do not encourage economic development. This is because institutions are shaped, at least in part, by politically powerful groups that may obtain fewer rents with institutions of private property (e.g., North [1990]), or fear losing their political power if there is institutional development (e.g., Acemoglu and Robinson [2000, 2001]), or simply may be reluctant to initiate institutional change because they would not be the direct beneficiaries of the resulting economic gains. In the context of the development experience of the former colonies, this implies that equilibrium institutions are likely to have been designed to maximize the rents to European colonists, not to maximize long-run growth.",
+          "display_text_sha256": "13aa73096b50a35ce23636a30284fa5d3845a9f8e311b844ea1e5b964b7d327f",
+          "source_text_sha256": "13aa73096b50a35ce23636a30284fa5d3845a9f8e311b844ea1e5b964b7d327f"
+        },
+        {
+          "evidence_id": "E0010",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 6,
+          "display_text": "Our thesis in the current paper is related, but emphasizes the influence of population density and prosperity on the policies pursued by the Europeans (see also Engerman and Sokoloff [1997]). In addition, here we document the reversal in relative incomes among the former colonies, show that it was related to industrialization, and provide evidence that the interaction between institutions and the opportunity to industrialize during the nineteenth century played a central role in the long-run development of the former colonies.4 3. In this context, see also Frank [1978], Rodney [1972], Wallerstein [1974- 1980], and Williams [1944].",
+          "display_text_sha256": "d8b6e800c9cbdd7909f1b98bceb8c3da98b1969f89555cf8e1a51e20ed8fd2f7",
+          "source_text_sha256": "d8b6e800c9cbdd7909f1b98bceb8c3da98b1969f89555cf8e1a51e20ed8fd2f7"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 4
+    },
+    {
+      "stage": "writer_adjacent",
+      "document_ids": [
+        "Akyeampong&Fofack_2014",
+        "Frankema_2012"
+      ],
+      "evidence_ids": [
+        "E0017",
+        "E0018",
+        "E0065",
+        "E0066"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 15
+        },
+        {
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 20
+        },
+        {
+          "doc_id": "Frankema_2012",
+          "page": 1
+        },
+        {
+          "doc_id": "Frankema_2012",
+          "page": 15
+        }
+      ],
+      "prompt_sha256": "0d85b5f01c7415b7475dd2c1aa4c58f368aeecf9916f4884322f4dd62dde4ad9",
+      "prompt_chars": 7506,
+      "passages": [
+        {
+          "evidence_id": "E0017",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 15,
+          "display_text": "Women were relegated to marginal lands for food farming. The de-privileging of women in access to land in the context of cash crops was reinforced by the central role of men in the codification of customary law under colonial rule (Lawrance, Osborn, and Roberts 2006). Polly Hill (1963) has documented how Krobo and Akuapem farmers in the Gold Coast migrated in search of farm land for cocoa, propelling the economic revolution that made the Gold Coast the world's leading producer of cocoa in 1911.",
+          "display_text_sha256": "067d4ac3e904898b96dae91a597679b5ef63314b5c9d3f0b676cf535a622d912",
+          "source_text_sha256": "067d4ac3e904898b96dae91a597679b5ef63314b5c9d3f0b676cf535a622d912"
+        },
+        {
+          "evidence_id": "E0018",
+          "doc_id": "Akyeampong&Fofack_2014",
+          "page": 20,
+          "display_text": "Patriarchal alliances and customary law: The invention of custom One key avenue for the codification of the subordinate status of women in the colonial era was through customary law. Colonial rule introduced a dual legal system of European courts based on common and civil law and native courts Emmanuel Akyeampong and Hippolyte Fofack 60",
+          "display_text_sha256": "e8db70ebdfcc53f982946715d64d4222d48226dff21ca93a3ab84189f9880660",
+          "source_text_sha256": "e8db70ebdfcc53f982946715d64d4222d48226dff21ca93a3ab84189f9880660"
+        },
+        {
+          "evidence_id": "E0065",
+          "doc_id": "Frankema_2012",
+          "page": 15,
+          "display_text": "Demand for missionary education depended on a range of cost-benefit calculations made by African political leaders on the macro level and African families on the micro level. The implementation of a new set of social and political institutions altered the (perceived) benefits of formal education, which were related to new [download watermark removed]",
+          "display_text_sha256": "9fe4950f13ab0c4e9e1cba85f772b85130ae4b5ccdce8a7b5955c1343de65298",
+          "source_text_sha256": "9fe4950f13ab0c4e9e1cba85f772b85130ae4b5ccdce8a7b5955c1343de65298"
+        },
+        {
+          "evidence_id": "E0066",
+          "doc_id": "Frankema_2012",
+          "page": 1,
+          "display_text": "The origins of formal education in sub-Saharan Africa: was British rule more benign? Author(s): EWOUT H.P.",
+          "display_text_sha256": "e84ce475a37af91acbcd20cc039a591a66d2b84c20888b80c0650eaf8b225062",
+          "source_text_sha256": "e84ce475a37af91acbcd20cc039a591a66d2b84c20888b80c0650eaf8b225062"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 5
+    },
+    {
+      "stage": "writer_adjacent",
+      "document_ids": [
+        "Austin_2008",
+        "Nunn&Wantchekon_2011"
+      ],
+      "evidence_ids": [
+        "E0025",
+        "E0026",
+        "E0113",
+        "E0114"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "Austin_2008",
+          "page": 2
+        },
+        {
+          "doc_id": "Austin_2008",
+          "page": 15
+        },
+        {
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 4
+        },
+        {
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 27
+        }
+      ],
+      "prompt_sha256": "8bfb9d58df6773429af65b1e2519193555cd3787cd2c7122cee650439f71b73e",
+      "prompt_chars": 9230,
+      "passages": [
+        {
+          "evidence_id": "E0025",
+          "doc_id": "Austin_2008",
+          "page": 2,
+          "display_text": "Despite this decline, most economists have little difﬁculty in seeing the behaviour of the older industrial economies today in the context of patterns and paths of institutional evolution, investment and policy experience going back at least to the original industrialisation of Europe, its overseas 'off-shoots', and Japan. For economic historians of these countries, the main interest of AJR's work is perhaps what it offers towards over-coming two limitations of the 'new institutionalist' economic historiography associated with Douglass North, which already emphasised the political delivery of secure private property rights as the key to long-term economic growth (North and Thomas, 1973; North, 1981, 1990): the apparent difﬁculty of testing the institutionalist approach quantitatively, and the insufﬁciency of the theory for explaining why institutions that were apparently favourable for economic growth were adopted in some countries but not in others (cf. Bates, 1995; North, 1997).",
+          "display_text_sha256": "5befe97ab2964e3817ef1fcd061372a3b37f0dacdc3a298205473bbf2cfae059",
+          "source_text_sha256": "5befe97ab2964e3817ef1fcd061372a3b37f0dacdc3a298205473bbf2cfae059"
+        },
+        {
+          "evidence_id": "E0026",
+          "doc_id": "Austin_2008",
+          "page": 15,
+          "display_text": "First, where European settlers were not present to compete for African labour, the expansion of indigenous commodity production was often in the interests of colonial governments. Second, colonial administrations that sought ﬁscal security, and encouraged their subjects to feel some material interest in the status quo, tended to change their institutional prescriptions in response to the incentives created by indigenous economic and political action. Contrary to Nunn's hypothesis, Governor-General Clifford opted for a higher rather than lower production equilibrium.",
+          "display_text_sha256": "a58168ea22aacf2f27b0da95da1654ba95ccaded1506d9f5c73cef34c9bd7cd1",
+          "source_text_sha256": "a58168ea22aacf2f27b0da95da1654ba95ccaded1506d9f5c73cef34c9bd7cd1"
+        },
+        {
+          "evidence_id": "E0113",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 27,
+          "display_text": "Moreover, if we compare the point estimates to estimates using the same specification and sample, but not including the interethnic slave exports control (which are −0.104, −0.126 and −0.107, respectively), we find that the point estimates are barely affected by the inclusion of the control. These findings suggest that essentially all of the estimated effect of the slave trade on intergroup trust is not explained by the effect of the slave trade on the trustworthiness of others.32 Our final strategy is to estimate directly how much of the slave trade's effect on trust works through an individual's external environment-such as the rule of law and the trustworthiness of others-versus through individuals' internal norms of mistrust. We do this by constructing a second slave-export variable.",
+          "display_text_sha256": "f9b5b956af7ab821479dcf464de0329a59ba07c7594ed40a14ad32a66ade73a0",
+          "source_text_sha256": "f9b5b956af7ab821479dcf464de0329a59ba07c7594ed40a14ad32a66ade73a0"
+        },
+        {
+          "evidence_id": "E0114",
+          "doc_id": "Nunn&Wantchekon_2011",
+          "page": 4,
+          "display_text": "Our estimates show that both channels are important, but that the internal channel is at least twice as large as the external channel. These results complement recent studies documenting the importance of trust: for economic development (Stephen Knack and Philip Keefer 1997; Marcel Fafchamps 2006; Guido Tabellini 2007; Yann Algan and Pierre Cahuc 2010); for international trade (Avner Greif 1989; Luigi Guiso, Paola Sapienza, and Luigi Zingales 2007a); for political institutions (Robert Putnam 2000); and for firm management practices (Nicholas Bloom, Raffaella Sadun, and John Van Reenen 2008). Given the mounting evidence of the importance of trust, our contribution here is in helping to understand and explain its origins.",
+          "display_text_sha256": "f27774cf673aa78806356a8a4766645b039d437eb73278ac9f094e8869c82e1e",
+          "source_text_sha256": "f27774cf673aa78806356a8a4766645b039d437eb73278ac9f094e8869c82e1e"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 6
+    },
+    {
+      "stage": "writer_closing",
+      "document_ids": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002",
+        "Austin_2008",
+        "Hopkins_2009",
+        "North_1989",
+        "Ogilvie_2007"
+      ],
+      "evidence_ids": [
+        "E0001",
+        "E0002",
+        "E0009",
+        "E0010",
+        "E0025",
+        "E0026",
+        "E0073",
+        "E0074",
+        "E0105",
+        "E0106",
+        "E0129",
+        "E0130"
+      ],
+      "allowed_doc_page_pairs": [
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 19
+        },
+        {
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 6
+        },
+        {
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33
+        },
+        {
+          "doc_id": "Austin_2008",
+          "page": 2
+        },
+        {
+          "doc_id": "Austin_2008",
+          "page": 15
+        },
+        {
+          "doc_id": "Hopkins_2009",
+          "page": 8
+        },
+        {
+          "doc_id": "Hopkins_2009",
+          "page": 18
+        },
+        {
+          "doc_id": "North_1989",
+          "page": 6
+        },
+        {
+          "doc_id": "North_1989",
+          "page": 9
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "page": 3
+        },
+        {
+          "doc_id": "Ogilvie_2007",
+          "page": 12
+        }
+      ],
+      "prompt_sha256": "71e874f5899da800616a5ee0ca4d59a05b81bf9eb86ba6efa5bbd79a6ca29d29",
+      "prompt_chars": 15025,
+      "passages": [
+        {
+          "evidence_id": "E0001",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 27,
+          "display_text": "Our argument rests on the following premises: (1) Europeans adopted very different colonization strategies, with different associated institutions. In one extreme, as in the case of the United States, Australia, and New Zealand, they went and settled in the colonies and set up institutions that enforced the rule of law and encouraged investment. In the other extreme, as in the Congo or the Gold Coast, they set up extractive states with the intention of transferring resources rapidly to the metropole.",
+          "display_text_sha256": "6af55768d2be7c92e6f11b4443c30b7ad35f112749925c35f5bd843f12c85505",
+          "source_text_sha256": "6af55768d2be7c92e6f11b4443c30b7ad35f112749925c35f5bd843f12c85505"
+        },
+        {
+          "evidence_id": "E0002",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 19,
+          "display_text": "22 The results with other covariates are also very similar. We repeated the same regressions using a variety of alternative measures of institutions, including constraints on the executive from the Polity III data set, an index of law and order tradition from Political Risk Services, a measure of property rights from the Heritage Foundation, a measure of rule of law from the Fraser Institute, and the efficiency of the judiciary from Business International. The results and the magnitudes are very similar to those reported in Table 4.",
+          "display_text_sha256": "451f4ef0cad8c02513a8536e60bf4911e9551469453d01a798374ef2ec95899e",
+          "source_text_sha256": "451f4ef0cad8c02513a8536e60bf4911e9551469453d01a798374ef2ec95899e"
+        },
+        {
+          "evidence_id": "E0025",
+          "doc_id": "Austin_2008",
+          "page": 2,
+          "display_text": "Despite this decline, most economists have little difﬁculty in seeing the behaviour of the older industrial economies today in the context of patterns and paths of institutional evolution, investment and policy experience going back at least to the original industrialisation of Europe, its overseas 'off-shoots', and Japan. For economic historians of these countries, the main interest of AJR's work is perhaps what it offers towards over-coming two limitations of the 'new institutionalist' economic historiography associated with Douglass North, which already emphasised the political delivery of secure private property rights as the key to long-term economic growth (North and Thomas, 1973; North, 1981, 1990): the apparent difﬁculty of testing the institutionalist approach quantitatively, and the insufﬁciency of the theory for explaining why institutions that were apparently favourable for economic growth were adopted in some countries but not in others (cf. Bates, 1995; North, 1997).",
+          "display_text_sha256": "5befe97ab2964e3817ef1fcd061372a3b37f0dacdc3a298205473bbf2cfae059",
+          "source_text_sha256": "5befe97ab2964e3817ef1fcd061372a3b37f0dacdc3a298205473bbf2cfae059"
+        },
+        {
+          "evidence_id": "E0026",
+          "doc_id": "Austin_2008",
+          "page": 15,
+          "display_text": "First, where European settlers were not present to compete for African labour, the expansion of indigenous commodity production was often in the interests of colonial governments. Second, colonial administrations that sought ﬁscal security, and encouraged their subjects to feel some material interest in the status quo, tended to change their institutional prescriptions in response to the incentives created by indigenous economic and political action. Contrary to Nunn's hypothesis, Governor-General Clifford opted for a higher rather than lower production equilibrium.",
+          "display_text_sha256": "a58168ea22aacf2f27b0da95da1654ba95ccaded1506d9f5c73cef34c9bd7cd1",
+          "source_text_sha256": "a58168ea22aacf2f27b0da95da1654ba95ccaded1506d9f5c73cef34c9bd7cd1"
+        },
+        {
+          "evidence_id": "E0105",
+          "doc_id": "North_1989",
+          "page": 9,
+          "display_text": "The creation of the Bank of England (1694) and the development of new financial instruments led to a dramatic decline in the cost of transacting and have been described as the English financial revolution. Both institutions and consequent falling transaction costs reflect increased security of the time dimension of property rights, a dimension critical to both a long-term capital market and to economic growth itself. In terms of the very simple political model outlined in Section 2, the original trade of certain rights to Parliament in return for revenues was a product of the fiscal crises of the Hundred Years- War.",
+          "display_text_sha256": "d9f2dca54531c82f5b37be3bc3e7b901b556d55c2facf3288c1a0b0b4bd64fa8",
+          "source_text_sha256": "d9f2dca54531c82f5b37be3bc3e7b901b556d55c2facf3288c1a0b0b4bd64fa8"
+        },
+        {
+          "evidence_id": "E0106",
+          "doc_id": "North_1989",
+          "page": 6,
+          "display_text": "The foregoing discussion profiles transaction costs in a growing economy. The emergence of political institutions that specify \"efficient\" property rights and provide increasingly effective enforcement should show up in terms of the development of economic institutions to facilitate market exchanges. As a result, costs per transaction will be falling; but the size of the transactions sector in the aggregate will be a growing proportion of GNP, as increasing specialization and division of labor multiplies the aggregate volume of exchanges.",
+          "display_text_sha256": "b8c5c2050dfe248348e339dc0abd9d3cca690efa4a817b7974b3950ee615a0f9",
+          "source_text_sha256": "b8c5c2050dfe248348e339dc0abd9d3cca690efa4a817b7974b3950ee615a0f9"
+        },
+        {
+          "evidence_id": "E0129",
+          "doc_id": "Ogilvie_2007",
+          "page": 12,
+          "display_text": ". shared beliefs make up part of the institutional structure of a society', although he repudiates the game-theoretic view (described below), according to which 'beliefs are institutions'.52 In an application of this approach, North and his co-authors ascribe economic failures in Latin America to a system of shared beliefs about political legitimacy and individual rights, which has blocked the institutions that might guarantee property rights and contract enforcement.53 Landes argues that the superior performance of European over non-European economies derived from distinctive European beliefs in changing the world through human intervention, and European values for diligence, thrift, tenacity, honesty, and tolerance, which were not shared by non-European cultures, and which gave rise to European institutions that were distinctively 'capitalistic': 'if we learn anything from the history of economic development', Landes writes, 'it is that culture makes all the difference. (Here Max Weber was right on.)'54 Exogenous cultural theories are also applied on the micro-level, with Richardson contending that Catholic beliefs about the afterlife motivated medieval craftsmen to follow the 'efﬁcient' rules of guilds, while the disappearance of these beliefs with the Protestant Reformation caused guilds to decline.",
+          "display_text_sha256": "0db860e238019a007f12e509ca2195d77a852be8e16ab49b9987fc833023fd34",
+          "source_text_sha256": "0db860e238019a007f12e509ca2195d77a852be8e16ab49b9987fc833023fd34"
+        },
+        {
+          "evidence_id": "E0130",
+          "doc_id": "Ogilvie_2007",
+          "page": 3,
+          "display_text": "I would like to see institutions transformed from a fashion accessory into an indispensable instrument in the toolkit of every economic historian. To do that, I think it is worth standing back from our ﬁrst, ﬁne, careless rapture, and thinking about how best to incorporate institutions into our long-term research programme. That is what I want to do here.",
+          "display_text_sha256": "99e183c7a2c7564f720871daf6106d2c240850e1756c8749795defebae735289",
+          "source_text_sha256": "99e183c7a2c7564f720871daf6106d2c240850e1756c8749795defebae735289"
+        },
+        {
+          "evidence_id": "E0009",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 33,
+          "display_text": "It is important to emphasize that \"equilibrium institutions\" may be extractive, even though such institutions do not encourage economic development. This is because institutions are shaped, at least in part, by politically powerful groups that may obtain fewer rents with institutions of private property (e.g., North [1990]), or fear losing their political power if there is institutional development (e.g., Acemoglu and Robinson [2000, 2001]), or simply may be reluctant to initiate institutional change because they would not be the direct beneficiaries of the resulting economic gains. In the context of the development experience of the former colonies, this implies that equilibrium institutions are likely to have been designed to maximize the rents to European colonists, not to maximize long-run growth.",
+          "display_text_sha256": "13aa73096b50a35ce23636a30284fa5d3845a9f8e311b844ea1e5b964b7d327f",
+          "source_text_sha256": "13aa73096b50a35ce23636a30284fa5d3845a9f8e311b844ea1e5b964b7d327f"
+        },
+        {
+          "evidence_id": "E0010",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 6,
+          "display_text": "Our thesis in the current paper is related, but emphasizes the influence of population density and prosperity on the policies pursued by the Europeans (see also Engerman and Sokoloff [1997]). In addition, here we document the reversal in relative incomes among the former colonies, show that it was related to industrialization, and provide evidence that the interaction between institutions and the opportunity to industrialize during the nineteenth century played a central role in the long-run development of the former colonies.4 3. In this context, see also Frank [1978], Rodney [1972], Wallerstein [1974- 1980], and Williams [1944].",
+          "display_text_sha256": "d8b6e800c9cbdd7909f1b98bceb8c3da98b1969f89555cf8e1a51e20ed8fd2f7",
+          "source_text_sha256": "d8b6e800c9cbdd7909f1b98bceb8c3da98b1969f89555cf8e1a51e20ed8fd2f7"
+        },
+        {
+          "evidence_id": "E0073",
+          "doc_id": "Hopkins_2009",
+          "page": 18,
+          "display_text": "Englebert concludes that ethno-linguistic frag mentation has no significant effect on the quality of public goods provided b African governments. Societies can be ethnically homogeneous but still b dysfunctional, and ethnically heterogeneous but still capable of upholdin the rule of law and developing progressive institutions. To the extent th Africa's dismal economic record is linked to the presence of poor institutions 58 Alberto Alesina, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat an Romain Wacziarg, * Fractionalization', Journal of Economic Growth, 8 (2003), 155-94; James D.",
+          "display_text_sha256": "70a01b01e14251bd05ebab388f0aa58f0dadf481dc9ff0596762914886f5e9ba",
+          "source_text_sha256": "70a01b01e14251bd05ebab388f0aa58f0dadf481dc9ff0596762914886f5e9ba"
+        },
+        {
+          "evidence_id": "E0074",
+          "doc_id": "Hopkins_2009",
+          "page": 8,
+          "display_text": "By the 1990s, a new catch-phrase, 'bringing the state back in', had come into vogue.19 The scope of development policy widened to incorporate what became known as 'governance', and policy recommendations allowed institutions and organizations to come to the fore. Some specialists, looking for fresh inspiration, even suggested that the ex perience of East Asia might be more relevant to Africa than that of the United States.20 The prominence attached to the role of institutions enabled the new economic history of Africa to claim the attention of development specialists. 'Good' institutions, as the literature calls them, matter because they are crucial to providing incentives for investment, which is essential for devel opment.",
+          "display_text_sha256": "bb351342c6b387ba613f7e0f3a2c06d7012302461bb0d3fe933a6198e32a5c53",
+          "source_text_sha256": "bb351342c6b387ba613f7e0f3a2c06d7012302461bb0d3fe933a6198e32a5c53"
+        }
+      ],
+      "invariants": {
+        "displayed_ids_equal_listed_ids": true,
+        "displayed_passage_texts_present": true,
+        "prompt_ids_within_call_packet": true,
+        "renderer_ids_equal_displayed_ids": true,
+        "validator_pairs_equal_displayed_pairs": true
+      },
+      "call_index": 7
+    }
+  ]
+}

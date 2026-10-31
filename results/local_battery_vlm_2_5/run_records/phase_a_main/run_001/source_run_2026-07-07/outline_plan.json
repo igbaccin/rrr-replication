@@ -1,0 +1,176 @@
+{
+  "topic": "Institutions are the fundamental cause of long-run economic growth",
+  "topic_shape": "causal",
+  "topic_cause": "institutions",
+  "topic_outcome": "long-run economic growth",
+  "topic_shape_rationale": "The topic asserts that 'institutions are the fundamental cause of long-run economic growth', naming a cause ('institutions') and an effect ('long-run economic growth').",
+  "clusters": [
+    {
+      "cluster_id": "C1",
+      "doc_ids": [
+        "AcemogluEtAl_2001",
+        "AcemogluEtAl_2002"
+      ],
+      "shared_thread": "Colonial institutions and economic outcomes",
+      "shared_cause": "differences in European mortality rates led to the establishment of extractive institutions",
+      "claims_by_doc": {
+        "AcemogluEtAl_2001": "The paper argues that differences in European mortality rates led to the establishment of extractive institutions in colonies with high mortality, which persisted and significantly affected current income per capita, contra geographic or cl",
+        "AcemogluEtAl_2002": "The paper argues that the reversal in relative incomes among former European colonies is due to institutional changes introduced by colonialism, contra geographic factors."
+      },
+      "relation": "upstream_of_topic_cause",
+      "elaboration": "The cluster examines how differences in European mortality rates influenced the establishment of extractive institutions in colonies, which in turn affected current income per capita.",
+      "reasoning_trace": "The cluster's cause quote is 'differences in European mortality rates led to the establishment of extractive institutions.' This does not name the topic's cause (institutions) as a downstream noun, so TEST C-THROUGH fails. The cluster's cause ('differences in European mortality rates') is not the same as the topic's cause ('institutions'), so TEST S fails. We cannot write a chain sentence using the quotes without inventing words, so TEST U fails. The cluster's cause does not purport to explain the same outcome as the topic's cause through a different mechanism, so TEST R fails. The cluster's cause is not a consequence of the topic's cause, so TEST D fails. There are no scope conditions identified, so TEST SC fails.",
+      "lead_doc_id": "",
+      "internal_disagreement": "",
+      "posture_failed": false,
+      "cluster_cause_quote": "differences in European mortality rates led to the establishment of extractive institutions",
+      "cluster_outcome_quote": "significantly affected current income per capita",
+      "mechanism_grounding": "promoted_adjacent_to_upstream_via_conduit_check"
+    },
+    {
+      "cluster_id": "C2",
+      "doc_ids": [
+        "North_1989",
+        "North&Weingast_1989"
+      ],
+      "shared_thread": "Institutions and economic growth in Europe",
+      "shared_cause": "institutions matter in economic growth and development",
+      "claims_by_doc": {
+        "North_1989": "The paper argues that institutions matter in economic growth and development, contra neoclassical theories which emphasize population and savings as principal determinants.",
+        "North&Weingast_1989": "The paper argues that the evolution of institutions governing public choice in seventeenth-century England was crucial for fostering secure property rights and economic growth, contra views that attribute economic development primarily to o"
+      },
+      "relation": "same_as_topic_cause",
+      "elaboration": "The development of new financial instruments and political institutions in England during the 17th century significantly reduced transaction costs, fostering long-run economic growth.",
+      "reasoning_trace": "First, we check if the cluster's cause names the topic's cause as a downstream noun. The cluster_cause_quote contains 'led to', which is a surface marker for a downstream relationship. However, it does not name 'institutions' as a downstream conduit. Therefore, TEST C-THROUGH fails. Next, we check if the cluster's cause is the topic's cause under a different label or a more specific instance (TEST S). The cluster's cause is indeed a specific instance of institutions, namely financial instruments and political institutions. Thus, TEST S passes and the relation is `same_as_topic_cause`.",
+      "lead_doc_id": "",
+      "internal_disagreement": "",
+      "posture_failed": false,
+      "cluster_cause_quote": "The creation of the Bank of England (1694) and the development of new financial instruments led to a dramatic decline in the cost of transacting",
+      "cluster_outcome_quote": "The emergence of political institutions that specify 'efficient' property rights and provide increasingly effective enforcement should show up in long-run economic growth.",
+      "mechanism_grounding": ""
+    },
+    {
+      "cluster_id": "C3",
+      "doc_ids": [
+        "Austin_2008",
+        "Nunn&Wantchekon_2011"
+      ],
+      "shared_thread": "Historical institutions and contemporary African development",
+      "shared_cause": "",
+      "claims_by_doc": {
+        "Austin_2008": "The paper argues that the 'reversal of fortune' thesis oversimplifies causation by compressing different historical periods and paths, contra Acemoglu, Johnson, Robinson, and Nunn's formulations.",
+        "Nunn&Wantchekon_2011": "The paper argues that the slave trade caused a culture of mistrust to develop within Africa, which persists to this day and accounts for at least half of the reduced-form effect of the slave trade on trust."
+      },
+      "relation": "adjacent",
+      "elaboration": "The slave trade in Africa led to a culture of mistrust that persists today, impacting contemporary levels of trust within African societies.",
+      "reasoning_trace": "The cluster's cause quote is 'The slave trade caused a culture of mistrust to develop within Africa'. This does not name the topic's CAUSE (institutions) as a downstream noun. Therefore, TEST C-THROUGH fails. Since the cluster's cause and the topic's cause do not purport to explain the same outcome with neither acting through the other, TEST RIVAL also fails. The cluster's cause is not a consequence of the topic's cause, so TEST DOWNSTREAM fails as well. The cluster does not accept the topic's claim but identifies when or where it holds vs fails, so TEST SCOPE CONDITION fails. Therefore, the relation is `adjacent`.",
+      "lead_doc_id": "Nunn&Wantchekon_2011",
+      "internal_disagreement": "",
+      "posture_failed": false,
+      "cluster_cause_quote": "The slave trade caused a culture of mistrust to develop within Africa",
+      "cluster_outcome_quote": "which persists to this day and accounts for at least half of the reduced-form effect of the slave trade on trust",
+      "mechanism_grounding": ""
+    },
+    {
+      "cluster_id": "C4",
+      "doc_ids": [
+        "Ogilvie_2007",
+        "Sokoloff&Engerman_2000"
+      ],
+      "shared_thread": "Institutional impacts on inequality and economic growth",
+      "shared_cause": "distributional conflicts provide a better explanation than efficiency",
+      "claims_by_doc": {
+        "Ogilvie_2007": "The paper argues that distributional conflicts provide a better explanation than efficiency for the core economic institutions of pre-industrial Europe: serfdom, the community, the craft guild, and the merchant guild, contra the belief that",
+        "Sokoloff&Engerman_2000": "The paper argues that institutions in New World societies with greater inequality advantaged elites through various government policies, restricting competition and contributing to the persistence of inequality."
+      },
+      "relation": "rival_to_topic_cause",
+      "elaboration": "Ogilvie argues that distributional conflicts, rather than efficiency, better explain key economic institutions in pre-industrial Europe.",
+      "reasoning_trace": "The cluster's cause is 'distributional conflicts' which does not name the topic's cause ('institutions') as a downstream noun. Therefore, TEST C-THROUGH fails. The cluster's cause is not the same as or an instance of the topic's cause, so TEST S fails. We cannot write a chain sentence using the quotes without inventing words, so TEST U fails. The cluster's cause and the topic's cause both purport to explain the same outcome (economic institutions), with neither acting through the other. Therefore, the relation is `rival_to_topic_cause`.",
+      "lead_doc_id": "Ogilvie_2007",
+      "internal_disagreement": "",
+      "posture_failed": false,
+      "cluster_cause_quote": "distributional conflicts provide a better explanation than efficiency",
+      "cluster_outcome_quote": "the core economic institutions of pre-industrial Europe: serfdom, the community, the craft guild, and the merchant guild",
+      "mechanism_grounding": ""
+    },
+    {
+      "cluster_id": "C5",
+      "doc_ids": [
+        "Akyeampong&Fofack_2014",
+        "Frankema_2012"
+      ],
+      "shared_thread": "Role of women and colonial education in African development",
+      "shared_cause": "",
+      "claims_by_doc": {
+        "Akyeampong&Fofack_2014": "The paper argues that African women made significant contributions to economic growth and development during both pre-colonial and colonial periods, contra views that marginalize their role.",
+        "Frankema_2012": "The paper argues that British rule was more conducive to the development of formal education in sub-Saharan Africa than other colonial powers, contra the notion that all colonial powers had similarly negative impacts on African education sy"
+      },
+      "relation": "adjacent",
+      "elaboration": "The role of women and colonial education in African development highlights specific aspects of colonial rule that affected economic outcomes, but it does not directly address institutions as the fundamental cause of long-run economic growth.",
+      "reasoning_trace": "First, we check if the cluster's cause names the topic's cause as a downstream noun. The cluster_cause_quote does not contain the topic-cause word(s) 'institutions' after a verb like `led to`, `established`, `shaped`, etc., so TEST C-THROUGH fails. Next, we check if the cluster's cause is the same as the topic's cause under a different label or a more specific instance. The cluster's cause is not explicitly named as 'institutions' but rather focuses on the role of women and customary law under colonial rule. Therefore, TEST S fails. Since TEST C-THROUGH and TEST S have failed, we proceed to TEST R. The cluster's cause (role of women and customary law) does not purport to explain the same outcome as the topic's cause (institutions) in a rival manner; instead, it focuses on a specific aspect of colonial rule that affects economic growth. Therefore, TEST R fails. We then check if the cluster's cause is a consequence of the topic's cause. The cluster does not study what happens after institutions act but rather focuses on the role of women and customary law under colonial rule. Therefore, TEST D fails. Finally, we check if the cluster accepts the topic's claim but identifies when or wh",
+      "lead_doc_id": "",
+      "internal_disagreement": "",
+      "posture_failed": false,
+      "cluster_cause_quote": "The de-privileging of women in access to land in the context of cash crops was reinforced by the central role of men in the codification of customary law under colonial rule.",
+      "cluster_outcome_quote": "Women were relegated to marginal lands for food farming",
+      "mechanism_grounding": ""
+    },
+    {
+      "cluster_id": "C6",
+      "doc_ids": [
+        "Hopkins_2009",
+        "Simson_2019"
+      ],
+      "shared_thread": "Economic history and policy implications for Africa",
+      "shared_cause": "",
+      "claims_by_doc": {
+        "Hopkins_2009": "The paper argues that the new economic history of Africa can inform institutional reforms and help eliminate poverty among the bottom billion people in Africa.",
+        "Simson_2019": "The paper argues that East Africa's post-independence expenditure trends were not exceptional and were influenced by industrial policy, capital investments, military expenditure, and debt service payments, contra the view of economically un"
+      },
+      "relation": "rival_to_topic_cause",
+      "elaboration": "Institutional reforms are seen as a key mechanism for addressing poverty in Africa, contrasting with the broader view that institutions fundamentally drive long-run economic growth.",
+      "reasoning_trace": "The cluster's cause quote is 'institutional reforms'. This does not name the topic's cause (institutions) as a downstream noun. Therefore, TEST C-THROUGH fails. The cluster's outcome quote is 'help eliminate poverty among the bottom billion people in Africa', which does not directly relate to long-run economic growth. Since neither test applies, we move to TEST R. The cluster's cause (institutional reforms) and the topic's cause (institutions) both purport to explain a related outcome (economic conditions), with neither acting through the other. Therefore, the relation is `rival_to_topic_cause`.",
+      "lead_doc_id": "Hopkins_2009",
+      "internal_disagreement": "",
+      "posture_failed": false,
+      "cluster_cause_quote": "institutional reforms",
+      "cluster_outcome_quote": "help eliminate poverty among the bottom billion people in Africa.",
+      "mechanism_grounding": ""
+    }
+  ],
+  "unassigned_doc_ids": [
+    "Broadberry&Gardner_2022",
+    "Broadberry&Gupta_2006",
+    "Frankema&vanWaijenburg_2012",
+    "Kuznets_1973",
+    "Mokyr_2005",
+    "Pamuk_2007",
+    "Peters_2004",
+    "Stern_2004",
+    "vanZanden_1999",
+    "Bolt&vanZanden_2014",
+    "Nunn_2008",
+    "vanZanden_2009"
+  ],
+  "ordered_cluster_ids": [
+    "C2",
+    "C4",
+    "C6",
+    "C1",
+    "C5",
+    "C3"
+  ],
+  "admitted_total": 24,
+  "unassigned_share": 0.5,
+  "relation_distribution": {
+    "upstream_of_topic_cause": 2,
+    "same_as_topic_cause": 2,
+    "adjacent": 4,
+    "rival_to_topic_cause": 4
+  },
+  "model": "mistral-small:24b",
+  "precheck_prompt_version": "2026-07-02-v15.14-precheck",
+  "cluster_prompt_version": "2026-07-02-v15.14-cluster",
+  "posture_prompt_version": "2026-07-02-v15.14-posture",
+  "order_prompt_version": "2026-07-02-v15.14-order"
+}

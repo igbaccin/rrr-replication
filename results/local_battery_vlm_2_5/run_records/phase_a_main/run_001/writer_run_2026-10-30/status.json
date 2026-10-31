@@ -1,0 +1,8 @@
+{
+  "completed": true,
+  "outcome": "success",
+  "code_fingerprint": "0082a410a030839f8127698a98c048d37648990ca943f03d78a9dd401a669262",
+  "source_ledger_sha256": "96ae351231c3ca5ddaf979415c093e1ff16d4ebd2295ca367b9e50d0a93efc3b",
+  "checker_returncode": 0,
+  "finished_at": "2026-10-30T18:21:31.929392+00:00"
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "rrr-replication-v1",
   "package_status": "final_version_package",
-  "prepared_at_utc": "2026-10-31T02:53:33Z",
+  "prepared_at_utc": "2026-10-31T12:57:30Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: Supporting Scholarly Synthesis with Language Models",
     "author": "Anonymous author"
@@ -166,6 +166,212 @@
       "path": "results/local_battery_vlm_2_5/materialization.json",
       "bytes": 2658,
       "sha256": "c19dde8eb459e88ce0854827cf69dc5453e5a9b741dd7edba7d7b005bfe534fb"
+    },
+    "run_record": {
+      "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001",
+      "description": "complete record of the paper's running example: source-run retrieval, admission and outline files of 7 July 2026, and the writer stage regenerated on 30 October 2026",
+      "files": [
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/inventory.json",
+          "bytes": 2004,
+          "sha256": "18e8c0aea2b678f5e2ac29813c434897e5fcbc317de881d79f5c17a40894a99a"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/admission_rejections.json",
+          "bytes": 138,
+          "sha256": "6fcb6fa27ba6c50672ec56212e6d42b6785514915d578dfd7d8e3e53e6589cac"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/outline_plan.json",
+          "bytes": 14185,
+          "sha256": "5b54c633a80444e5e295372d57926feaa56988489ecd0b309cc41dd2f614953c"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/plan.json",
+          "bytes": 2059,
+          "sha256": "616649367df518e648f1b9dc7f024cac9e67300250fa934d93dc4395c7f3f703"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/review_ledger.json",
+          "bytes": 307201,
+          "sha256": "7793ed922ec53515774ec60c7c9e18a2e62422ce34e4bbb61df93908c5ec994f"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/review_narrative.md",
+          "bytes": 6303,
+          "sha256": "5869ba0ccb5ead504b77abc2cbf336c7bd78097312526e62ff8b4376d5c95a57"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/run_manifest.json",
+          "bytes": 5031,
+          "sha256": "ccc57d3eebe0452afd645e35006b9e090106117b11d026c5bfc50b74b4795fd4"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/run_metrics.json",
+          "bytes": 23425,
+          "sha256": "b316cfb6f11b85389b4e096f5358a9703501462739284514af54f76444db70db"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/source_run_2026-07-07/topic_fit.json",
+          "bytes": 441,
+          "sha256": "4dafa2c8414bbd0bd51bd461f8d1b777121be1d1a955cabfdd7dc4b938a7af74"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/citations.json",
+          "bytes": 752,
+          "sha256": "7c1cd7358720f6fa955760e794046167dd4865534c4144a3005a049975085c66"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/citations_manifest.json",
+          "bytes": 9984,
+          "sha256": "7879635c9d483b68fbfc9e12e8a2afe53d98ff478798f5d39015cd47516feeee"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/cross_section_stitch_00.txt",
+          "bytes": 4660,
+          "sha256": "3dc069cd888e715dc389cfa9d489fafdfa598437f78cb3ea810f52125cbcaf3b"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/cross_section_stitch_00_response.txt",
+          "bytes": 1295,
+          "sha256": "3fd5bfd731de18b011f17de1e066be94c31c632ea6d031ab1c03aa89facf60b3"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/style_rewrite_00.txt",
+          "bytes": 3663,
+          "sha256": "1d59712523c6873f237f00b9d8b035cd68f3617cee719c50578499d5ecdcc060"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/style_rewrite_00_response.txt",
+          "bytes": 2261,
+          "sha256": "2e9f5b317b93c5eee0002bc6c6f6479612497509a84a1600c054acc5856fcc51"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_adjacent_00.txt",
+          "bytes": 8661,
+          "sha256": "bba63b554380385c3ca8e2543a30e21ce4e0b177f0afbdc99f07e07cbeb40eed"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_adjacent_00_response.txt",
+          "bytes": 1716,
+          "sha256": "0c1782ab071f34e8d0ecc93ea37b36d87a39a0e32954652f2a7bcd155263b61c"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_adjacent_01.txt",
+          "bytes": 10497,
+          "sha256": "a2f25d4d6e91e1db8c24865907b474ec73ae14ad4b8feee5f890b1a75e5e22cd"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_adjacent_01_response.txt",
+          "bytes": 1141,
+          "sha256": "92bfb6f66af63ab4612ed2374ddb3f1d9ee2eb7dab7e6d5849c9329278e21bed"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_closing_00.txt",
+          "bytes": 16292,
+          "sha256": "9f52d4ceb0eb2815531109c3ea0beb6c3c0458303ef8f3798a8248316747f8ef"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_closing_00_response.txt",
+          "bytes": 2472,
+          "sha256": "613380b9e1dcb1be786f7b1e2cc3e9f88b0b2c2fa62a0de5b20095efcad15f86"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_opening_00.txt",
+          "bytes": 14705,
+          "sha256": "018627a1401b85b1a56c7f2ff30c2d2eeacbaf9949a15f54a7cd039bdc2b4339"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_opening_00_response.txt",
+          "bytes": 1142,
+          "sha256": "845b4650cbe0d061d05bb5e292b468280614cc5b00fd4ab2a5d18ebb2d3120e0"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_rival_to_topic_cause_00.txt",
+          "bytes": 10419,
+          "sha256": "445f6ebce28984b9424e06103c32c8871870f5eaae2222af1a820bc87f1c0d20"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_rival_to_topic_cause_00_response.txt",
+          "bytes": 1530,
+          "sha256": "0bffc85c5899a5b76ce1eae79918a4362a671e847e17364162407e8dc4d6a61f"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_rival_to_topic_cause_01.txt",
+          "bytes": 9920,
+          "sha256": "2cfcbd7201e9ee69febf7ceaaa1a0e3c65d48b66f86c32887bbe515a9464b7d8"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_rival_to_topic_cause_01_response.txt",
+          "bytes": 1793,
+          "sha256": "6176ff2ef36d1631ecf420404389fae1b9868cc4cd71785bcb3acf28cc20170d"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_same_as_topic_cause_00.txt",
+          "bytes": 8502,
+          "sha256": "873776265cff61421018e7a0aba5b516afc38c23954670b7df63419215d9cebe"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_same_as_topic_cause_00_response.txt",
+          "bytes": 1762,
+          "sha256": "fbb51e8cb42cb3dd2935698298d9554a71d4c132b5c1c2d1a9ddf277a1ffba67"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_upstream_of_topic_cause_00.txt",
+          "bytes": 9684,
+          "sha256": "249cb53f16b5dcd68ef16dbe897091d9ad0f3155a488c7fd72051efed4856e38"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/prompts/writer_upstream_of_topic_cause_00_response.txt",
+          "bytes": 1724,
+          "sha256": "8154e5b5fec255f0edd748ed9e18a0038d0abbf010495456d9eb7388e47ddd81"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/quality_manifest.json",
+          "bytes": 5447,
+          "sha256": "b98104ef108c0120e37c15551c2098c4c4f5c7f4e8e2c34c259643047d451042"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/replay_provenance.json",
+          "bytes": 8193,
+          "sha256": "ee01432014a4b1f34c9b91c53f8bc673310a01e9d84ca407a011e67f24462efe"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/review_cited_docs.json",
+          "bytes": 260,
+          "sha256": "0676d5a244fe160bff1483e82bddb8cf8eb6325aa6f9aa32dad9eaaa1747e793"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/review_composed.md",
+          "bytes": 11826,
+          "sha256": "34e4d507a651999bd543455d8ed1aac90729a48f667e67604efc6e6829d63957"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/run_manifest.json",
+          "bytes": 8347,
+          "sha256": "92ff3fad1cc2ffa34cf09c54593e4a156e54ad6cb7a9d89bdb314a0bfdc151c1"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/run_metrics.json",
+          "bytes": 24341,
+          "sha256": "e50deba5a052728b8974197e5fd44853b08f11c476fd65cd7bfe4a695d57afd8"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/source_run_manifest.json",
+          "bytes": 5031,
+          "sha256": "ccc57d3eebe0452afd645e35006b9e090106117b11d026c5bfc50b74b4795fd4"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/status.json",
+          "bytes": 311,
+          "sha256": "83cdb15c099340f09b3f78da4545f1e6fb5098807b7c1e9733d906e210dca423"
+        },
+        {
+          "path": "results/local_battery_vlm_2_5/run_records/phase_a_main/run_001/writer_run_2026-10-30/writer_call_contracts.json",
+          "bytes": 59083,
+          "sha256": "b270a58eb9226bddeeb038fba2f035ccfc66f9b3a1237f84e072a9cee77b57ad"
+        }
+      ]
     }
   },
   "previous_batteries": [

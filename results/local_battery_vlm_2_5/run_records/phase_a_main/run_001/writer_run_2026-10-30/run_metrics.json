@@ -1,0 +1,793 @@
+{
+  "task": "CORRECTED_WRITER_REPLAY",
+  "topic": "Institutions are the fundamental cause of long-run economic growth",
+  "started_at": "2026-10-30T18:19:57Z",
+  "finished_at": "2026-10-30T18:21:30Z",
+  "duration_s": 92.8401,
+  "stages": {
+    "writer_stitch": {
+      "calls": 1,
+      "seconds": 10.7024
+    },
+    "writer_quote_verify": {
+      "calls": 1,
+      "seconds": 0.0
+    },
+    "corrected_writer_replay": {
+      "calls": 1,
+      "seconds": 92.7977
+    }
+  },
+  "counters": {
+    "llm_calls_writer_opening": 1,
+    "llm_calls_total": 10,
+    "writer_section_coverage_fallbacks": 2,
+    "writer_sections_succeeded": 8,
+    "llm_calls_writer_same_as_topic_cause": 1,
+    "llm_calls_writer_rival_to_topic_cause": 2,
+    "llm_calls_writer_upstream_of_topic_cause": 1,
+    "llm_calls_writer_adjacent": 2,
+    "llm_calls_writer_closing": 1,
+    "llm_calls_cross_section_stitch": 1,
+    "writer_redundancy_drops": 9,
+    "llm_calls_style_rewrite": 1,
+    "writer_removed_citations": 0,
+    "writer_style_sentences_removed": 0,
+    "writer_evidence_id_renders": 40,
+    "writer_double_paren_collapsed": 24,
+    "writer_author_led_openings": 18
+  },
+  "values": {
+    "writer_chunk_plan": {
+      "topic_shape": "causal",
+      "clusters_total": 6,
+      "relation_distribution": {
+        "upstream_of_topic_cause": 2,
+        "same_as_topic_cause": 2,
+        "adjacent": 4,
+        "rival_to_topic_cause": 4
+      }
+    },
+    "writer_parallel_workers": 1,
+    "writer_stitch_applied": 3,
+    "writer_stitch_skipped_citation_change": 3,
+    "writer_stitch_skipped_empty": 0,
+    "writer_stitch_skipped_topic_paraphrase": 0,
+    "writer_stitch_skipped_tail_echo": 0,
+    "writer_stitch_skipped_layout_change": 0,
+    "writer_stitch_skipped_incomplete": 0,
+    "writer_stitch_paragraph_counts_preserved": true,
+    "writer_leaked_docid_normalizations": 0,
+    "writer_quote_verification": {
+      "enabled": true,
+      "checked_quotes": 0,
+      "verified_real": 0,
+      "fabricated_stripped": 0,
+      "fabricated_kept_no_citation": 0,
+      "fabricated_kept_doc_not_in_corpus": 0,
+      "fabricated_kept_page_not_readable": 0,
+      "fabrications": [],
+      "duration_s": 0.0,
+      "fallback_reason": "ok"
+    },
+    "writer_redundancy_examples": [
+      {
+        "snippet": "North (1989, p.9) highlights that the establishment of the Bank of England in 1694 and the introduction of new financial instruments led to …",
+        "overlap_tokens": 8,
+        "cited_pairs": [
+          [
+            "North_1989",
+            9
+          ]
+        ]
+      },
+      {
+        "snippet": "North and Weingast (1989, p.29) further elaborate that these institutions were pivotal in providing increasingly effective enforcement of pr…",
+        "overlap_tokens": 6,
+        "cited_pairs": [
+          [
+            "North&Weingast_1989",
+            29
+          ]
+        ]
+      },
+      {
+        "snippet": "However, North and Weingast (1989, p.29) also note that the institutional changes in England were not as revolutionary as previously thought…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "North&Weingast_1989",
+            29
+          ]
+        ]
+      },
+      {
+        "snippet": "Acemoglu et al. (2002, p.33) highlight that these extractive institutions were designed to maximize rents for European colonists rather than…",
+        "overlap_tokens": 6,
+        "cited_pairs": [
+          [
+            "AcemogluEtAl_2002",
+            33
+          ]
+        ]
+      },
+      {
+        "snippet": "However, Acemoglu et al. (2001, p.27) further illustrate that the persistence of these extractive institutions is not inevitable, as they ca…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "AcemogluEtAl_2001",
+            27
+          ]
+        ]
+      },
+      {
+        "snippet": "Women's economic contributions were significant during both pre-colonial and colonial periods, but their access to land and resources was of…",
+        "overlap_tokens": 5,
+        "cited_pairs": [
+          [
+            "Akyeampong&Fofack_2014",
+            15
+          ]
+        ]
+      },
+      {
+        "snippet": "For instance, the migration of farmers in search of land for cocoa cultivation in the Gold Coast was a key driver of economic growth, yet wo…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "Akyeampong&Fofack_2014",
+            15
+          ]
+        ]
+      },
+      {
+        "snippet": "Frankema (2012, p.15) highlights that the demand for missionary education in sub-Saharan Africa was influenced by new social and political i…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "Frankema_2012",
+            15
+          ]
+        ]
+      },
+      {
+        "snippet": "British rule, in particular, was more conducive to the development of formal education compared to other colonial powers (Frankema 2012, p.1…",
+        "overlap_tokens": 5,
+        "cited_pairs": [
+          [
+            "Frankema_2012",
+            15
+          ]
+        ]
+      }
+    ],
+    "writer_style_enforcement": {
+      "trailing_stripped": 0,
+      "violations": 13,
+      "rewrites_applied": 11,
+      "fallback_reason": "ok",
+      "mechanical_dashes_replaced": 0,
+      "paragraphs_before": 8,
+      "paragraphs_after": 8,
+      "paragraph_layout_preserved": true,
+      "layout_fallback_reason": "ok",
+      "citation_fingerprint_guard": "all-surfaces-v1"
+    },
+    "writer_final_citation_normalizations": 4,
+    "writer_final_author_year_repairs": 0,
+    "writer_coverage_patches_dropped": 0,
+    "writer_coverage_patches_shipped": 1,
+    "writer_unresolved_display_repairs": 0,
+    "writer_adjacent_paren_merges": 3,
+    "writer_duplicate_citation_identities_removed": 0,
+    "writer_post_merge_citation_normalizations": 0,
+    "writer_final_structure": {
+      "ok": true,
+      "citation_integrity_enforced": true,
+      "closing_uncited_paragraphs_recorded": [],
+      "closing_marker_count": 1,
+      "closing_marker_at_paragraph_start": true,
+      "paragraph_count": 8,
+      "incomplete_paragraph_count": 0,
+      "incomplete_paragraphs": [],
+      "closing": {
+        "section": "closing",
+        "required_cited_docs": 2,
+        "cited_doc_count": 5,
+        "cited_docs": [
+          "AcemogluEtAl_2001",
+          "AcemogluEtAl_2002",
+          "Austin_2008",
+          "Hopkins_2009",
+          "North_1989"
+        ],
+        "provided_doc_count": 6,
+        "coverage_ok": true,
+        "paragraph_count": 1,
+        "word_count": 390,
+        "incomplete_paragraph_count": 0,
+        "incomplete_paragraphs": [],
+        "closing_word_floor": 120,
+        "closing_word_floor_ok": true,
+        "closing_word_ceiling": null,
+        "closing_word_ceiling_ok": true,
+        "closing_paragraph_count_ok": true,
+        "uncited_closing_paragraphs": [],
+        "closing_paragraph_citations_ok": true,
+        "structure_ok": true,
+        "ok": true
+      },
+      "residual_duplicate_citation_identities": 0,
+      "citation_surface_faults": [],
+      "blocking_citation_surface_faults": [],
+      "cosmetic_citation_surface_fault_count": 0
+    },
+    "writer_structure_retries_total": 0,
+    "writer_closing_model_retries_total": 0,
+    "writer_structure_failure_records": [],
+    "writer_stats": {
+      "chunks_written": 8,
+      "distinct_docs_cited": 12,
+      "word_count": 1713,
+      "removed_citations": 0,
+      "style_sentences_removed": 0,
+      "coverage_fallbacks": 2,
+      "evidence_id_renders": 40,
+      "author_year_repair": {
+        "attempts": 2,
+        "accepted": 2,
+        "rejected": 0,
+        "replacements_proposed": 4,
+        "replacements_accepted": 4,
+        "distinct_docs_rescued": 3,
+        "collision_skips": 0,
+        "final_assembly_replacements": 0,
+        "records": [
+          {
+            "stage": "writer_same_as_topic_cause",
+            "phase": "after_retry",
+            "surface_kind": "narrative",
+            "matched_text": "North (1989)",
+            "doc_id": "North_1989",
+            "evidence_id": "E0105",
+            "page": 9,
+            "selection_policy": "first_call_packet_passage",
+            "outcome": "accepted"
+          },
+          {
+            "stage": "writer_same_as_topic_cause",
+            "phase": "after_retry",
+            "surface_kind": "narrative",
+            "matched_text": "North and Weingast (1989)",
+            "doc_id": "North&Weingast_1989",
+            "evidence_id": "E0097",
+            "page": 29,
+            "selection_policy": "first_call_packet_passage",
+            "outcome": "accepted"
+          },
+          {
+            "stage": "writer_same_as_topic_cause",
+            "phase": "after_retry",
+            "surface_kind": "narrative",
+            "matched_text": "North and Weingast (1989)",
+            "doc_id": "North&Weingast_1989",
+            "evidence_id": "E0097",
+            "page": 29,
+            "selection_policy": "first_call_packet_passage",
+            "outcome": "accepted"
+          },
+          {
+            "stage": "writer_closing",
+            "phase": "after_retry",
+            "surface_kind": "narrative",
+            "matched_text": "Acemoglu et al. (2001)",
+            "doc_id": "AcemogluEtAl_2001",
+            "evidence_id": "E0001",
+            "page": 27,
+            "selection_policy": "first_call_packet_passage",
+            "outcome": "accepted"
+          }
+        ]
+      },
+      "double_paren_collapsed": 24,
+      "author_led_openings": 18,
+      "redundancy_drops": 9,
+      "bracket_id_rewrites": 0,
+      "unknown_eids": 0,
+      "attribution_mismatches": 0,
+      "unsupported_year_only_citations": 0,
+      "attribution_retries": 0,
+      "structure_retries": 0,
+      "closing_model_retries": 0,
+      "duplicate_citation_identities_removed": 0,
+      "final_structure": {
+        "ok": true,
+        "citation_integrity_enforced": true,
+        "closing_uncited_paragraphs_recorded": [],
+        "closing_marker_count": 1,
+        "closing_marker_at_paragraph_start": true,
+        "paragraph_count": 8,
+        "incomplete_paragraph_count": 0,
+        "incomplete_paragraphs": [],
+        "closing": {
+          "section": "closing",
+          "required_cited_docs": 2,
+          "cited_doc_count": 5,
+          "cited_docs": [
+            "AcemogluEtAl_2001",
+            "AcemogluEtAl_2002",
+            "Austin_2008",
+            "Hopkins_2009",
+            "North_1989"
+          ],
+          "provided_doc_count": 6,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 390,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 120,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        "residual_duplicate_citation_identities": 0,
+        "citation_surface_faults": [],
+        "blocking_citation_surface_faults": [],
+        "cosmetic_citation_surface_fault_count": 0
+      },
+      "section_claims": [
+        {
+          "stance": "same_as_topic_cause",
+          "cluster": "Institutions and economic growth in Europe",
+          "docs": [
+            "North_1989",
+            "North&Weingast_1989"
+          ],
+          "mechanisms": [],
+          "word_count": 274,
+          "surnames_named": [
+            "North",
+            "North and Weingast"
+          ]
+        },
+        {
+          "stance": "rival_to_topic_cause",
+          "cluster": "Institutional impacts on inequality and economic growth",
+          "docs": [
+            "Ogilvie_2007",
+            "Sokoloff&Engerman_2000"
+          ],
+          "mechanisms": [],
+          "word_count": 219,
+          "surnames_named": []
+        },
+        {
+          "stance": "rival_to_topic_cause",
+          "cluster": "Economic history and policy implications for Africa",
+          "docs": [
+            "Hopkins_2009",
+            "Simson_2019"
+          ],
+          "mechanisms": [],
+          "word_count": 256,
+          "surnames_named": [
+            "Hopkins",
+            "Simson"
+          ]
+        },
+        {
+          "stance": "upstream_of_topic_cause",
+          "cluster": "Colonial institutions and economic outcomes",
+          "docs": [
+            "AcemogluEtAl_2001",
+            "AcemogluEtAl_2002"
+          ],
+          "mechanisms": [],
+          "word_count": 252,
+          "surnames_named": [
+            "Acemoglu et al."
+          ]
+        },
+        {
+          "stance": "adjacent",
+          "cluster": "Role of women and colonial education in African development",
+          "docs": [
+            "Akyeampong&Fofack_2014",
+            "Frankema_2012"
+          ],
+          "mechanisms": [],
+          "word_count": 276,
+          "surnames_named": [
+            "Akyeampong and Fofack",
+            "Frankema"
+          ]
+        },
+        {
+          "stance": "adjacent",
+          "cluster": "Historical institutions and contemporary African development",
+          "docs": [
+            "Austin_2008",
+            "Nunn&Wantchekon_2011"
+          ],
+          "mechanisms": [],
+          "word_count": 169,
+          "surnames_named": [
+            "Nunn and Wantchekon"
+          ]
+        }
+      ],
+      "section_coverage": [
+        {
+          "section": "opening",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "AcemogluEtAl_2001",
+            "Austin_2008"
+          ],
+          "provided_doc_count": 6,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 260,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 0,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        {
+          "section": "same_as_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "North&Weingast_1989",
+            "North_1989"
+          ],
+          "provided_doc_count": 2,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 274,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 0,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        {
+          "section": "rival_to_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Ogilvie_2007",
+            "Sokoloff&Engerman_2000"
+          ],
+          "provided_doc_count": 2,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 219,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 0,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        {
+          "section": "rival_to_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Hopkins_2009",
+            "Simson_2019"
+          ],
+          "provided_doc_count": 2,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 256,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 0,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        {
+          "section": "upstream_of_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "AcemogluEtAl_2001",
+            "AcemogluEtAl_2002"
+          ],
+          "provided_doc_count": 2,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 252,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 0,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        {
+          "section": "adjacent",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Akyeampong&Fofack_2014",
+            "Frankema_2012"
+          ],
+          "provided_doc_count": 2,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 276,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 0,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        {
+          "section": "adjacent",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Austin_2008",
+            "Nunn&Wantchekon_2011"
+          ],
+          "provided_doc_count": 2,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 169,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 0,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        },
+        {
+          "section": "closing",
+          "required_cited_docs": 2,
+          "cited_doc_count": 5,
+          "cited_docs": [
+            "AcemogluEtAl_2001",
+            "AcemogluEtAl_2002",
+            "Austin_2008",
+            "Hopkins_2009",
+            "North_1989"
+          ],
+          "provided_doc_count": 6,
+          "coverage_ok": true,
+          "paragraph_count": 1,
+          "word_count": 395,
+          "incomplete_paragraph_count": 0,
+          "incomplete_paragraphs": [],
+          "closing_word_floor": 120,
+          "closing_word_floor_ok": true,
+          "closing_word_ceiling": null,
+          "closing_word_ceiling_ok": true,
+          "closing_paragraph_count_ok": true,
+          "uncited_closing_paragraphs": [],
+          "closing_paragraph_citations_ok": true,
+          "structure_ok": true,
+          "ok": true
+        }
+      ]
+    },
+    "writer_mode": "chunked",
+    "writer_allowed_author_year_repairs": 4,
+    "writer_unknown_evidence_id": 0,
+    "writer_unsupported_year_only_citations": 0,
+    "writer_attribution_mismatches": 0,
+    "writer_attribution_retries_total": 0
+  },
+  "cache": {},
+  "llm_calls_by_stage": {
+    "writer_opening": 1,
+    "writer_same_as_topic_cause": 1,
+    "writer_rival_to_topic_cause": 2,
+    "writer_upstream_of_topic_cause": 1,
+    "writer_adjacent": 2,
+    "writer_closing": 1,
+    "cross_section_stitch": 1,
+    "style_rewrite": 1
+  },
+  "llm_calls": [
+    {
+      "stage": "writer_opening",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 26.6217,
+      "prompt_chars": 13440,
+      "response_chars": 1142
+    },
+    {
+      "stage": "writer_same_as_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 5.9745,
+      "prompt_chars": 7241,
+      "response_chars": 1762
+    },
+    {
+      "stage": "writer_rival_to_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 5.2692,
+      "prompt_chars": 9160,
+      "response_chars": 1530
+    },
+    {
+      "stage": "writer_rival_to_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 5.6325,
+      "prompt_chars": 8667,
+      "response_chars": 1793
+    },
+    {
+      "stage": "writer_upstream_of_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 5.9944,
+      "prompt_chars": 8431,
+      "response_chars": 1724
+    },
+    {
+      "stage": "writer_adjacent",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 5.9794,
+      "prompt_chars": 7506,
+      "response_chars": 1716
+    },
+    {
+      "stage": "writer_adjacent",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 4.3196,
+      "prompt_chars": 9230,
+      "response_chars": 1141
+    },
+    {
+      "stage": "writer_closing",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 8.591,
+      "prompt_chars": 15025,
+      "response_chars": 2472
+    },
+    {
+      "stage": "cross_section_stitch",
+      "model": "mistral-small:24b",
+      "success": true,
+      "duration_s": 10.7003,
+      "prompt_chars": 4607,
+      "response_chars": 1295
+    },
+    {
+      "stage": "style_rewrite",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.1,
+        "num_ctx": 4096,
+        "num_predict": 1500
+      },
+      "duration_s": 13.0028,
+      "prompt_chars": 3568,
+      "response_chars": 2261
+    }
+  ],
+  "env": {
+    "OLLAMA_HOST": "http://127.0.0.1:11434",
+    "RRR_BYPASS_VALIDATION": "***redacted***",
+    "RRR_CORPUS_LANG": "en",
+    "RRR_LINKIFY": "0",
+    "RRR_MODEL": "mistral-small:24b",
+    "RRR_PROJECT_ROOT": "/workspace/RRR",
+    "RRR_QUOTE_VERIFY": "1",
+    "RRR_RUN_ID": "battery_vlm24/runpod_20260708_072545/phase_a_main/run_001",
+    "RRR_TOPIC_LANG": "en",
+    "RRR_WRITER_MODEL": "mistral-small:24b",
+    "RRR_WRITER_PARALLEL": "0",
+    "RRR_WRITER_PROMPT_DUMP_DIR": "/workspace/RRR/runs/battery_vlm24/runpod_20260708_072545/phase_a_main/run_001/prompts",
+    "RRR_WRITER_QUOTES_PER_DOC": "2",
+    "RRR_WRITER_STITCH_SENTENCES": "1"
+  }
+}

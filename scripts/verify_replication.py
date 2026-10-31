@@ -232,6 +232,16 @@ def verify_local_battery(package: dict) -> None:
             (root / "reviews_pre_materialization" / batch / condition / f"{run}.md").is_file(),
             f"missing pre-materialization text: {record['item']}",
         )
+    record = battery["run_record"]
+    for item in record["files"]:
+        verify_file_record(item)
+    require(len(record["files"]) >= 30, "run-001 record inventory is incomplete")
+    inventory = load_json(ROOT / record["path"] / "inventory.json")
+    status = load_json(ROOT / record["path"] / "writer_run_2026-10-30" / "status.json")
+    require(
+        inventory["writer_run"]["started_from_ledger_sha256"] == status.get("source_ledger_sha256"),
+        "run-001 writer stage did not start from the deposited ledger",
+    )
     summary = load_json(ROOT / battery["summary"]["path"])
     require(summary.get("total_items") == 941, "battery summary item count mismatch")
     require(
@@ -343,7 +353,7 @@ def main() -> int:
     print("[replication] PASS: deposited file hashes")
     print("[replication] PASS: 2,425-attempt population accounting")
     print("[replication] PASS: corrected Phase A integrity")
-    print("[replication] PASS: deposited local battery (941 attempts, 897 reviews)")
+    print("[replication] PASS: deposited local battery (941 attempts, 897 reviews, run 001 record)")
     print("[replication] PASS: external comparison summaries")
     print("[replication] PASS: package hygiene")
     if package.get("source", {}).get("review_repository"):

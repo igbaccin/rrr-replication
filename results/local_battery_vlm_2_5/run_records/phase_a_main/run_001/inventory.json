@@ -1,0 +1,73 @@
+{
+  "condition": "phase_a_main",
+  "run": "run_001",
+  "source_run": {
+    "date": "2026-07-07",
+    "files": [
+      "plan.json",
+      "admission_rejections.json",
+      "topic_fit.json",
+      "outline_plan.json",
+      "review_ledger.json",
+      "review_narrative.md",
+      "run_manifest.json",
+      "run_metrics.json"
+    ]
+  },
+  "writer_run": {
+    "date": "2026-10-30",
+    "files": [
+      "writer_call_contracts.json",
+      "review_composed.md",
+      "review_cited_docs.json",
+      "citations_manifest.json",
+      "quality_manifest.json",
+      "citations.json",
+      "run_metrics.json",
+      "run_manifest.json",
+      "replay_provenance.json",
+      "source_run_manifest.json",
+      "status.json"
+    ],
+    "prompts": [
+      "cross_section_stitch_00.txt",
+      "cross_section_stitch_00_response.txt",
+      "style_rewrite_00.txt",
+      "style_rewrite_00_response.txt",
+      "writer_adjacent_00.txt",
+      "writer_adjacent_00_response.txt",
+      "writer_adjacent_01.txt",
+      "writer_adjacent_01_response.txt",
+      "writer_closing_00.txt",
+      "writer_closing_00_response.txt",
+      "writer_opening_00.txt",
+      "writer_opening_00_response.txt",
+      "writer_rival_to_topic_cause_00.txt",
+      "writer_rival_to_topic_cause_00_response.txt",
+      "writer_rival_to_topic_cause_01.txt",
+      "writer_rival_to_topic_cause_01_response.txt",
+      "writer_same_as_topic_cause_00.txt",
+      "writer_same_as_topic_cause_00_response.txt",
+      "writer_upstream_of_topic_cause_00.txt",
+      "writer_upstream_of_topic_cause_00_response.txt"
+    ],
+    "started_from_ledger_sha256": "96ae351231c3ca5ddaf979415c093e1ff16d4ebd2295ca367b9e50d0a93efc3b"
+  },
+  "redactions": [
+    {
+      "file": "review_ledger.json",
+      "watermarks": 3,
+      "home_paths": 0
+    },
+    {
+      "file": "writer_call_contracts.json",
+      "watermarks": 1,
+      "home_paths": 0
+    },
+    {
+      "file": "writer_adjacent_00.txt",
+      "watermarks": 1,
+      "home_paths": 0
+    }
+  ]
+}

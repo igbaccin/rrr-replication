@@ -1,0 +1,57 @@
+===== SYSTEM =====
+CITE only via evidence IDs: every citation is one [E####] marker. Examples: 'North and Weingast [E0001] argue that...' OR 'credible commitment underpins growth [E0001].' Multi-source: 'shared finding [E0001] [E0007] [E0014].' DO NOT write '(Author Year, p.N)', 'Author (Year, p.N)', '(p.5)' or any other citation surface — the renderer converts every [E####] to the right surface for you.
+
+BOUNDARY RULES:
+1. Use only [E####] IDs from the ALLOWED CITATIONS list.
+2. If a claim is not supported by allowed evidence, state it WITHOUT a citation. Do not invent evidence IDs.
+3. QUOTED TEXT: paraphrase by default. Reserve quotation marks (" ") for SHORT phrases (≤12 words) you copy-paste verbatim from the Evidence section. Multi-sentence quotes, ellipsis-truncated quotes, and paraphrased-but-quoted material are fabrications and get stripped.
+4. Finish every paragraph and every section with a complete, standalone sentence. Section transitions are thematic. Never leave a clause or sentence for the next section to complete.
+5. Return only the requested review prose. Begin with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+
+===== USER =====
+Continue this literature review on: What is the role of institutions in shaping long-run economic growth?
+
+Previous ending:
+...-term economic development.  However, the impact of these institutions on economic growth was not uniform across all societies.  For instance, Ogilvie notes that the economic institutions of pre-industrial Europe, such as serfdom and guilds, were not solely driven by efficiency considerations but were also shaped by the power dynamics between different social groups (Ogilvie 2007, p.3). This perspective underscores that the relationship between institutions and economic growth is complex and multifaceted, influenced by a variety of factors including distributional conflicts and power dynamics.
+
+IMPORTANT: The Previous ending is a complete sentence. Open with another complete, standalone sentence that develops one of its themes, findings, or scope conditions. Do not continue its grammar, and do not restate the topic on its own.
+
+CLAIMS ALREADY MADE IN PRIOR SECTIONS (do NOT repeat these openers or the same mechanism phrasing, and do NOT re-introduce an author already named in prose below with a fresh "X argues / X shows..." sentence — cite them parenthetically instead):
+  Section 1 [SAME_AS_TOPIC_CAUSE/Institutions and economic growth in Europe]: (no mechanism recorded) (citing North_1989, North&Weingast_1989)
+  Section 2 [RIVAL_TO_TOPIC_CAUSE/Institutional impacts on inequality and economic growth]: (no mechanism recorded) (citing Ogilvie_2007, Sokoloff&Engerman_2000)
+  Already named in prose (cite parenthetically, do not re-introduce): North, North and Weingast
+
+Stream: Economic history and policy implications for Africa.
+Structural relation of this stream to the topic (rival_to_topic_cause): this stream proposes a RIVAL cause that does NOT operate through the topic's variable and offers a genuinely competing explanation.
+SECTION LEAD: Open with a sentence whose grammatical subject names 'Hopkins' (this cluster's lead author). The cite that anchors the opener must resolve to Hopkins's paper.
+OPENER GUARD: Do NOT open this section with any of these author surnames as the topic-sentence subject (they are the lead authors of OTHER sections): Acemoglu et al.; Akyeampong and Fofack; North; Nunn and Wantchekon; Ogilvie. They may still be cited inside the section if their evidence is in your ALLOWED CITATIONS list, but the OPENING SENTENCE must be led by a different surname.
+
+ALLOWED CITATIONS:
+  - [E0073] (paper Hopkins_2009, page 18; author surname: Hopkins)
+  - [E0074] (paper Hopkins_2009, page 8; author surname: Hopkins)
+  - [E0153] (paper Simson_2019, page 2; author surname: Simson)
+  - [E0154] (paper Simson_2019, page 11; author surname: Simson)
+
+STREAM POSTURE (use this as the section's substantive claim about the world; do NOT print it verbatim, but anchor the section's argument to it):
+  Institutional reforms are seen as a key mechanism for addressing poverty in Africa, contrasting with the broader view that institutions fundamentally drive long-run economic growth.
+Cite these stream members together once when stating the shared posture: ([E0073]; [E0153])
+
+Evidence:
+[Hopkins_2009] cite as Hopkins (2009)
+  Paper's central claim: The paper argues that the new economic history of Africa can inform institutional reforms and help eliminate poverty among the bottom billion people in Africa.
+  [E0073] "Englebert concludes that ethno-linguistic frag mentation has no significant effect on the quality of public goods provided b African governments. Societies can be ethnically homogeneous but still b dysfunctional, and ethnically heterogeneous but still capable of upholdin the rule of law and developing progressive institutions. To the extent th Africa's dismal economic record is linked to the presence of poor institutions 58 Alberto Alesina, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat an Romain Wacziarg, * Fractionalization', Journal of Economic Growth, 8 (2003), 155-94; James D." (from Hopkins_2009, p.18)
+  [E0074] "By the 1990s, a new catch-phrase, 'bringing the state back in', had come into vogue.19 The scope of development policy widened to incorporate what became known as 'governance', and policy recommendations allowed institutions and organizations to come to the fore. Some specialists, looking for fresh inspiration, even suggested that the ex perience of East Asia might be more relevant to Africa than that of the United States.20 The prominence attached to the role of institutions enabled the new economic history of Africa to claim the attention of development specialists. 'Good' institutions, as the literature calls them, matter because they are crucial to providing incentives for investment, which is essential for devel opment." (from Hopkins_2009, p.8)
+
+[Simson_2019] cite as Simson (2019)
+  Paper's central claim: The paper argues that East Africa's post-independence expenditure trends were not exceptional and were influenced by industrial policy, capital investments, military expenditure, and debt service payments, contra the view of economically un
+  [E0153] "These 'neopatrimonial' tendencies in Africa have long been of academic interest. Theory holds that modern administrative and governance institutions function according to a patrimonial logic rather than a legal-rational one.2 Under the veneer of a modern state structure, government resources are treated as the private property of the political patrons that control them, and are used to buy the loyalty of supporters rather than deliver broad-based public goods and services. Vertical ethnic and regional ties that bind the village to the centre trump horizontal class interests, resulting in policy-making that focuses on consumption rather than public goods.3 Econometric studies have sought to identify the political and economic consequences of these patronage structures." (from Simson_2019, p.2)
+  [E0154] "This process was particularly marked in Kenya, where subsidies and interest peaked at 30 per cent of spending in the early 1990s, displacing both capital and recurrent spending. Tanzania also experienced a high debt burden with interest payments peaking at 18 per cent of expenditure, while Uganda's debt payments remained smaller as the country had less access to capital markets during Idi Amin's rule and started receiving debt relief earlier than its neighbours.38 Another important post-colonial expenditure shift was the growth in military spending. Under colonial rule the metropolis had effectively subsidized much of the defence of the colonies, as foreign policy and defence was an imperial matter rather than the responsibility of individual colonies.39 Domestic military spending began to grow in the independence period and escalated towards the end of the 1960s and 1970s in response to regional instability and growing domestic dissent." (from Simson_2019, p.11)
+
+Write a scholarly literature review organised around streams of related scholarship. Each section presents ONE stream and synthesises across its sources. Argue in direct positive claims; avoid contrastive framings such as 'not X but Y', 'rather than', 'unlike', or 'in contrast'. Vary sentence length; introduce claims as full sentences rather than via colon setups. Each paragraph must integrate at least two DISTINCT documents; do not cite the same document for more than two consecutive citations. Finish every paragraph and section with a complete standalone sentence. Create continuity by carrying a substantive theme across sections. Make claims directly about the substantive question. Do NOT write meta-statements about the review itself ('this review', 'the literature reviewed here', 'as discussed above', 'we will examine'). Do not restate the topic or the thesis.
+
+Present this stream of literature. Open with a direct, substantive claim grounded in the STREAM POSTURE above. Never name the stream's structural relation in the prose (no 'this stream supports/critiques/complicates'); express the relation by the shape of the argument and the sources you cite together. Cite the stream's lead and one supporting source in the same sentence when stating the shared claim. Develop the claim through one specific mechanism, condition, or pattern the sources jointly establish; trace one downstream implication that another source in the stream qualifies. 220-300 words. End with a complete standalone sentence whose substantive theme can carry into the next section.
+
+Return only the requested review prose. Begin immediately with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+Continue:

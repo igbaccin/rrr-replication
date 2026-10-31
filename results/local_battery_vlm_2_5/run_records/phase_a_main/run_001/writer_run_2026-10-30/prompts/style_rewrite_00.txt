@@ -1,0 +1,30 @@
+===== SYSTEM =====
+You revise academic prose. Be concise. Return JSON only.
+
+===== USER =====
+You are revising sentences from a literature review. Rewrite each numbered sentence below so that it expresses the same meaning while observing ALL of the following constraints:
+
+- Do not use em dashes or en dashes. Use commas, periods, semicolons, or parentheses.
+- Do not use the words 'legible', 'sharp', or 'sharply'.
+- Do not use adversative framings as the default prose engine. Avoid 'not X but Y', 'rather than', 'unlike', 'in contrast', and contrastive 'instead of'.
+- Do not introduce a claim with a colon followed by an explanatory clause. Use a full sentence.
+- Preserve every 'Author (Year, p.N)' citation exactly as written.
+- Preserve the substantive meaning. Do not add or remove evidence.
+- Keep prose natural and varied. Do not produce staccato short sentences in place of the originals.
+
+Sentences:
+1. This institutional framework was not merely about the rules governing economic exchange but also about the political factors underpinning economic growth, specifically the commitment of the regime to these rules (North and Weingast 1989, p.2).
+2. The development of these institutions in England during the 17th century not only reduced transaction costs but also laid the groundwork for a stable economic environment that supported long-run growth.
+3. Ogilvie argues that distributional conflicts, rather than efficiency, better explain key economic institutions in pre-industrial Europe (Ogilvie 2007, p.12); (Sokoloff and Engerman 2000, p.2).
+4. However, the impact of these institutions on economic growth was not uniform across all societies.
+5. For instance, Ogilvie notes that the economic institutions of pre-industrial Europe, such as serfdom and guilds, were not solely driven by efficiency considerations but were also shaped by the power dynamics between different social groups (Ogilvie 2007, p.3).
+6. However, Simson (2019, p.11) qualifies this by pointing out that the growth in military spending and debt service payments in post-colonial Africa posed significant challenges to economic stability.
+7. High mortality rates in certain regions led Europeans to adopt extractive institutions, which were designed to rapidly transfer resources to the metropole rather than promote long-term economic development.
+8. This extractive institutional framework was not merely a function of geography or climate, but a direct result of the strategic decisions made by European colonizers based on the expected mortality rates.
+9. Conversely, in regions with lower mortality rates, such as the United States, Australia, and New Zealand, Europeans settled and established institutions that enforced the rule of law and encouraged investment.
+10. However, the impact of colonial education systems was not uniform across Africa.
+11. Frankema (2012, p.1) does not directly address the causal role of institutions in economic growth, but it does indicate that the development of formal education systems was a critical factor in economic outcomes.
+12. However, the legacy of mistrust, fostered by historical events such as the slave trade, continues to undermine the effectiveness of institutions and reduces the willingness of individuals to engage in cooperative economic activities (Austin 2008, p.2).
+13. The reversal in relative incomes among former colonies is due to institutional changes introduced by colonialism, rather than geographic factors (Acemoglu et al. 2002, p.6).
+
+Return ONLY a JSON object with one key 'rewritten' whose value is a JSON array of strings, the rewritten sentences in the same order. Do not include any commentary.

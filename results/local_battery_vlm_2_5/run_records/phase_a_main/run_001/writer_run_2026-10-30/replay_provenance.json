@@ -1,0 +1,239 @@
+{
+  "schema_version": "corrected-writer-replay-v18",
+  "replay_label": "corrected_writer_v18",
+  "input_manifest_schema": "corrected-writer-replay-v17",
+  "corrected_output": "runs/battery_vlm24/runpod_20260708_072545/phase_a_main/run_001",
+  "started_at": "2026-10-30T18:19:57.778146+00:00",
+  "finished_at": "2026-10-30T18:21:31.929392+00:00",
+  "outcome": "success",
+  "source": {
+    "item_index": 0,
+    "group": "core",
+    "batch": "runpod_20260708_072545",
+    "condition": "phase_a_main",
+    "run": "run_001",
+    "model": "mistral-small:24b",
+    "bypass_validation": false,
+    "writer_env": {
+      "RRR_TOPIC_LANG": "en",
+      "RRR_CORPUS_LANG": "en"
+    },
+    "source_run": "pod_outputs/runpod_20260708_072545/outputs/phase_a_main/run_001",
+    "source_ledger_sha256": "96ae351231c3ca5ddaf979415c093e1ff16d4ebd2295ca367b9e50d0a93efc3b",
+    "source_review_sha256": "cbd2209fe6c4f0d42766b632ec8f34f410ba245ddb22a83e993514b6805f066e",
+    "bundle_run": "batches/runpod_20260708_072545/phase_a_main/run_001",
+    "bundle_ledger": "batches/runpod_20260708_072545/phase_a_main/run_001/review_ledger.json",
+    "ledger": {
+      "topic": "Institutions are the fundamental cause of long-run economic growth",
+      "documents": 24,
+      "retained_passages": 192,
+      "writer_packet_passages": 48
+    },
+    "copied_files": {
+      "review_ledger.json": {
+        "sha256": "96ae351231c3ca5ddaf979415c093e1ff16d4ebd2295ca367b9e50d0a93efc3b",
+        "bytes": 307471
+      },
+      "run_manifest.json": {
+        "sha256": "ccc57d3eebe0452afd645e35006b9e090106117b11d026c5bfc50b74b4795fd4",
+        "bytes": 5031
+      },
+      "outline_plan.json": {
+        "sha256": "5b54c633a80444e5e295372d57926feaa56988489ecd0b309cc41dd2f614953c",
+        "bytes": 14185
+      },
+      "plan.json": {
+        "sha256": "616649367df518e648f1b9dc7f024cac9e67300250fa934d93dc4395c7f3f703",
+        "bytes": 2059
+      },
+      "topic_fit.json": {
+        "sha256": "4dafa2c8414bbd0bd51bd461f8d1b777121be1d1a955cabfdd7dc4b938a7af74",
+        "bytes": 441
+      },
+      "admission_rejections.json": {
+        "sha256": "6fcb6fa27ba6c50672ec56212e6d42b6785514915d578dfd7d8e3e53e6589cac",
+        "bytes": 138
+      },
+      "review_narrative.md": {
+        "sha256": "5869ba0ccb5ead504b77abc2cbf336c7bd78097312526e62ff8b4376d5c95a57",
+        "bytes": 6303
+      }
+    }
+  },
+  "corrected_git": {
+    "commit": "f235b46ad1dc173f7dcaf973e818f903596e764a",
+    "branch": "main",
+    "status_short": []
+  },
+  "code_fingerprint": "0082a410a030839f8127698a98c048d37648990ca943f03d78a9dd401a669262",
+  "writer_model": "mistral-small:24b",
+  "writer_quotes_per_doc": 2,
+  "bypass_validation": false,
+  "artifacts": [
+    {
+      "path": "checker_stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "checker_stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "citations.json",
+      "bytes": 752,
+      "sha256": "7c1cd7358720f6fa955760e794046167dd4865534c4144a3005a049975085c66"
+    },
+    {
+      "path": "citations_manifest.json",
+      "bytes": 9984,
+      "sha256": "7879635c9d483b68fbfc9e12e8a2afe53d98ff478798f5d39015cd47516feeee"
+    },
+    {
+      "path": "prompts/cross_section_stitch_00.txt",
+      "bytes": 4660,
+      "sha256": "3dc069cd888e715dc389cfa9d489fafdfa598437f78cb3ea810f52125cbcaf3b"
+    },
+    {
+      "path": "prompts/cross_section_stitch_00_response.txt",
+      "bytes": 1295,
+      "sha256": "3fd5bfd731de18b011f17de1e066be94c31c632ea6d031ab1c03aa89facf60b3"
+    },
+    {
+      "path": "prompts/style_rewrite_00.txt",
+      "bytes": 3663,
+      "sha256": "1d59712523c6873f237f00b9d8b035cd68f3617cee719c50578499d5ecdcc060"
+    },
+    {
+      "path": "prompts/style_rewrite_00_response.txt",
+      "bytes": 2261,
+      "sha256": "2e9f5b317b93c5eee0002bc6c6f6479612497509a84a1600c054acc5856fcc51"
+    },
+    {
+      "path": "prompts/writer_adjacent_00.txt",
+      "bytes": 8759,
+      "sha256": "60a01165033dd1d386fdcd05cf7f6dcea65f5c2f83bea8e998a1846283f17b39"
+    },
+    {
+      "path": "prompts/writer_adjacent_00_response.txt",
+      "bytes": 1716,
+      "sha256": "0c1782ab071f34e8d0ecc93ea37b36d87a39a0e32954652f2a7bcd155263b61c"
+    },
+    {
+      "path": "prompts/writer_adjacent_01.txt",
+      "bytes": 10497,
+      "sha256": "a2f25d4d6e91e1db8c24865907b474ec73ae14ad4b8feee5f890b1a75e5e22cd"
+    },
+    {
+      "path": "prompts/writer_adjacent_01_response.txt",
+      "bytes": 1141,
+      "sha256": "92bfb6f66af63ab4612ed2374ddb3f1d9ee2eb7dab7e6d5849c9329278e21bed"
+    },
+    {
+      "path": "prompts/writer_closing_00.txt",
+      "bytes": 16292,
+      "sha256": "9f52d4ceb0eb2815531109c3ea0beb6c3c0458303ef8f3798a8248316747f8ef"
+    },
+    {
+      "path": "prompts/writer_closing_00_response.txt",
+      "bytes": 2472,
+      "sha256": "613380b9e1dcb1be786f7b1e2cc3e9f88b0b2c2fa62a0de5b20095efcad15f86"
+    },
+    {
+      "path": "prompts/writer_opening_00.txt",
+      "bytes": 14705,
+      "sha256": "018627a1401b85b1a56c7f2ff30c2d2eeacbaf9949a15f54a7cd039bdc2b4339"
+    },
+    {
+      "path": "prompts/writer_opening_00_response.txt",
+      "bytes": 1142,
+      "sha256": "845b4650cbe0d061d05bb5e292b468280614cc5b00fd4ab2a5d18ebb2d3120e0"
+    },
+    {
+      "path": "prompts/writer_rival_to_topic_cause_00.txt",
+      "bytes": 10419,
+      "sha256": "445f6ebce28984b9424e06103c32c8871870f5eaae2222af1a820bc87f1c0d20"
+    },
+    {
+      "path": "prompts/writer_rival_to_topic_cause_00_response.txt",
+      "bytes": 1530,
+      "sha256": "0bffc85c5899a5b76ce1eae79918a4362a671e847e17364162407e8dc4d6a61f"
+    },
+    {
+      "path": "prompts/writer_rival_to_topic_cause_01.txt",
+      "bytes": 9920,
+      "sha256": "2cfcbd7201e9ee69febf7ceaaa1a0e3c65d48b66f86c32887bbe515a9464b7d8"
+    },
+    {
+      "path": "prompts/writer_rival_to_topic_cause_01_response.txt",
+      "bytes": 1793,
+      "sha256": "6176ff2ef36d1631ecf420404389fae1b9868cc4cd71785bcb3acf28cc20170d"
+    },
+    {
+      "path": "prompts/writer_same_as_topic_cause_00.txt",
+      "bytes": 8502,
+      "sha256": "873776265cff61421018e7a0aba5b516afc38c23954670b7df63419215d9cebe"
+    },
+    {
+      "path": "prompts/writer_same_as_topic_cause_00_response.txt",
+      "bytes": 1762,
+      "sha256": "fbb51e8cb42cb3dd2935698298d9554a71d4c132b5c1c2d1a9ddf277a1ffba67"
+    },
+    {
+      "path": "prompts/writer_upstream_of_topic_cause_00.txt",
+      "bytes": 9684,
+      "sha256": "249cb53f16b5dcd68ef16dbe897091d9ad0f3155a488c7fd72051efed4856e38"
+    },
+    {
+      "path": "prompts/writer_upstream_of_topic_cause_00_response.txt",
+      "bytes": 1724,
+      "sha256": "8154e5b5fec255f0edd748ed9e18a0038d0abbf010495456d9eb7388e47ddd81"
+    },
+    {
+      "path": "quality_manifest.json",
+      "bytes": 5447,
+      "sha256": "b98104ef108c0120e37c15551c2098c4c4f5c7f4e8e2c34c259643047d451042"
+    },
+    {
+      "path": "review_cited_docs.json",
+      "bytes": 260,
+      "sha256": "0676d5a244fe160bff1483e82bddb8cf8eb6325aa6f9aa32dad9eaaa1747e793"
+    },
+    {
+      "path": "review_composed.md",
+      "bytes": 11826,
+      "sha256": "34e4d507a651999bd543455d8ed1aac90729a48f667e67604efc6e6829d63957"
+    },
+    {
+      "path": "review_ledger.json",
+      "bytes": 307471,
+      "sha256": "96ae351231c3ca5ddaf979415c093e1ff16d4ebd2295ca367b9e50d0a93efc3b"
+    },
+    {
+      "path": "run_metrics.json",
+      "bytes": 24341,
+      "sha256": "e50deba5a052728b8974197e5fd44853b08f11c476fd65cd7bfe4a695d57afd8"
+    },
+    {
+      "path": "source_run_manifest.json",
+      "bytes": 5031,
+      "sha256": "ccc57d3eebe0452afd645e35006b9e090106117b11d026c5bfc50b74b4795fd4"
+    },
+    {
+      "path": "stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "stdout.txt",
+      "bytes": 3245,
+      "sha256": "458f80eb937123b78053d484aefa0c29ade66b66845e6399648104bdb1b0b1a6"
+    },
+    {
+      "path": "writer_call_contracts.json",
+      "bytes": 59181,
+      "sha256": "8175c8efed7e72f8d4643f67cb69545d9a69f092494bcd975785675a201d2352"
+    }
+  ]
+}

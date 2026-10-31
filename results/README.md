@@ -30,7 +30,9 @@ attempts.
 counts. `reviews_raw/` contains the 897 generated review files,
 `reviews_pre_materialization/` the three reviews as they stood before the
 vlm.2.5 pass, and `materialization.json` the record of that pass.
-`REVIEWS_README.md` explains the reproduction and denominator rules.
+`run_records/phase_a_main/run_001/` deposits the complete record of the
+run that the paper follows as its running example. `REVIEWS_README.md`
+explains the reproduction and denominator rules.
 
 ## Previously accepted battery
 

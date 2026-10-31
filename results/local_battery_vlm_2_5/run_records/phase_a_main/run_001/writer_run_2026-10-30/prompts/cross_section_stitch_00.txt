@@ -1,0 +1,41 @@
+===== SYSTEM =====
+
+
+===== USER =====
+Topic of the literature review: What is the role of institutions in shaping long-run economic growth?
+
+Below are the OPENING sentence of several adjacent sections in the same review. Each currently restates the topic framing on its own, which reads as several mini-essays stitched together. Rewrite each OPENING (sentence) as a complete standalone sentence that develops a theme, finding, or scope condition from the previous section. The previous section already ends with a complete sentence. Do not continue its grammar and do not re-introduce the topic.
+
+STRICT RULES:
+- Keep every citation token — 'Author (Year, p.N)', '(Author Year, p.N)', '(Doc_Year: p.N)' or '[E####]' — exactly UNCHANGED, character for character.
+- Do NOT add or remove any citation.
+- Do NOT exceed the original block length by more than ~20%.
+- Keep the original sentence count. Every rewritten sentence must end with terminal punctuation.
+- Return each rewritten opener as one line with no paragraph break.
+- Return ONLY a single JSON object whose 'rewritten' field is the sentence (joined into one string, original sentence-boundary order preserved): {"openings": [{"index": <int>, "rewritten": "<text>"}, ...]}
+
+Sections to stitch:
+
+--- section index=1 ---
+Previous section ended: [[COV-PATCH]] Acemoglu et al. (2001, p.27) report, “In one extreme, as in the case of the United States, Australia, and New Zealand, they went and settled in the colonies and set up institutions that enforced the rule of law and encouraged investment.” [[COV-PATCH]] Austin (2008, p.2) reports, “Despite this decline, most economists have little difﬁculty in seeing the behaviour of the older industrial economies today in the context of patterns and paths of institutional evolution, investment and policy experience going back at least to the original industrialisation of Europe, its overseas 'off-shoots', and Japan.”
+Current opening (rewrite this): The development of new financial instruments and political institutions in England during the 17th century significantly reduced transaction costs, fostering long-run economic growth (North 1989, p.9); (North and Weingast 1989, p.29).
+
+--- section index=2 ---
+Previous section ended: The development of these institutions in England during the 17th century not only reduced transaction costs but also laid the groundwork for a stable economic environment that supported long-run growth.
+Current opening (rewrite this): Ogilvie argues that distributional conflicts, rather than efficiency, better explain key economic institutions in pre-industrial Europe (Ogilvie 2007, p.12); (Sokoloff and Engerman 2000, p.2).
+
+--- section index=3 ---
+Previous section ended: This perspective underscores that the relationship between institutions and economic growth is complex and multifaceted, influenced by a variety of factors including distributional conflicts and power dynamics.
+Current opening (rewrite this): Hopkins and Simson (Hopkins 2009, p.18); (Simson 2019, p.2) both argue that institutional reforms are pivotal for addressing poverty in Africa.
+
+--- section index=4 ---
+Previous section ended: This highlights the need for institutional reforms that can mitigate such expenditures and redirect resources towards productive investments.
+Current opening (rewrite this): Acemoglu et al. (2001, p.27; 2002, p.33) argue that differences in European mortality rates during colonial periods significantly influenced the types of institutions established in colonies.
+
+--- section index=5 ---
+Previous section ended: However, Acemoglu et al. (2001, p.27) further illustrate that the persistence of these extractive institutions is not inevitable, as they can be altered through political and economic reforms, suggesting that institutional change remains a viable path for economic development in regions historically burdened by extractive colonial legacies.
+Current opening (rewrite this): Akyeampong and Fofack (2014, p.15) (Frankema 2012, p.15) argue that the role of women and colonial education in African development reveals how specific aspects of colonial rule affected economic outcomes.
+
+--- section index=6 ---
+Previous section ended: Frankema (2012, p.1) does not directly address the causal role of institutions in economic growth, but it does indicate that the development of formal education systems was a critical factor in economic outcomes.
+Current opening (rewrite this): Nunn and Wantchekon (2011, p.27) (Austin 2008, p.2) argue that the slave trade in Africa led to a culture of mistrust that persists today, impacting contemporary levels of trust within African societies.

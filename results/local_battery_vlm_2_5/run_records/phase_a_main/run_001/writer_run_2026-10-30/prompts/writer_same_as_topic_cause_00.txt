@@ -1,0 +1,52 @@
+===== SYSTEM =====
+CITE only via evidence IDs: every citation is one [E####] marker. Examples: 'North and Weingast [E0001] argue that...' OR 'credible commitment underpins growth [E0001].' Multi-source: 'shared finding [E0001] [E0007] [E0014].' DO NOT write '(Author Year, p.N)', 'Author (Year, p.N)', '(p.5)' or any other citation surface — the renderer converts every [E####] to the right surface for you.
+
+BOUNDARY RULES:
+1. Use only [E####] IDs from the ALLOWED CITATIONS list.
+2. If a claim is not supported by allowed evidence, state it WITHOUT a citation. Do not invent evidence IDs.
+3. QUOTED TEXT: paraphrase by default. Reserve quotation marks (" ") for SHORT phrases (≤12 words) you copy-paste verbatim from the Evidence section. Multi-sentence quotes, ellipsis-truncated quotes, and paraphrased-but-quoted material are fabrications and get stripped.
+4. Finish every paragraph and every section with a complete, standalone sentence. Section transitions are thematic. Never leave a clause or sentence for the next section to complete.
+5. Return only the requested review prose. Begin with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+
+===== USER =====
+Continue this literature review on: What is the role of institutions in shaping long-run economic growth?
+
+Previous ending:
+...u et al. (2001, p.27) report, “In one extreme, as in the case of the United States, Australia, and New Zealand, they went and settled in the colonies and set up institutions that enforced the rule of law and encouraged investment.” [[COV-PATCH]] Austin (2008, p.2) reports, “Despite this decline, most economists have little difﬁculty in seeing the behaviour of the older industrial economies today in the context of patterns and paths of institutional evolution, investment and policy experience going back at least to the original industrialisation of Europe, its overseas 'off-shoots', and Japan.”
+
+IMPORTANT: The Previous ending is a complete sentence. Open with another complete, standalone sentence that develops one of its themes, findings, or scope conditions. Do not continue its grammar, and do not restate the topic on its own.
+
+Stream: Institutions and economic growth in Europe.
+Structural relation of this stream to the topic (same_as_topic_cause): this stream develops the topic's claim using the same causal variable under different phrasing or as a more specific instance.
+SECTION LEAD: Open with a sentence whose grammatical subject names 'North' (this cluster's lead author). The cite that anchors the opener must resolve to North's paper.
+OPENER GUARD: Do NOT open this section with any of these author surnames as the topic-sentence subject (they are the lead authors of OTHER sections): Acemoglu et al.; Akyeampong and Fofack; Hopkins; Nunn and Wantchekon; Ogilvie. They may still be cited inside the section if their evidence is in your ALLOWED CITATIONS list, but the OPENING SENTENCE must be led by a different surname.
+
+ALLOWED CITATIONS:
+  - [E0105] (paper North_1989, page 9; author surname: North)
+  - [E0106] (paper North_1989, page 6; author surname: North)
+  - [E0097] (paper North&Weingast_1989, page 29; author surname: North and Weingast)
+  - [E0098] (paper North&Weingast_1989, page 2; author surname: North and Weingast)
+
+STREAM POSTURE (use this as the section's substantive claim about the world; do NOT print it verbatim, but anchor the section's argument to it):
+  The development of new financial instruments and political institutions in England during the 17th century significantly reduced transaction costs, fostering long-run economic growth.
+Cite these stream members together once when stating the shared posture: ([E0105]; [E0097])
+
+Evidence:
+[North_1989] cite as North (1989)
+  Paper's central claim: The paper argues that institutions matter in economic growth and development, contra neoclassical theories which emphasize population and savings as principal determinants.
+  [E0105] "The creation of the Bank of England (1694) and the development of new financial instruments led to a dramatic decline in the cost of transacting and have been described as the English financial revolution. Both institutions and consequent falling transaction costs reflect increased security of the time dimension of property rights, a dimension critical to both a long-term capital market and to economic growth itself. In terms of the very simple political model outlined in Section 2, the original trade of certain rights to Parliament in return for revenues was a product of the fiscal crises of the Hundred Years- War." (from North_1989, p.9)
+  [E0106] "The foregoing discussion profiles transaction costs in a growing economy. The emergence of political institutions that specify "efficient" property rights and provide increasingly effective enforcement should show up in terms of the development of economic institutions to facilitate market exchanges. As a result, costs per transaction will be falling; but the size of the transactions sector in the aggregate will be a growing proportion of GNP, as increasing specialization and division of labor multiplies the aggregate volume of exchanges." (from North_1989, p.6)
+
+[North&Weingast_1989] cite as North and Weingast (1989)
+  Paper's central claim: The paper argues that the evolution of institutions governing public choice in seventeenth-century England was crucial for fostering secure property rights and economic growth, contra views that attribute economic development primarily to o
+  [E0097] "Evidence from capital markets provides a striking indication of this. Recent research that has significantly upgraded France's economic performance before the French Revolution has led to an overhauling of traditional interpretations of British as well as French economic history.56 If England and France were almost at parity in economic performance, the clear implication is that institutions per se-and in particular, the institutional changes we have described-were not so revolutionary after all. Similarly, the elaborate bureaucratic structure inherited from Louis XIV was not such a hindrance to economic growth." (from North&Weingast_1989, p.29)
+  [E0098] "Their success was remarkable, as the evidence from capital markets shows. This article focuses on the political factors underpinning economic growth and the development of markets-not simply the rules governing economic exchange, but also the institutions governing how these rules are enforced and how they may be changed. A critical political factor is the degree to which the regime or sovereign is committed to or bound by these rules." (from North&Weingast_1989, p.2)
+
+Write a scholarly literature review organised around streams of related scholarship. Each section presents ONE stream and synthesises across its sources. Argue in direct positive claims; avoid contrastive framings such as 'not X but Y', 'rather than', 'unlike', or 'in contrast'. Vary sentence length; introduce claims as full sentences rather than via colon setups. Each paragraph must integrate at least two DISTINCT documents; do not cite the same document for more than two consecutive citations. Finish every paragraph and section with a complete standalone sentence. Create continuity by carrying a substantive theme across sections. Make claims directly about the substantive question. Do NOT write meta-statements about the review itself ('this review', 'the literature reviewed here', 'as discussed above', 'we will examine'). Do not restate the topic or the thesis.
+
+Present this stream of literature. Open with a direct, substantive claim grounded in the STREAM POSTURE above. Never name the stream's structural relation in the prose (no 'this stream supports/critiques/complicates'); express the relation by the shape of the argument and the sources you cite together. Cite the stream's lead and one supporting source in the same sentence when stating the shared claim. Develop the claim through one specific mechanism, condition, or pattern the sources jointly establish; trace one downstream implication that another source in the stream qualifies. 220-300 words. End with a complete standalone sentence whose substantive theme can carry into the next section.
+
+Return only the requested review prose. Begin immediately with its first sentence. Do not include planning, analysis, a checklist, headings, notes, a word count, draft labels, or commentary.
+
+Continue:

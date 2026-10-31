@@ -1,0 +1,71 @@
+{
+  "keywords_must": [
+    "institutions",
+    "economic growth",
+    "long run"
+  ],
+  "keywords_any": [
+    "development",
+    "growth",
+    "economy",
+    "causes",
+    "fundamental"
+  ],
+  "exclude": [
+    "short term",
+    "microeconomics",
+    "finance"
+  ],
+  "probes": [
+    "institutions are the fundamental cause of long-run economic growth",
+    "role of institutions in economic development",
+    "institutions and long-term growth",
+    "economic causes of institutional change",
+    "institutional quality and economic performance",
+    "historical perspective on economic growth",
+    "inclusive political institutions",
+    "rule of law",
+    "human capital accumulation",
+    "technological progress",
+    "economic convergence",
+    "endogenous growth theory"
+  ],
+  "planner_meta": {
+    "mode": "llm_two_stage",
+    "model": "mistral-small:24b",
+    "duration_s": 9.7697,
+    "corpus_lang": "en",
+    "topic_lang": "en",
+    "cross_lang_retrieval": false,
+    "terms_of_art_count": 6,
+    "probes_added_by_terms": 6,
+    "topic_reformulated": true
+  },
+  "terms_of_art": [
+    "inclusive political institutions",
+    "rule of law",
+    "human capital accumulation",
+    "technological progress",
+    "economic convergence",
+    "endogenous growth theory"
+  ],
+  "topic_display": "Institutions are the fundamental cause of long-run economic growth",
+  "topic_question": "What is the role of institutions in shaping long-run economic growth?",
+  "topic_dimensions": [
+    "Mechanism of influence",
+    "Scope conditions for effectiveness",
+    "Measurement of institutional quality",
+    "Historical period",
+    "Geographical region"
+  ],
+  "active_probes": [
+    "institutions are the fundamental cause of long-run economic growth",
+    "role of institutions in economic development",
+    "institutions and long-term growth",
+    "economic causes of institutional change",
+    "institutional quality and economic performance",
+    "historical perspective on economic growth",
+    "inclusive political institutions",
+    "rule of law"
+  ]
+}

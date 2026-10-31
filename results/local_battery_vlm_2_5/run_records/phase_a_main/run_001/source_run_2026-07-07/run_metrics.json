@@ -1,0 +1,882 @@
+{
+  "task": "T2_LAYERED_GLOBAL",
+  "topic": "Institutions are the fundamental cause of long-run economic growth",
+  "started_at": "2026-07-07T14:35:27Z",
+  "finished_at": "2026-07-07T14:39:11Z",
+  "duration_s": 224.4733,
+  "stages": {
+    "load_metadata": {
+      "calls": 1,
+      "seconds": 0.022
+    },
+    "planning": {
+      "calls": 1,
+      "seconds": 12.6446
+    },
+    "evidence_admission": {
+      "calls": 1,
+      "seconds": 12.3535
+    },
+    "outline_early_precheck": {
+      "calls": 1,
+      "seconds": 10.2051
+    },
+    "per_document_sweep": {
+      "calls": 1,
+      "seconds": 0.1398
+    },
+    "outline": {
+      "calls": 1,
+      "seconds": 73.4036
+    },
+    "write_ledger": {
+      "calls": 1,
+      "seconds": 0.0168
+    },
+    "writer_stitch": {
+      "calls": 1,
+      "seconds": 15.6789
+    },
+    "writer_quote_verify": {
+      "calls": 1,
+      "seconds": 0.0
+    },
+    "writing": {
+      "calls": 1,
+      "seconds": 107.7022
+    }
+  },
+  "counters": {
+    "llm_calls_planner_terms_of_art": 1,
+    "llm_calls_total": 24,
+    "llm_calls_topic_reformulation": 1,
+    "llm_calls_planner": 1,
+    "docs_processed": 50,
+    "retrieval_probe_calls": 400,
+    "retrieved_pages_raw": 6527,
+    "retrieved_pages_kept": 1138,
+    "evidence_context_sentences_added": 12540,
+    "candidate_quotes": 6527,
+    "validation_items": 6431,
+    "validation_ok": 6431,
+    "validation_failed": 0,
+    "valid_quotes_kept": 400,
+    "docs_admitted": 50,
+    "docs_budget_dropped": 26,
+    "llm_calls_outline_precheck": 2,
+    "docs_kept": 24,
+    "llm_calls_outline_cluster": 1,
+    "llm_calls_outline_posture": 6,
+    "outline_posture_grounding_promotions": 1,
+    "outline_posture_conduit_promotions": 1,
+    "llm_calls_outline_order": 1,
+    "llm_calls_writer_opening": 1,
+    "writer_sections_succeeded": 8,
+    "llm_calls_writer_same_as_topic_cause": 1,
+    "llm_calls_writer_rival_to_topic_cause": 2,
+    "writer_attribution_retries": 1,
+    "llm_calls_writer_rival_to_topic_cause_attribution_retry": 1,
+    "writer_attribution_retry_accepted": 1,
+    "llm_calls_writer_upstream_of_topic_cause": 1,
+    "llm_calls_writer_adjacent": 2,
+    "llm_calls_writer_closing": 1,
+    "llm_calls_cross_section_stitch": 1,
+    "writer_redundancy_drops": 10,
+    "llm_calls_style_rewrite": 1,
+    "writer_zero_cite_paragraphs_dropped": 1,
+    "writer_zero_cite_closing_kept": 1,
+    "writer_removed_citations": 0,
+    "writer_style_sentences_removed": 8,
+    "writer_evidence_id_renders": 56,
+    "writer_double_paren_collapsed": 15,
+    "writer_author_led_openings": 24
+  },
+  "values": {
+    "restart_attempt": 0,
+    "topic_lang": "en",
+    "selected_model": "mistral-small:24b",
+    "run_id": "battery_phase_a_main_001",
+    "metadata_path": "metadata.csv",
+    "docs_total": 50,
+    "metadata_labels_loaded": 50,
+    "corpus_fingerprint": "b4f04a6543006712",
+    "content_sha1_populated": 0,
+    "corpus_lang_distribution": {
+      "en": 50
+    },
+    "corpus_lang": "en",
+    "cross_lang_retrieval": false,
+    "doc_admit_cache_enabled": 1,
+    "doc_admit_replay": 0,
+    "planner_mode": "llm_two_stage",
+    "planner_probe_count": 8,
+    "doc_admit_cache_key": "81d7ac2fe84f52cb",
+    "docs_rejected_total": 0,
+    "docs_admitted_total": 50,
+    "doc_budget_requested": 24,
+    "doc_budget_selected": 24,
+    "doc_budget_exhaustive": false,
+    "doc_budget_probe_coverage": 8,
+    "docs_selected_for_llm": 24,
+    "topic_fit_warnings": [],
+    "topic_fit_admission_share": 1.0,
+    "topic_fit_selected_probe_coverage": 1.0,
+    "evidence_ids_assigned": 192,
+    "docs_represented": 24,
+    "topic_fit_represented_share": 0.48,
+    "outline_posture_grounding_downgrades": 0,
+    "outline_posture_grounding_promotions": 0,
+    "outline_posture_conduit_promotions": 0,
+    "outline_topic_shape": "causal",
+    "relation_distribution": {
+      "upstream_of_topic_cause": 2,
+      "same_as_topic_cause": 2,
+      "adjacent": 4,
+      "rival_to_topic_cause": 4
+    },
+    "outline_unassigned_share": 0.5,
+    "outline_clusters_count": 6,
+    "writer_chunk_plan": {
+      "topic_shape": "causal",
+      "clusters_total": 6,
+      "relation_distribution": {
+        "upstream_of_topic_cause": 2,
+        "same_as_topic_cause": 2,
+        "adjacent": 4,
+        "rival_to_topic_cause": 4
+      }
+    },
+    "writer_parallel_workers": 1,
+    "writer_stitch_applied": 6,
+    "writer_stitch_skipped_citation_change": 0,
+    "writer_stitch_skipped_empty": 0,
+    "writer_stitch_skipped_topic_paraphrase": 0,
+    "writer_stitch_skipped_tail_echo": 0,
+    "writer_quote_verification": {
+      "enabled": true,
+      "checked_quotes": 0,
+      "verified_real": 0,
+      "fabricated_stripped": 0,
+      "fabricated_kept_no_citation": 0,
+      "fabricated_kept_doc_not_in_corpus": 0,
+      "fabricated_kept_page_not_readable": 0,
+      "fabrications": [],
+      "duration_s": 0.0,
+      "fallback_reason": "ok"
+    },
+    "writer_redundancy_examples": [
+      {
+        "snippet": "Building on this dynamic, North argues that the creation of efficient property rights and effective enforcement mechanisms are crucial for e…",
+        "overlap_tokens": 11,
+        "cited_pairs": [
+          [
+            "North_1989",
+            6
+          ]
+        ]
+      },
+      {
+        "snippet": "North (1989) argues that the emergence of efficient property rights and effective enforcement mechanisms should manifest in the development …",
+        "overlap_tokens": 9,
+        "cited_pairs": [
+          [
+            "North_1989",
+            6
+          ]
+        ]
+      },
+      {
+        "snippet": "Frankema notes that these institutional changes were part of a larger transformation in African societies under colonial rule, altering how …",
+        "overlap_tokens": 6,
+        "cited_pairs": [
+          [
+            "Frankema_2012",
+            15
+          ]
+        ]
+      },
+      {
+        "snippet": "This institutional framework not only affected immediate outcomes but also had lasting implications for resource allocation and utilization,…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "Nunn&Wantchekon_2011",
+            15
+          ]
+        ]
+      },
+      {
+        "snippet": "The role of institutions in shaping long-run economic growth is profound, as they influence resource allocation and utilization over extende…",
+        "overlap_tokens": 5,
+        "cited_pairs": [
+          [
+            "Hopkins_2009",
+            18
+          ]
+        ]
+      },
+      {
+        "snippet": "Institutions matter in economic growth and development, contra neoclassical theories which emphasize population and savings as principal det…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "North_1989",
+            6
+          ]
+        ]
+      },
+      {
+        "snippet": "The creation of key financial institutions, such as the Bank of England, led to a dramatic decline in transaction costs, highlighting the im…",
+        "overlap_tokens": 5,
+        "cited_pairs": [
+          [
+            "North_1989",
+            9
+          ]
+        ]
+      },
+      {
+        "snippet": "The underlying point of agreement across the literature is that institutions established during colonial rule continue to shape contemporary…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "Hopkins_2009",
+            18
+          ]
+        ]
+      },
+      {
+        "snippet": "This institutional framework not only affected immediate outcomes but also had lasting implications for resource allocation and utilization,…",
+        "overlap_tokens": 4,
+        "cited_pairs": [
+          [
+            "North_1989",
+            6
+          ]
+        ]
+      },
+      {
+        "snippet": "The specific historical evidence that would settle the disagreement about the precise mechanisms through which institutions shape economic g…",
+        "overlap_tokens": 12,
+        "cited_pairs": [
+          [
+            "AcemogluEtAl_2002",
+            33
+          ],
+          [
+            "Austin_2008",
+            2
+          ]
+        ]
+      }
+    ],
+    "writer_style_enforcement": {
+      "trailing_stripped": 0,
+      "violations": 17,
+      "rewrites_applied": 13,
+      "fallback_reason": "ok",
+      "mechanical_dashes_replaced": 2
+    },
+    "writer_coverage_patches_dropped": 0,
+    "writer_coverage_patches_shipped": 0,
+    "writer_zero_cite_paragraphs": [
+      "The historical legacy of colonial institutions continues to shape contemporary African economies. This institutional framework has lasting implications for resource allocation and utilization, which i…"
+    ],
+    "writer_zero_cite_closing_kept_snippet": "Institutions shape long-run economic growth through their influence on resource allocation and utilization.",
+    "writer_adjacent_paren_merges": 3,
+    "writer_stats": {
+      "chunks_written": 8,
+      "distinct_docs_cited": 12,
+      "word_count": 1997,
+      "removed_citations": 0,
+      "style_sentences_removed": 8,
+      "coverage_fallbacks": 0,
+      "evidence_id_renders": 56,
+      "double_paren_collapsed": 15,
+      "author_led_openings": 24,
+      "redundancy_drops": 10,
+      "bracket_id_rewrites": 0,
+      "unknown_eids": 0,
+      "attribution_mismatches": 3,
+      "attribution_retries": 1,
+      "section_claims": [
+        {
+          "stance": "same_as_topic_cause",
+          "cluster": "Institutions and economic growth in Europe",
+          "docs": [
+            "North_1989",
+            "North&Weingast_1989"
+          ],
+          "mechanisms": [],
+          "word_count": 307,
+          "surnames_named": []
+        },
+        {
+          "stance": "rival_to_topic_cause",
+          "cluster": "Institutional impacts on inequality and economic growth",
+          "docs": [
+            "Ogilvie_2007",
+            "Sokoloff&Engerman_2000"
+          ],
+          "mechanisms": [],
+          "word_count": 354,
+          "surnames_named": []
+        },
+        {
+          "stance": "rival_to_topic_cause",
+          "cluster": "Economic history and policy implications for Africa",
+          "docs": [
+            "Hopkins_2009",
+            "Simson_2019"
+          ],
+          "mechanisms": [],
+          "word_count": 180,
+          "surnames_named": []
+        },
+        {
+          "stance": "upstream_of_topic_cause",
+          "cluster": "Colonial institutions and economic outcomes",
+          "docs": [
+            "AcemogluEtAl_2001",
+            "AcemogluEtAl_2002"
+          ],
+          "mechanisms": [],
+          "word_count": 250,
+          "surnames_named": [
+            "Acemoglu et al."
+          ]
+        },
+        {
+          "stance": "adjacent",
+          "cluster": "Role of women and colonial education in African development",
+          "docs": [
+            "Akyeampong&Fofack_2014",
+            "Frankema_2012"
+          ],
+          "mechanisms": [],
+          "word_count": 285,
+          "surnames_named": []
+        },
+        {
+          "stance": "adjacent",
+          "cluster": "Historical institutions and contemporary African development",
+          "docs": [
+            "Austin_2008",
+            "Nunn&Wantchekon_2011"
+          ],
+          "mechanisms": [],
+          "word_count": 370,
+          "surnames_named": []
+        }
+      ],
+      "section_coverage": [
+        {
+          "section": "opening",
+          "required_cited_docs": 2,
+          "cited_doc_count": 5,
+          "cited_docs": [
+            "AcemogluEtAl_2001",
+            "AcemogluEtAl_2002",
+            "Austin_2008",
+            "North_1989",
+            "Ogilvie_2007"
+          ],
+          "provided_doc_count": 6,
+          "ok": true
+        },
+        {
+          "section": "same_as_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "North&Weingast_1989",
+            "North_1989"
+          ],
+          "provided_doc_count": 2,
+          "ok": true
+        },
+        {
+          "section": "rival_to_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Ogilvie_2007",
+            "Sokoloff&Engerman_2000"
+          ],
+          "provided_doc_count": 2,
+          "ok": true
+        },
+        {
+          "section": "rival_to_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Hopkins_2009",
+            "Simson_2019"
+          ],
+          "provided_doc_count": 2,
+          "ok": true
+        },
+        {
+          "section": "upstream_of_topic_cause",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "AcemogluEtAl_2001",
+            "AcemogluEtAl_2002"
+          ],
+          "provided_doc_count": 2,
+          "ok": true
+        },
+        {
+          "section": "adjacent",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Akyeampong&Fofack_2014",
+            "Frankema_2012"
+          ],
+          "provided_doc_count": 2,
+          "ok": true
+        },
+        {
+          "section": "adjacent",
+          "required_cited_docs": 2,
+          "cited_doc_count": 2,
+          "cited_docs": [
+            "Austin_2008",
+            "Nunn&Wantchekon_2011"
+          ],
+          "provided_doc_count": 2,
+          "ok": true
+        },
+        {
+          "section": "closing",
+          "required_cited_docs": 1,
+          "cited_doc_count": 4,
+          "cited_docs": [
+            "AcemogluEtAl_2002",
+            "Austin_2008",
+            "Hopkins_2009",
+            "North_1989"
+          ],
+          "provided_doc_count": 6,
+          "ok": true
+        }
+      ]
+    },
+    "writer_mode": "chunked",
+    "writer_unknown_evidence_id": 0,
+    "writer_attribution_mismatches": 3,
+    "writer_attribution_retries_total": 1,
+    "writer_attribution_mismatch_snippets": [
+      {
+        "snippet": "Hopkins[E0153]",
+        "prose_surname": "hopkins",
+        "expected_surnames": "Simson",
+        "eid": "E0153",
+        "doc_id": "Simson_2019",
+        "page": 2
+      },
+      {
+        "snippet": "Hopkins [E0153] and Simson[E0074]",
+        "prose_surname": "simson",
+        "expected_surnames": "Hopkins",
+        "eid": "E0074",
+        "doc_id": "Hopkins_2009",
+        "page": 8
+      },
+      {
+        "snippet": "Hopkins and Simson[E0073]",
+        "prose_surname": "simson",
+        "expected_surnames": "Hopkins",
+        "eid": "E0073",
+        "doc_id": "Hopkins_2009",
+        "page": 18
+      }
+    ],
+    "refusal": false
+  },
+  "cache": {
+    "doc_admit": {
+      "hits": 0,
+      "misses": 0,
+      "writes": 1,
+      "skips": 1
+    },
+    "outline_precheck": {
+      "hits": 0,
+      "misses": 2,
+      "writes": 2,
+      "skips": 0
+    },
+    "paper_claim": {
+      "hits": 24,
+      "misses": 0,
+      "writes": 0,
+      "skips": 0
+    },
+    "outline_cluster": {
+      "hits": 0,
+      "misses": 1,
+      "writes": 1,
+      "skips": 0
+    },
+    "outline_posture": {
+      "hits": 0,
+      "misses": 6,
+      "writes": 6,
+      "skips": 0
+    },
+    "outline_order": {
+      "hits": 0,
+      "misses": 1,
+      "writes": 1,
+      "skips": 0
+    }
+  },
+  "llm_calls_by_stage": {
+    "planner_terms_of_art": 1,
+    "topic_reformulation": 1,
+    "planner": 1,
+    "outline_precheck": 2,
+    "outline_cluster": 1,
+    "outline_posture": 6,
+    "outline_order": 1,
+    "writer_opening": 1,
+    "writer_same_as_topic_cause": 1,
+    "writer_rival_to_topic_cause": 2,
+    "writer_rival_to_topic_cause_attribution_retry": 1,
+    "writer_upstream_of_topic_cause": 1,
+    "writer_adjacent": 2,
+    "writer_closing": 1,
+    "cross_section_stitch": 1,
+    "style_rewrite": 1
+  },
+  "llm_calls": [
+    {
+      "stage": "planner_terms_of_art",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 2048,
+        "num_predict": 300
+      },
+      "duration_s": 1.2791,
+      "prompt_chars": 829,
+      "response_chars": 201
+    },
+    {
+      "stage": "topic_reformulation",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 2048,
+        "num_predict": 400
+      },
+      "duration_s": 1.5956,
+      "prompt_chars": 854,
+      "response_chars": 291
+    },
+    {
+      "stage": "planner",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 2048,
+        "num_predict": 700
+      },
+      "duration_s": 9.7697,
+      "prompt_chars": 380,
+      "response_chars": 482
+    },
+    {
+      "stage": "outline_precheck",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 4096,
+        "num_predict": 400
+      },
+      "duration_s": 10.1921,
+      "prompt_chars": 9751,
+      "response_chars": 533
+    },
+    {
+      "stage": "outline_precheck",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 4096,
+        "num_predict": 400
+      },
+      "duration_s": 3.6384,
+      "prompt_chars": 9751,
+      "response_chars": 528
+    },
+    {
+      "stage": "outline_cluster",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 12288,
+        "num_predict": 1800
+      },
+      "duration_s": 17.0321,
+      "prompt_chars": 6747,
+      "response_chars": 1680
+    },
+    {
+      "stage": "outline_posture",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 8192,
+        "num_predict": 600
+      },
+      "duration_s": 12.5545,
+      "prompt_chars": 6874,
+      "response_chars": 1251
+    },
+    {
+      "stage": "outline_posture",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 8192,
+        "num_predict": 600
+      },
+      "duration_s": 5.891,
+      "prompt_chars": 6829,
+      "response_chars": 1298
+    },
+    {
+      "stage": "outline_posture",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 8192,
+        "num_predict": 600
+      },
+      "duration_s": 5.7471,
+      "prompt_chars": 6741,
+      "response_chars": 1149
+    },
+    {
+      "stage": "outline_posture",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 8192,
+        "num_predict": 600
+      },
+      "duration_s": 5.4441,
+      "prompt_chars": 6900,
+      "response_chars": 1077
+    },
+    {
+      "stage": "outline_posture",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 8192,
+        "num_predict": 600
+      },
+      "duration_s": 9.3008,
+      "prompt_chars": 6657,
+      "response_chars": 2129
+    },
+    {
+      "stage": "outline_posture",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 8192,
+        "num_predict": 600
+      },
+      "duration_s": 5.3541,
+      "prompt_chars": 6723,
+      "response_chars": 1079
+    },
+    {
+      "stage": "outline_order",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.0,
+        "num_ctx": 4096,
+        "num_predict": 300
+      },
+      "duration_s": 8.3773,
+      "prompt_chars": 2232,
+      "response_chars": 93
+    },
+    {
+      "stage": "writer_opening",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 14.6418,
+      "prompt_chars": 9317,
+      "response_chars": 2118
+    },
+    {
+      "stage": "writer_same_as_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 7.5567,
+      "prompt_chars": 6605,
+      "response_chars": 2162
+    },
+    {
+      "stage": "writer_rival_to_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 9.1826,
+      "prompt_chars": 7107,
+      "response_chars": 2641
+    },
+    {
+      "stage": "writer_rival_to_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 7.8984,
+      "prompt_chars": 7008,
+      "response_chars": 2340
+    },
+    {
+      "stage": "writer_rival_to_topic_cause_attribution_retry",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 4.2089,
+      "prompt_chars": 9348,
+      "response_chars": 1196
+    },
+    {
+      "stage": "writer_upstream_of_topic_cause",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 6.3224,
+      "prompt_chars": 7490,
+      "response_chars": 1642
+    },
+    {
+      "stage": "writer_adjacent",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 7.2542,
+      "prompt_chars": 7576,
+      "response_chars": 2032
+    },
+    {
+      "stage": "writer_adjacent",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 8.8027,
+      "prompt_chars": 7675,
+      "response_chars": 2548
+    },
+    {
+      "stage": "writer_closing",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.5,
+        "num_ctx": 12288,
+        "num_predict": 1500,
+        "top_p": 0.9
+      },
+      "duration_s": 7.9767,
+      "prompt_chars": 11804,
+      "response_chars": 2082
+    },
+    {
+      "stage": "cross_section_stitch",
+      "model": "mistral-small:24b",
+      "success": true,
+      "duration_s": 15.6756,
+      "prompt_chars": 3561,
+      "response_chars": 1533
+    },
+    {
+      "stage": "style_rewrite",
+      "model": "mistral-small:24b",
+      "success": true,
+      "options": {
+        "temperature": 0.1,
+        "num_ctx": 4096,
+        "num_predict": 1500
+      },
+      "duration_s": 18.0725,
+      "prompt_chars": 4384,
+      "response_chars": 3070
+    }
+  ],
+  "env": {
+    "RRR_CONCURRENCY": "4",
+    "RRR_CORPUS_LANG": "en",
+    "RRR_MODEL": "mistral-small:24b",
+    "RRR_RUN_ID": "battery_phase_a_main_001",
+    "RRR_STAGE_CACHE": "0",
+    "RRR_TOPIC_LANG": "en"
+  }
+}

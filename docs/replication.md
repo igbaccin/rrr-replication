@@ -49,7 +49,7 @@ the CSV, TeX, PDF, and PNG exhibits.
 | `results/corrected/external_comparisons/rrr_skill/` | Accepted RRR skill comparison record |
 | `results/external_comparisons/` | Completed Claude Code summaries and the five-run NotebookLM record |
 | `results/rebuild_inputs/` | Frozen inputs required by the exhibit builder |
-| `results/local_battery_vlm_2_5/` | Generated reviews, run records, and the vlm.2.5 materialization record for the reported battery |
+| `results/local_battery_vlm_2_5/` | Generated reviews, run records, the vlm.2.5 materialization record for the reported battery, and the complete record of the paper's running example under `run_records/` |
 | `results/local_battery_vlm_2_1/` | The previously accepted vlm.2.1 generation, retained with its normalization records |
 | `REPLICATION_MANIFEST.json` | Package status, population accounting, exclusions, and integrity hashes |
 
