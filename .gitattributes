@@ -10,6 +10,4 @@
 *.gz binary
 *.pdf binary
 *.png binary
-*.json text eol=lf
-*.csv text eol=lf
 *.txt text eol=lf
