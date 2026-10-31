@@ -16,9 +16,9 @@
     "new_scored_reviews": 1,
     "review_hashes_changed": 1,
     "identical_document_sets": 0,
-    "mean_paired_document_jaccard": 0.643,
+    "mean_paired_document_jaccard": 0.6,
     "identical_citation_pair_sets": 0,
-    "mean_paired_citation_pair_jaccard": 0.6,
+    "mean_paired_citation_pair_jaccard": 0.562,
     "old_substantive_refusals": 19,
     "old_structured_failures": 0,
     "old_deterministic_input_gates": 0,
@@ -67,14 +67,14 @@
     "new_e5_mean": 0,
     "new_e5_sd": 0.0,
     "new_e5_events": 0,
-    "new_n_citations_mean": 20,
+    "new_n_citations_mean": 18,
     "new_n_citations_sd": 0.0,
-    "new_n_docs_cited_mean": 13,
+    "new_n_docs_cited_mean": 14,
     "new_n_docs_cited_sd": 0.0,
-    "new_body_words_mean": 1684,
+    "new_body_words_mean": 1545,
     "new_body_words_sd": 0.0,
-    "new_body_words_min": 1684,
-    "new_body_words_max": 1684
+    "new_body_words_min": 1545,
+    "new_body_words_max": 1545
   },
   "per_run": [
     {
@@ -237,9 +237,9 @@
       "e3": 0,
       "e4": 0,
       "e5": 0,
-      "e3_soft": 2,
-      "n_citations": 20,
-      "n_docs_cited": 13,
+      "e3_soft": 1,
+      "n_citations": 18,
+      "n_docs_cited": 14,
       "docs_cited": [
         "AcemogluEtAl_2001",
         "Bohannan_1959",
@@ -251,18 +251,19 @@
         "Lindert&Williamson_1985",
         "North_1989",
         "Nunn&Wantchekon_2011",
+        "Ogilvie_2007",
         "Peters_2004",
         "Simson_2019",
         "vanZanden_1999"
       ],
-      "word_count": 1684,
+      "word_count": 1545,
       "quotes_checked": 4,
       "quotes_verified": 4,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_020",
-      "body_word_count": 1684,
-      "review_sha256": "9d696a2d36e029960f365c17a0ac39d88cdf1e51baa2410c0d34dce9fe5f0641",
+      "body_word_count": 1545,
+      "review_sha256": "723760cc9191123a9363c4a1b2f0471962857dabb9bf1feabcd9c3d425b67fa7",
       "provenance_class": "corrected_writer_replay"
     }
   ]

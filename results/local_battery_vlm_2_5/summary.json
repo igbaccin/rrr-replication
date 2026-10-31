@@ -1,0 +1,225 @@
+{
+  "battery": "local_reference_vlm_2_5",
+  "profile_version": "vlm.2.5 on the vlm.2.4 generation",
+  "distribution_version": "2.0.5+lm",
+  "score_provenance": {
+    "status": "current",
+    "note": "Outcomes and E1-E5 fields are the deposited checker record for the released review texts after the vlm.2.5 materialization pass. The same checker produced results/corrected.",
+    "accepted_current_results": "results/corrected/analysis_source/overall_writer_changes.csv",
+    "current_produced_reviews": 897,
+    "current_clean_reviews": 889,
+    "current_reviews_with_error": 8
+  },
+  "generation": {
+    "by": "vlm.2.4",
+    "code_fingerprint": "0082a410a030839f8127698a98c048d37648990ca943f03d78a9dd401a669262",
+    "server": "Ollama 0.40.13 on single RTX 4090 pods, 30 October 2026"
+  },
+  "materialization": {
+    "by": "vlm.2.5",
+    "code_fingerprint": "0add66434dd29df86edd749e19c2019fcb12ba533ad2669c9e252aec71acbfcc",
+    "pass": "writer._strip_fabricated_quotes (curly quotation marks, coverage quotations exempt)",
+    "reviews_changed": 3,
+    "record": "materialization.json",
+    "pre_materialization_texts": "reviews_pre_materialization/"
+  },
+  "redactions": {
+    "rule": "institutional download watermarks copied from page text are replaced with [download watermark removed] in the deposited review copies; outcomes, citations and aggregates are unchanged",
+    "applied": [
+      {
+        "item": "runpod_20260709_031835/phase_g_qwen3_0_6b_refusal_wordsalad/run_007",
+        "replacements": 1
+      }
+    ]
+  },
+  "total_items": 941,
+  "overall": {
+    "n": 941,
+    "success": 889,
+    "success_rate": 0.9447,
+    "checker_failed": 8,
+    "writer_failed": 44,
+    "zero_hard_e1_e5_among_success": 889,
+    "e_events": {
+      "e1": 0,
+      "e2": 0,
+      "e3": 21,
+      "e4": 2,
+      "e5": 0,
+      "e3_soft": 242
+    },
+    "mean_words_success": 1985
+  },
+  "by_model": {
+    "mistral-small:24b": {
+      "n": 660,
+      "success": 656,
+      "success_rate": 0.9939,
+      "checker_failed": 0,
+      "writer_failed": 4,
+      "zero_hard_e1_e5_among_success": 656,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 39
+      },
+      "mean_words_success": 2086
+    },
+    "qwen3:0.6b": {
+      "n": 87,
+      "success": 67,
+      "success_rate": 0.7701,
+      "checker_failed": 2,
+      "writer_failed": 18,
+      "zero_hard_e1_e5_among_success": 67,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 4,
+        "e4": 1,
+        "e5": 0,
+        "e3_soft": 13
+      },
+      "mean_words_success": 696
+    },
+    "mistral:7b": {
+      "n": 31,
+      "success": 18,
+      "success_rate": 0.5806,
+      "checker_failed": 5,
+      "writer_failed": 8,
+      "zero_hard_e1_e5_among_success": 18,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 9,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 164
+      },
+      "mean_words_success": 4286
+    },
+    "ministral-3:3b": {
+      "n": 28,
+      "success": 24,
+      "success_rate": 0.8571,
+      "checker_failed": 1,
+      "writer_failed": 3,
+      "zero_hard_e1_e5_among_success": 24,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 8,
+        "e4": 1,
+        "e5": 0,
+        "e3_soft": 10
+      },
+      "mean_words_success": 3449
+    },
+    "qwen3:1.7b": {
+      "n": 26,
+      "success": 24,
+      "success_rate": 0.9231,
+      "checker_failed": 0,
+      "writer_failed": 2,
+      "zero_hard_e1_e5_among_success": 24,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 12
+      },
+      "mean_words_success": 1390
+    },
+    "gemma3:12b": {
+      "n": 25,
+      "success": 25,
+      "success_rate": 1.0,
+      "checker_failed": 0,
+      "writer_failed": 0,
+      "zero_hard_e1_e5_among_success": 25,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 0
+      },
+      "mean_words_success": 2050
+    },
+    "qwen3:14b": {
+      "n": 25,
+      "success": 25,
+      "success_rate": 1.0,
+      "checker_failed": 0,
+      "writer_failed": 0,
+      "zero_hard_e1_e5_among_success": 25,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 0
+      },
+      "mean_words_success": 1476
+    },
+    "qwen3:4b": {
+      "n": 25,
+      "success": 25,
+      "success_rate": 1.0,
+      "checker_failed": 0,
+      "writer_failed": 0,
+      "zero_hard_e1_e5_among_success": 25,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 4
+      },
+      "mean_words_success": 1142
+    },
+    "qwen3:8b": {
+      "n": 25,
+      "success": 25,
+      "success_rate": 1.0,
+      "checker_failed": 0,
+      "writer_failed": 0,
+      "zero_hard_e1_e5_among_success": 25,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 0
+      },
+      "mean_words_success": 1598
+    },
+    "gemma3:1b": {
+      "n": 9,
+      "success": 0,
+      "success_rate": 0.0,
+      "checker_failed": 0,
+      "writer_failed": 9,
+      "zero_hard_e1_e5_among_success": 0,
+      "e_events": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0,
+        "e3_soft": 0
+      },
+      "mean_words_success": 0
+    }
+  }
+}

@@ -1,76 +1,77 @@
 {
   "schema_version": "rrr-replication-v1",
-  "package_status": "final_revision_review_package",
-  "prepared_at_utc": "2026-08-04T20:54:49Z",
+  "package_status": "final_version_package",
+  "prepared_at_utc": "2026-10-31T02:53:33Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: Supporting Scholarly Synthesis with Language Models",
     "author": "Anonymous author"
   },
   "source": {
     "review_repository": "https://anonymous.4open.science/r/rrr-replication-1B8C",
-    "accepted_profile": "vlm.2.1",
-    "source_status": "The source code, runtime bundles, result records, and explicit NotebookLM comparison files are deposited in this package."
+    "accepted_profile": "vlm.2.5 on the vlm.2.4 generation",
+    "source_status": "The source code, runtime bundles, result records, and explicit NotebookLM comparison files are deposited in this package.",
+    "previous_accepted_profile": "vlm.2.1 (manuscript accepted 27 October 2026; results replaced in the final version)"
   },
   "population": {
     "classified_attempts": 2425,
     "corrected_writer_replays": 941,
-    "produced_reviews": 907,
-    "produced_clean_reviews": 860,
-    "produced_reviews_with_error": 47,
-    "writer_failures": 34,
+    "produced_reviews": 897,
+    "produced_clean_reviews": 889,
+    "produced_reviews_with_error": 8,
+    "writer_failures": 44,
     "preserved_independent_baselines": 300,
     "preserved_pre_writer_terminals": 1184,
     "main_rrr_attempts": 100,
     "main_rrr_scored_reviews": 100,
-    "main_rrr_clean_reviews": 99,
-    "main_rrr_parsed_citations": 4767
+    "main_rrr_clean_reviews": 100,
+    "main_rrr_parsed_citations": 4186
   },
   "accepted_results": {
     "path": "results/corrected",
     "manifest": {
       "path": "results/corrected/manifest.json",
-      "bytes": 20896,
-      "sha256": "57e0c249ad189594ebe492b3f238d6e4ac0cb2c3c4c2ffb829616e3163446d4e"
+      "bytes": 21021,
+      "sha256": "c6534e65a70b33f0ede5c2a25394e669d37bf7626dcba7f54eeecdcb7b5b7576"
     },
     "analysis_manifest": {
       "path": "results/corrected/analysis_source/manifest.json",
-      "bytes": 6225,
-      "sha256": "b2c1ab01532d3394904162e72a43cc51dfb13abc976a0551a2b9dc8b63d3e657"
+      "bytes": 6221,
+      "sha256": "a5bf1b1895b4530844b733b7432444c46659928909b3291d061ba7e86b9c3a00"
     },
     "validation": {
       "path": "results/corrected/analysis_source/validation.json",
-      "bytes": 6313,
-      "sha256": "15de512d893eaaf55704f4beb3f98c05aebe579268dc98feb186029d8b19a7de"
+      "bytes": 6655,
+      "sha256": "a4b66944d39eb5f26d3e7522c5332559ffdb3e0bd28c22c3fa7ebacd4b93fceb"
     }
   },
   "external_comparisons": [
     {
-      "workflow": "Claude Code, Haiku 4.5",
       "path": "results/external_comparisons/claude_code/phase_h_haiku_results.json",
+      "workflow": "Claude Code, Haiku 4.5",
       "attempts": 50,
       "scored_reviews": 49,
       "bytes": 253169,
       "sha256": "65a37b541efecd39a425df44ac764a2dbea3e1246fea77122259c8825969be30"
     },
     {
-      "workflow": "Claude Code, Sonnet 4.5",
       "path": "results/external_comparisons/claude_code/phase_h_sonnet_results.json",
+      "workflow": "Claude Code, Sonnet 4.5",
       "attempts": 50,
       "scored_reviews": 50,
       "bytes": 330528,
       "sha256": "08842d22a374f13b61f2fe5491de6a6696ff1cb185c00c0e5439f5e122c51baf"
     },
     {
-      "workflow": "Claude Code, Opus 4.8",
       "path": "results/external_comparisons/claude_code/phase_h_opus_results.json",
+      "workflow": "Claude Code, Opus 4.8",
       "attempts": 51,
       "scored_reviews": 51,
       "bytes": 163031,
       "sha256": "dc653e64601bbc21e6af34fc5e0058d14879403f877444bbf30916aeeacb3fb2"
     },
     {
-      "workflow": "Claude Code with the /rrr skill",
       "path": "results/corrected/external_comparisons/rrr_skill/phase_h3_results.json",
+      "workflow": "Claude Code with the /rrr skill",
       "attempts": 10,
       "scored_reviews": 10,
       "bytes": 82268,
@@ -132,11 +133,46 @@
   },
   "anonymization": {
     "download_watermark_redaction": "An institutional download-watermark string was replaced in one preserved raw review. Outcome labels, citations, and aggregate results are unchanged.",
-    "development_snapshot_labels": "The development commit identifier in the H3 result record was replaced with the stable label review-snapshot-C."
+    "development_snapshot_labels": "The development commit identifier in the H3 result record was replaced with the stable label review-snapshot-C.",
+    "download_watermark_redaction_vlm_2_5": "An institutional download watermark copied from page text was replaced in one deposited review of the reported battery (qwen3 0.6B word-salad probe, run 007). Outcome labels, citations, and aggregate results are unchanged."
   },
   "excluded": {
     "historical_rrr_skill_h3": "Stored runs used the superseded writer and were replaced by the corrected H3 condition.",
     "cost_latency_figure": "Corrected replay timings are not comparable with original full-pipeline timings.",
     "corpus_pdfs": "Most source documents are copyrighted and must be obtained by the replicator."
-  }
+  },
+  "local_battery": {
+    "path": "results/local_battery_vlm_2_5",
+    "profile": "vlm.2.5 on the vlm.2.4 generation",
+    "generation_code_fingerprint": "0082a410a030839f8127698a98c048d37648990ca943f03d78a9dd401a669262",
+    "materialization_code_fingerprint": "0add66434dd29df86edd749e19c2019fcb12ba533ad2669c9e252aec71acbfcc",
+    "attempts": 941,
+    "produced_reviews": 897,
+    "clean_reviews": 889,
+    "reviews_with_error": 8,
+    "writer_failures": 44,
+    "reviews_changed_by_materialization": 3,
+    "summary": {
+      "path": "results/local_battery_vlm_2_5/summary.json",
+      "bytes": 5467,
+      "sha256": "4d2a6033b94ff5c5acc4f32f789d56b6b7f4550b29fab81b418ec10f58cc4a6e"
+    },
+    "per_run": {
+      "path": "results/local_battery_vlm_2_5/per_run.csv",
+      "bytes": 111482,
+      "sha256": "2a31d6237206738580a3e280fdfa6a02bc043f89622e5792e6f7c3240239fb16"
+    },
+    "materialization": {
+      "path": "results/local_battery_vlm_2_5/materialization.json",
+      "bytes": 2658,
+      "sha256": "c19dde8eb459e88ce0854827cf69dc5453e5a9b741dd7edba7d7b005bfe534fb"
+    }
+  },
+  "previous_batteries": [
+    {
+      "path": "results/local_battery_vlm_2_1",
+      "profile": "vlm.2.1",
+      "status": "generation reported by the manuscript accepted on 27 October 2026; retained for provenance after the final version replaced its results"
+    }
+  ]
 }

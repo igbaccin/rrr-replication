@@ -2,8 +2,10 @@
 
 This directory preserves the as-released vlm.2.1 record for provenance. Its
 stored outcomes predate the checker rule that counts any unrendered internal
-evidence identifier as E3. Current accepted scores and exhibits are under
-`results/corrected/`.
+evidence identifier as E3. The paper's reported battery is the later vlm.2.5
+generation under `results/local_battery_vlm_2_5/`, and the current scores and
+exhibits are under `results/corrected/`; this directory documents the
+generation that the paper reported when it was accepted.
 
 The battery contains 941 writer-stage attempts. The directory
 `reviews_raw/<batch>/<condition>/<run>.md` contains the 907 attempts that

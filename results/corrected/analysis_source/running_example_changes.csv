@@ -1,6 +1,6 @@
 metric,old,corrected,delta
-Body words,1997,2249,252
-Parsed citations,40,53,13
+Body words,1997,1713,-284
+Parsed citations,40,32,-8
 Distinct documents,12,12,0
 Distinct document-page pairs,25,20,-5
 Attribution retries,1,0,-1

@@ -1,13 +1,13 @@
 Guardrail layer,Runs where fired,Total events,Mean/run,Max/run
-Invalid-citation sentence removal,15%,15,0.15,1
-Unknown evidence-id markers,8%,11,0.11,3
-Attribution mismatches (renderer gate),7%,14,0.14,4
-Attribution retries,7%,7,0.07,1
-Attribution retries accepted,6%,6,0.06,1
+Invalid-citation sentence removal,0%,0,0,0
+Unknown evidence-id markers,1%,1,0.01,1
+Attribution mismatches (renderer gate),0%,0,0,0
+Attribution retries,0%,0,0,0
+Attribution retries accepted,0%,0,0,0
 Zero-citation paragraph drop,0%,0,0,0
-Unverified-quotation strips,10%,10,0.1,1
-Stitch rewrites reverted (citation drift),88%,474,4.74,11
-Coverage fallback sentences,13%,20,0.2,2
-Redundant passages removed,100%,706,7.06,15
+Unverified-quotation strips,5%,6,0.06,2
+Stitch rewrites reverted (citation drift),73%,301,3.01,9
+Coverage fallback sentences,84%,166,1.66,4
+Redundant passages removed,100%,600,6,13
 Style sentences removed,0%,0,0,0
-Double parentheses collapsed,100%,1626,16.26,29
+Double parentheses collapsed,100%,1588,15.88,35

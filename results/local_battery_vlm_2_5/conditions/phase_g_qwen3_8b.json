@@ -1,0 +1,19 @@
+{
+  "condition": "phase_g_qwen3_8b",
+  "model": "qwen3:8b",
+  "n": 25,
+  "success": 25,
+  "success_rate": 1.0,
+  "checker_failed": 0,
+  "writer_failed": 0,
+  "zero_hard_e1_e5_among_success": 25,
+  "e_events": {
+    "e1": 0,
+    "e2": 0,
+    "e3": 0,
+    "e4": 0,
+    "e5": 0,
+    "e3_soft": 0
+  },
+  "mean_words_success": 1598
+}

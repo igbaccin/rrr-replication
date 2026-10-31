@@ -92,7 +92,7 @@ def verify_corrected_results(package: dict) -> None:
         "model outcome rows do not exhaust attempted runs",
     )
     require(
-        checks.get("model ladder writer failures", {}).get("detail") == 33,
+        checks.get("model ladder writer failures", {}).get("detail") == 40,
         "model ladder writer-failure count mismatch",
     )
 
@@ -102,10 +102,10 @@ def verify_corrected_results(package: dict) -> None:
         overall_rows = list(csv.DictReader(handle))
     require(len(overall_rows) == 1, "overall writer summary must contain one row")
     overall = overall_rows[0]
-    require(overall["new_scored_reviews"] == "907", "produced-review count mismatch")
-    require(overall["new_clean_reviews"] == "860", "clean-review count mismatch")
-    require(overall["new_reviews_with_error"] == "47", "error-bearing review count mismatch")
-    require(overall["new_writer_failures"] == "34", "writer-failure count mismatch")
+    require(overall["new_scored_reviews"] == "897", "produced-review count mismatch")
+    require(overall["new_clean_reviews"] == "889", "clean-review count mismatch")
+    require(overall["new_reviews_with_error"] == "8", "error-bearing review count mismatch")
+    require(overall["new_writer_failures"] == "44", "writer-failure count mismatch")
 
     condition_path = accepted_root / "analysis_source/condition_changes.csv"
     with condition_path.open(encoding="utf-8", newline="") as handle:
@@ -126,14 +126,13 @@ def verify_corrected_results(package: dict) -> None:
     )
     main = next(row for row in rows if row["condition"] == "phase_a_main")
     require(main["attempts"] == "100", "Phase A attempt count mismatch")
-    require(main["new_clean_reviews"] == "99", "Phase A clean-review count mismatch")
-    require(main["new_e1_events"] == "1", "Phase A E1 count mismatch")
+    require(main["new_clean_reviews"] == "100", "Phase A clean-review count mismatch")
     require(
         round(float(main["new_n_citations_mean"]) * int(main["new_scored_reviews"]))
-        == 4767,
+        == 4186,
         "Phase A parsed-citation count mismatch",
     )
-    for metric in ("new_e2_events", "new_e3_events", "new_e4_events", "new_e5_events"):
+    for metric in ("new_e1_events", "new_e2_events", "new_e3_events", "new_e4_events", "new_e5_events"):
         require(main[metric] == "0", f"Phase A contains nonzero {metric}")
 
     required_tables = (
@@ -156,7 +155,7 @@ def verify_corrected_results(package: dict) -> None:
         model_rows = list(csv.DictReader(handle))
     require(len(model_rows) == 60, "model table row count mismatch")
     require(
-        sum(int(row["writer_failures"]) for row in model_rows) == 33,
+        sum(int(row["writer_failures"]) for row in model_rows) == 40,
         "model table writer-failure count mismatch",
     )
     for row in model_rows:
@@ -179,9 +178,9 @@ def verify_corrected_results(package: dict) -> None:
         row["model_tag"]: row for row in model_rows if row["probe"] == "flagship"
     }
     require(
-        flagship["qwen3:4b"]["clean_reviews"] == "24"
-        and flagship["qwen3:4b"]["reviews_with_error"] == "1"
-        and float(flagship["qwen3:4b"]["mean_e3"]) == 0.2,
+        flagship["qwen3:4b"]["clean_reviews"] == "25"
+        and flagship["qwen3:4b"]["reviews_with_error"] == "0"
+        and float(flagship["qwen3:4b"]["mean_e3"]) == 0.0,
         "Qwen 3 4B flagship score mismatch",
     )
     require(
@@ -190,9 +189,9 @@ def verify_corrected_results(package: dict) -> None:
         "Qwen 3 8B flagship score mismatch",
     )
     require(
-        flagship["mistral:7b"]["clean_reviews"] == "12"
-        and flagship["mistral:7b"]["reviews_with_error"] == "8"
-        and float(flagship["mistral:7b"]["mean_e3"]) == 0.95,
+        flagship["mistral:7b"]["clean_reviews"] == "14"
+        and flagship["mistral:7b"]["reviews_with_error"] == "5"
+        and float(flagship["mistral:7b"]["mean_e3"]) == 0.47,
         "Mistral 7B flagship score mismatch",
     )
 
@@ -202,8 +201,43 @@ def verify_corrected_results(package: dict) -> None:
         corpus_rows = list(csv.DictReader(handle))
     corpus_scores = {row["Corpus docs"]: row["Zero-error %"] for row in corpus_rows}
     require(
-        corpus_scores == {"10": "100", "25": "100", "50": "96"},
+        corpus_scores == {"10": "100", "25": "100", "50": "100"},
         "corpus-size score mismatch",
+    )
+
+
+def verify_local_battery(package: dict) -> None:
+    battery = package["local_battery"]
+    root = ROOT / battery["path"]
+    for key in ("summary", "per_run", "materialization"):
+        verify_file_record(battery[key])
+    with (ROOT / battery["per_run"]["path"]).open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    require(len(rows) == 941, "battery per-run table must contain 941 rows")
+    outcomes = {}
+    for row in rows:
+        outcomes[row["outcome"]] = outcomes.get(row["outcome"], 0) + 1
+    require(
+        outcomes == {"success": 889, "checker_failed": 8, "writer_failed": 44},
+        f"battery outcome counts mismatch: {outcomes}",
+    )
+    review_files = sorted((root / "reviews_raw").rglob("*.md"))
+    require(len(review_files) == 897, "battery must deposit 897 review files")
+    materialization = load_json(ROOT / battery["materialization"]["path"])
+    changed = materialization.get("changed_reviews", [])
+    require(len(changed) == 3, "materialization record must list three changed reviews")
+    for record in changed:
+        batch, condition, run = record["item"].split("/")
+        require(
+            (root / "reviews_pre_materialization" / batch / condition / f"{run}.md").is_file(),
+            f"missing pre-materialization text: {record['item']}",
+        )
+    summary = load_json(ROOT / battery["summary"]["path"])
+    require(summary.get("total_items") == 941, "battery summary item count mismatch")
+    require(
+        summary.get("materialization", {}).get("code_fingerprint")
+        == materialization.get("materialized_code_fingerprint"),
+        "battery summary and materialization record disagree on the vlm.2.5 fingerprint",
     )
 
 
@@ -299,6 +333,7 @@ def main() -> int:
         package = load_json(MANIFEST_PATH)
         require(package.get("schema_version") == "rrr-replication-v1", "unsupported package manifest")
         verify_corrected_results(package)
+        verify_local_battery(package)
         verify_external_comparisons(package)
         verify_package_hygiene()
     except (VerificationError, KeyError, OSError, json.JSONDecodeError) as exc:
@@ -308,6 +343,7 @@ def main() -> int:
     print("[replication] PASS: deposited file hashes")
     print("[replication] PASS: 2,425-attempt population accounting")
     print("[replication] PASS: corrected Phase A integrity")
+    print("[replication] PASS: deposited local battery (941 attempts, 897 reviews)")
     print("[replication] PASS: external comparison summaries")
     print("[replication] PASS: package hygiene")
     if package.get("source", {}).get("review_repository"):

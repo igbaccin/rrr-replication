@@ -15,10 +15,10 @@
     "old_scored_reviews": 25,
     "new_scored_reviews": 25,
     "review_hashes_changed": 25,
-    "identical_document_sets": 23,
-    "mean_paired_document_jaccard": 0.994,
+    "identical_document_sets": 20,
+    "mean_paired_document_jaccard": 0.987,
     "identical_citation_pair_sets": 0,
-    "mean_paired_citation_pair_jaccard": 0.504,
+    "mean_paired_citation_pair_jaccard": 0.465,
     "old_substantive_refusals": 0,
     "old_structured_failures": 0,
     "old_deterministic_input_gates": 0,
@@ -67,14 +67,14 @@
     "new_e5_mean": 0,
     "new_e5_sd": 0.0,
     "new_e5_events": 0,
-    "new_n_citations_mean": 47.76,
-    "new_n_citations_sd": 7.94,
-    "new_n_docs_cited_mean": 14,
-    "new_n_docs_cited_sd": 2.61,
-    "new_body_words_mean": 1959.32,
-    "new_body_words_sd": 290.26,
-    "new_body_words_min": 1508,
-    "new_body_words_max": 2597
+    "new_n_citations_mean": 41.88,
+    "new_n_citations_sd": 7.44,
+    "new_n_docs_cited_mean": 13.88,
+    "new_n_docs_cited_sd": 2.51,
+    "new_body_words_mean": 2100.08,
+    "new_body_words_sd": 236.5,
+    "new_body_words_min": 1546,
+    "new_body_words_max": 2598
   },
   "per_run": [
     {
@@ -86,7 +86,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 44,
+      "n_citations": 43,
       "n_docs_cited": 13,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -103,14 +103,14 @@
         "Simson_2019",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1713,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2180,
+      "quotes_checked": 1,
+      "quotes_verified": 1,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_001",
-      "body_word_count": 1713,
-      "review_sha256": "d331468ffae9bdef3b65aed589d028a9e8e0a395e2f863f2743b0838032d2bfd",
+      "body_word_count": 2180,
+      "review_sha256": "bc736e899068d37a8faab3dbc71ec4ab99f1ca834242453e37ba14744c568c13",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -122,7 +122,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 55,
+      "n_citations": 50,
       "n_docs_cited": 19,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -145,14 +145,14 @@
         "Sokoloff&Engerman_2000",
         "vanZanden_1999"
       ],
-      "word_count": 2097,
+      "word_count": 2024,
       "quotes_checked": 0,
       "quotes_verified": 0,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_002",
-      "body_word_count": 2097,
-      "review_sha256": "1d1b1d1d50f8471f6b15f69241e2951b50e2fdfb139b3a1bf9aeb4dedd66d16d",
+      "body_word_count": 2024,
+      "review_sha256": "fa4d52b8bc4d8e981febd5f9477e12824197b148bc55424b1bc6e067b19373eb",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -163,8 +163,8 @@
       "e3": 0,
       "e4": 0,
       "e5": 0,
-      "e3_soft": 1,
-      "n_citations": 60,
+      "e3_soft": 0,
+      "n_citations": 43,
       "n_docs_cited": 16,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -184,14 +184,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 2581,
+      "word_count": 2149,
       "quotes_checked": 0,
       "quotes_verified": 0,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_003",
-      "body_word_count": 2581,
-      "review_sha256": "325d942ba615cadfb6498cc039c4574eeed8dbffddc04936e52df11918ca0f38",
+      "body_word_count": 2149,
+      "review_sha256": "5e965c65a3f657b50ba5c863e63e85e5ea7c24a4ca87a3a63d7b04bbc58e9acb",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -203,7 +203,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 54,
+      "n_citations": 31,
       "n_docs_cited": 13,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -220,14 +220,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 2041,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2153,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_004",
-      "body_word_count": 2041,
-      "review_sha256": "e3ced9c3f8bf670e39c80ee6aae0880c4ff918f75ea5f0ac66d0a20b3672bb63",
+      "body_word_count": 2153,
+      "review_sha256": "aa57f99dfa972b18786a648461cae0704a7e3a5bc61baf15e7d0cedf7709f702",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -256,14 +256,14 @@
         "Simson_2019",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1759,
+      "word_count": 2162,
       "quotes_checked": 0,
       "quotes_verified": 0,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_005",
-      "body_word_count": 1759,
-      "review_sha256": "1e78e4f7cd5f2c8c2425ebe28d4839751147ed86c7d0f4bf56248e4545df84bc",
+      "body_word_count": 2162,
+      "review_sha256": "84622e009172d480e911e495947f25ff2e7851e81b2169212c033fdacd94b0ca",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -275,7 +275,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 39,
+      "n_citations": 40,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -291,14 +291,14 @@
         "Nunn_2008",
         "Simson_2019"
       ],
-      "word_count": 1891,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2008,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_006",
-      "body_word_count": 1891,
-      "review_sha256": "ae53df544f64e3c21f6e11633e623ab8b7e4d1e531ba6643a300fbb3419674b2",
+      "body_word_count": 2008,
+      "review_sha256": "a79004df5cb3be968984c6d9a1c7e5b4148511703e6a45fb8ecfecedf30a8831",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -310,14 +310,13 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 31,
-      "n_docs_cited": 14,
+      "n_citations": 35,
+      "n_docs_cited": 13,
       "docs_cited": [
         "AcemogluEtAl_2001",
         "AcemogluEtAl_2002",
         "Austin_2008",
         "Broadberry&Gardner_2022",
-        "Frankema&vanWaijenburg_2012",
         "Frankema_2012",
         "Kuznets_1973",
         "Mokyr_2005",
@@ -328,14 +327,14 @@
         "Simson_2019",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1746,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2259,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_007",
-      "body_word_count": 1746,
-      "review_sha256": "41dfe92b185525d2cc81bfb42cc181b9c0fee5733a31d9b1ab1773e358a60525",
+      "body_word_count": 2259,
+      "review_sha256": "1d77bd2274110df2dc055bed1f7408de05be88823155998e90f7b1cbd2aae01f",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -347,7 +346,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 57,
+      "n_citations": 51,
       "n_docs_cited": 21,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -372,14 +371,14 @@
         "vanZanden_1999",
         "vanZanden_2009"
       ],
-      "word_count": 2403,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2586,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_008",
-      "body_word_count": 2403,
-      "review_sha256": "a52a0c8ee7fd8e055de0c1a2c96d73c0f9f9b25b2773452c9c53c8488a4f6454",
+      "body_word_count": 2586,
+      "review_sha256": "899932a6b71da4d736d107342d3050cf34d495b886ff00044e5f0afa2e7851f8",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -390,8 +389,8 @@
       "e3": 0,
       "e4": 0,
       "e5": 0,
-      "e3_soft": 1,
-      "n_citations": 56,
+      "e3_soft": 0,
+      "n_citations": 47,
       "n_docs_cited": 17,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -412,14 +411,14 @@
         "Sokoloff&Engerman_2000",
         "vanZanden_1999"
       ],
-      "word_count": 2597,
-      "quotes_checked": 1,
-      "quotes_verified": 1,
+      "word_count": 2412,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_009",
-      "body_word_count": 2597,
-      "review_sha256": "0df7f447b4cecaafaf8f0ac55448313ffe77fb45bde10a3d31dd2b0fe3c3d6f2",
+      "body_word_count": 2412,
+      "review_sha256": "570a6fd79fa06dce579d010063800123219077e2b8a1f32e4a7bda7bfaab20cf",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -431,7 +430,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 50,
+      "n_citations": 57,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -447,14 +446,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1724,
-      "quotes_checked": 1,
-      "quotes_verified": 1,
-      "e1_loose_advisory_count": 0,
+      "word_count": 2101,
+      "quotes_checked": 0,
+      "quotes_verified": 0,
+      "e1_loose_advisory_count": 1,
       "batch": "runpod_20260709_031835",
       "run_id": "run_010",
-      "body_word_count": 1724,
-      "review_sha256": "77f7a8f4f9461a822734598bf3b19e59c45dd0dc4078012ca47c498f8ba44831",
+      "body_word_count": 2101,
+      "review_sha256": "bc338859d981aa11e4a4b480844473dd76b710ac27c79153b5faa2e166ecf418",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -466,7 +465,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 42,
+      "n_citations": 37,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -482,14 +481,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1697,
+      "word_count": 2128,
       "quotes_checked": 2,
       "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_011",
-      "body_word_count": 1697,
-      "review_sha256": "78fc3c3a227a1c102507610743c60ef1b60bcb7c82e7cb20640405adbe200d44",
+      "body_word_count": 2128,
+      "review_sha256": "dd577b3d6787df25adc88490151c2e7946bf159e8e94d26ff255f5beea69ddff",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -501,7 +500,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 43,
+      "n_citations": 33,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -517,14 +516,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1785,
+      "word_count": 1546,
       "quotes_checked": 0,
       "quotes_verified": 0,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_012",
-      "body_word_count": 1785,
-      "review_sha256": "765151470637413ab27c3272f8f755082d99e641a4f0b7dad22e6d98d9084d7a",
+      "body_word_count": 1546,
+      "review_sha256": "d80e11f4d55bf5e0bd1cd4c28f744fe7ae4e3630cde5ffa3fdc963a2e8cffe4d",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -536,8 +535,8 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 61,
-      "n_docs_cited": 19,
+      "n_citations": 41,
+      "n_docs_cited": 18,
       "docs_cited": [
         "AcemogluEtAl_2001",
         "AcemogluEtAl_2002",
@@ -555,18 +554,17 @@
         "Nunn_2008",
         "Ogilvie_2007",
         "Pamuk_2007",
-        "Sokoloff&Engerman_2000",
         "vanZanden_1999",
         "vanZanden_2009"
       ],
-      "word_count": 2299,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2598,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_013",
-      "body_word_count": 2299,
-      "review_sha256": "16a630f1b4561dec252ca4dc80b31c1506db3733e026e43a1ece01c8c4513e08",
+      "body_word_count": 2598,
+      "review_sha256": "a81bf97161d49236b7b444ed14e33df4d5d4f86ea6a9d0169e8c28e28a8b9fdc",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -577,8 +575,8 @@
       "e3": 0,
       "e4": 0,
       "e5": 0,
-      "e3_soft": 2,
-      "n_citations": 41,
+      "e3_soft": 1,
+      "n_citations": 39,
       "n_docs_cited": 13,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -595,14 +593,14 @@
         "Sokoloff&Engerman_2000",
         "vanZanden_1999"
       ],
-      "word_count": 1797,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 1990,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_014",
-      "body_word_count": 1797,
-      "review_sha256": "8805e3dc4e23015c0caf7b7d71b5871411e3e9e329ec92092f752ccee2c4f602",
+      "body_word_count": 1990,
+      "review_sha256": "f0f1cf5bed41f1fa0b2e9a6404f301cf48b65a0a0557a25dca46ccc1eb38ba6c",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -613,9 +611,9 @@
       "e3": 0,
       "e4": 0,
       "e5": 0,
-      "e3_soft": 1,
-      "n_citations": 61,
-      "n_docs_cited": 17,
+      "e3_soft": 0,
+      "n_citations": 46,
+      "n_docs_cited": 16,
       "docs_cited": [
         "AcemogluEtAl_2001",
         "AcemogluEtAl_2002",
@@ -629,20 +627,19 @@
         "Mokyr_2005",
         "North&Weingast_1989",
         "North_1989",
-        "Nunn&Wantchekon_2011",
         "Nunn_2008",
         "Ogilvie_2007",
         "Simson_2019",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 2266,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
-      "e1_loose_advisory_count": 1,
+      "word_count": 2229,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
+      "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_015",
-      "body_word_count": 2266,
-      "review_sha256": "9c3cddfb61ee2232652b3ef8d0988baed89fcd3b4b8abbae20e1bd8ccc2088f6",
+      "body_word_count": 2229,
+      "review_sha256": "d50484bee3a88e679e6a6cdec49b97c25a073595368d50fc4beb1acee7629faa",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -654,7 +651,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 45,
+      "n_citations": 38,
       "n_docs_cited": 14,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -672,14 +669,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1508,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2176,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_016",
-      "body_word_count": 1508,
-      "review_sha256": "690d6adb13b73950cd81a8161a28ff569d0adfd6438b281c5d3a2761fd4950a8",
+      "body_word_count": 2176,
+      "review_sha256": "cd3bb3f0d2dc56d11deeccd7b4f818e3b86d40e156c97221514d5fafff9c74b6",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -691,7 +688,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 53,
+      "n_citations": 37,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -707,14 +704,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1830,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 1999,
+      "quotes_checked": 1,
+      "quotes_verified": 1,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_017",
-      "body_word_count": 1830,
-      "review_sha256": "946bf0d8b8560f4513061785ec3b2e88d069c660b12fba33e873e15655b1257b",
+      "body_word_count": 1999,
+      "review_sha256": "a23cb8293d1ae03bdedda7973cded5e8435aefdc1550aadf553d6de12b1ad083",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -726,7 +723,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 48,
+      "n_citations": 49,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -742,14 +739,14 @@
         "Nunn_2008",
         "Ogilvie_2007"
       ],
-      "word_count": 1807,
+      "word_count": 1752,
       "quotes_checked": 0,
       "quotes_verified": 0,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_018",
-      "body_word_count": 1807,
-      "review_sha256": "e03d76c76c051d849094758688f2b5ec1e821b49fcba2fad44685ab25436965f",
+      "body_word_count": 1752,
+      "review_sha256": "0f46a0cc2207b5a56c545fb450a0605c3934ebe6b97fb764464d8a5c2209f8b1",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -761,7 +758,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 48,
+      "n_citations": 36,
       "n_docs_cited": 13,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -778,14 +775,14 @@
         "Nunn&Wantchekon_2011",
         "Nunn_2008"
       ],
-      "word_count": 1654,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 1874,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_019",
-      "body_word_count": 1654,
-      "review_sha256": "8881daa249fd120a88144e6c1487d41617f9a098cb279718950fd7c02ce949d9",
+      "body_word_count": 1874,
+      "review_sha256": "f240c8d487d9689a3a61cdbeeaa87ba6ebd0f70d0ba14f0efdc11c318d198065",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -813,14 +810,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1876,
+      "word_count": 1881,
       "quotes_checked": 2,
       "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_020",
-      "body_word_count": 1876,
-      "review_sha256": "6d0a04752da4ef0623255e2f8a4f327ab254b45c5b550cecd46f9df6cc5b7511",
+      "body_word_count": 1881,
+      "review_sha256": "d279aff6221f5c689f199e52835bedf48dd7955225b86f7a9ccf14640cc2f652",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -832,7 +829,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 46,
+      "n_citations": 31,
       "n_docs_cited": 14,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -850,14 +847,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 2099,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 1991,
+      "quotes_checked": 1,
+      "quotes_verified": 1,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_021",
-      "body_word_count": 2099,
-      "review_sha256": "f11ab88bfdfc49d1890032261de3b9156b7fd1841cf8fea61950680ee7d77160",
+      "body_word_count": 1991,
+      "review_sha256": "302ea5e8ded17d4d0f3a53e21cee8029b1af6e44bb988afacc8cf91d7119adf4",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -869,7 +866,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 39,
+      "n_citations": 31,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -885,14 +882,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1739,
-      "quotes_checked": 1,
-      "quotes_verified": 1,
+      "word_count": 1851,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_022",
-      "body_word_count": 1739,
-      "review_sha256": "b7a458c6e3f831df6d32a2f5e81c5c1a4574f395d2d026cf6c2a3ec8bf2eec55",
+      "body_word_count": 1851,
+      "review_sha256": "463d185e117ad13d71988bfbd2cab7ee217256880db8e5b5bf0e4b993f4e063f",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -903,8 +900,8 @@
       "e3": 0,
       "e4": 0,
       "e5": 0,
-      "e3_soft": 3,
-      "n_citations": 39,
+      "e3_soft": 0,
+      "n_citations": 45,
       "n_docs_cited": 13,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -921,14 +918,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1911,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2017,
+      "quotes_checked": 2,
+      "quotes_verified": 2,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_023",
-      "body_word_count": 1911,
-      "review_sha256": "73c1b4d36d274edadad5120375e3d752713305af3ebb76520ed8f38bb27ac9e0",
+      "body_word_count": 2017,
+      "review_sha256": "f15b31a40da0ea5598743efcd93d728a846a18755b3d24d1361a1b54dab97f21",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -940,7 +937,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 42,
+      "n_citations": 40,
       "n_docs_cited": 12,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -956,14 +953,14 @@
         "Ogilvie_2007",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 1979,
+      "word_count": 2329,
       "quotes_checked": 0,
       "quotes_verified": 0,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_024",
-      "body_word_count": 1979,
-      "review_sha256": "633e44aa0c771b52ae8f28ee841c1e16f0c391e775384582ebd114958cae13f4",
+      "body_word_count": 2329,
+      "review_sha256": "aa87201073236442a999d764cb85eb638d01a675d219143e8ef17b664d7a4266",
       "provenance_class": "corrected_writer_replay"
     },
     {
@@ -975,7 +972,7 @@
       "e4": 0,
       "e5": 0,
       "e3_soft": 0,
-      "n_citations": 47,
+      "n_citations": 54,
       "n_docs_cited": 13,
       "docs_cited": [
         "AcemogluEtAl_2001",
@@ -992,14 +989,14 @@
         "Nunn_2008",
         "Sokoloff&Engerman_2000"
       ],
-      "word_count": 2184,
-      "quotes_checked": 0,
-      "quotes_verified": 0,
+      "word_count": 2107,
+      "quotes_checked": 1,
+      "quotes_verified": 1,
       "e1_loose_advisory_count": 0,
       "batch": "runpod_20260709_031835",
       "run_id": "run_025",
-      "body_word_count": 2184,
-      "review_sha256": "91863edcdd61dd39d298d3a6e16c39a853d3a45f0e6587d952ffce3c2a78482f",
+      "body_word_count": 2107,
+      "review_sha256": "cafdb16ee4de454adc0169f3218f9dbf17b832c5f0f9c79a2ef3d58d86425d05",
       "provenance_class": "corrected_writer_replay"
     }
   ]

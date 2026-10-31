@@ -1,11 +1,11 @@
 {
   "schema_version": "corrected-paper-analysis-v1",
-  "generated_at_utc": "2026-08-03T20:00:08.929952+00:00",
-  "generator": "scripts/build_corrected_results_change_map_vlm21.py",
-  "generator_sha256": "fbc6064b343566de3ae4aa57baf719b6ff573da7b7a6e9e2bc34eaad9ed79a1f",
+  "generated_at_utc": "2026-10-30T23:12:23.343908+00:00",
+  "generator": "scripts/build_corrected_results_change_map_vlm25.py",
+  "generator_sha256": "3c462865ba21324950fb5f48e7af934e5ff42a1ba1d7a56961b80c43b81250c2",
   "replay_manifest": "replays/writer_correction_260720/bundle/manifest.json",
   "replay_manifest_sha256": "f9fa382c941a0093bff590aeb3024d57169e431268dc0d67b81ad821a73955e7",
-  "corrected_output_root": "pod_outputs/battery_vlm21_materialized",
+  "corrected_output_root": "pod_outputs/battery_vlm25_materialized",
   "frozen_pre_correction_bundle": "private/artifacts/pre_correction_snapshot",
   "join_key": [
     "batch",
@@ -118,5 +118,5 @@
     "README.md",
     "manifest.json"
   ],
-  "report": "revision_notes/corrected_results_change_map.md"
+  "report": "revision_notes/vlm25_results_change_map.md"
 }

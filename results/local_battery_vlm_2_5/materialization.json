@@ -1,0 +1,99 @@
+{
+  "schema_version": "materialization-v1",
+  "source_tree": "pod_outputs\\battery_vlm24\\merged\\battery_vlm24",
+  "generation_profile": "vlm.2.4",
+  "materialized_profile": "vlm.2.5",
+  "materialized_code_fingerprint": "0add66434dd29df86edd749e19c2019fcb12ba533ad2669c9e252aec71acbfcc",
+  "pass": "writer._strip_fabricated_quotes (curly quotation marks, coverage quotations exempt)",
+  "created_at": "2026-10-30T22:52:21Z",
+  "totals": {
+    "reviews": 897,
+    "checked_quotes": 88,
+    "coverage_quotes_skipped": 1178,
+    "fabricated_stripped": 3,
+    "strand_guard_dequoted": 0
+  },
+  "changed_reviews": [
+    {
+      "item": "runpod_20260709_031835/phase_g_gemma3_12b/run_005",
+      "actions": [
+        {
+          "quote": "equilibrium institutions",
+          "doc_id": "AcemogluEtAl_2001",
+          "page": 4,
+          "action": "sentence_stripped"
+        }
+      ],
+      "hard_errors_before": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0
+      },
+      "hard_errors_after": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0
+      },
+      "outcome_before": "success",
+      "outcome_after": "success"
+    },
+    {
+      "item": "runpod_20260709_031835/phase_g_qwen3_0_6b_refusal_near/run_010",
+      "actions": [
+        {
+          "quote": "The French data are particularly important in that they extend back into the seventeenth century and are therefore the earliest such records known to be extant. Studies of societies for which reliable economic data do not exist, such as the",
+          "doc_id": "AcemogluEtAl_2002",
+          "page": 45,
+          "action": "sentence_stripped"
+        }
+      ],
+      "hard_errors_before": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 1,
+        "e5": 0
+      },
+      "hard_errors_after": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0
+      },
+      "outcome_before": "checker_failed",
+      "outcome_after": "success"
+    },
+    {
+      "item": "runpod_20260709_202003/phase_f2_adversarial_culture/run_034",
+      "actions": [
+        {
+          "quote": "bourgeois and aristocratically dishonorable",
+          "doc_id": "McCloskey_2015",
+          "page": 10,
+          "action": "sentence_stripped"
+        }
+      ],
+      "hard_errors_before": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 1
+      },
+      "hard_errors_after": {
+        "e1": 0,
+        "e2": 0,
+        "e3": 0,
+        "e4": 0,
+        "e5": 0
+      },
+      "outcome_before": "checker_failed",
+      "outcome_after": "success"
+    }
+  ]
+}
