@@ -4,13 +4,15 @@
   "prepared_at_utc": "2026-10-31T12:57:30Z",
   "paper": {
     "title": "Retrieval-Restricted Reasoning: Supporting Scholarly Synthesis with Language Models",
-    "author": "Anonymous author"
+    "author": "Igor Martins (ORCID 0000-0002-6141-9273)",
+    "journal": "Historical Methods: A Journal of Quantitative and Interdisciplinary History (accepted 27 October 2026)"
   },
   "source": {
     "review_repository": "https://anonymous.4open.science/r/rrr-replication-1B8C",
     "accepted_profile": "vlm.2.5 on the vlm.2.4 generation",
     "source_status": "The source code, runtime bundles, result records, and explicit NotebookLM comparison files are deposited in this package.",
-    "previous_accepted_profile": "vlm.2.1 (manuscript accepted 27 October 2026; results replaced in the final version)"
+    "previous_accepted_profile": "vlm.2.1 (manuscript accepted 27 October 2026; results replaced in the final version)",
+    "review_repository_note": "anonymous mirror used during peer review; the named repository is https://github.com/igbaccin/rrr-replication"
   },
   "population": {
     "classified_attempts": 2425,
